@@ -4,7 +4,7 @@ Classic Power Menu is a Power Menu Replacement for Android 11+, with the main ai
 
 **Classic Power Menu Requires root access to function, it is not possible without root**
 
-**[Please read the FAQ before downloading or creating an issue](https://github.com/KieronQuinn/ClassicPowerMenu/app/src/main/assets/faq.md)**
+**[Please read the FAQ before downloading or creating an issue](https://github.com/KieronQuinn/ClassicPowerMenu/blob/main/app/src/main/assets/faq.md)**
 
 ## Features
 

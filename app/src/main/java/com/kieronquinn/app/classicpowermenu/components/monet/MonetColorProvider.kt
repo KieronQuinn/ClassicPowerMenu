@@ -70,7 +70,7 @@ class MonetColorProvider(context: Context): ControlsMonetColorProvider, WalletMo
                 view.overrideRippleColor(monet.getAccentColor(view.context, forceDarkMode))
             }
             is TextView -> {
-                if(view.typeface.weight == 500) {
+                if(view.typeface?.weight == 500) {
                     view.typeface = googleSansTextMedium
                 }else{
                     view.typeface = googleSansText

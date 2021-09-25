@@ -197,6 +197,8 @@ public class WalletPanelViewController implements
             return;
         }
         List<WalletCard> walletCards = response.getWalletCards();
+        if(walletCards.size() == 0) return;
+
         ArrayList<WalletCardViewInfo> data = new ArrayList<>(walletCards.size());
         for (WalletCard card : walletCards) {
             data.add(new QAWalletCardViewInfo(card));

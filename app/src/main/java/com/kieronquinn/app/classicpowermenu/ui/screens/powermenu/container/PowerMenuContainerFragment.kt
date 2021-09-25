@@ -1,0 +1,49 @@
+package com.kieronquinn.app.classicpowermenu.ui.screens.powermenu.container
+
+import android.os.Bundle
+import android.util.Log
+import android.view.View
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.NavHostFragment
+import com.kieronquinn.app.classicpowermenu.R
+import com.kieronquinn.app.classicpowermenu.components.navigation.NavigationEvent
+import com.kieronquinn.app.classicpowermenu.components.navigation.PowerMenuNavigation
+import com.kieronquinn.app.classicpowermenu.databinding.FragmentPowerMenuContainerBinding
+import com.kieronquinn.app.classicpowermenu.ui.base.BoundFragment
+import kotlinx.coroutines.flow.collect
+import org.koin.android.ext.android.inject
+
+class PowerMenuContainerFragment: BoundFragment<FragmentPowerMenuContainerBinding>(FragmentPowerMenuContainerBinding::inflate) {
+
+    private val navigation by inject<PowerMenuNavigation>()
+
+    private val navHostFragment by lazy {
+        childFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+    }
+
+    private val navController by lazy {
+        navHostFragment.navController
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupNavigation()
+    }
+
+    private fun setupNavigation() = lifecycleScope.launchWhenResumed {
+        navigation.navigationBus.collect {
+            handleNavigationEvent(it)
+        }
+    }
+
+    private fun handleNavigationEvent(event: NavigationEvent) {
+        when(event){
+            is NavigationEvent.Directions -> navController.navigate(event.directions)
+            is NavigationEvent.Id -> navController.navigate(event.id)
+            is NavigationEvent.Intent -> requireActivity().startActivity(event.intent)
+            is NavigationEvent.Back -> navController.navigateUp()
+            is NavigationEvent.PopupTo -> navController.popBackStack(event.id, event.popInclusive)
+        }
+    }
+
+}

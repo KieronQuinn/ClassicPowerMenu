@@ -1,0 +1,65 @@
+/*
+    Protobuf format of the `blob` columns of the Google Pay database's Valuables table.
+
+    Google very kindly left the Google Pay APK non-obfuscated, so this was built from a combination
+    of `protoc --decode_raw` and studying the APK to see what went where.
+*/
+
+syntax = "proto3";
+
+package com.kieronquinn.app.classicpowermenu.model.protobuf.loyaltycard;
+
+option java_package = "com.kieronquinn.app.classicpowermenu.model.protobuf.loyaltycard";
+option java_outer_classname = "LoyaltyCardProtos";
+
+import "color.proto";
+
+message LoyaltyCard_Metadata {
+	string sortKey = 1;
+	//Other fields not required
+}
+
+message LoyaltyCard_IssuerInfo_MainImageInfo {
+	string url = 1;
+	google.type.Color color = 2;
+}
+
+message LoyaltyCard_IsserInfo_Message {
+	string header = 1;
+	string body = 2;
+}
+
+message LoyaltyCard_IssuerInfo {
+	string id = 1;
+	string title = 2;
+	string issuerName = 3;
+	string message = 4;
+	LoyaltyCard_IsserInfo_Message issuerInfo = 5;
+	LoyaltyCard_IssuerInfo_MainImageInfo mainImageInfo = 9;
+	google.type.Color backgroundColor = 13;
+}
+
+message LoyaltyCard_RedemptionInfo_Barcode {
+	int32 type = 1;
+	string encodedValue = 2;
+	string displayText = 3;
+	string label = 6;
+}
+
+message LoyaltyCard_RedemptionInfo {
+	string identifier = 1;
+	LoyaltyCard_RedemptionInfo_Barcode barcode = 2;
+}
+
+message LoyaltyCard {
+	string id = 1;
+	int64 hash = 2; 
+	LoyaltyCard_Metadata metadata = 3;
+	LoyaltyCard_IssuerInfo issuerInfo = 4;
+	LoyaltyCard_RedemptionInfo redemptionInfo = 5;
+	string cardHolderNameLabel = 8;
+	string membershipIdLabel = 9;
+	string countryDisplayName = 10;
+	int32 inputMode = 11;
+	string countryCode = 12;
+}

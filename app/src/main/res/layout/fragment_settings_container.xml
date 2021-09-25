@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior=".ui.utils.DragDisabledAppBarLayoutBehaviour"
+        app:elevation="0dp"
+        app:toolbarId="@id/toolbar">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_bar_height"
+            app:maxLines="2"
+            app:contentScrim="?attr/colorPrimaryVariant"
+            app:statusBarScrim="@android:color/transparent"
+            app:titleCollapseMode="fade"
+            app:scrimAnimationDuration="@android:integer/config_shortAnimTime"
+            app:scrimVisibleHeightTrigger="@dimen/toolbar_scrim_visible_height"
+            app:expandedTitleMarginStart="@dimen/toolbar_expanded_title_margin"
+            app:expandedTitleMarginEnd="@dimen/toolbar_expanded_title_margin"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:layout_width="match_parent"
+                android:layout_height="?android:actionBarSize"
+                android:outlineProvider="none"
+                app:layout_collapseMode="pin"
+                android:id="@+id/toolbar"/>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.navigation.CPMNavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        app:defaultNavHost="true"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        app:navGraph="@navigation/nav_graph_settings" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

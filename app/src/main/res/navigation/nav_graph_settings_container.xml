@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_settings_container"
+    app:startDestination="@id/settingsRootCheckFragment">
+
+    <fragment
+        android:id="@+id/settingsContainerFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.container.SettingsContainerFragment"
+        android:label="SettingsContainerFragment"
+        tools:layout="@layout/fragment_settings_container">
+        <action
+            android:id="@+id/action_settingsContainerFragment_to_settingsPowerOptionsRearrangeFragment"
+            app:destination="@id/settingsPowerOptionsRearrangeFragment" />
+        <action
+            android:id="@+id/action_settingsContainerFragment_to_settingsQuickAccessWalletRearrangeFragment"
+            app:destination="@id/settingsQuickAccessWalletRearrangeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsPowerOptionsRearrangeFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.poweroptions.rearrange.SettingsPowerOptionsRearrangeFragment"
+        android:label="SettingsPowerOptionsRearrangeFragment"
+        tools:layout="@layout/fragment_settings_power_options_rearrange" />
+    <fragment
+        android:id="@+id/settingsQuickAccessWalletRearrangeFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.rearrange.SettingsQuickAccessWalletRearrangeFragment"
+        android:label="SettingsQuickAccessWalletRearrangeFragment"
+        tools:layout="@layout/fragment_settings_quick_access_wallet_rearrange" />
+    <fragment
+        android:id="@+id/settingsRootCheckFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.rootcheck.SettingsRootCheckFragment"
+        android:label="SettingsRootCheckFragment"
+        tools:layout="@layout/fragment_settings_root_check">
+        <action
+            android:id="@+id/action_settingsRootCheckFragment_to_settingsContainerFragment"
+            app:destination="@id/settingsContainerFragment"
+            app:popUpTo="@null" />
+        <action
+            android:id="@+id/action_settingsRootCheckFragment_to_settingsRootCheckNoRootBottomSheetFragment"
+            app:destination="@id/settingsRootCheckNoRootBottomSheetFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/settingsRootCheckNoRootBottomSheetFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.rootcheck.noroot.SettingsRootCheckNoRootBottomSheetFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_bottom_sheet_root_check_no_root"/>
+    <dialog
+        android:id="@+id/updateAvailableBottomSheetFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.update.UpdateAvailableBottomSheetFragment"
+        android:label="UpdateAvailableBottomSheetFragment"
+        tools:layout="@layout/fragment_update_bottom_sheet" >
+        <action
+            android:id="@+id/action_updateAvailableBottomSheetFragment_to_updateDownloadBottomSheetFragment"
+            app:destination="@id/updateDownloadBottomSheetFragment" />
+    </dialog>
+    <dialog
+        android:id="@+id/updateDownloadBottomSheetFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.update.UpdateDownloadBottomSheetFragment"
+        android:label="UpdateDownloadBottomSheetFragment"
+        tools:layout="@layout/fragment_update_download_bottom_sheet" />
+    <action
+        android:id="@+id/action_global_updateAvailableBottomSheetFragment"
+        app:destination="@id/updateAvailableBottomSheetFragment" />
+
+</navigation>

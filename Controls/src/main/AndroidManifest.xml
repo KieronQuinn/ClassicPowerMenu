@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.systemui.controls">
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application>
+        <activity android:name=".management.ControlsProviderSelectorActivity"
+            android:label="@string/controls_providers_title"
+            android:theme="@style/Theme.ControlsManagement"
+            android:showForAllUsers="true"
+            android:finishOnTaskLaunch="true"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleInstance"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden"
+            android:visibleToInstantApps="true">
+        </activity>
+
+        <activity android:name=".management.ControlsEditingActivity"
+            android:label="@string/controls_menu_edit"
+            android:theme="@style/Theme.ControlsManagement"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:exported="false"
+            android:showForAllUsers="true"
+            android:finishOnTaskLaunch="true"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden"
+            android:visibleToInstantApps="true">
+        </activity>
+
+        <activity android:name=".management.ControlsFavoritingActivity"
+            android:label="@string/controls_favorite_default_title"
+            android:theme="@style/Theme.ControlsManagement"
+            android:excludeFromRecents="true"
+            android:showForAllUsers="true"
+            android:exported="false"
+            android:finishOnTaskLaunch="true"
+            android:launchMode="singleInstance"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden"
+            android:visibleToInstantApps="true">
+        </activity>
+
+        <receiver android:name=".management.ControlsRequestReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.controls.action.ADD_CONTROL" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".controller.AuxiliaryPersistenceWrapper$DeletionJobService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+
+        <!-- started from ControlsRequestReceiver -->
+        <activity
+            android:name=".management.ControlsRequestDialog"
+            android:theme="@style/Theme.ControlsRequestDialog"
+            android:exported="false"
+            android:finishOnCloseSystemDialogs="true"
+            android:showForAllUsers="true"
+            android:clearTaskOnLaunch="true"
+            android:launchMode="singleInstance"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden"
+            android:excludeFromRecents="true"
+            android:visibleToInstantApps="true"/>
+
+    </application>
+
+
+</manifest>

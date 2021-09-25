@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/monet_background_fix"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        app:layout_anchor="@id/toolbar"
+        app:layout_anchorGravity="bottom" />
+
+    <com.kieronquinn.monetcompat.view.MonetToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?android:actionBarSize"
+        app:navigationIcon="@drawable/ic_back"
+        app:title="@string/settings_power_options_rearrange"
+        app:titleTextAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title.ClassicPowerMenu" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/power_options_rearrange_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="false"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/power_options_rearrange_workspace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="false"
+                android:elevation="8dp"
+                android:nestedScrollingEnabled="false"
+                android:outlineProvider="none"
+                android:paddingTop="@dimen/margin_16"
+                tools:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/power_options_rearrange_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/top_sheet_rounded_bg"
+                android:gravity="center"
+                android:padding="@dimen/margin_16"
+                android:text="@string/settings_power_options_drag_to_rearrange"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small.ClassicPowerMenu.Medium"
+                android:textColor="?android:textColorPrimary"
+                tools:backgroundTint="@android:color/darker_gray" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/power_options_rearrange_options"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-16dp"
+                    android:animateLayoutChanges="false"
+                    android:clipToPadding="false"
+                    android:minHeight="@dimen/global_actions_recycler_collapsed_height"
+                    android:nestedScrollingEnabled="false"
+                    android:paddingTop="24dp" />
+
+                <TextView
+                    android:id="@+id/settings_power_options_rearrange_no_items"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/margin_16"
+                    android:text="@string/settings_power_options_rearrange_no_items"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small.ClassicPowerMenu.Medium"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="scope">
+        <item>com.android.systemui</item>
+        <item>com.kieronquinn.app.classicpowermenu</item>
+    </string-array>
+</resources>

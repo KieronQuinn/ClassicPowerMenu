@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_power_menu"
+    app:startDestination="@id/powerMenuFragment">
+
+    <fragment
+        android:id="@+id/powerMenuFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.powermenu.main.PowerMenuFragment"
+        android:label="PowerMenuFragment"
+        tools:layout="@layout/fragment_power_menu">
+        <action
+            android:id="@+id/action_powerMenuFragment_to_safeModeTopSheetFragment"
+            app:destination="@id/safeModeTopSheetFragment" />
+        <action
+            android:id="@+id/action_powerMenuFragment_to_walletCodeDialogFragment"
+            app:destination="@id/walletCodeDialogFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/safeModeTopSheetFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.powermenu.safemode.SafeModeTopSheetFragment"
+        android:label="SafeModeTopSheetFragment"
+        tools:layout="@layout/fragment_topsheet_safe_mode" />
+    <dialog
+        android:id="@+id/walletCodeDialogFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.powermenu.walletcode.WalletCodeDialogFragment"
+        android:label="WalletCodeDialogFragment"
+        tools:layout="@layout/fragment_dialog_wallet_code" >
+        <argument
+            android:name="loyalty_card"
+            app:argType="com.kieronquinn.app.classicpowermenu.model.quickaccesswallet.LoyaltyCard" />
+    </dialog>
+</navigation>

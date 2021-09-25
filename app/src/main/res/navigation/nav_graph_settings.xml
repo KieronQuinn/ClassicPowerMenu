@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_settings"
+    app:startDestination="@id/settingsMainFragment">
+
+    <fragment
+        android:id="@+id/settingsMainFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.main.SettingsMainFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_settings_switched" >
+        <action
+            android:id="@+id/action_settingsMainFragment_to_settingsPowerOptionsFragment"
+            app:destination="@id/settingsPowerOptionsFragment" />
+        <action
+            android:id="@+id/action_settingsMainFragment_to_settingsQuickAccessWalletFragment"
+            app:destination="@id/settingsQuickAccessWalletFragment" />
+        <action
+            android:id="@+id/action_settingsMainFragment_to_settingsDeviceControlsFragment"
+            app:destination="@id/settingsDeviceControlsFragment" />
+        <action
+            android:id="@+id/action_settingsMainFragment_to_colorPickerBottomSheetFragment"
+            app:destination="@id/colorPickerBottomSheetFragment" />
+        <action
+            android:id="@+id/action_settingsMainFragment_to_settingsDeveloperOptionsFragment"
+            app:destination="@id/settingsDeveloperOptionsFragment" />
+        <action
+            android:id="@+id/action_settingsMainFragment_to_settingsFaqFragment"
+            app:destination="@id/settingsFaqFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsPowerOptionsFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.poweroptions.SettingsPowerOptionsFragment"
+        android:label="@string/settings_power_options"
+        tools:layout="@layout/fragment_settings_generic" />
+    <fragment
+        android:id="@+id/settingsQuickAccessWalletFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.SettingsQuickAccessWalletFragment"
+        android:label="@string/settings_quick_access_wallet"
+        tools:layout="@layout/fragment_settings_generic" />
+    <activity
+        android:id="@+id/controlsProviderSelectorActivity"
+        android:name="com.android.systemui.controls.management.ControlsProviderSelectorActivity"
+        android:label="ControlsProviderSelectorActivity"
+        tools:layout="@layout/controls_management"/>
+    <fragment
+        android:id="@+id/settingsDeviceControlsFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.devicecontrols.SettingsDeviceControlsFragment"
+        android:label="@string/settings_controls"
+        tools:layout="@layout/fragment_settings_generic">
+        <action
+            android:id="@+id/action_settingsDeviceControlsFragment_to_controlsProviderSelectorActivity"
+            app:destination="@id/controlsProviderSelectorActivity" />
+    </fragment>
+    <dialog
+        android:id="@+id/colorPickerBottomSheetFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.colorpicker.ColorPickerBottomSheetFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_bottom_sheet_color_picker" />
+    <fragment
+        android:id="@+id/settingsDeveloperOptionsFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.developeroptions.SettingsDeveloperOptionsFragment"
+        android:label="@string/settings_developer_options"
+        tools:layout="@layout/fragment_settings_generic" />
+    <fragment
+        android:id="@+id/settingsFaqFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.faq.SettingsFaqFragment"
+        android:label="@string/settings_about_faq"
+        tools:layout="@layout/fragment_settings_faq" />
+
+</navigation>

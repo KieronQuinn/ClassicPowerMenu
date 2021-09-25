@@ -1,0 +1,136 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'androidx.navigation.safeargs'
+    id 'com.google.protobuf'
+    id 'kotlin-parcelize'
+    id 'com.google.android.gms.oss-licenses-plugin'
+}
+
+def tagName = '1.0'
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "com.kieronquinn.app.classicpowermenu"
+        minSdk 30
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "TAG_NAME", "\"${tagName}\"")
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.0.0'
+    }
+    plugins {
+        javalite {
+            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
+        }
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                remove java
+            }
+            task.plugins {
+                javalite { }
+            }
+        }
+    }
+}
+
+sourceSets{
+    main.java.srcDirs += "${protobuf.generatedFilesBaseDir}/main/javalite"
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    implementation 'androidx.lifecycle:lifecycle-service:2.3.1'
+    implementation 'androidx.work:work-runtime-ktx:2.7.0-beta01'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    implementation 'com.google.protobuf:protobuf-lite:3.0.0'
+    implementation 'com.google.guava:guava:30.1.1-android'
+    compileOnly 'de.robv.android.xposed:api:82'
+
+    implementation 'com.github.KieronQuinn:MonetCompat:0.2.1'
+    implementation 'com.airbnb.android:lottie:4.1.0'
+    implementation 'com.jakewharton:process-phoenix:2.1.2'
+
+    //Stubs for hidden APIs. Shouldn't be included in APK.
+    compileOnly project(':systemstubs')
+
+    //packages/apps/QuickAccessWallet import
+    implementation project(':QuickAccessWallet')
+
+    //Device Controls code imported from SystemUI
+    implementation project(':Controls')
+
+    implementation 'com.implimentz:unsafe:0.0.6'
+
+    def lifecycle_version = "2.4.0-beta01"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-process:$lifecycle_version"
+
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
+
+    def libsuVersion = '3.1.2'
+    implementation "com.github.topjohnwu.libsu:core:${libsuVersion}"
+    implementation "com.github.topjohnwu.libsu:service:${libsuVersion}"
+    implementation "com.github.topjohnwu.libsu:io:${libsuVersion}"
+
+    def shizuku_version = '11.0.3'
+    implementation "dev.rikka.shizuku:api:$shizuku_version"
+    implementation "io.insert-koin:koin-android:$koin_version"
+
+    implementation 'com.google.zxing:core:3.4.1'
+    implementation 'com.journeyapps:zxing-android-embedded:4.1.0@aar'
+
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    implementation 'com.afollestad.material-dialogs:core:3.3.0'
+    implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'
+
+    implementation "androidx.core:core-splashscreen:1.0.0-alpha01"
+    implementation "io.noties.markwon:core:4.6.2"
+
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    //Bypass Hidden APIs
+    implementation 'org.lsposed.hiddenapibypass:hiddenapibypass:2.0'
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.5.30"
+}

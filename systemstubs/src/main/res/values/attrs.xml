@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Shortcut">
+        <attr name="shortcutId" format="string" />
+        <attr name="shortcutShortLabel" format="reference" />
+        <attr name="shortcutLongLabel" format="reference" />
+        <attr name="shortcutDisabledMessage" format="reference" />
+    </declare-styleable>
+
+    <!-- Use <code>quickaccesswallet-service</code> as the root tag of the XML resource
+         that describes a {@link android.service.quickaccesswallet.QuickAccessWalletService},
+         which is referenced from its
+         {@link android.service.quickaccesswallet.QuickAccessWalletService#SERVICE_META_DATA}
+         meta-data entry.
+    -->
+    <declare-styleable name="QuickAccessWalletService">
+        <!-- Fully qualified class name of an activity that allows the user to modify
+             the settings for this service. -->
+        <attr name="settingsActivity" format="string"/>
+        <!-- Fully qualified class name of an activity that allows the user to view
+             their entire wallet -->
+        <attr name="targetActivity" format="string"/>
+        <!-- Text shown on the empty state button if no cards are provided -->
+        <attr name="shortcutLongLabel"/>
+        <!-- Text shown on the button that takes users to the wallet application -->
+        <attr name="shortcutShortLabel"/>
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:layout_gravity="bottom">
+
+    <TextView
+        android:id="@+id/root_check_no_root_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        android:paddingTop="@dimen/margin_8"
+        android:paddingBottom="@dimen/margin_8"
+        android:text="@string/root_check_failed_bottom_sheet_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large.ClassicPowerMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/root_check_no_root_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_16"
+        android:text="@string/root_check_failed_bottom_sheet_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium.ClassicPowerMenu"
+        app:layout_constraintBottom_toTopOf="@id/root_check_no_root_close"
+        app:layout_constraintTop_toBottomOf="@id/root_check_no_root_title" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/root_check_no_root_close"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:fontFamily="@font/google_sans_text_medium"
+        android:text="@string/root_check_failed_bottom_sheet_close"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/root_check_no_root_content" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

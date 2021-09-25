@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/global_actions_power_dialog_item_width"
+    android:layout_height="@dimen/global_actions_power_dialog_item_height">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/background_power_menu_button"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:id="@+id/item_power_menu_button_empty_dropper"/>
+
+</FrameLayout>

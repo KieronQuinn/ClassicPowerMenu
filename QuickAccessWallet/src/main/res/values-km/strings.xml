@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="error_user_locked" msgid="3088770324409338404">"ដោះសោទូរសព្ទរបស់អ្នក ដើម្បីផ្ទុកព័ត៌មានបង់ប្រាក់"</string>
+    <string name="accessibility_menu" msgid="1982506521504867550">"ម៉ឺនុយ"</string>
+    <string name="error_generic" msgid="5736597066829262527">"មានបញ្ហា​ក្នុងការទាញយក​កាត​របស់អ្នក សូម​ព្យាយាមម្ដងទៀត​នៅពេលក្រោយ"</string>
+    <string name="settings" msgid="4740257901811398113">"ការកំណត់"</string>
+</resources>

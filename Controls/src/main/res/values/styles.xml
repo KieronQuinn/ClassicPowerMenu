@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Animation.Bottomsheet" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/bottomsheet_in</item>
+        <item name="android:windowExitAnimation">@anim/bottomsheet_out</item>
+    </style>
+    
+    <!-- Controls styles -->
+    <style name="Theme.ControlsManagement" parent="@android:style/Theme.DeviceDefault.NoActionBar">
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowContentTransitions">false</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="android:colorBackground">@android:color/black</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="wallpaperTextColor">@*android:color/primary_text_material_dark</item>
+    </style>
+
+    <style name="TextAppearance.Control" parent="@android:style/TextAppearance">
+    </style>
+
+    <style name="Theme.SystemUI.Dialog.Control.DetailPanel" parent="@android:style/Theme.DeviceDefault.Dialog.NoActionBar">
+        <item name="android:windowAnimationStyle">@style/Animation.Bottomsheet</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="Control" />
+
+    <style name="Control.MenuItem">
+        <item name="android:textSize">@dimen/control_menu_item_text_size</item>
+        <item name="android:textColor">@color/control_primary_text</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:minHeight">@dimen/control_menu_item_min_height</item>
+    </style>
+
+    <style name="Control.Spinner">
+        <item name="android:textColor">@color/control_primary_text</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="Control.Spinner.Header">
+        <item name="android:background">@drawable/control_spinner_background</item>
+        <item name="android:textSize">@dimen/control_header_text_size</item>
+        <item name="android:textFontWeight">500</item>
+    </style>
+
+    <style name="Control.Spinner.Item">
+        <item name="android:textSize">@dimen/control_item_text_size</item>
+    </style>
+
+    <style name="TextAppearance.Control.Status">
+        <item name="android:textSize">@dimen/control_status_normal</item>
+        <item name="android:textColor">@color/control_primary_text</item>
+        <item name="android:textFontWeight">500</item>
+    </style>
+
+    <style name="TextAppearance.Control.Title">
+        <item name="android:textSize">@dimen/control_text_size</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/control_primary_text</item>
+        <item name="android:textFontWeight">500</item>
+    </style>
+    <style name="TextAppearance.Control.Subtitle">
+        <item name="android:textSize">@dimen/control_text_size</item>
+        <item name="android:textColor">@color/control_secondary_text</item>
+    </style>
+    <style name="TextAppearance.Control.Management" >
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+    <style name="TextAppearance.Control.Management.Title">
+        <item name="android:textSize">@dimen/controls_title_size</item>
+    </style>
+    <style name="TextAppearance.Control.Management.Subtitle">
+        <item name="android:textSize">@dimen/controls_subtitle_size</item>
+        <item name="android:textFontWeight">500</item>
+    </style>
+
+    <style name="Control.ListPopupWindow" parent="@android:style/Widget.DeviceDefault.ListPopupWindow">
+        <item name="android:overlapAnchor">true</item>
+
+        <!-- used to override dark/light theming -->
+        <item name="*android:colorBackgroundFloating">@color/GM2_grey_800</item>
+        <item name="*android:colorPopupBackground">@color/GM2_grey_800</item>
+        <item name="*android:dialogCornerRadius">8dp</item>
+    </style>
+
+    <style name="TextAppearance.ControlSetup" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/control_primary_text</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="TextAppearance.ControlSetup.Title">
+        <item name="android:textSize">@dimen/controls_setup_title</item>
+    </style>
+
+    <style name="TextAppearance.ControlSetup.Subtitle">
+        <item name="android:textSize">@dimen/controls_setup_subtitle</item>
+    </style>
+
+    <!-- The attributes used for title (textAppearanceLarge) and message (textAppearanceMedium)
+         are already as necessary:
+          * Title: headline, medium 20sp
+          * Message: body, 16 sp -->
+    <style name="Theme.ControlsRequestDialog" parent="@android:style/Theme.DeviceDefault.Dialog.Alert"/>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="error_user_locked" msgid="3088770324409338404">"ଆପଣଙ୍କର ପେମେଣ୍ଟ ସୂଚନା ଲୋଡ୍ କରିବା ପାଇଁ ଆପଣଙ୍କର ଫୋନ୍ ଅନ୍‌ଲକ୍ କରନ୍ତୁ"</string>
+    <string name="accessibility_menu" msgid="1982506521504867550">"ମେନୁ"</string>
+    <string name="error_generic" msgid="5736597066829262527">"ଆପଣଙ୍କ କାର୍ଡଗୁଡ଼ିକ ପାଇବାରେ କୌଣସି ସମସ୍ୟା ହୋଇଥିଲା, ଦୟାକରି ପରେ ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ"</string>
+    <string name="settings" msgid="4740257901811398113">"ସେଟିଂସ୍"</string>
+</resources>

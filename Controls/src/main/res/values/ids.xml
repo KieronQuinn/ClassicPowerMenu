@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="accessibility_action_controls_move_before" />
+    <item type="id" name="accessibility_action_controls_move_after" />
+</resources>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2020 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false">
+
+    <LinearLayout
+        android:id="@+id/card_carousel_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:orientation="vertical"
+        android:clipChildren="false"
+        android:visibility="gone">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+
+            <TextView
+                android:id="@+id/card_label"
+                style="@style/Wallet.TextAppearance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                android:drawablePadding="8dp"
+                android:textAlignment="center" />
+
+            <ImageView
+                android:id="@+id/menu_btn"
+                android:src="@drawable/ic_more_vert"
+                android:layout_gravity="center|end"
+                android:layout_width="@dimen/wallet_menu_btn_size"
+                android:layout_height="@dimen/wallet_menu_btn_size"
+                android:padding="12dp"
+                android:tint="@android:color/white"
+                android:contentDescription="@string/accessibility_menu"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:theme="@style/Wallet.Theme" />
+        </FrameLayout>
+
+        <com.android.systemui.plugin.globalactions.wallet.WalletCardCarousel
+            android:id="@+id/card_carousel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false" />
+    </LinearLayout>
+
+    <include layout="@layout/empty_state_view" />
+
+    <TextView
+        android:id="@+id/error_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginHorizontal="40dp"
+        android:textSize="14sp"
+        android:textColor="#DADCE0"
+        android:elevation="7dp"
+        android:background="@drawable/rounded_corners"
+        android:gravity="center"
+        android:visibility="gone" />
+
+</FrameLayout>

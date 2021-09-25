@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="primary">#F2E672</color>
+    <color name="primary_dark">#FFC107</color>
+    <color name="accent">#FFEB3B</color>
+    <color name="background_dark">#616161</color>
+    <color name="background">@color/white</color>
+    <color name="background_secondary">#CFD8DC</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="power_button_emergency">#F44336</color>
+    <color name="ripple_material">#40000000</color>
+
+    <color name="quick_access_wallet_generic_background">#DADCE0</color>
+    <color name="quick_access_wallet_generic_foreground">#ECEFF1</color>
+    <color name="quick_access_wallet_generic_text">#5F6368</color>
+
+    <color name="icon_foreground">@android:color/white</color>
+    <color name="icon_background">@color/primary</color>
+    <color name="logo_background">@color/icon_background</color>
+    <color name="logo_foreground">@color/icon_foreground</color>
+    <color name="splash_background">@color/white</color>
+
+</resources>

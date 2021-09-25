@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:paddingTop="32dp"
+    android:paddingBottom="32dp"
+    tools:background="@android:color/darker_gray">
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/wallet_code_close"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="-8dp"
+        android:layout_marginBottom="@dimen/margin_16"
+        android:background="@drawable/rounded_ripple_48"
+        android:padding="@dimen/margin_8"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_close"
+        android:tint="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@id/wallet_code_card"
+        app:layout_constraintStart_toStartOf="@id/wallet_code_card" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/wallet_code_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/dialog_rounded_bg"
+        android:clickable="true"
+        android:elevation="8dp"
+        android:minWidth="350dp"
+        android:paddingBottom="@dimen/margin_16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:backgroundTint="@android:color/holo_blue_bright">
+
+        <ImageView
+            android:id="@+id/wallet_code_logo"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_margin="@dimen/margin_16"
+            android:foreground="@drawable/foreground_wallet_code_logo_outline"
+            app:layout_constraintEnd_toStartOf="@id/wallet_code_title"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:padding="8dp"
+            tools:src="@drawable/ic_card_type_qr" />
+
+        <TextView
+            android:id="@+id/wallet_code_logo_letter"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.ClassicPowerMenu"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@id/wallet_code_logo"
+            app:layout_constraintEnd_toEndOf="@id/wallet_code_logo"
+            app:layout_constraintStart_toStartOf="@id/wallet_code_logo"
+            app:layout_constraintTop_toTopOf="@id/wallet_code_logo"
+            tools:text="A" />
+
+        <TextView
+            android:id="@+id/wallet_code_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_16"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.ClassicPowerMenu"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@id/wallet_code_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/wallet_code_logo"
+            app:layout_constraintTop_toTopOf="@id/wallet_code_logo"
+            tools:text="Co-op Food" />
+
+        <View
+            android:id="@+id/wallet_code_divider"
+            android:layout_width="0dp"
+            android:layout_height="1px"
+            android:layout_marginTop="@dimen/margin_16"
+            android:alpha="0.5"
+            android:background="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/wallet_code_logo" />
+
+        <TextView
+            android:id="@+id/wallet_code_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_16"
+            android:layout_marginTop="@dimen/margin_16"
+            android:layout_marginEnd="@dimen/margin_16"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large.ClassicPowerMenu"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/wallet_code_divider"
+            tools:text="Membership" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/wallet_code_code_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_16"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="@dimen/margin_16"
+            android:layout_marginBottom="@dimen/margin_16"
+            app:layout_constraintBottom_toTopOf="@id/wallet_code_card_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/wallet_code_label"
+            tools:layout_height="100dp">
+
+            <ImageView
+                android:id="@+id/wallet_code_code_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:scaleType="fitCenter"
+                tools:src="@drawable/ic_card_type_barcode"
+                tools:tint="@android:color/black" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/wallet_code_card_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_16"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small.ClassicPowerMenu.Medium"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/wallet_code_code_container"
+            tools:text="0123456789" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/wallet_code_open_in_pay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:paddingStart="@dimen/margin_16"
+        android:text="@string/wallet_code_open_in_pay"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.ClassicPowerMenu.Medium"
+        android:textColor="@android:color/white"
+        app:icon="@drawable/ic_open_in_pay"
+        app:iconTint="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wallet_code_card"
+        tools:backgroundTint="@android:color/holo_blue_bright" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

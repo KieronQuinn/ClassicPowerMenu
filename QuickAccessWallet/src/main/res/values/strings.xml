@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Message shown when launching Wallet before device is unlocked for the first time after a reboot [CHAR LIMIT=NONE] -->
+    <string name="error_user_locked">Unlock your phone to load your payment info</string>
+    <!-- Content description of the menu button for accessibility (not shown on the screen). [CHAR LIMIT=NONE] -->
+    <string name="accessibility_menu">Menu</string>
+    <!-- Message shown when an unknown failure occurred when fetching cards. [CHAR LIMIT=NONE] -->
+    <string name="error_generic">There was a problem getting your cards, please try again later</string>
+    <!-- Overflow menu option directing user to System Settings [CHAR LIMIT=15]-->
+    <string name="settings">Settings</string>
+</resources>

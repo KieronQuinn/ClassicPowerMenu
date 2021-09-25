@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2019 The Android Open Source Project
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+ -->
+<resources>
+
+  <style name="Wallet" />
+
+  <style name="Wallet.TextAppearance">
+    <item name="android:fontFamily">@*android:string/config_headlineFontFamily</item>
+    <item name="android:textColor">@color/wallet_primary_text</item>
+    <item name="android:singleLine">true</item>
+    <item name="android:textSize">14sp</item>
+  </style>
+
+  <style name="Wallet.TextAppearance.Title">
+    <item name="android:textSize">18sp</item>
+  </style>
+
+  <style name="Wallet.ListPopupWindow" parent="@*android:style/Widget.DeviceDefault.ListPopupWindow">
+    <item name="android:overlapAnchor">true</item>
+    <!-- used to override dark/light theme -->
+    <item name="*android:colorPopupBackground">@color/wallet_grey_800</item>
+    <item name="*android:colorBackgroundFloating">@color/wallet_grey_800</item>
+  </style>
+
+  <style name="Wallet.MenuItem">
+    <item name="android:fontFamily">@*android:string/config_headlineFontFamily</item>
+    <item name="android:textSize">@dimen/wallet_more_text_size</item>
+    <item name="android:textColor">@color/wallet_primary_text</item>
+    <item name="android:singleLine">true</item>
+  </style>
+
+  <style name="Wallet.Theme">
+  </style>
+
+</resources>

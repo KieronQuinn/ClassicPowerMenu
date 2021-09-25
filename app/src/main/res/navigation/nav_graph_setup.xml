@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_setup"
+    app:startDestination="@id/setupLandingFragment">
+
+    <fragment
+        android:id="@+id/setupLandingFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.setup.landing.SetupLandingFragment"
+        android:label="SetupLandingFragment"
+        tools:layout="@layout/fragment_setup_landing" >
+        <action
+            android:id="@+id/action_setupLandingFragment_to_setupRootCheckFragment"
+            app:destination="@id/setupRootCheckFragment"
+            app:popUpTo="@null"  />
+    </fragment>
+    <dialog
+        android:id="@+id/settingsRootCheckNoRootBottomSheetFragment2"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.rootcheck.noroot.SettingsRootCheckNoRootBottomSheetFragment"
+        android:label="SettingsRootCheckNoRootBottomSheetFragment"
+        tools:layout="@layout/fragment_bottom_sheet_root_check_no_root" />
+    <fragment
+        android:id="@+id/setupRootCheckFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.setup.rootcheck.SetupRootCheckFragment"
+        android:label="SetupRootCheckFragment"
+        tools:layout="@layout/fragment_setup_rootcheck">
+        <action
+            android:id="@+id/action_setupRootCheckFragment_to_settingsRootCheckNoRootBottomSheetFragment2"
+            app:destination="@id/settingsRootCheckNoRootBottomSheetFragment2"
+            app:popUpTo="@null" />
+        <action
+            android:id="@+id/action_setupRootCheckFragment_to_setupAccessibilityFragment"
+            app:destination="@id/setupAccessibilityFragment"
+            app:popUpTo="@id/setupLandingFragment"  />
+        <action
+            android:id="@+id/action_setupRootCheckFragment_to_setupWalletFragment"
+            app:destination="@id/setupWalletFragment"
+            app:popUpTo="@id/setupLandingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setupAccessibilityFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.setup.accessibility.SetupAccessibilityFragment"
+        android:label="SetupAccessibilityFragment"
+        tools:layout="@layout/fragment_setup_accessibility" >
+        <action
+            android:id="@+id/action_setupAccessibilityFragment_to_setupWalletFragment"
+            app:destination="@id/setupWalletFragment"
+            app:popUpTo="@id/setupLandingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setupWalletFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.setup.wallet.SetupWalletFragment"
+        android:label="SetupWalletFragment"
+        tools:layout="@layout/fragment_setup_wallet" >
+        <action
+            android:id="@+id/action_setupWalletFragment_to_setupControlsFragment"
+            app:destination="@id/setupControlsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setupControlsFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.setup.controls.SetupControlsFragment"
+        android:label="SetupControlsFragment"
+        tools:layout="@layout/fragment_setup_controls" >
+        <action
+            android:id="@+id/action_setupControlsFragment_to_setupCompleteFragment"
+            app:destination="@id/setupCompleteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/setupCompleteFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.setup.complete.SetupCompleteFragment"
+        android:label="SetupCompleteFragment"
+        tools:layout="@layout/fragment_setup_complete" />
+</navigation>

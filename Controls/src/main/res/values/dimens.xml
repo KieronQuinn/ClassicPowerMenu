@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Home Controls -->
+    <dimen name="controls_header_side_margin">4dp</dimen>
+    <dimen name="controls_header_menu_size">48dp</dimen>
+    <dimen name="controls_header_bottom_margin">24dp</dimen>
+    <dimen name="controls_header_app_icon_size">24dp</dimen>
+    <dimen name="controls_top_margin">48dp</dimen>
+    <dimen name="control_header_text_size">20sp</dimen>
+    <dimen name="control_item_text_size">16sp</dimen>
+    <dimen name="control_menu_item_text_size">16sp</dimen>
+    <dimen name="control_menu_item_min_height">56dp</dimen>
+    <dimen name="control_menu_vertical_padding">12dp</dimen>
+    <dimen name="control_menu_horizontal_padding">16dp</dimen>
+    <dimen name="control_spinner_padding_vertical">24dp</dimen>
+    <dimen name="control_spinner_padding_horizontal">20dp</dimen>
+    <dimen name="control_text_size">14sp</dimen>
+    <dimen name="control_icon_size">24dp</dimen>
+    <dimen name="control_spacing">4dp</dimen>
+    <dimen name="control_list_divider">1dp</dimen>
+    <dimen name="control_corner_radius">12dp</dimen>
+    <dimen name="control_height">106dp</dimen>
+    <dimen name="control_padding">12dp</dimen>
+    <dimen name="control_padding_adjustment">4dp</dimen>
+    <dimen name="control_status_normal">14sp</dimen>
+    <dimen name="control_status_expanded">18sp</dimen>
+    <dimen name="control_base_item_margin">2dp</dimen>
+    <dimen name="control_status_padding">3dp</dimen>
+    <fraction name="controls_toggle_bg_intensity">5%</fraction>
+    <fraction name="controls_dimmed_alpha">40%</fraction>
+    <dimen name="controls_setup_top_margin">16dp</dimen>
+    <dimen name="controls_setup_title">22sp</dimen>
+    <dimen name="controls_setup_subtitle">14sp</dimen>
+    <dimen name="controls_setup_vertical_padding">52dp</dimen>
+
+    <!-- Home Controls activity view detail panel-->
+    <dimen name="controls_activity_view_top_offset">100dp</dimen>
+    <dimen name="controls_activity_view_text_size">17sp</dimen>
+    <dimen name="controls_activity_view_corner_radius">@*android:dimen/config_bottomDialogCornerRadius</dimen>
+
+    <!-- Home Controls management screens -->
+    <dimen name="controls_management_top_padding">48dp</dimen>
+    <dimen name="controls_management_side_padding">16dp</dimen>
+    <dimen name="controls_management_titles_margin">16dp</dimen>
+    <dimen name="controls_management_footer_side_margin">8dp</dimen>
+    <dimen name="controls_management_footer_top_margin">@dimen/controls_management_footer_side_margin</dimen>
+    <dimen name="controls_management_list_margin">16dp</dimen>
+    <dimen name="controls_management_indicator_top_margin">@dimen/controls_management_list_margin</dimen>
+    <dimen name="controls_management_apps_list_margin">64dp</dimen>
+    <dimen name="controls_management_editing_list_margin">48dp</dimen>
+    <dimen name="controls_management_editing_divider_margin">24dp</dimen>
+    <dimen name="controls_management_apps_extra_side_margin">8dp</dimen>
+    <dimen name="controls_management_zone_top_margin">32dp</dimen>
+    <dimen name="controls_management_favorites_top_margin">@dimen/controls_management_zone_top_margin</dimen>
+    <dimen name="controls_management_status_side_margin">16dp</dimen>
+    <dimen name="controls_management_page_indicator_height">24dp</dimen>
+    <dimen name="controls_management_checkbox_size">25dp</dimen>
+    <dimen name="controls_management_footer_height">72dp</dimen>
+    <dimen name="controls_title_size">24sp</dimen>
+    <dimen name="controls_subtitle_size">16sp</dimen>
+
+    <dimen name="controls_app_icon_size">24dp</dimen>
+    <dimen name="controls_app_icon_frame_side_padding">16dp</dimen>
+    <dimen name="controls_app_icon_frame_top_padding">4dp</dimen>
+    <dimen name="controls_app_icon_frame_bottom_padding">@dimen/controls_app_icon_frame_top_padding</dimen>
+    <dimen name="controls_app_bottom_margin">8dp</dimen>
+    <dimen name="controls_app_text_padding">8dp</dimen>
+    <dimen name="controls_app_divider_height">2dp</dimen>
+    <dimen name="controls_app_divider_side_margin">32dp</dimen>
+
+    <dimen name="controls_card_margin">@dimen/control_base_item_margin</dimen>
+    <item name="control_card_elevation" type="dimen" format="float">15</item>
+
+    <dimen name="controls_dialog_padding">32dp</dimen>
+    <dimen name="controls_dialog_control_width">200dp</dimen>
+
+    <!-- Amount to shift the layout when exiting/entering for controls activities -->
+    <dimen name="global_actions_controls_y_translation">20dp</dimen>
+
+    <!-- Margins at the left and right of the power menu and home controls widgets. -->
+    <dimen name="global_actions_side_margin">10dp</dimen>
+
+    <!-- QS page indicator is used by Controls -->
+    <dimen name="qs_page_indicator_width">16dp</dimen>
+    <dimen name="qs_page_indicator_height">8dp</dimen>
+
+    <!-- The size of corner radius of the arrow in the onboarding toast. -->
+    <dimen name="recents_onboarding_toast_arrow_corner_radius">2dp</dimen>
+
+</resources>

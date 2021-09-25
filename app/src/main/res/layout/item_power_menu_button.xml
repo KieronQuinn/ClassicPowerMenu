@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/global_actions_power_dialog_item_width"
+    android:layout_height="@dimen/global_actions_power_dialog_item_height">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        android:id="@+id/item_power_menu_button_root"
+        android:background="@drawable/background_power_menu_button"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:stateListAnimator="@animator/animator_zoom_out">
+
+        <ImageView
+            android:id="@+id/item_power_menu_button_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:scaleType="centerInside"
+            app:tint="?android:textColorPrimary"
+            tools:src="@drawable/ic_power_off" />
+
+        <TextView
+            android:id="@+id/item_power_menu_button_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/google_sans_text_medium"
+            android:gravity="center"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textColor="?android:textColorPrimary"
+            tools:text="Power off" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/item_power_menu_drag_left"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5" />
+
+        <View
+            android:id="@+id/item_power_menu_drag_right"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5" />
+
+    </LinearLayout>
+
+</FrameLayout>

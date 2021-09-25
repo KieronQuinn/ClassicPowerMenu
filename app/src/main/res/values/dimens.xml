@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_16">16dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+
+    <dimen name="min_window_blur_radius">1px</dimen>
+    <dimen name="max_window_blur_radius">150px</dimen>
+
+    <dimen name="global_actions_power_dialog_item_height">114dp</dimen>
+    <dimen name="global_actions_power_dialog_item_width">120dp</dimen>
+    <!-- item height + padding -->
+    <dimen name="global_actions_recycler_collapsed_height">154dp</dimen>
+
+    <dimen name="top_sheet_modal_elevation">16dp</dimen>
+    <dimen name="top_sheet_modal_peek_height">256dp</dimen>
+    <dimen name="bottom_sheet_corner_radius">16dp</dimen>
+
+    <dimen name="wallet_code_dialog_qr_size">200dp</dimen>
+    <dimen name="wallet_code_dialog_barcode_height">100dp</dimen>
+    <dimen name="wallet_code_dialog_logo_outline">0.75dp</dimen>
+    <dimen name="app_bar_height">200dp</dimen>
+    <dimen name="toolbar_scrim_visible_height">174dp</dimen>
+    <dimen name="toolbar_expanded_title_margin">16dp</dimen>
+    <dimen name="shared_axis_x_slide_distance">96dp</dimen>
+    <dimen name="wallet_rearrange_item_height">88dp</dimen>
+    <dimen name="wallet_rearrange_card_height">48dp</dimen>
+    <dimen name="setup_image_size">172dp</dimen>
+    <dimen name="setup_image_size_lottie">200dp</dimen>
+    <dimen name="setup_image_size_lottie_large">300dp</dimen>
+
+</resources>

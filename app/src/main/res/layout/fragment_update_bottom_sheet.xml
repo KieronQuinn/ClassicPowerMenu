@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    android:paddingTop="@dimen/margin_8"
+    android:paddingBottom="@dimen/margin_16"
+    tools:background="@drawable/bottom_sheet_rounded_bg"
+    tools:layout_gravity="bottom">
+
+    <TextView
+        android:id="@+id/update_bottom_sheet_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="@dimen/margin_16"
+        android:paddingBottom="@dimen/margin_16"
+        android:text="@string/bottom_sheet_update_available_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large.ClassicPowerMenu"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/update_bottom_sheet_content_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/update_bottom_sheet_title">
+
+        <TextView
+            android:id="@+id/update_bottom_sheet_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/margin_16"
+            android:paddingEnd="@dimen/margin_16"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small.ClassicPowerMenu"
+            android:textColor="?android:textColorPrimary"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempus gravida augue, vehicula fermentum lectus sodales sit amet. Pellentesque pulvinar semper lectus, ac elementum ex. Curabitur posuere id nunc sed malesuada. Pellentesque quis sollicitudin mauris. Morbi elit turpis, ultricies non." />
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/update_bottom_sheet_positive"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:fontFamily="@font/google_sans_text_medium"
+        android:text="@string/bottom_sheet_update_available_positive"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/update_bottom_sheet_content_container" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/update_bottom_sheet_negative"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:fontFamily="@font/google_sans_text_medium"
+        android:text="@string/bottom_sheet_update_available_negative"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toStartOf="@id/update_bottom_sheet_positive"
+        app:layout_constraintTop_toBottomOf="@id/update_bottom_sheet_content_container" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/update_bottom_sheet_neutral"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_8"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:fontFamily="@font/google_sans_text_medium"
+        android:text="@string/bottom_sheet_update_available_neutral"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toStartOf="@id/update_bottom_sheet_negative"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/update_bottom_sheet_content_container" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

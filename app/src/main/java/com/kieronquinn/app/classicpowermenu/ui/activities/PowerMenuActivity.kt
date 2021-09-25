@@ -1,0 +1,117 @@
+package com.kieronquinn.app.classicpowermenu.ui.activities
+
+import android.graphics.Color
+import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.view.ViewTreeObserver
+import android.view.Window
+import android.view.WindowManager
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
+import androidx.lifecycle.lifecycleScope
+import com.kieronquinn.app.classicpowermenu.R
+import com.kieronquinn.app.classicpowermenu.components.blur.BlurProvider
+import com.kieronquinn.app.classicpowermenu.components.navigation.PowerMenuNavigation
+import com.kieronquinn.app.classicpowermenu.components.starter.PowerMenuStarter
+import com.kieronquinn.app.classicpowermenu.service.container.CPMServiceContainer
+import com.kieronquinn.app.classicpowermenu.utils.extensions.sendDismissIntent
+import com.kieronquinn.monetcompat.app.MonetCompatActivity
+import kotlinx.coroutines.flow.collect
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
+class PowerMenuActivity : MonetCompatActivity(), PowerMenuStarter.PowerMenuStarterEventListener {
+
+    private val blurProvider by inject<BlurProvider>()
+    private val navigation by inject<PowerMenuNavigation>()
+    private val viewModel by viewModel<PowerMenuActivityViewModel>()
+    private val serviceContainer by inject<CPMServiceContainer>()
+    private val starter by inject<PowerMenuStarter>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        overridePendingTransition(R.anim.activity_fade_in, 0)
+        window.setupWindowFlags()
+        super.onCreate(savedInstanceState)
+        hideStatusBar()
+        lifecycleScope.launchWhenCreated {
+            setContentView(R.layout.activity_power_menu)
+            WindowCompat.setDecorFitsSystemWindows(window, false)
+            window.setupLayout()
+        }
+        setupClose()
+        sendDismiss {
+            setupCloseBroadcast()
+        }
+    }
+
+    private fun hideStatusBar(){
+        WindowInsetsControllerCompat(window, window.decorView).run {
+            hide(WindowInsetsCompat.Type.statusBars())
+            systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
+    }
+
+    private fun sendDismiss(runAfter: () -> Unit) = lifecycleScope.launchWhenResumed {
+        serviceContainer.runWithService {
+            it.sendDismissIntent(this@PowerMenuActivity)
+            runAfter()
+        }
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(0, R.anim.activity_fade_out)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        starter.setEventListener(this)
+        window.decorView.post {
+            blurProvider.applyBlurToWindow(window, 1.5f)
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        starter.setEventListener(null)
+    }
+
+    private fun setupClose() = lifecycleScope.launchWhenCreated {
+        navigation.closePowerMenuBus.collect {
+            closePowerMenu()
+        }
+    }
+
+    private fun setupCloseBroadcast() = lifecycleScope.launchWhenCreated {
+        viewModel.closeBroadcast.collect {
+            closePowerMenu()
+        }
+    }
+
+    private fun closePowerMenu(){
+        finishAfterTransition()
+    }
+
+    private fun Window.setupWindowFlags(){
+        addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED)
+        addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON)
+        addFlags(WindowManager.LayoutParams.FLAG_ALLOW_LOCK_WHILE_SCREEN_ON)
+    }
+
+    private fun Window.setupLayout(){
+        setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT)
+        navigationBarColor = Color.TRANSPARENT
+        statusBarColor = Color.TRANSPARENT
+    }
+
+    override fun onPowerButtonLongPressed(): Boolean {
+        //Close the activity via Intent.ACTION_CLOSE_SYSTEM_DIALOGS
+        viewModel.sendCloseBroadcast(this, false)
+        //Don't re-fire event
+        return false
+    }
+
+}

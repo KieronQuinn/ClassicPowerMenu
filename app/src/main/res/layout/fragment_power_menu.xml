@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/top_sheet_rounded_bg"
+        tools:backgroundTint="@android:color/holo_red_dark"
+        android:id="@+id/power_menu_appbar"
+        app:elevation="8dp"
+        android:elevation="8dp"
+        android:outlineProvider="none">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/power_menu_collapsing_toolbar"
+            app:contentScrim="@android:color/transparent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <!-- Keeps the top row visible when collapsed -->
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/global_actions_recycler_collapsed_height"
+                android:importantForAccessibility="no"
+                android:clickable="false"
+                android:focusable="false"
+                android:paddingTop="@dimen/margin_16"
+                android:paddingBottom="@dimen/margin_16"
+                app:layout_collapseMode="pin"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:clipChildren="false"
+                android:overScrollMode="never"
+                android:paddingTop="@dimen/margin_16"
+                android:paddingBottom="@dimen/margin_16"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="1.0"
+                android:id="@+id/power_menu_buttons_recyclerview"/>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/margin_16"
+        android:layout_marginTop="-16dp"
+        android:elevation="0dp"
+        android:translationZ="-8dp"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        android:overScrollMode="never"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:id="@+id/power_menu_content_recyclerview"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

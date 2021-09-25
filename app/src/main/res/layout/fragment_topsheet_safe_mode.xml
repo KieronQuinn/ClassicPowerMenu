@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:background="@color/wallet_grey_100"
+    tools:layout_gravity="top">
+
+    <TextView
+        android:id="@+id/fragment_safe_mode_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        android:paddingTop="@dimen/margin_8"
+        android:paddingBottom="@dimen/margin_8"
+        android:text="@string/reboot_safemode_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large.ClassicPowerMenu"
+        app:fontFamily="@font/google_sans_text_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fragment_safe_mode_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        android:paddingTop="@dimen/margin_8"
+        android:paddingBottom="@dimen/margin_8"
+        android:paddingStart="@dimen/margin_16"
+        android:paddingEnd="@dimen/margin_16"
+        android:text="@string/reboot_safemode_confirm"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium.ClassicPowerMenu.Lighter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_safe_mode_title" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/fragment_safe_mode_cancel"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:layout_marginBottom="@dimen/margin_16"
+        android:fontFamily="@font/google_sans_text_medium"
+        android:text="@android:string/cancel"
+        android:textAllCaps="false"
+        app:fontFamily="@font/google_sans_text_medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/fragment_safe_mode_ok"
+        app:layout_constraintTop_toBottomOf="@id/fragment_safe_mode_content" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/fragment_safe_mode_ok"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:layout_marginBottom="@dimen/margin_16"
+        android:fontFamily="@font/google_sans_text_medium"
+        android:text="@string/reboot_safemode_title"
+        android:textAllCaps="false"
+        app:fontFamily="@font/google_sans_text_medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_safe_mode_content" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

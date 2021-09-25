@@ -1,0 +1,166 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="Theme.ClassicPowerMenu" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">@bool/lightStatusNav</item>
+        <item name="android:windowLightNavigationBar">@bool/lightStatusNav</item>
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="textAppearanceLargePopupMenu">@style/AppTheme.TextAppearance.Popup</item>
+        <item name="actionOverflowMenuStyle">@style/CPMOverflowMenu</item>
+    </style>
+
+    <style name="Theme.ClassicPowerMenu.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/avd_logo</item>
+        <item name="android:windowLightNavigationBar">@bool/lightStatusNav</item>
+        <item name="android:windowLightStatusBar">@bool/lightStatusNav</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="postSplashScreenTheme">@style/Theme.ClassicPowerMenu</item>
+    </style>
+
+    <style name="Theme.ClassicPowerMenu.Fullscreen" parent="Theme.ClassicPowerMenu">
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:showWhenLocked">true</item>
+        <item name="android:showOnLockScreen">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:fontFamily">@font/google_sans_text</item>
+        <item name="fontFamily">@font/google_sans_text</item>
+    </style>
+
+    <style name="BaseBottomSheetDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:navigationBarColor">@android:color/white</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="BaseBottomSheetDialog.Dark" parent="@style/Theme.Design.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/BottomSheet.Dark</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:navigationBarColor">@color/cardview_dark_background</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bottom_sheet_rounded_bg</item>
+    </style>
+
+    <style name="BottomSheet.Dark" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bottom_sheet_rounded_bg_dark</item>
+    </style>
+
+    <style name="WalletCardCodeDialog" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="windowMinWidthMajor">100%</item>
+        <item name="android:windowMinWidthMajor">100%</item>
+        <item name="windowMinWidthMinor">100%</item>
+        <item name="android:windowMinWidthMinor">100%</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
+    <style name="TopSheet.Dialog" parent="Theme.MaterialComponents.DayNight.Dialog">
+        <item name="windowMinWidthMajor">100%</item>
+        <item name="android:windowMinWidthMajor">100%</item>
+        <item name="windowMinWidthMinor">100%</item>
+        <item name="android:windowMinWidthMinor">100%</item>
+    </style>
+
+    <style name="TopSheetDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_out_from_top</item>
+        <item name="android:windowExitAnimation">@anim/slide_back_to_top</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.Small.ClassicPowerMenu" parent="TextAppearance.AppCompat.Small">
+        <item name="android:fontFamily">@font/google_sans_text</item>
+        <item name="fontFamily">@font/google_sans_text</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.Small.ClassicPowerMenu.Medium" parent="TextAppearance.AppCompat.Small">
+        <item name="android:fontFamily">@font/google_sans_text_medium</item>
+        <item name="fontFamily">@font/google_sans_text_medium</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.Medium.ClassicPowerMenu" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:fontFamily">@font/google_sans_text_medium</item>
+        <item name="fontFamily">@font/google_sans_text_medium</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.Medium.ClassicPowerMenu.Lighter" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:fontFamily">@font/google_sans_text</item>
+        <item name="fontFamily">@font/google_sans_text</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.Large.ClassicPowerMenu" parent="TextAppearance.AppCompat.Large">
+        <item name="android:fontFamily">@font/google_sans_text_medium</item>
+        <item name="fontFamily">@font/google_sans_text_medium</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.Large.ClassicPowerMenu.Lighter" parent="TextAppearance.AppCompat.Large.ClassicPowerMenu">
+        <item name="android:fontFamily">@font/google_sans_text</item>
+        <item name="fontFamily">@font/google_sans_text</item>
+    </style>
+
+    <style name="TextAppearance.Widget.AppCompat.Toolbar.Title.ClassicPowerMenu" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:fontFamily">@font/google_sans_text_medium</item>
+        <item name="fontFamily">@font/google_sans_text_medium</item>
+    </style>
+
+    <style name="CPMOverflowMenu" parent="@style/Widget.MaterialComponents.PopupMenu.Overflow">
+        <item name="android:popupBackground">@drawable/background_menu</item>
+    </style>
+
+    <style name="AppTheme.ThirdPartyLicences" parent="Theme.MaterialComponents.DayNight">
+        <item name="actionBarStyle">@style/ThirdPartyLicencesToolbarTheme</item>
+        <item name="android:statusBarColor">?android:windowBackground</item>
+        <item name="android:windowLightStatusBar">@bool/lightStatusNav</item>
+        <item name="android:textViewStyle">@style/ThirdPartyLicencesTextViewStyle</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:windowAnimationStyle">@style/ThirdPartyLicencesActivityAnimation</item>
+    </style>
+
+    <style name="ThirdPartyLicencesActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_in_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
+    </style>
+
+    <style name="ThirdPartyLicencesToolbarTheme" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="background">?android:windowBackground</item>
+        <item name="titleTextStyle">@style/ThirdPartyLicencesToolbarTitleStyle</item>
+        <item name="colorControlNormal">@android:color/black</item>
+        <item name="homeAsUpIndicator">@drawable/ic_back</item>
+    </style>
+
+    <style name="ThirdPartyLicencesToolbarTitleStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:fontFamily">@font/google_sans_text_medium</item>
+    </style>
+
+    <style name="ThirdPartyLicencesTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/google_sans_text</item>
+    </style>
+
+    <style name="AppTheme.TextAppearance.Popup" parent="TextAppearance.AppCompat.Widget.TextView.SpinnerItem">
+        <item name="fontFamily">@font/google_sans_text</item>
+    </style>
+
+</resources>

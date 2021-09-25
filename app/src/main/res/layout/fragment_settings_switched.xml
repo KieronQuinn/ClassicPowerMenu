@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:transitionGroup="true"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="8dp"
+        android:outlineProvider="none"
+        android:id="@+id/settings_switched_switch_container">
+        
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:id="@+id/settings_switched_switch_background"/>
+
+        <com.kieronquinn.monetcompat.view.MonetSwitch
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/settings_switched_switch"
+            android:layout_marginStart="@dimen/margin_16"
+            android:layout_marginEnd="@dimen/margin_16"
+            android:layout_marginTop="@dimen/margin_8"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium.ClassicPowerMenu"
+            tools:text="@string/settings_main_switch" />
+
+    </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        android:paddingTop="@dimen/margin_16"
+        android:paddingBottom="@dimen/margin_16"
+        android:id="@+id/settings_switched_recyclerview"/>
+
+</LinearLayout>

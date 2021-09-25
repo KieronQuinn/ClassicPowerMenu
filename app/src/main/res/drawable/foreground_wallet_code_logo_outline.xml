@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <stroke android:color="@android:color/white" android:width="@dimen/wallet_code_dialog_logo_outline"/>
+    <size android:width="36dp" android:height="36dp"/>
+    <corners android:radius="18dp"/>
+</shape>

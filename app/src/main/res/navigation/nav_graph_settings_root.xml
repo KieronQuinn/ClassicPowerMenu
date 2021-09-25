@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_settings_root"
+    app:startDestination="@id/decisionFragment">
+    <fragment
+        android:id="@+id/decisionFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.decision.DecisionFragment"
+        android:label="DecisionFragment" >
+        <action
+            android:id="@+id/action_decisionFragment_to_nav_graph_settings_container"
+            app:destination="@id/nav_graph_settings_container" />
+        <action
+            android:id="@+id/action_decisionFragment_to_nav_graph_setup"
+            app:destination="@id/nav_graph_setup" />
+    </fragment>
+    <include app:graph="@navigation/nav_graph_settings_container" />
+    <include app:graph="@navigation/nav_graph_setup" />
+    <action
+        android:id="@+id/action_global_nav_graph_settings_container"
+        app:destination="@id/nav_graph_settings_container"
+        app:enterAnim="@anim/activity_fade_in"
+        app:exitAnim="@anim/activity_fade_out"
+        app:popUpTo="@null" />
+</navigation>

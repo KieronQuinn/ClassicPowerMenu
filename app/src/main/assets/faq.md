@@ -32,6 +32,18 @@ For power users, Tasker also supports running tasks via the feature.
 
 Probably not. The Power Options are intentionally minimal, use a Device Controls app (such as those mentioned above) for more options including Airplane Mode, Sound Mode etc.
 
+## Background Blur isn't working on my device
+
+On some devices you will have to enable the system background blurs for Classic Power Menu's background blur to work. This can be done easily in a terminal with root, or ADB shell with root. The following commands assume you are using Magisk.
+
+```
+su
+resetprop ro.surface_flinger.supports_background_blur 1
+pkill -TERM -f com. android.systemui
+```
+
+Your device will reboot and blurs will be enabled. Please note that this has some other side effects of where blur is enabled, such as when the notification shade is open. To disable it, run the same commands, but with `0` rather than `1`.
+
 ## How do I keep Classic Power Menu up to date, is it on the Play Store?
 
 Classic Power Menu is not on the Play Store as it would not meet the Terms of Service, due to its use of Accessibility Service (for non-accessibility uses) and using root to bypass permissions (for Quick Access Wallet & Device Controls).

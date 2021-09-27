@@ -10,12 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.animation.addListener
 import androidx.core.view.*
+import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.kieronquinn.app.classicpowermenu.R
 import com.kieronquinn.app.classicpowermenu.components.blur.BlurProvider
+import com.kieronquinn.app.classicpowermenu.utils.extensions.awaitPost
 import com.kieronquinn.app.classicpowermenu.utils.extensions.isDarkMode
 import com.kieronquinn.monetcompat.core.MonetCompat
 import org.koin.android.ext.android.inject
@@ -128,7 +130,8 @@ abstract class BaseBottomSheetFragment<T: ViewBinding>(private val inflate: (Lay
     private fun applyBlur(ratio: Float){
         val dialogWindow = dialog?.window ?: return
         val appWindow = activity?.window ?: return
-        dialogWindow.decorView.post {
+        lifecycleScope.launchWhenResumed {
+            dialogWindow.decorView.awaitPost()
             blurProvider.applyDialogBlur(dialogWindow, appWindow, ratio)
         }
     }
@@ -136,7 +139,8 @@ abstract class BaseBottomSheetFragment<T: ViewBinding>(private val inflate: (Lay
     override fun onResume() {
         super.onResume()
         if(isBlurShowing){
-            view?.post {
+            lifecycleScope.launchWhenResumed {
+                view?.awaitPost()
                 applyBlur(1f)
             }
         }

@@ -16,6 +16,7 @@ import com.kieronquinn.app.classicpowermenu.components.blur.BlurProvider
 import com.kieronquinn.app.classicpowermenu.components.navigation.PowerMenuNavigation
 import com.kieronquinn.app.classicpowermenu.components.starter.PowerMenuStarter
 import com.kieronquinn.app.classicpowermenu.service.container.CPMServiceContainer
+import com.kieronquinn.app.classicpowermenu.utils.extensions.awaitPost
 import com.kieronquinn.app.classicpowermenu.utils.extensions.sendDismissIntent
 import com.kieronquinn.monetcompat.app.MonetCompatActivity
 import kotlinx.coroutines.flow.collect
@@ -68,7 +69,8 @@ class PowerMenuActivity : MonetCompatActivity(), PowerMenuStarter.PowerMenuStart
     override fun onResume() {
         super.onResume()
         starter.setEventListener(this)
-        window.decorView.post {
+        lifecycleScope.launchWhenResumed {
+            window.decorView.awaitPost()
             blurProvider.applyBlurToWindow(window, 1.5f)
         }
     }

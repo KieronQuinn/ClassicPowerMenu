@@ -4,14 +4,9 @@ import android.animation.ValueAnimator
 import android.app.KeyguardManager
 import android.content.Context
 import android.content.res.ColorStateList
-import android.database.sqlite.SQLiteDatabase
-import android.graphics.BitmapFactory
-import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.os.ParcelFileDescriptor
 import android.service.quickaccesswallet.CPMQuickAccessWalletClientImpl
-import android.util.Log
 import android.view.View
 import androidx.core.graphics.ColorUtils
 import androidx.core.view.ViewCompat
@@ -20,39 +15,27 @@ import androidx.core.view.updatePadding
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.systemui.controls.ui.ControlsUiController
-import com.android.systemui.plugin.globalactions.wallet.WalletCardViewInfo
 import com.android.systemui.plugin.globalactions.wallet.WalletPanelViewController
 import com.android.systemui.plugins.GlobalActionsPanelPlugin
 import com.android.systemui.plugins.loyaltycards.WalletLoyaltyCardCallback
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
-import com.google.common.hash.Hashing
-import com.google.protobuf.GeneratedMessageLite
-import com.google.protobuf.Parser
-import com.google.type.Color
 import com.kieronquinn.app.classicpowermenu.ClassicPowerMenu
 import com.kieronquinn.app.classicpowermenu.IClassicPowerMenu
 import com.kieronquinn.app.classicpowermenu.R
-import com.kieronquinn.app.classicpowermenu.components.settings.Settings
 import com.kieronquinn.app.classicpowermenu.databinding.FragmentPowerMenuBinding
 import com.kieronquinn.app.classicpowermenu.model.power.PowerMenuButton
-import com.kieronquinn.app.classicpowermenu.model.power.PowerMenuButtonId
 import com.kieronquinn.app.classicpowermenu.model.power.PowerMenuContentItem
-import com.kieronquinn.app.classicpowermenu.model.protobuf.loyaltycard.LoyaltyCardProtos
-import com.kieronquinn.app.classicpowermenu.model.quickaccesswallet.LoyaltyCard
-import com.kieronquinn.app.classicpowermenu.model.quickaccesswallet.extract
 import com.kieronquinn.app.classicpowermenu.service.container.CPMServiceContainer
 import com.kieronquinn.app.classicpowermenu.ui.base.BoundFragment
 import com.kieronquinn.app.classicpowermenu.utils.extensions.*
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.debounce
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.io.File
 import kotlin.math.roundToInt
 
 class PowerMenuFragment :
@@ -174,7 +157,8 @@ class PowerMenuFragment :
         //Start alpha is 0
         binding.powerMenuAppbar.background.alpha = 0
         binding.powerMenuAppbar.backgroundTintList = ColorStateList.valueOf(monet.getBackgroundColor(requireContext()))
-        binding.powerMenuAppbar.post {
+        launch {
+            binding.powerMenuAppbar.awaitPost()
             binding.powerMenuAppbar.setExpanded(!viewModel.powerOptionsOpenCollapsed, false)
         }
         appBarBackground.collect {

@@ -3,7 +3,20 @@ package com.kieronquinn.app.classicpowermenu.utils.extensions
 import android.graphics.Point
 import android.graphics.Rect
 import android.view.View
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 import kotlin.math.roundToInt
+
+suspend fun View.awaitPost() = suspendCancellableCoroutine<View> {
+    post {
+        if(isAttachedToWindow){
+            it.resume(this)
+        }else{
+            it.cancel()
+        }
+    }
+}
 
 fun View.getCenter(): Point {
     IntArray(2).apply {

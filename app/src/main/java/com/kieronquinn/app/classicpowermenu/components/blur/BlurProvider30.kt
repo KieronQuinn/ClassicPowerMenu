@@ -3,6 +3,7 @@ package com.kieronquinn.app.classicpowermenu.components.blur
 import android.app.ActivityManager
 import android.content.res.Resources
 import android.os.Build
+import android.util.Log
 import android.view.SurfaceControl
 import android.view.View
 import android.view.Window
@@ -57,6 +58,10 @@ class BlurProvider30(resources: Resources): BlurProvider() {
         SystemProperties_getBoolean("persist.sys.sf.disable_blurs", false)
     }
 
+    private val supportsBackgroundBlur by lazy {
+        SystemProperties_getBoolean("ro.surface_flinger.supports_background_blur", false)
+    }
+
     private val isHighEndGfx by lazy {
         try {
             ActivityManager::class.java.getMethod("isHighEndGfx").invoke(null) as? Boolean ?: false
@@ -70,7 +75,11 @@ class BlurProvider30(resources: Resources): BlurProvider() {
     }
 
     override fun applyBlurToWindow(window: Window, ratio: Float) {
-        if(!supportsBlursOnWindows()) return
+        if(!supportsBlursOnWindows()) {
+            window.addDimming()
+            return
+        }
+        window.clearDimming()
         val radius = blurRadiusOfRatio(ratio)
         val view = window.decorView
         runCatching {
@@ -79,11 +88,14 @@ class BlurProvider30(resources: Resources): BlurProvider() {
             val transaction = SurfaceControl.Transaction()
             setBackgroundBlurRadius?.invoke(transaction, surfaceControl, radius)
             transaction.apply()
+        }.onFailure {
+            //Re-add dimming due to failure
+            window.addDimming()
         }
     }
 
     private fun supportsBlursOnWindows(): Boolean {
-        return !blurDisabledSysProp && isHighEndGfx
+        return supportsBackgroundBlur && !blurDisabledSysProp && isHighEndGfx
     }
 
 }

@@ -26,7 +26,9 @@ import com.kieronquinn.app.classicpowermenu.ui.base.AutoExpandOnRotate
 import com.kieronquinn.app.classicpowermenu.ui.base.BackAvailable
 import com.kieronquinn.app.classicpowermenu.ui.base.BoundFragment
 import com.kieronquinn.app.classicpowermenu.ui.base.ProvidesOverflow
+import com.kieronquinn.app.classicpowermenu.utils.extensions.awaitPost
 import com.kieronquinn.app.classicpowermenu.utils.extensions.isLandscape
+import com.kieronquinn.app.classicpowermenu.utils.extensions.navigateSafely
 import com.kieronquinn.app.classicpowermenu.utils.extensions.onApplyInsets
 import kotlinx.coroutines.flow.collect
 import org.koin.android.ext.android.inject
@@ -136,8 +138,9 @@ class SettingsContainerFragment: BoundFragment<FragmentSettingsContainerBinding>
                 onTopFragmentChanged(it)
             }
         }
-        binding.navHostFragment.post {
-            onTopFragmentChanged(getTopFragment() ?: return@post)
+        lifecycleScope.launchWhenResumed {
+            binding.navHostFragment.awaitPost()
+            onTopFragmentChanged(getTopFragment() ?: return@launchWhenResumed)
         }
     }
 
@@ -170,8 +173,8 @@ class SettingsContainerFragment: BoundFragment<FragmentSettingsContainerBinding>
 
     private fun handleNavigationEvent(event: NavigationEvent){
         when(event) {
-            is NavigationEvent.Directions -> navController.navigate(event.directions)
-            is NavigationEvent.Id -> navController.navigate(event.id)
+            is NavigationEvent.Directions -> navController.navigateSafely(event.directions)
+            is NavigationEvent.Id -> navController.navigateSafely(event.id)
             is NavigationEvent.PopupTo -> navController.popBackStack(event.id, event.popInclusive)
             is NavigationEvent.Back -> navController.navigateUp()
             is NavigationEvent.Intent -> startActivity(event.intent)

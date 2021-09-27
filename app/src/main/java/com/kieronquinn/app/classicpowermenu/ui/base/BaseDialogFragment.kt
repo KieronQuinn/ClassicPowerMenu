@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.animation.addListener
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
 import autoCleared
 import com.kieronquinn.app.classicpowermenu.components.blur.BlurProvider
+import com.kieronquinn.app.classicpowermenu.utils.extensions.awaitPost
 import com.kieronquinn.monetcompat.core.MonetCompat
 import org.koin.android.ext.android.inject
 
@@ -37,7 +39,8 @@ abstract class BaseDialogFragment<T: ViewBinding>(private val inflate: (LayoutIn
     private var showBlurAnimation: ValueAnimator? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.post {
+        lifecycleScope.launchWhenResumed {
+            view.awaitPost()
             showBlurAnimation = ValueAnimator.ofFloat(0f, 1.25f).apply {
                 duration = 250L
                 addUpdateListener {
@@ -76,7 +79,8 @@ abstract class BaseDialogFragment<T: ViewBinding>(private val inflate: (LayoutIn
     override fun onResume() {
         super.onResume()
         if(isBlurShowing){
-            view?.post {
+            lifecycleScope.launchWhenResumed {
+                view?.awaitPost()
                 applyBlur(1.25f)
             }
         }

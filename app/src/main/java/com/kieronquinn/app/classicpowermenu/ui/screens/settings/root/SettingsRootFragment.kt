@@ -12,6 +12,7 @@ import com.kieronquinn.app.classicpowermenu.databinding.FragmentSettingsRootBind
 import com.kieronquinn.app.classicpowermenu.ui.activities.MainActivityViewModel
 import com.kieronquinn.app.classicpowermenu.ui.base.BoundFragment
 import com.kieronquinn.app.classicpowermenu.ui.screens.settings.rootcheck.SettingsRootCheckFragmentDirections
+import com.kieronquinn.app.classicpowermenu.utils.extensions.navigateSafely
 import kotlinx.coroutines.flow.collect
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -43,8 +44,8 @@ class SettingsRootFragment: BoundFragment<FragmentSettingsRootBinding>(FragmentS
 
     private fun handleNavigationEvent(event: NavigationEvent){
         when(event) {
-            is NavigationEvent.Directions -> navController.navigate(event.directions)
-            is NavigationEvent.Id -> navController.navigate(event.id)
+            is NavigationEvent.Directions -> navController.navigateSafely(event.directions)
+            is NavigationEvent.Id -> navController.navigateSafely(event.id)
             is NavigationEvent.PopupTo -> navController.popBackStack(event.id, event.popInclusive)
             is NavigationEvent.Back -> navController.navigateUp()
             is NavigationEvent.Intent -> startActivity(event.intent)

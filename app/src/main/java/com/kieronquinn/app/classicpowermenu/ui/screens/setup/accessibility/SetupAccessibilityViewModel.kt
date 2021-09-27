@@ -24,6 +24,7 @@ abstract class SetupAccessibilityViewModel: ViewModel() {
 
     abstract val accessibilityEnabled: Flow<Boolean>
     abstract fun onEnableClicked()
+    abstract fun onSkipClicked()
     abstract fun onBackPressed()
 
 }
@@ -40,7 +41,7 @@ class SetupAccessibilityViewModelImpl(context: Context, private val containerNav
         viewModelScope.launch {
             accessibilityEnabled.collect {
                 if(it){
-                    containerNavigation.navigate(SetupAccessibilityFragmentDirections.actionSetupAccessibilityFragmentToSetupWalletFragment())
+                    moveToNext()
                 }
             }
         }
@@ -67,6 +68,16 @@ class SetupAccessibilityViewModelImpl(context: Context, private val containerNav
         viewModelScope.launch {
             containerNavigation.navigateBack()
         }
+    }
+
+    override fun onSkipClicked() {
+        viewModelScope.launch {
+            moveToNext()
+        }
+    }
+
+    private suspend fun moveToNext(){
+        containerNavigation.navigate(SetupAccessibilityFragmentDirections.actionSetupAccessibilityFragmentToSetupWalletFragment())
     }
 
 }

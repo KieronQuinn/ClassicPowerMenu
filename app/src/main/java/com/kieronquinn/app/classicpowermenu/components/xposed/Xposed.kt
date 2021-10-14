@@ -5,12 +5,12 @@ import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
 import android.content.pm.ApplicationInfo
-import android.os.Build
 import android.os.IBinder
 import android.util.Log
 import com.kieronquinn.app.classicpowermenu.BuildConfig
 import com.kieronquinn.app.classicpowermenu.IGlobalActions
 import com.kieronquinn.app.classicpowermenu.service.globalactions.GlobalActionsService
+import com.kieronquinn.app.classicpowermenu.utils.extensions.SystemProperties_getString
 import de.robv.android.xposed.*
 import de.robv.android.xposed.callbacks.XC_LoadPackage
 
@@ -33,12 +33,60 @@ class Xposed: IXposedHookLoadPackage, ServiceConnection {
 
     override fun handleLoadPackage(lpparam: XC_LoadPackage.LoadPackageParam) {
         if(lpparam.packageName == "com.android.systemui") {
-            if("xiaomi".equals(Build.MANUFACTURER, true)) {
-                hookMiuiSystemUI(lpparam)
+            when(SystemProperties_getString("ro.miui.ui.version.name", "null")) {
+                "V125" -> hookMiuiSystemUI(lpparam)
             }
             hookSystemUI(lpparam)
         }
         if(lpparam.packageName == BuildConfig.APPLICATION_ID) hookSelf(lpparam)
+    }
+
+    /**
+     *  Self-hooks [XposedSelfHook.isXposedHooked] to return true
+     */
+    private fun hookSelf(lpparam: XC_LoadPackage.LoadPackageParam){
+        XposedHelpers.findAndHookMethod(XposedSelfHook::class.java.name, lpparam.classLoader, "isXposedHooked", object: XC_MethodReplacement() {
+            override fun replaceHookedMethod(param: MethodHookParam): Any {
+                param.result = true
+                return true
+            }
+        })
+    }
+
+    private fun hookSystemUI(lpparam: XC_LoadPackage.LoadPackageParam) {
+        val globalActionsDialogClass = XposedHelpers.findClass("com.android.systemui.globalactions.GlobalActionsDialog", lpparam.classLoader)
+
+        //Bind the service when the dialog starts for the best chance of it being ready
+        XposedBridge.hookMethod(globalActionsDialogClass.constructors[0], object: XC_MethodHook(){
+            override fun afterHookedMethod(param: MethodHookParam) {
+                tryBindService(param.args[0] as Context)
+            }
+        })
+
+        //Calls the service if connected, and prevents the normal dialog showing if that returns true
+        XposedHelpers.findAndHookMethod(globalActionsDialogClass, "handleShow", object: XC_MethodHook(){
+            override fun beforeHookedMethod(param: MethodHookParam) {
+                service?.let {
+                    if(showGlobalActions(it)){
+                        //We need to call onGlobalActionsShown to prevent the legacy dialog showing
+                        sendOnGlobalActionsShown(param)
+                        param.result = true
+                        return
+                    }
+                } ?: run {
+                    //Bind service for next time
+                    val context = XposedHelpers.getObjectField(param.thisObject, "mContext") as Context
+                    tryBindService(context)
+                }
+            }
+        })
+
+        //Optionally calls to the service, if it exists
+        XposedHelpers.findAndHookMethod(globalActionsDialogClass, "dismissDialog", object: XC_MethodHook(){
+            override fun beforeHookedMethod(param: MethodHookParam?) {
+                service?.hideGlobalActions()
+            }
+        })
     }
 
     private fun hookMiuiSystemUI(lpparam: XC_LoadPackage.LoadPackageParam) {
@@ -88,54 +136,6 @@ class Xposed: IXposedHookLoadPackage, ServiceConnection {
                     Log.d(TAG, "Failed to hookMiuiSystemUI", it)
                     XposedBridge.log(it)
                 }
-            }
-        })
-    }
-
-    /**
-     *  Self-hooks [XposedSelfHook.isXposedHooked] to return true
-     */
-    private fun hookSelf(lpparam: XC_LoadPackage.LoadPackageParam){
-        XposedHelpers.findAndHookMethod(XposedSelfHook::class.java.name, lpparam.classLoader, "isXposedHooked", object: XC_MethodReplacement() {
-            override fun replaceHookedMethod(param: MethodHookParam): Any {
-                param.result = true
-                return true
-            }
-        })
-    }
-
-    private fun hookSystemUI(lpparam: XC_LoadPackage.LoadPackageParam) {
-        val globalActionsDialogClass = XposedHelpers.findClass("com.android.systemui.globalactions.GlobalActionsDialog", lpparam.classLoader)
-
-        //Bind the service when the dialog starts for the best chance of it being ready
-        XposedBridge.hookMethod(globalActionsDialogClass.constructors[0], object: XC_MethodHook(){
-            override fun afterHookedMethod(param: MethodHookParam) {
-                tryBindService(param.args[0] as Context)
-            }
-        })
-
-        //Calls the service if connected, and prevents the normal dialog showing if that returns true
-        XposedHelpers.findAndHookMethod(globalActionsDialogClass, "handleShow", object: XC_MethodHook(){
-            override fun beforeHookedMethod(param: MethodHookParam) {
-                service?.let {
-                    if(showGlobalActions(it)){
-                        //We need to call onGlobalActionsShown to prevent the legacy dialog showing
-                        sendOnGlobalActionsShown(param)
-                        param.result = true
-                        return
-                    }
-                } ?: run {
-                    //Bind service for next time
-                    val context = XposedHelpers.getObjectField(param.thisObject, "mContext") as Context
-                    tryBindService(context)
-                }
-            }
-        })
-
-        //Optionally calls to the service, if it exists
-        XposedHelpers.findAndHookMethod(globalActionsDialogClass, "dismissDialog", object: XC_MethodHook(){
-            override fun beforeHookedMethod(param: MethodHookParam?) {
-                service?.hideGlobalActions()
             }
         })
     }

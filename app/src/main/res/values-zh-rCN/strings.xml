@@ -1,0 +1,121 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <string name="app_name">高级电源菜单</string>
+    <string name="strapline">替换电源菜单</string>
+
+    <string name="accessibility_service_description">用于拦截系统电源菜单的无障碍服务，承诺仅用于显示高级电源菜单，不会用于其他用途。</string>
+    <string name="xposed_description">拦截系统电源菜单并显示经典电源菜单，无需无障碍功能。</string>
+
+    <string name="root_check_checking_root">正在申请 Root …</string>
+    <string name="root_check_checking_root_desc">请在授权窗口点击授予</string>
+    <string name="root_check_failed_bottom_sheet_title">无 Root</string>
+    <string name="root_check_failed_bottom_sheet_content">高级电源菜单需要 Root 权限，请先 Root 你的设备或授予 Root权限</string>
+
+    <string name="setup_landing_get_started">开始</string>
+    <string name="setup_accessibility_title">启用无障碍服务</string>
+    <string name="setup_accessibility_content">高级电源菜单需要通过无障碍服务拦截长按电源键动作，请启用它后继续。或者，如果您有 Xposed，您可以启用 Xposed 模块并重新启动。 如果你已经使用 Xposed 模块并任然看到这条消息， <a href="cpm://accessibiilityskip">点击这里来跳过。</a></string>
+    <string name="setup_accessibility_button">启用无障碍服务</string>
+    <string name="setup_wallet_switch">启用快捷支付</string>
+    <string name="setup_wallet_content">快速钱包功能允许您从默认支付应用访问您的银行卡。您可以直接在电源菜单中使用支持 NFC 的卡或应用。\n\n另外，高级电源菜单支持使用积分卡，您可以在后续设置启用。</string>
+    <string name="setup_wallet_button">下一步</string>
+    <string name="setup_controls_switch">启用设备控制</string>
+    <string name="setup_controls_content">设备控制功能允许您从电源菜单控制智能家居设备。\n\n需要应用支持，例如 Anywhere- 等</string>
+    <string name="setup_controls_button">下一步</string>
+    <string name="setup_complete_title">完成设置</string>
+    <string name="setup_complete_content">最后，第一次启动高级电源菜单时，系统的电源菜单可能会先显示，<b>这是由于系统的限制</b>，重新打开即可解决该问题\n\n欢迎使用本应用！</string>
+    <string name="setup_complete_button">完成</string>
+
+    <string name="power_menu_button_power_off">关机</string>
+    <string name="power_menu_button_reboot">重启</string>
+    <string name="power_menu_button_reboot_recovery">重启至 Recovery</string>
+    <string name="power_menu_button_reboot_bootloader">重启至 Bootloader</string>
+    <string name="power_menu_button_emergency">急救信息</string>
+    <string name="power_menu_button_lockdown">锁定</string>
+    <string name="power_menu_button_screenshot">截屏</string>
+
+    <string name="wallet_loyalty_instructions">• 点击开始显示 </string>
+    <string name="content_creator_mode_warning">内容创作者模式已开启</string>
+
+    <string name="reboot_safemode_title">重启至安全模式</string>
+    <string name="reboot_safemode_confirm">是否重启至安全模式？
+         这将会禁用所有你安装的第三方应用。
+         再次重启即可恢复。</string>
+    <string name="wallet_code_open_in_pay">在 Google Pay 打开</string>
+
+    <string name="settings_main_switch">开启高级电源菜单</string>
+    <string name="settings_header_configuration">配置</string>
+    <string name="settings_power_options">电源菜单选项</string>
+    <string name="settings_power_options_desc">配置或重新排序电源菜单按钮</string>
+    <string name="settings_quick_access_wallet">快捷支付</string>
+    <string name="settings_quick_access_wallet_desc">修改钱包显示UI （包括支付卡片）</string>
+    <string name="settings_controls">设备控制</string>
+    <string name="settings_controls_desc">修改设备控制显示（包括设备锁定时的UI）</string>
+    <string name="settings_developer_options">开发者选项</string>
+    <string name="settings_theme_configuration">主题</string>
+    <string name="settings_monet">Material You 主题</string>
+    <string name="settings_monet_desc">在电源菜单中使用 Material You / 自适应 颜色</string>
+    <string name="settings_monet_color_picker">壁纸颜色</string>
+    <string name="settings_monet_color_picker_desc">从你的壁纸中提取想要的颜色</string>
+    <string name="settings_power_options_rearrange">编辑电源菜单</string>
+    <string name="settings_power_options_rearrange_desc">添加，删除或重新排序电源菜单控件</string>
+    <string name="settings_power_options_hide_when_locked">设备锁定时隐藏电源相关选项</string>
+    <string name="settings_power_options_hide_when_locked_desc">在设备锁定时隐藏关机、重启、重启至 Recovery 和重启至 Bootloader\n<b>重要信息: 这不是为了防盗，小偷仍然可以按住电源 10 秒钟或取出 SIM 卡！</b></string>
+    <string name="settings_power_options_open_collapsed">折叠控件按钮</string>
+    <string name="settings_power_options_open_collapsed_desc">使用高级电源菜单时，若出现多个控件按钮，则将折叠其中一部分，下拉可展开全部控件</string>
+    <string name="settings_power_options_drag_to_rearrange">长按并拖到来添加、删除和重新排序</string>
+    <string name="settings_power_options_cannot_remove">您必须选择至少一个控件</string>
+    <string name="settings_power_options_rearrange_no_items">无按钮</string>
+    <string name="settings_quick_access_wallet_switch">显示快捷支付</string>
+    <string name="settings_quick_access_wallet_header_payment">支付卡</string>
+    <string name="settings_quick_access_wallet_loyalty_cards">积分卡</string>
+    <string name="settings_quick_access_wallet_change_settings_in_pay">修改 Google Pay 设置</string>
+    <string name="settings_quick_access_wallet_change_settings_in_pay_desc">更改支付卡订单、默认卡和行为等设置</string>
+    <string name="settings_quick_access_wallet_access_while_locked_desc">锁定时显示积分卡预览。 禁用本功能后，您需要先解锁才能正常使用</string>
+    <string name="settings_quick_access_wallet_hide_card_number_when_locked">锁定时模糊支付卡卡号</string>
+    <string name="settings_quick_access_wallet_show_loyalty_cards">显示积分卡</string>
+    <string name="settings_quick_access_wallet_show_loyalty_cards_desc">在快捷支付中显示您的 Google Pay 积分卡</string>
+    <string name="settings_quick_access_wallet_rearrange">重新排序 &amp; 显示积分卡</string>
+    <string name="settings_quick_access_wallet_rearrange_desc">在快捷支付中 重新排列 &amp; 显示/隐藏积分卡</string>
+    <string name="settings_quick_access_wallet_show_preview">显示积分卡预览</string>
+    <string name="settings_quick_access_wallet_show_preview_desc">在不打开 Google Pay 的情况下显示要在商店中扫描或查看的积分卡的预览</string>
+    <string name="settings_quick_access_wallet_access_while_locked">允许在锁定状态下访问积分卡</string>
+    <string name="settings_quick_access_wallet_hide_card_number_when_locked_desc">锁定状态下打开快捷支付功能时在卡号上添加模糊. <b>注意：本功能可能无法对所有钱包卡片生效。</b></string>
+    <string name="settings_quick_access_wallet_loyalty_cards_not_supported">不支持该积分卡</string>
+    <string name="settings_quick_access_wallet_loyalty_cards_not_supported_desc">遗憾的是，积分卡目前仅支持原始 Google Pay 应用程序，而不是统一的 GPay 应用程序。安装并设置 Google Pay 以在快捷中使用积分卡。</string>
+    <string name="settings_device_controls_switch">显示设备控制</string>
+    <string name="settings_device_controls_access_while_locked">允许在锁定时使用</string>
+    <string name="settings_device_controls_access_while_locked_desc">允许在锁定状态下使用电源菜单控件，但<b>不</b>能添加或编辑控件</string>
+    <string name="color_picker_unavailable">壁纸颜色选择工具无法选取当前壁纸的颜色</string>
+    <string name="settings_quick_access_wallet_loading">正在加载积分卡…</string>
+    <string name="settings_quick_access_wallet_rearrange_error_no_cards">未找到积分卡</string>
+    <string name="settings_quick_access_wallet_rearrange_error_generic">加载积分卡时出错</string>
+    <string name="settings_developer_options_content_creator_mode">内容创作者模式</string>
+    <string name="settings_developer_options_content_creator_mode_desc">启用此功能可始终模糊您的支付卡号码，并在<b>预览中</b>显示积分卡的虚拟卡号（如果您希望它始终开启，请单独启用）。本功能将在截图或录制视频时保护您的卡号不被泄露\n<b>警告：请勿尝试在启用此模式的情况下使用会员卡，这可能会导致商店系统出错。</b></string>
+    <string name="settings_accessibility_warning">无障碍服务没有启用</string>
+    <string name="settings_accessibility_warning_desc">高级电源菜单需要通过无障碍服务拦截长按电源键的动作。 点此开启无障碍服务</string>
+    <string name="settings_about_header">关于</string>
+    <string name="settings_about_faq">常见问题</string>
+    <string name="settings_about">高级电源菜单 v%1s</string>
+    <string name="settings_about_desc">开发： Kieron Quinn / Quinny899 @ XDA\n部分图片由 Rohith R Krishnan 和 Austin Andrews提供\n汉化：wushidi 和 ketal</string>
+
+    <string name="chip_donate">捐赠</string>
+    <string name="chip_twitter">关注我的 Twitter</string>
+    <string name="chip_github">GitHub</string>
+    <string name="chip_xda">XDA 帖子</string>
+
+    <string name="menu_open_source_libraries">开源许可证</string>
+    <string name="menu_rerun_setup">重新执行引导</string>
+
+    <string name="bottom_sheet_update_available_title">有更新可用</string>
+    <string name="bottom_sheet_update_available_positive">下载</string>
+    <string name="bottom_sheet_update_available_negative">关闭</string>
+    <string name="bottom_sheet_update_available_neutral">在 GitHub 上查看</string>
+    <string name="download_manager_description">下载更新中 …</string>
+    <string name="bs_update_download_failed">下载失败</string>
+    <string name="update_notification_channel_title">更新通知</string>
+    <string name="update_notification_channel_description">检查更新通知</string>
+    <string name="update_notification_title">高级电源菜单可更新</string>
+    <string name="update_notification_content">高级电源菜单有可用更新 (%1s to %1s)</string>
+    <string name="root_check_failed_bottom_sheet_close">关闭</string>
+
+</resources>

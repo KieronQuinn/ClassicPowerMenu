@@ -117,5 +117,6 @@
     <string name="update_notification_title">高级电源菜单可更新</string>
     <string name="update_notification_content">高级电源菜单有可用更新 (%1s to %1s)</string>
     <string name="root_check_failed_bottom_sheet_close">关闭</string>
+    <string name="settings_about_faq_file">faq_cn.md</string>
 
 </resources>

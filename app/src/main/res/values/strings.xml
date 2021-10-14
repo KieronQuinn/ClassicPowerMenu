@@ -96,6 +96,7 @@
     <string name="settings_accessibility_warning_desc">Classic Power Menu requires an Accessibility Service to intercept power button long press events. Tap to enable.</string>
     <string name="settings_about_header">About</string>
     <string name="settings_about_faq">Frequently Asked Questions</string>
+    <string name="settings_about_faq_file">faq.md</string>
     <string name="settings_about">Classic Power Menu v%1s</string>
     <string name="settings_about_desc">Created by Kieron Quinn / Quinny899 @ XDA\nAdditional images by Rohith R Krishnan and Austin Andrews</string>
 

@@ -40,7 +40,7 @@ class SettingsFaqFragment: BoundFragment<FragmentSettingsFaqBinding>(FragmentSet
                 }
             }
         }).build()
-        val markdown = requireContext().assets.open("faq.md").bufferedReader().use { it.readText() }
+        val markdown = requireContext().assets.open(getString(R.string.settings_about_faq_file)).bufferedReader().use { it.readText() }
         binding.markdown.text = markwon.toMarkdown(markdown)
         ViewCompat.setOnApplyWindowInsetsListener(binding.markdown){ view, insets ->
             val bottomInset = insets.getInsets(WindowInsetsCompat.Type.navigationBars() or WindowInsetsCompat.Type.ime()).bottom

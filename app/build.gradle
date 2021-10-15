@@ -126,7 +126,7 @@ dependencies {
     def shizuku_version = '11.0.3'
     implementation "dev.rikka.shizuku:api:$shizuku_version"
 
-    //Xposed - todo find a way to not use jcenter for this
+    //Xposed
     compileOnly 'de.robv.android.xposed:api:82'
 
     //OSS libraries activity

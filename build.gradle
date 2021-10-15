@@ -6,6 +6,7 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://api.xposed.info/' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.1'

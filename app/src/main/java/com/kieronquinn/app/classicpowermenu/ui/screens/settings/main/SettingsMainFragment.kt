@@ -108,6 +108,11 @@ class SettingsMainFragment : SettingsSwitchedFragment(), AutoExpandOnRotate, Pro
         setupAccessibilityWarning()
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.onResume()
+    }
+
     private fun setupDeveloperOptions() = lifecycleScope.launchWhenResumed {
         viewModel.developerOptionsEnabled.collect {
             recyclerView().adapter?.notifyDataSetChanged()

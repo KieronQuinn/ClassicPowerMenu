@@ -10,6 +10,7 @@
         <item name="android:windowLightStatusBar">@bool/lightStatusNav</item>
         <item name="android:windowLightNavigationBar">@bool/lightStatusNav</item>
         <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
         <item name="textAppearanceLargePopupMenu">@style/AppTheme.TextAppearance.Popup</item>
         <item name="actionOverflowMenuStyle">@style/CPMOverflowMenu</item>
     </style>
@@ -17,6 +18,7 @@
     <style name="Theme.ClassicPowerMenu.Splash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/splash_background</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/avd_logo</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
         <item name="android:windowLightNavigationBar">@bool/lightStatusNav</item>
         <item name="android:windowLightStatusBar">@bool/lightStatusNav</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
@@ -32,6 +34,7 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">false</item>
         <item name="android:showWhenLocked">true</item>

@@ -3,6 +3,7 @@ package com.kieronquinn.app.classicpowermenu.ui.activities
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -11,9 +12,7 @@ import android.view.animation.AnticipateInterpolator
 import androidx.annotation.RequiresApi
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
+import androidx.core.view.*
 import androidx.lifecycle.lifecycleScope
 import com.kieronquinn.app.classicpowermenu.R
 import com.kieronquinn.app.classicpowermenu.components.settings.Settings
@@ -41,12 +40,22 @@ class MainActivity : MonetCompatActivity() {
         }
         setupTransition()
         setupBringToFront()
+        setupInsets()
         WindowCompat.setDecorFitsSystemWindows(window, false)
         UpdateCheckWorker.queueCheckWorker(this)
         lifecycleScope.launchWhenCreated {
             monet.awaitMonetReady()
+            window.setBackgroundDrawable(ColorDrawable(monet.getBackgroundColor(this@MainActivity)))
             setContentView(R.layout.activity_main)
             setupStatusNav()
+        }
+    }
+
+    private fun setupInsets(){
+        ViewCompat.setOnApplyWindowInsetsListener(window.decorView){ view, insets ->
+            val cutout = insets.displayCutout
+            view.updatePadding(left = cutout?.safeInsetLeft ?: 0, right = cutout?.safeInsetRight ?: 0)
+            insets
         }
     }
 

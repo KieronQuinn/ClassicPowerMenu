@@ -19,7 +19,9 @@ class CPMServiceRunner(private val container: CPMServiceContainer, private val l
     override fun bindService(context: Context, intent: Intent, serviceConnection: ServiceConnection, flags: Int) {
         lifecycleScope.launch {
             container.runWithService {
-                it.bindService(getTopActivity()!!, intent, serviceConnection, flags, false)
+                //If activity has gone we can't recover as we need the token
+                val activity = getTopActivity() ?: return@runWithService
+                it.bindService(activity, intent, serviceConnection, flags, false)
             }
         }
     }

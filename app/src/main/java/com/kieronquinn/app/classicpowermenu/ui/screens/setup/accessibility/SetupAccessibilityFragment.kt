@@ -35,6 +35,11 @@ class SetupAccessibilityFragment: BoundFragment<FragmentSetupAccessibilityBindin
         setupEnable()
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.onResume()
+    }
+
     private fun setupText(){
         binding.setupAccessibilityContent.run {
             setLinkTextColor(monet.getAccentColor(requireContext()))

@@ -29,6 +29,7 @@
         <activity android:name=".ui.activities.PowerMenuActivity"
             android:theme="@style/Theme.ClassicPowerMenu.Fullscreen"
             android:noHistory="true"
+            android:screenOrientation="fullSensor"
             android:launchMode="singleInstance"
             android:excludeFromRecents="true"/>
 

@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
 import android.content.pm.ApplicationInfo
+import android.os.Build
 import android.os.IBinder
 import android.util.Log
 import com.kieronquinn.app.classicpowermenu.BuildConfig
@@ -32,12 +33,7 @@ class Xposed: IXposedHookLoadPackage, ServiceConnection {
     private var isHooked = false
 
     override fun handleLoadPackage(lpparam: XC_LoadPackage.LoadPackageParam) {
-        if(lpparam.packageName == "com.android.systemui") {
-            when(SystemProperties_getString("ro.miui.ui.version.name", "null")) {
-                "V125" -> hookMiuiSystemUI(lpparam)
-            }
-            hookSystemUI(lpparam)
-        }
+        if(lpparam.packageName == "com.android.systemui") hookSystemUI(lpparam)
         if(lpparam.packageName == BuildConfig.APPLICATION_ID) hookSelf(lpparam)
     }
 
@@ -53,8 +49,22 @@ class Xposed: IXposedHookLoadPackage, ServiceConnection {
         })
     }
 
-    private fun hookSystemUI(lpparam: XC_LoadPackage.LoadPackageParam) {
-        val globalActionsDialogClass = XposedHelpers.findClass("com.android.systemui.globalactions.GlobalActionsDialog", lpparam.classLoader)
+    private fun hookSystemUI(lpparam: XC_LoadPackage.LoadPackageParam){
+        when {
+            SystemProperties_getString("ro.miui.ui.version.name", "null") == "V125" -> hookMiuiSystemUI(lpparam)
+            else -> hookAospSystemUI(lpparam)
+        }
+    }
+
+    private fun hookAospSystemUI(lpparam: XC_LoadPackage.LoadPackageParam) {
+
+        val globalActionsDialogClassName = if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S){
+            "com.android.systemui.globalactions.GlobalActionsDialogLite"
+        }else{
+            "com.android.systemui.globalactions.GlobalActionsDialog"
+        }
+
+        val globalActionsDialogClass = XposedHelpers.findClass(globalActionsDialogClassName, lpparam.classLoader)
 
         //Bind the service when the dialog starts for the best chance of it being ready
         XposedBridge.hookMethod(globalActionsDialogClass.constructors[0], object: XC_MethodHook(){
@@ -66,17 +76,8 @@ class Xposed: IXposedHookLoadPackage, ServiceConnection {
         //Calls the service if connected, and prevents the normal dialog showing if that returns true
         XposedHelpers.findAndHookMethod(globalActionsDialogClass, "handleShow", object: XC_MethodHook(){
             override fun beforeHookedMethod(param: MethodHookParam) {
-                service?.let {
-                    if(showGlobalActions(it)){
-                        //We need to call onGlobalActionsShown to prevent the legacy dialog showing
-                        sendOnGlobalActionsShown(param)
-                        param.result = true
-                        return
-                    }
-                } ?: run {
-                    //Bind service for next time
-                    val context = XposedHelpers.getObjectField(param.thisObject, "mContext") as Context
-                    tryBindService(context)
+                if(handleShow(param)){
+                    param.result = true
                 }
             }
         })
@@ -84,7 +85,7 @@ class Xposed: IXposedHookLoadPackage, ServiceConnection {
         //Optionally calls to the service, if it exists
         XposedHelpers.findAndHookMethod(globalActionsDialogClass, "dismissDialog", object: XC_MethodHook(){
             override fun beforeHookedMethod(param: MethodHookParam?) {
-                service?.hideGlobalActions()
+                handleDismiss()
             }
         })
     }
@@ -110,17 +111,8 @@ class Xposed: IXposedHookLoadPackage, ServiceConnection {
                     //Calls the service if connected, and prevents the normal dialog showing if that returns true
                     XposedHelpers.findAndHookMethod(globalActionsDialogClass, "showDialog", object: XC_MethodHook(){
                         override fun beforeHookedMethod(param: MethodHookParam) {
-                            service?.let {
-                                if(showGlobalActions(it)){
-                                    //We need to call onGlobalActionsShown to prevent the legacy dialog showing
-                                    sendOnGlobalActionsShown(param)
-                                    param.result = null
-                                    return
-                                }
-                            } ?: run {
-                                //Bind service for next time
-                                val context = XposedHelpers.getObjectField(param.thisObject, "mContext") as Context
-                                tryBindService(context)
+                            if(handleShow(param)){
+                                param.result = null
                             }
                         }
                     })
@@ -128,7 +120,7 @@ class Xposed: IXposedHookLoadPackage, ServiceConnection {
                     //Optionally calls to the service, if it exists
                     XposedHelpers.findAndHookMethod(globalActionsDialogClass, "dismiss", Int::class.java, object: XC_MethodHook(){
                         override fun beforeHookedMethod(param: MethodHookParam?) {
-                            service?.hideGlobalActions()
+                            handleDismiss()
                         }
                     })
                     isHooked = true
@@ -146,6 +138,25 @@ class Xposed: IXposedHookLoadPackage, ServiceConnection {
         }catch (e: Exception){
             false
         }
+    }
+
+    private fun handleShow(param: XC_MethodHook.MethodHookParam): Boolean {
+        return service?.let {
+            if(showGlobalActions(it)){
+                //We need to call onGlobalActionsShown to prevent the legacy dialog showing
+                sendOnGlobalActionsShown(param)
+                return@let true
+            } else false
+        } ?: run {
+            //Bind service for next time
+            val context = XposedHelpers.getObjectField(param.thisObject, "mContext") as Context
+            tryBindService(context)
+            return@run false
+        }
+    }
+
+    private fun handleDismiss(){
+        service?.hideGlobalActions()
     }
 
     private fun sendOnGlobalActionsShown(param: XC_MethodHook.MethodHookParam){

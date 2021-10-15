@@ -18,9 +18,7 @@ import com.kieronquinn.app.classicpowermenu.utils.extensions.EXTRA_FRAGMENT_ARG_
 import com.kieronquinn.app.classicpowermenu.utils.extensions.EXTRA_SHOW_FRAGMENT_ARGUMENTS
 import com.kieronquinn.app.classicpowermenu.utils.extensions.getSecureSettingAsStringFlow
 import com.kieronquinn.app.classicpowermenu.utils.extensions.isAccessibilityServiceEnabled
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 abstract class SettingsMainViewModel: ViewModel() {
@@ -35,6 +33,7 @@ abstract class SettingsMainViewModel: ViewModel() {
     abstract fun isDeveloperOptionsEnabled(): Boolean
     abstract fun isWallpaperColorPickerAvailable(): Boolean
 
+    abstract fun onResume()
     abstract fun onAccessibilityWarningClicked()
     abstract fun onMainSwitchClicked()
     abstract fun onPowerOptionsClicked()
@@ -55,14 +54,15 @@ class SettingsMainViewModelImpl(context: Context, private val settings: Settings
     override val enabledInitialState = settings.enabled
     override var useMonet by settings::useMonet
     override val developerOptionsEnabled = settings.developerOptionsEnabledFlow
+    private val resumeBus = MutableSharedFlow<Unit>()
 
     override fun isWallpaperColorPickerAvailable() = Build.VERSION.SDK_INT < Build.VERSION_CODES.S
 
     override var accessibilityServiceDisabled = false
-    override val accessibilityServiceDisabledFlow = context.getSecureSettingAsStringFlow(android.provider.Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES).map {
-        if(XposedSelfHook().isXposedHooked()) return@map false
-        if(it.isNullOrBlank()) return@map true
-        !isAccessibilityServiceEnabled(context, CPMAccessibilityService::class.java, it)
+    private val isAccessibilityServiceDisabled = context.getSecureSettingAsStringFlow(android.provider.Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES)
+    override val accessibilityServiceDisabledFlow = combine(isAccessibilityServiceDisabled, resumeBus){ _, _ ->
+        if(XposedSelfHook().isXposedHooked()) return@combine false
+        !isAccessibilityServiceEnabled(context, CPMAccessibilityService::class.java)
     }.apply {
         viewModelScope.launch {
             collect {
@@ -154,6 +154,12 @@ class SettingsMainViewModelImpl(context: Context, private val settings: Settings
         viewModelScope.launch {
             settings.hasSeenSetup = false
             ProcessPhoenix.triggerRebirth(context)
+        }
+    }
+
+    override fun onResume() {
+        viewModelScope.launch {
+            resumeBus.emit(Unit)
         }
     }
 

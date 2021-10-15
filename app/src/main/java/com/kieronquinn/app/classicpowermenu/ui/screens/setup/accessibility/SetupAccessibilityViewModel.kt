@@ -15,14 +15,13 @@ import com.kieronquinn.app.classicpowermenu.utils.extensions.EXTRA_FRAGMENT_ARG_
 import com.kieronquinn.app.classicpowermenu.utils.extensions.EXTRA_SHOW_FRAGMENT_ARGUMENTS
 import com.kieronquinn.app.classicpowermenu.utils.extensions.getSecureSettingAsStringFlow
 import com.kieronquinn.app.classicpowermenu.utils.extensions.isAccessibilityServiceEnabled
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 abstract class SetupAccessibilityViewModel: ViewModel() {
 
     abstract val accessibilityEnabled: Flow<Boolean>
+    abstract fun onResume()
     abstract fun onEnableClicked()
     abstract fun onSkipClicked()
     abstract fun onBackPressed()
@@ -31,10 +30,12 @@ abstract class SetupAccessibilityViewModel: ViewModel() {
 
 class SetupAccessibilityViewModelImpl(context: Context, private val containerNavigation: ContainerNavigation): SetupAccessibilityViewModel() {
 
-    override val accessibilityEnabled = context.getSecureSettingAsStringFlow(Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES).map {
-        if(XposedSelfHook().isXposedHooked()) return@map true
-        if(it.isNullOrBlank()) return@map false
-        isAccessibilityServiceEnabled(context, CPMAccessibilityService::class.java, it)
+    private val resumeBus = MutableSharedFlow<Unit>()
+    private val accessibilityChangeBus = context.getSecureSettingAsStringFlow(Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES)
+
+    override val accessibilityEnabled = combine(resumeBus, accessibilityChangeBus) { _, _ ->
+        if(XposedSelfHook().isXposedHooked()) return@combine true
+        isAccessibilityServiceEnabled(context, CPMAccessibilityService::class.java)
     }
 
     init {
@@ -73,6 +74,12 @@ class SetupAccessibilityViewModelImpl(context: Context, private val containerNav
     override fun onSkipClicked() {
         viewModelScope.launch {
             moveToNext()
+        }
+    }
+
+    override fun onResume() {
+        viewModelScope.launch {
+            resumeBus.emit(Unit)
         }
     }
 

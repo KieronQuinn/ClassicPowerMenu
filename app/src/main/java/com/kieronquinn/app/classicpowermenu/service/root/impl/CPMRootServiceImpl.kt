@@ -15,7 +15,6 @@ import android.view.IWindowManager
 import android.view.InputDevice
 import android.view.KeyCharacterMap
 import android.view.KeyEvent
-import com.android.internal.statusbar.IStatusBarService
 import com.android.internal.widget.ILockSettings
 import com.android.systemui.util.extensions.UserHandle_USER_ALL
 import com.android.systemui.util.extensions.mTarget
@@ -42,11 +41,6 @@ class CPMRootServiceImpl: IClassicPowerMenu.Stub() {
     private val activityManager by lazy {
         val activityManagerProxy = SystemServiceHelper.getSystemService("activity")
         IActivityManager.Stub.asInterface(activityManagerProxy)
-    }
-
-    private val statusBarManager by lazy {
-        val statusBarManagerProxy = SystemServiceHelper.getSystemService("statusbar")
-        IStatusBarService.Stub.asInterface(statusBarManagerProxy)
     }
 
     private val inputManager by lazy {
@@ -129,11 +123,15 @@ class CPMRootServiceImpl: IClassicPowerMenu.Stub() {
     }
 
     override fun shutdown() {
-        statusBarManager.shutdown()
+        powerManager.shutdown(false, "", false)
     }
 
     override fun reboot(safeMode: Boolean) {
-        statusBarManager.reboot(safeMode)
+        if(safeMode) {
+            powerManager.rebootSafeMode(false, false)
+        }else{
+            powerManager.reboot(false, "", false)
+        }
     }
 
     override fun rebootWithReason(reason: String) {

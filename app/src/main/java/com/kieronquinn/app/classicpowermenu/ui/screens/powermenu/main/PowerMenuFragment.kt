@@ -7,8 +7,10 @@ import android.content.res.ColorStateList
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.service.quickaccesswallet.CPMQuickAccessWalletClientImpl
+import android.view.Surface
 import android.view.View
 import androidx.core.graphics.ColorUtils
+import androidx.core.view.DisplayCutoutCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
@@ -119,6 +121,15 @@ class PowerMenuFragment :
         setupService()
         setupAppbar()
         setupSecondaryAlpha()
+        setupInsets(view)
+    }
+
+    private fun setupInsets(view: View) {
+        ViewCompat.setOnApplyWindowInsetsListener(view) { _, insets ->
+            val cutout = insets.displayCutout
+            view.updatePadding(left = cutout?.safeInsetLeft ?: 0, right = cutout?.safeInsetRight ?: 0)
+            insets
+        }
     }
 
     private fun View.setupBackground() {
@@ -140,7 +151,9 @@ class PowerMenuFragment :
         adapter = contentAdapter
         val bottomPadding = resources.getDimension(R.dimen.margin_16)
         ViewCompat.setOnApplyWindowInsetsListener(this){ view, insets ->
-            view.updatePadding(bottom = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom + bottomPadding.toInt())
+            val bottomNavInset = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+            val bottomCutoutInset = insets.displayCutout?.safeInsetBottom ?: 0
+            view.updatePadding(bottom = bottomCutoutInset + bottomNavInset + bottomPadding.toInt())
             insets
         }
     }
@@ -157,6 +170,11 @@ class PowerMenuFragment :
         //Start alpha is 0
         binding.powerMenuAppbar.background.alpha = 0
         binding.powerMenuAppbar.backgroundTintList = ColorStateList.valueOf(monet.getBackgroundColor(requireContext()))
+        ViewCompat.setOnApplyWindowInsetsListener(binding.powerMenuAppbar){ view, insets ->
+            val topInset = insets.displayCutout?.safeInsetTop ?: 0
+            view.updatePadding(top = topInset)
+            insets
+        }
         launch {
             binding.powerMenuAppbar.awaitPost()
             binding.powerMenuAppbar.setExpanded(!viewModel.powerOptionsOpenCollapsed, false)

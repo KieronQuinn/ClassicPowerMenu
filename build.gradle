@@ -9,8 +9,8 @@ buildscript {
         maven { url 'https://api.xposed.info/' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.1'
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.30'
+        classpath 'com.android.tools.build:gradle:7.0.3'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31'
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
         classpath "com.google.protobuf:protobuf-gradle-plugin:$protobufVersion"
         classpath 'com.google.android.gms:oss-licenses-plugin:0.10.4'

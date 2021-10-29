@@ -2,9 +2,7 @@ package com.kieronquinn.app.classicpowermenu.ui.activities
 
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.view.ViewTreeObserver
+import android.transition.Fade
 import android.view.Window
 import android.view.WindowManager
 import androidx.core.view.WindowCompat
@@ -32,9 +30,14 @@ class PowerMenuActivity : MonetCompatActivity(), PowerMenuStarter.PowerMenuStart
     private val starter by inject<PowerMenuStarter>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        overridePendingTransition(R.anim.activity_fade_in, 0)
+        window.requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
+        window.exitTransition = Fade()
+        window.returnTransition = Fade()
+        window.enterTransition = Fade()
+        window.reenterTransition = Fade()
         window.setupWindowFlags()
         super.onCreate(savedInstanceState)
+        requestedOrientation = viewModel.getRequestedOrientation()
         hideStatusBar()
         lifecycleScope.launchWhenCreated {
             setContentView(R.layout.activity_power_menu)
@@ -59,11 +62,6 @@ class PowerMenuActivity : MonetCompatActivity(), PowerMenuStarter.PowerMenuStart
             it.sendDismissIntent(this@PowerMenuActivity)
             runAfter()
         }
-    }
-
-    override fun finish() {
-        super.finish()
-        overridePendingTransition(0, R.anim.activity_fade_out)
     }
 
     override fun onResume() {

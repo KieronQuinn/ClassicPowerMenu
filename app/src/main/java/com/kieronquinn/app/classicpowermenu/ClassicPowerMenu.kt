@@ -143,7 +143,7 @@ class ClassicPowerMenu: LifecycleApplication() {
             viewModel<MainActivityViewModel> { MainActivityViewModelImpl(get(), get()) }
             viewModel<DecisionViewModel> { DecisionViewModelImpl(get(), get()) }
             viewModel<PowerMenuViewModel> { PowerMenuViewModelImpl(get(), get(), get(), get(), get(), get()) }
-            viewModel<PowerMenuActivityViewModel> { PowerMenuActivityViewModelImpl(get(), get()) }
+            viewModel<PowerMenuActivityViewModel> { PowerMenuActivityViewModelImpl(get(), get(), get()) }
             viewModel<SafeModeTopSheetViewModel> { SafeModeTopSheetViewModelImpl(get(), get()) }
             viewModel<SetupLandingViewModel> { SetupLandingViewModelImpl(get()) }
             viewModel<SetupRootCheckViewModel> { SetupRootCheckViewModelImpl(get()) }

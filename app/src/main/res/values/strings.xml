@@ -66,6 +66,11 @@
     <string name="settings_power_options_drag_to_rearrange">Tap &amp; hold to drag to add, remove or re-arrange</string>
     <string name="settings_power_options_cannot_remove">You must have at least one Power Option in the Power Menu</string>
     <string name="settings_power_options_rearrange_no_items">No more buttons to add</string>
+    <string name="settings_power_options_allow_rotate">Allow Rotation</string>
+    <string name="settings_power_options_allow_rotate_desc">Allows the screen to be orientated in either portrait or landscape</string>
+    <string name="settings_power_options_allow_rotate_full">Allow Full Rotation</string>
+    <string name="settings_power_options_allow_rotate_full_desc">Allows full rotation, including reverse portrait (upside down)</string>
+
     <string name="settings_quick_access_wallet_switch">Show Quick Access Wallet</string>
     <string name="settings_quick_access_wallet_header_payment">Payment Cards</string>
     <string name="settings_quick_access_wallet_loyalty_cards">Loyalty Cards</string>

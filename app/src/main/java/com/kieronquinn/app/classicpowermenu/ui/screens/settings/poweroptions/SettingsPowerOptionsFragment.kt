@@ -31,8 +31,27 @@ class SettingsPowerOptionsFragment : SettingsGenericFragment(), BackAvailable, A
                 getString(R.string.settings_power_options_open_collapsed),
                 getText(R.string.settings_power_options_open_collapsed_desc),
                 viewModel::openCollapsed
+            ),
+            SettingsItem.SwitchSetting(
+                R.drawable.ic_power_options_allow_rotation,
+                getString(R.string.settings_power_options_allow_rotate),
+                getText(R.string.settings_power_options_allow_rotate_desc),
+                viewModel::allowRotation,
+                tapAction = this::refreshItems
+            ),
+            SettingsItem.SwitchSetting(
+                R.drawable.ic_power_options_allow_full_rotation,
+                getString(R.string.settings_power_options_allow_rotate_full),
+                getText(R.string.settings_power_options_allow_rotate_full_desc),
+                viewModel::allowFullRotation,
+                enabled = { viewModel.allowRotation }
             )
         )
+    }
+
+    private fun refreshItems(isChecked: Boolean): Boolean {
+        recyclerView.invoke().adapter?.notifyDataSetChanged()
+        return true
     }
 
 }

@@ -20,6 +20,8 @@ abstract class Settings {
     abstract var monetColor: Int?
     abstract var powerOptionsHideWhenLocked: Boolean
     abstract var powerOptionsOpenCollapsed: Boolean
+    abstract var allowRotation: Boolean
+    abstract var allowFullRotation: Boolean
     abstract var powerMenuButtons: List<PowerMenuButtonId>
     abstract var quickAccessWalletShow: Boolean
     abstract val quickAccessWalletShowFlow: Flow<Boolean>
@@ -64,6 +66,12 @@ class SettingsImpl(context: Context): Settings() {
 
         private const val KEY_POWER_MENU_BUTTONS = "power_options"
         private val DEFAULT_POWER_MENU_BUTTONS = PowerMenuButtonId.DEFAULT
+
+        private const val KEY_ALLOW_ROTATION = "allow_rotation"
+        private const val DEFAULT_ALLOW_ROTATION = true
+
+        private const val KEY_ALLOW_FULL_ROTATION = "allow_full_rotation"
+        private const val DEFAULT_ALLOW_FULL_ROTATION = false
 
         //Quick Access Wallet
         private const val KEY_QUICK_ACCESS_WALLET_SHOW = "quick_access_wallet_show"
@@ -115,6 +123,8 @@ class SettingsImpl(context: Context): Settings() {
     override var powerOptionsHideWhenLocked by shared(KEY_POWER_OPTIONS_HIDE_WHEN_LOCKED, DEFAULT_POWER_OPTIONS_HIDE_WHEN_LOCKED)
     override var powerOptionsOpenCollapsed by shared(KEY_POWER_OPTIONS_OPEN_COLLAPSED, DEFAULT_POWER_OPTIONS_OPEN_COLLAPSED)
     override var powerMenuButtons by sharedList(KEY_POWER_MENU_BUTTONS, DEFAULT_POWER_MENU_BUTTONS, this::powerMenuButtonTypeConverter, this::powerMenuButtonTypeReverseConverter)
+    override var allowRotation by shared(KEY_ALLOW_ROTATION, DEFAULT_ALLOW_ROTATION)
+    override var allowFullRotation by shared(KEY_ALLOW_FULL_ROTATION, DEFAULT_ALLOW_FULL_ROTATION)
 
     override var quickAccessWalletShow by shared(KEY_QUICK_ACCESS_WALLET_SHOW, DEFAULT_QUICK_ACCESS_WALLET_SHOW)
     override var quickAccessWalletShowLoyaltyCards by shared(KEY_QUICK_ACCESS_WALLET_SHOW_LOYALTY_CARDS, DEFAULT_QUICK_ACCESS_WALLET_SHOW_LOYALTY_CARDS)

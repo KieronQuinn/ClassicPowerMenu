@@ -12,6 +12,8 @@ abstract class SettingsPowerOptionsViewModel: ViewModel() {
 
     abstract var hideWhenLocked: Boolean
     abstract var openCollapsed: Boolean
+    abstract var allowRotation: Boolean
+    abstract var allowFullRotation: Boolean
 
     abstract fun onRearrangeClicked()
 
@@ -21,6 +23,8 @@ class SettingsPowerOptionsViewModelImpl(settings: Settings, private val containe
 
     override var hideWhenLocked by settings::powerOptionsHideWhenLocked
     override var openCollapsed by settings::powerOptionsOpenCollapsed
+    override var allowRotation by settings::allowRotation
+    override var allowFullRotation by settings::allowFullRotation
 
     override fun onRearrangeClicked() {
         viewModelScope.launch {

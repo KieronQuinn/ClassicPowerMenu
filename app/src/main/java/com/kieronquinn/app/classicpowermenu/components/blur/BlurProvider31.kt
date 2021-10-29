@@ -3,6 +3,7 @@ package com.kieronquinn.app.classicpowermenu.components.blur
 import android.content.res.Resources
 import android.os.Build
 import android.view.Window
+import android.view.WindowManager
 import androidx.annotation.RequiresApi
 import com.kieronquinn.app.classicpowermenu.R
 
@@ -23,7 +24,7 @@ class BlurProvider31(resources: Resources): BlurProvider() {
 
     override fun applyBlurToWindow(window: Window, ratio: Float) {
         val radius = blurRadiusOfRatio(ratio)
-        window.attributes.blurBehindRadius = radius
+        window.setBackgroundBlurRadius(radius)
     }
 
 }

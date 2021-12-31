@@ -118,5 +118,9 @@
     <string name="update_notification_content">高级电源菜单有可用更新 (%1s to %1s)</string>
     <string name="root_check_failed_bottom_sheet_close">关闭</string>
     <string name="settings_about_faq_file">faq_cn.md</string>
+    <string name="settings_power_options_allow_rotate">允许旋转屏幕</string>
+    <string name="settings_power_options_allow_rotate_desc">允许横向或纵向旋转电源菜单</string>
+    <string name="settings_power_options_allow_rotate_full">顺滑旋转</string>
+    <string name="settings_power_options_allow_rotate_full_desc">旋转将一步到位，无需按方向依次转动</string>
 
 </resources>

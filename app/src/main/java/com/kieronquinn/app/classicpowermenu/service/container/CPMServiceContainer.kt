@@ -31,7 +31,7 @@ class CPMServiceContainerImpl(context: Context): CPMServiceContainer {
 
     @Synchronized
     override suspend fun <T> runWithService(block: suspend (IClassicPowerMenu) -> T): T {
-        val service = withContext(Dispatchers.IO) {
+        val service = withContext(Dispatchers.Main){
             getServiceLocked()
         }
         return block(service)

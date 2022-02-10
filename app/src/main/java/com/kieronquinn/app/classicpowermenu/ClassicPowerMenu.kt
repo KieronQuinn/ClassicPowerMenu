@@ -167,7 +167,7 @@ class ClassicPowerMenu: LifecycleApplication() {
     override fun onCreate() {
         super.onCreate()
         Shell.setDefaultBuilder(Shell.Builder.create().setFlags(Shell.FLAG_MOUNT_MASTER));
-        HiddenApiBypass.addHiddenApiExemptions("L")
+        HiddenApiBypass.addHiddenApiExemptions("")
         startKoin {
             androidContext(this@ClassicPowerMenu)
             modules(singletonsModule, serviceModule, walletModule, monetModule, viewModelModule)

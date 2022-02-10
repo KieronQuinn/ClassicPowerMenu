@@ -7,7 +7,7 @@ plugins {
     id 'com.google.android.gms.oss-licenses-plugin'
 }
 
-def version = '1.3'
+def version = '1.3.1'
 
 android {
     compileSdk 31
@@ -16,7 +16,7 @@ android {
         applicationId "com.kieronquinn.app.classicpowermenu"
         minSdk 30
         targetSdk 31
-        versionCode 13
+        versionCode 131
         versionName version
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -73,23 +73,23 @@ dependencies {
     //AndroidX
     def lifecycle_version = "2.4.0"
     implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-process:$lifecycle_version"
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
-    implementation 'androidx.lifecycle:lifecycle-service:2.3.1'
-    implementation 'androidx.work:work-runtime-ktx:2.7.0'
-    implementation "androidx.core:core-splashscreen:1.0.0-alpha02"
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    implementation 'androidx.lifecycle:lifecycle-service:2.4.0'
+    implementation 'androidx.work:work-runtime-ktx:2.7.1'
+    implementation "androidx.core:core-splashscreen:1.0.0-beta01"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     //Material
-    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'com.google.android.material:material:1.5.0'
 
     //Monet
-    implementation 'com.github.KieronQuinn:MonetCompat:0.2.1'
+    implementation 'com.github.KieronQuinn:MonetCompat:0.4.1'
 
     //Dependency injection
     implementation "io.insert-koin:koin-android:$koin_version"
@@ -117,13 +117,13 @@ dependencies {
     implementation 'com.journeyapps:zxing-android-embedded:4.1.0@aar'
 
     //libsu for root operations
-    def libsuVersion = '3.1.2'
+    def libsuVersion = '3.2.1'
     implementation "com.github.topjohnwu.libsu:core:${libsuVersion}"
     implementation "com.github.topjohnwu.libsu:service:${libsuVersion}"
     implementation "com.github.topjohnwu.libsu:io:${libsuVersion}"
 
     //Shizuku for helpful system service code (wallet/controls don't work with just Shizuku)
-    def shizuku_version = '11.0.3'
+    def shizuku_version = '12.1.0'
     implementation "dev.rikka.shizuku:api:$shizuku_version"
 
     //Xposed
@@ -137,8 +137,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
     //Other third party
-    implementation 'org.lsposed.hiddenapibypass:hiddenapibypass:2.0'
-    implementation 'com.airbnb.android:lottie:4.2.0'
+    implementation 'org.lsposed.hiddenapibypass:hiddenapibypass:4.2'
+    implementation 'com.airbnb.android:lottie:4.2.2'
     implementation 'com.jakewharton:process-phoenix:2.1.2'
     implementation 'me.saket:better-link-movement-method:2.2.0'
     implementation "io.noties.markwon:core:4.6.2"

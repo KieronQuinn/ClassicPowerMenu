@@ -137,14 +137,13 @@ public class DefaultAppInfo extends CandidateInfo {
 
     private ComponentInfo getComponentInfo() {
         try {
-            ComponentInfo componentInfo = AppGlobals.getPackageManager().getActivityInfo(
-                    componentName, 0, userId);
+            ComponentInfo componentInfo = mContext.getPackageManager()
+                    .getActivityInfo(componentName, 0);
             if (componentInfo == null) {
-                componentInfo = AppGlobals.getPackageManager().getServiceInfo(
-                        componentName, 0, userId);
+                componentInfo = mContext.getPackageManager().getServiceInfo(componentName, 0);
             }
             return componentInfo;
-        } catch (RemoteException e) {
+        } catch (PackageManager.NameNotFoundException e) {
             return null;
         }
     }

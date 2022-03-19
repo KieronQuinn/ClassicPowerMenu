@@ -50,8 +50,10 @@ class Xposed: IXposedHookLoadPackage, ServiceConnection {
     }
 
     private fun hookSystemUI(lpparam: XC_LoadPackage.LoadPackageParam){
+        val miuiVersion = SystemProperties_getString("ro.miui.ui.version.name", "V0")
+            .substring(1).toIntOrNull() ?: -1
         when {
-            SystemProperties_getString("ro.miui.ui.version.name", "null") == "V125" -> hookMiuiSystemUI(lpparam)
+            miuiVersion >= 125 -> hookMiuiSystemUI(lpparam)
             else -> hookAospSystemUI(lpparam)
         }
     }

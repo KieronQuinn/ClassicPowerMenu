@@ -1,6 +1,8 @@
 package com.kieronquinn.app.classicpowermenu.components.blur
 
 import android.content.res.Resources
+import android.graphics.RenderEffect
+import android.graphics.Shader
 import android.os.Build
 import android.view.Window
 import android.view.WindowManager
@@ -19,7 +21,13 @@ class BlurProvider31(resources: Resources): BlurProvider() {
     }
 
     override fun applyDialogBlur(dialogWindow: Window, appWindow: Window, ratio: Float) {
-        applyBlurToWindow(dialogWindow, ratio)
+        val radius = blurRadiusOfRatio(ratio)
+        if(radius == 0){
+            appWindow.decorView.setRenderEffect(null)
+        }else {
+            val renderEffect = RenderEffect.createBlurEffect(radius.toFloat(), radius.toFloat(), Shader.TileMode.MIRROR)
+            appWindow.decorView.setRenderEffect(renderEffect)
+        }
     }
 
     override fun applyBlurToWindow(window: Window, ratio: Float) {

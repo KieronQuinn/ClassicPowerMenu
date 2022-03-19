@@ -94,6 +94,12 @@ abstract class BaseBottomSheetFragment<T: ViewBinding>(private val inflate: (Lay
     }
 
     override fun onDestroyView() {
+        if(isBlurShowing){
+            val dialogWindow = dialog?.window ?: return
+            val appWindow = activity?.window ?: return
+            blurProvider.applyDialogBlur(dialogWindow, appWindow, 0f)
+            isBlurShowing = false
+        }
         super.onDestroyView()
         behavior?.removeBottomSheetCallback(bottomSheetCallback)
         behavior = null

@@ -26,6 +26,7 @@ import com.kieronquinn.app.classicpowermenu.model.service.ActivityContainer
 import com.kieronquinn.app.classicpowermenu.model.service.BroadcastContainer
 import com.kieronquinn.app.classicpowermenu.model.service.ServiceBindContainer
 import com.kieronquinn.app.classicpowermenu.model.service.ServiceUnbindContainer
+import com.kieronquinn.app.classicpowermenu.utils.extensions.bindServiceInstanceCompat
 import com.kieronquinn.app.classicpowermenu.utils.extensions.broadcastIntentWithFeatureCompat
 import com.topjohnwu.superuser.internal.Utils
 import kotlinx.coroutines.Dispatchers
@@ -85,7 +86,7 @@ class CPMRootServiceImpl: IClassicPowerMenu.Stub() {
                 UserHandle::class.java.getMethod("getIdentifier").invoke(userHandle) as Int
             Intent::class.java.getMethod("prepareToLeaveProcess", Context::class.java)
                 .invoke(intent, context)
-            return activityManager.bindServiceInstance(
+            return activityManager.bindServiceInstanceCompat(
                 bindContainer.thread,
                 bindContainer.activityToken,
                 intent,

@@ -59,7 +59,7 @@ fun IActivityManager.broadcastIntentWithFeatureCompat(
 }
 
 @SuppressLint("UnsafeOptInUsageError")
-fun IActivityManager.bindServiceInstance(
+fun IActivityManager.bindServiceInstanceCompat(
     caller: IApplicationThread?,
     token: IBinder?,
     service: Intent?,

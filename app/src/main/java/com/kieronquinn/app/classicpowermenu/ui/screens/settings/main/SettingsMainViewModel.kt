@@ -29,6 +29,7 @@ abstract class SettingsMainViewModel: ViewModel() {
     abstract val developerOptionsEnabled: Flow<Boolean>
     abstract var accessibilityServiceDisabled: Boolean
     abstract val accessibilityServiceDisabledFlow: Flow<Boolean>
+    abstract var useSolidColor: Boolean
 
     abstract fun isDeveloperOptionsEnabled(): Boolean
     abstract fun isWallpaperColorPickerAvailable(): Boolean
@@ -53,6 +54,7 @@ class SettingsMainViewModelImpl(context: Context, private val settings: Settings
     override val enabled = settings.enabledFlow
     override val enabledInitialState = settings.enabled
     override var useMonet by settings::useMonet
+    override var useSolidColor by settings::useSolidBackground
     override val developerOptionsEnabled = settings.developerOptionsEnabledFlow
     private val resumeBus = MutableSharedFlow<Unit>()
 

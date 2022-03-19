@@ -18,6 +18,8 @@ abstract class PowerMenuActivityViewModel: ViewModel() {
     abstract val closeBroadcast: Flow<Unit>
     abstract fun sendCloseBroadcast(context: Context, ignoreSelf: Boolean)
 
+    abstract val useSolidBackground: Boolean
+
 }
 
 class PowerMenuActivityViewModelImpl(context: Context, private val service: CPMServiceContainer, private val settings: Settings): PowerMenuActivityViewModel() {
@@ -48,5 +50,7 @@ class PowerMenuActivityViewModelImpl(context: Context, private val service: CPMS
             }
         }
     }
+
+    override val useSolidBackground by settings::useSolidBackground
 
 }

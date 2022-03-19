@@ -24,13 +24,23 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
         </activity>
 
         <activity android:name=".ui.activities.PowerMenuActivity"
             android:theme="@style/Theme.ClassicPowerMenu.Fullscreen"
             android:noHistory="true"
+            android:exported="true"
             android:launchMode="singleInstance"
-            android:excludeFromRecents="true"/>
+            android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="classicpowermenu"/>
+            </intent-filter>
+
+        </activity>
 
         <service android:name=".service.accessibility.CPMAccessibilityService"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"

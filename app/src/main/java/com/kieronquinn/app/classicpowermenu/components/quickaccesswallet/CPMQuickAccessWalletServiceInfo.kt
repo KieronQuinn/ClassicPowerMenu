@@ -1,6 +1,7 @@
 package com.kieronquinn.app.classicpowermenu.components.quickaccesswallet
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -11,6 +12,7 @@ import android.util.Log
 
 object CPMQuickAccessWalletServiceInfoBuilder {
 
+    @SuppressLint("BlockedPrivateApi")
     fun create(context: Context): Any? {
         val quickAccessWalletServiceInfoClass = Class.forName("android.service.quickaccesswallet.QuickAccessWalletServiceInfo")
         val quickAccessWalletServiceMetadataClass = Class.forName("android.service.quickaccesswallet.QuickAccessWalletServiceInfo\$ServiceMetadata")

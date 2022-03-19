@@ -1,10 +1,14 @@
 package com.kieronquinn.app.classicpowermenu.utils.extensions
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.IActivityManager
 import android.app.IApplicationThread
+import android.app.IServiceConnection
 import android.content.Intent
 import android.os.Build
+import android.os.IBinder
+import androidx.core.os.BuildCompat
 
 /**
  *  Handles differences between calls on Android 11 and 12+
@@ -34,7 +38,7 @@ fun IActivityManager.broadcastIntentWithFeatureCompat(
             false,
             identifier
         )
-    }else{
+    } else {
         broadcastIntentWithFeature(
             thread,
             attributionTag,
@@ -50,6 +54,45 @@ fun IActivityManager.broadcastIntentWithFeatureCompat(
             false,
             false,
             identifier
+        )
+    }
+}
+
+@SuppressLint("UnsafeOptInUsageError")
+fun IActivityManager.bindServiceInstance(
+    caller: IApplicationThread?,
+    token: IBinder?,
+    service: Intent?,
+    resolvedType: String?,
+    connection: IServiceConnection?,
+    flags: Int,
+    instanceName: String?,
+    callingPackage: String?,
+    userId: Int
+): Int {
+    return if (BuildCompat.isAtLeastT()) {
+        bindServiceInstance(
+            caller,
+            token,
+            service,
+            resolvedType,
+            connection,
+            flags,
+            instanceName,
+            callingPackage,
+            userId
+        )
+    } else {
+        bindIsolatedService(
+            caller,
+            token,
+            service,
+            resolvedType,
+            connection,
+            flags,
+            instanceName,
+            callingPackage,
+            userId
         )
     }
 }

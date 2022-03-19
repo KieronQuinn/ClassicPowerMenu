@@ -1,0 +1,13 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="power_menu"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutShortLabel="@string/shortcut_show_power_menu"
+        android:shortcutLongLabel="@string/shortcut_show_power_menu"
+        android:shortcutDisabledMessage="@string/shortcut_show_power_menu">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="classicpowermenu://menu" />
+    </shortcut>
+</shortcuts>

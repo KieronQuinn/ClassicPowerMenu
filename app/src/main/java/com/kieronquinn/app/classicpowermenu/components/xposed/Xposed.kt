@@ -8,12 +8,15 @@ import android.content.pm.ApplicationInfo
 import android.os.Build
 import android.os.IBinder
 import android.util.Log
+import android.view.View
+import androidx.core.os.BuildCompat
 import com.kieronquinn.app.classicpowermenu.BuildConfig
 import com.kieronquinn.app.classicpowermenu.IGlobalActions
 import com.kieronquinn.app.classicpowermenu.service.globalactions.GlobalActionsService
 import com.kieronquinn.app.classicpowermenu.utils.extensions.SystemProperties_getString
 import de.robv.android.xposed.*
 import de.robv.android.xposed.callbacks.XC_LoadPackage
+import java.lang.reflect.Method
 
 class Xposed: IXposedHookLoadPackage, ServiceConnection {
 
@@ -59,7 +62,6 @@ class Xposed: IXposedHookLoadPackage, ServiceConnection {
     }
 
     private fun hookAospSystemUI(lpparam: XC_LoadPackage.LoadPackageParam) {
-
         val globalActionsDialogClassName = if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S){
             "com.android.systemui.globalactions.GlobalActionsDialogLite"
         }else{
@@ -75,18 +77,38 @@ class Xposed: IXposedHookLoadPackage, ServiceConnection {
             }
         })
 
-        //Calls the service if connected, and prevents the normal dialog showing if that returns true
-        XposedHelpers.findAndHookMethod(globalActionsDialogClass, "handleShow", object: XC_MethodHook(){
+        //Find the showOrHideDialog method, which has multiple variants but always the same first 2 args
+        val showMethod = globalActionsDialogClass.declaredMethods
+            .firstOrNull { it.name == "showOrHideDialog" } ?: return
+
+        val hideMethod = globalActionsDialogClass
+            .getDeclaredMethod("dismissGlobalActionsMenu")
+
+        val mKeyguardShowing = globalActionsDialogClass
+            .getDeclaredField("mKeyguardShowing").apply {
+                isAccessible = true
+            }
+
+        val mDeviceProvisioned = globalActionsDialogClass
+            .getField("mDeviceProvisioned").apply {
+                isAccessible = true
+            }
+
+        XposedBridge.hookMethod(showMethod, object: XC_MethodHook() {
             override fun beforeHookedMethod(param: MethodHookParam) {
+                val keyguardShowing = param.args[0]
+                val deviceProvisioned = param.args[1]
+                mKeyguardShowing.set(param.thisObject, keyguardShowing)
+                mDeviceProvisioned.set(param.thisObject, deviceProvisioned)
                 if(handleShow(param)){
                     param.result = true
                 }
             }
         })
 
-        //Optionally calls to the service, if it exists
-        XposedHelpers.findAndHookMethod(globalActionsDialogClass, "dismissDialog", object: XC_MethodHook(){
+        XposedBridge.hookMethod(hideMethod, object: XC_MethodHook() {
             override fun beforeHookedMethod(param: MethodHookParam?) {
+                super.beforeHookedMethod(param)
                 handleDismiss()
             }
         })

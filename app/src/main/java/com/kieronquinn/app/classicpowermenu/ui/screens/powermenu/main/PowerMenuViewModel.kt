@@ -32,6 +32,7 @@ abstract class PowerMenuViewModel: ViewModel() {
     abstract fun onRebootLongClicked()
     abstract fun onRebootRecoveryClicked()
     abstract fun onRebootBootloaderClicked()
+    abstract fun onRestartSystemUIClicked()
 
     abstract fun onEmergencyClicked(context: Context)
     abstract fun onLockdownClicked()
@@ -46,6 +47,7 @@ abstract class PowerMenuViewModel: ViewModel() {
     abstract val showQuickAccessWallet: Boolean
     abstract val showControls: Boolean
     abstract val monetEnabled: Boolean
+    abstract val useSolidBackground: Boolean
 
 }
 
@@ -64,6 +66,7 @@ class PowerMenuViewModelImpl(context: Context, private val service: CPMServiceCo
     override val showControls by settings::deviceControlsShow
     override val showQuickAccessWallet by settings::quickAccessWalletShow
     override val monetEnabled by settings::useMonet
+    override val useSolidBackground by settings::useSolidBackground
 
     override suspend fun shouldShowLockdown(): Boolean {
         //No point showing lockdown without a lock
@@ -111,6 +114,15 @@ class PowerMenuViewModelImpl(context: Context, private val service: CPMServiceCo
         viewModelScope.launch {
             service.runWithService {
                 it.rebootWithReason("bootloader")
+            }
+            navigation.closePowerMenu()
+        }
+    }
+
+    override fun onRestartSystemUIClicked() {
+        viewModelScope.launch {
+            service.runWithService {
+                it.restartSystemUi()
             }
             navigation.closePowerMenu()
         }
@@ -245,6 +257,13 @@ class PowerMenuViewModelImpl(context: Context, private val service: CPMServiceCo
             R.drawable.ic_reboot_bootloader,
             context.getString(R.string.power_menu_button_reboot_bootloader),
             ::onRebootBootloaderClicked,
+            shouldShow = ::shouldShowPowerOption
+        )
+        PowerMenuButtonId.RESTART_SYSTEMUI -> PowerMenuButton.Button(
+            PowerMenuButtonId.RESTART_SYSTEMUI,
+            R.drawable.ic_restart_systemui,
+            context.getString(R.string.power_menu_button_restart_systemui),
+            ::onRestartSystemUIClicked,
             shouldShow = ::shouldShowPowerOption
         )
     }

@@ -24,6 +24,7 @@ class SettingsFaqFragment: BoundFragment<FragmentSettingsFaqBinding>(FragmentSet
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.root.isNestedScrollingEnabled = false
         val typeface = ResourcesCompat.getFont(requireContext(), R.font.google_sans_text_medium)
         val markwon = Markwon.builder(requireContext()).usePlugin(object: AbstractMarkwonPlugin() {
             override fun configureTheme(builder: MarkwonTheme.Builder) {

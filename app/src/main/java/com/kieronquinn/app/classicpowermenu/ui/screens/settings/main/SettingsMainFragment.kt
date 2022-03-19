@@ -78,6 +78,12 @@ class SettingsMainFragment : SettingsSwitchedFragment(), AutoExpandOnRotate, Pro
                 getText(R.string.settings_monet_desc),
                 viewModel::useMonet
             ),
+            SettingsItem.SwitchSetting(
+                R.drawable.ic_settings_solid_color,
+                getString(R.string.settings_solid_color),
+                getText(R.string.settings_solid_color_desc),
+                viewModel::useSolidColor
+            ),
             SettingsItem.Setting(
                 R.drawable.ic_settings_monet_color_picker,
                 getString(R.string.settings_monet_color_picker),

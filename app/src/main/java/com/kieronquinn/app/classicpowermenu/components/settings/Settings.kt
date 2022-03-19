@@ -18,6 +18,7 @@ abstract class Settings {
     abstract val enabledFlow: Flow<Boolean>
     abstract var useMonet: Boolean
     abstract var monetColor: Int?
+    abstract var useSolidBackground: Boolean
     abstract var powerOptionsHideWhenLocked: Boolean
     abstract var powerOptionsOpenCollapsed: Boolean
     abstract var allowRotation: Boolean
@@ -56,6 +57,9 @@ class SettingsImpl(context: Context): Settings() {
         private const val DEFAULT_USE_MONET = true
 
         private const val KEY_MONET_COLOR = "monet_color"
+
+        private const val KEY_USE_SOLID_BACKGROUND = "use_solid_background"
+        private const val DEFAULT_USE_SOLID_BACKGROUND = false
 
         //Power Options
         private const val KEY_POWER_OPTIONS_HIDE_WHEN_LOCKED = "power_options_hide_when_locked"
@@ -119,6 +123,7 @@ class SettingsImpl(context: Context): Settings() {
 
     override var useMonet by shared(KEY_USE_MONET, DEFAULT_USE_MONET)
     override var monetColor by sharedColor(KEY_MONET_COLOR)
+    override var useSolidBackground by shared(KEY_USE_SOLID_BACKGROUND, DEFAULT_USE_SOLID_BACKGROUND)
 
     override var powerOptionsHideWhenLocked by shared(KEY_POWER_OPTIONS_HIDE_WHEN_LOCKED, DEFAULT_POWER_OPTIONS_HIDE_WHEN_LOCKED)
     override var powerOptionsOpenCollapsed by shared(KEY_POWER_OPTIONS_OPEN_COLLAPSED, DEFAULT_POWER_OPTIONS_OPEN_COLLAPSED)

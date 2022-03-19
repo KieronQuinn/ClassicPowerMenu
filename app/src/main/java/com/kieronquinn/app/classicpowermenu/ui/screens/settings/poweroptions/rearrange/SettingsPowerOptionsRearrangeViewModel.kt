@@ -79,6 +79,12 @@ class SettingsPowerOptionsRearrangeViewModelImpl(private val settings: Settings,
             context.getString(R.string.power_menu_button_reboot_bootloader),
             this::emptyClick
         )
+        PowerMenuButtonId.RESTART_SYSTEMUI -> PowerMenuButton.Button(
+            PowerMenuButtonId.RESTART_SYSTEMUI,
+            R.drawable.ic_restart_systemui,
+            context.getString(R.string.power_menu_button_restart_systemui),
+            this::emptyClick
+        )
     }
 
     override fun onBackPressed() {

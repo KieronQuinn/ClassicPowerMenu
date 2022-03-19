@@ -30,6 +30,7 @@
     <string name="power_menu_button_reboot">Restart</string>
     <string name="power_menu_button_reboot_recovery">Reboot Recovery</string>
     <string name="power_menu_button_reboot_bootloader">Reboot Bootloader</string>
+    <string name="power_menu_button_restart_systemui">Restart SystemUI</string>
     <string name="power_menu_button_emergency">Emergency</string>
     <string name="power_menu_button_lockdown">Lockdown</string>
     <string name="power_menu_button_screenshot">Screenshot</string>
@@ -57,6 +58,8 @@
     <string name="settings_monet_desc">Use Material You / Monet colors in the power menu</string>
     <string name="settings_monet_color_picker">Wallpaper Color</string>
     <string name="settings_monet_color_picker_desc">Select the color to use, extracted from your wallpaper</string>
+    <string name="settings_solid_color">Use Solid Color</string>
+    <string name="settings_solid_color_desc">Use a solid Material You background rather than a dimmed-blur background</string>
     <string name="settings_power_options_rearrange">Edit Power Options</string>
     <string name="settings_power_options_rearrange_desc">Add, remove and re-arrange the Power Options</string>
     <string name="settings_power_options_hide_when_locked">Hide power-related options when locked</string>
@@ -123,5 +126,6 @@
     <string name="update_notification_channel_description">Notifications shown when the app checks for updates once a day</string>
     <string name="update_notification_title">Classic Power Menu update available</string>
     <string name="update_notification_content">An update is available for Classic Power Menu (%1s to %1s)</string>
+    <string name="shortcut_show_power_menu">Power Menu</string>
 
 </resources>

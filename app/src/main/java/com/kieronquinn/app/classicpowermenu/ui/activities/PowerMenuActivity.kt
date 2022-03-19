@@ -69,7 +69,9 @@ class PowerMenuActivity : MonetCompatActivity(), PowerMenuStarter.PowerMenuStart
         starter.setEventListener(this)
         lifecycleScope.launchWhenResumed {
             window.decorView.awaitPost()
-            blurProvider.applyBlurToWindow(window, 1.5f)
+            if(!viewModel.useSolidBackground){
+                blurProvider.applyBlurToWindow(window, 1.5f)
+            }
         }
     }
 

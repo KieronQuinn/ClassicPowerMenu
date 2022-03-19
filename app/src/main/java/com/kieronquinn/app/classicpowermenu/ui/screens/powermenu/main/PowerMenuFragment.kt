@@ -133,12 +133,19 @@ class PowerMenuFragment :
     }
 
     private fun View.setupBackground() {
-        background = ColorDrawable(
-            ColorUtils.setAlphaComponent(
-                monet.getBackgroundColor(context, true),
-                128
+        background = if(viewModel.useSolidBackground){
+            ColorDrawable(
+                monet.getBackgroundColorSecondary(context, true)
+                    ?: monet.getBackgroundColor(context, true)
             )
-        )
+        }else{
+            ColorDrawable(
+                ColorUtils.setAlphaComponent(
+                    monet.getBackgroundColor(context, true),
+                    128
+                )
+            )
+        }
     }
 
     private fun setupButtonsRecyclerView() = with(binding.powerMenuButtonsRecyclerview) {

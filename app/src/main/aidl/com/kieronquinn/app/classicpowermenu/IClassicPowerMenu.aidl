@@ -25,6 +25,7 @@ interface IClassicPowerMenu {
     void shutdown();
     void reboot(boolean safeMode);
     void rebootWithReason(String reason);
+    void restartSystemUi();
 
     //Screenshot button
     void takeScreenshot();

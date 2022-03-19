@@ -85,7 +85,7 @@ class CPMRootServiceImpl: IClassicPowerMenu.Stub() {
                 UserHandle::class.java.getMethod("getIdentifier").invoke(userHandle) as Int
             Intent::class.java.getMethod("prepareToLeaveProcess", Context::class.java)
                 .invoke(intent, context)
-            return activityManager.bindIsolatedService(
+            return activityManager.bindServiceInstance(
                 bindContainer.thread,
                 bindContainer.activityToken,
                 intent,
@@ -136,6 +136,10 @@ class CPMRootServiceImpl: IClassicPowerMenu.Stub() {
 
     override fun rebootWithReason(reason: String) {
         powerManager.reboot(false, reason, false)
+    }
+
+    override fun restartSystemUi() {
+        Runtime.getRuntime().exec("pkill systemui")
     }
 
     override fun takeScreenshot() {

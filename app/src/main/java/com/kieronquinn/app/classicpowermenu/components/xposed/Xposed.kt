@@ -90,7 +90,7 @@ class Xposed: IXposedHookLoadPackage, ServiceConnection {
             }
 
         val mDeviceProvisioned = globalActionsDialogClass
-            .getField("mDeviceProvisioned").apply {
+            .getDeclaredField("mDeviceProvisioned").apply {
                 isAccessible = true
             }
 

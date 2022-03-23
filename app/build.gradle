@@ -7,7 +7,7 @@ plugins {
     id 'com.google.android.gms.oss-licenses-plugin'
 }
 
-def version = '1.4.1'
+def version = '1.4.2'
 
 android {
     compileSdk 31
@@ -16,7 +16,7 @@ android {
         applicationId "com.kieronquinn.app.classicpowermenu"
         minSdk 30
         targetSdk 31
-        versionCode 141
+        versionCode 142
         versionName version
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

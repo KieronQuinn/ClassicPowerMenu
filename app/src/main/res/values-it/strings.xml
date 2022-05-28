@@ -125,6 +125,6 @@ Immagini aggiuntive di Rohith R Krishnan e Austin Andrews"</string>
     <string name="update_notification_channel_title">Notifiche aggiornamento</string>
     <string name="update_notification_content" formatted="false">È disponibile un aggiornamento per Classic Power Menu (%1s a %1s)</string>
     <string name="update_notification_title">Aggiornamento di Classic Power Menu disponibile</string>
-    <string name="shortcut_show_power_menu">Menù di avvio</string></resources>
+    <string name="shortcut_show_power_menu">Menù di avvio</string>
 
 </resources>

@@ -1,4 +1,5 @@
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
 
     <string name="app_name">Classic Power Menu</string>
     <string name="strapline">Menù di avvio alternativo</string>

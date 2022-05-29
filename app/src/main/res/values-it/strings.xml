@@ -38,7 +38,9 @@
     <string name="wallet_loyalty_instructions">• Tocca per visualizzare</string>
     <string name="content_creator_mode_warning">Modalità Creatore Contenuti abilitata</string>
 
-    <string name="reboot_safemode_confirm">Vuoi riavviare in modalità provvisoria? Disabiliterà tutte le app di terze parti che hai installato. Verranno ripristinate al riavvio.</string>
+    <string name="reboot_safemode_confirm">Vuoi riavviare in modalità provvisoria?
+         Disabiliterà tutte le app di terze parti che hai installato.
+	 Verranno ripristinate al riavvio.</string>
     <string name="reboot_safemode_title">Riavvia in modalità provvisoria</string>
     <string name="wallet_code_open_in_pay">Apri in Google Pay</string>
 
@@ -103,6 +105,7 @@ Immagini aggiuntive di Rohith R Krishnan e Austin Andrews"</string>
     <string name="settings_quick_access_wallet_show_preview">Mostra Anteprima Carta Fedeltà</string>
     <string name="settings_quick_access_wallet_show_preview_desc">Mostra un\'anteprima della Carta fedeltà da scansionare o visualizza in negozio senza aprire Google Pay</string>
     <string name="settings_quick_access_wallet_switch">Mostra Portafoglio ad Accesso Rapido</string>
+    <string name="color_picker_unavailable">Wallpaper Color Picker unavailable for the currently selected wallpaper</string>
     <string name="settings_solid_color">Usa tinta unita</string>
     <string name="settings_solid_color_desc">Usa uno sfondo Material You anziché uno sfondo sfocato</string>
     <string name="settings_theme_configuration">Tema</string>

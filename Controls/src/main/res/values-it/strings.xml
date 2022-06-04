@@ -2,14 +2,14 @@
 <resources>
     <!-- Device Controls strings -->
     <!-- Device Controls empty state, title [CHAR LIMIT=30] -->
-    <string name="quick_controls_title">Controlli dispositivo</string>
+    <string name="quick_controls_title">Controlli Smart</string>
     <!-- Device Controls empty state, subtitle [CHAR LIMIT=100] -->
-    <string name="quick_controls_subtitle">Aggiungi controlli per i dispositivi connessi</string>
+    <string name="quick_controls_subtitle">Aggiungi controlli smart dei dispositivi connessi</string>
 
     <!-- Device Controls setup, title [CHAR LIMIT=50] -->
-    <string name="quick_controls_setup_title">Configura i controlli del dispositivo</string>
+    <string name="quick_controls_setup_title">Configura i controlli smart</string>
     <!-- Device Controls setup, subtitle [CHAR LIMIT=100] -->
-    <string name="quick_controls_subtitle">Aggiungi controlli per i dispositivi connessi</string>
+    <string name="quick_controls_subtitle">Aggiungi controlli smart dei dispositivi connessi</string>
 
     <!-- Controls management providers screen title [CHAR LIMIT=60]-->
     <string name="controls_providers_title">Scegli app per aggiungere i controlli</string>

@@ -107,7 +107,7 @@
     <string name="settings_about_faq">よくある質問</string>
     <string name="settings_about_faq_file">faq_ja.md</string>
     <string name="settings_about">Classic Power Menu v%1s</string>
-    <string name="settings_about_desc">制作: Kieron Quinn / Quinny899 @ XDA\nその他の画像: Rohith R Krishnan and Austin Andrews</string>
+    <string name="settings_about_desc">制作: Kieron Quinn / Quinny899 @ XDA\nその他の画像: Rohith R Krishnan and Austin Andrews%1s</string>
 
     <string name="chip_donate">寄付する</string>
     <string name="chip_twitter">Twitterでフォローする</string>

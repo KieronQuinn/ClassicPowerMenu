@@ -197,16 +197,20 @@ public class WalletPanelViewController implements
             return;
         }
         List<WalletCard> walletCards = response.getWalletCards();
-        if(walletCards.size() == 0) return;
 
         ArrayList<WalletCardViewInfo> data = new ArrayList<>(walletCards.size());
         for (WalletCard card : walletCards) {
             data.add(new QAWalletCardViewInfo(card));
         }
 
-        mDefaultCardId = data.get(response.getSelectedIndex()).getCardId();
+        if(walletCards.isEmpty()){
+            mDefaultCardId = null;
+        }else {
+            mDefaultCardId = data.get(response.getSelectedIndex()).getCardId();
+        }
 
         mWalletLoyaltyCardCallback.getMethod().invoke(data, () -> {
+            if(data.size() == 0) return;
             //Make sure we're still attached
             if(mWalletView.isAttachedToWindow()) {
                 setupWalletView(data, response);

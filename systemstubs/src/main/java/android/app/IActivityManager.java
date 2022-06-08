@@ -76,6 +76,25 @@ public interface IActivityManager extends android.os.IInterface {
             boolean sticky,
             int userId);
 
+    //Android 13+
+    int broadcastIntentWithFeature(
+            IApplicationThread caller,
+            String callingFeatureId,
+            Intent intent,
+            String resolvedType,
+            IIntentReceiver resultTo,
+            int resultCode,
+            String resultData,
+            Bundle map,
+            String[] requiredPermissions,
+            String[] excludePermissions,
+            String[] excludePackages,
+            int appOp,
+            Bundle options,
+            boolean serialized,
+            boolean sticky,
+            int userId);
+
     Intent getIntentForIntentSender(IIntentSender sender);
 
     int startActivityWithFeature(

@@ -102,7 +102,7 @@ class SettingsMainFragment : SettingsSwitchedFragment(), AutoExpandOnRotate, Pro
             SettingsItem.AboutSetting(
                 R.drawable.ic_about,
                 getString(R.string.settings_about, BuildConfig.VERSION_NAME),
-                getText(R.string.settings_about_desc),
+                getString(R.string.settings_about_desc, getString(R.string.settings_about_translators)),
                 tripleTapAction = viewModel::onAboutTripleTapped
             )
         )

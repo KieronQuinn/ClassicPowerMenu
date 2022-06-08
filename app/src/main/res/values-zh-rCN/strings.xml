@@ -96,7 +96,8 @@
     <string name="settings_about_header">关于</string>
     <string name="settings_about_faq">常见问题</string>
     <string name="settings_about">高级电源菜单 v%1s</string>
-    <string name="settings_about_desc">开发： Kieron Quinn / Quinny899 @ XDA\n部分图片由 Rohith R Krishnan 和 Austin Andrews提供\n汉化：wushidi 和 ketal</string>
+    <string name="settings_about_desc">开发： Kieron Quinn / Quinny899 @ XDA\n部分图片由 Rohith R Krishnan 和 Austin Andrews提供\n%1s</string>
+    <string name="settings_about_translators">汉化：wushidi 和 ketal\n日本人: C0unt-zero\n意大利语: Vladi69</string>
 
     <string name="chip_donate">捐赠</string>
     <string name="chip_twitter">关注我的 Twitter</string>

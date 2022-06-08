@@ -13,6 +13,7 @@ import androidx.core.os.BuildCompat
 /**
  *  Handles differences between calls on Android 11 and 12+
  */
+@SuppressLint("UnsafeOptInUsageError")
 fun IActivityManager.broadcastIntentWithFeatureCompat(
     thread: IApplicationThread,
     attributionTag: String?,
@@ -20,41 +21,64 @@ fun IActivityManager.broadcastIntentWithFeatureCompat(
     intentType: String?,
     identifier: Int
 ) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-        broadcastIntentWithFeature(
-            thread,
-            attributionTag,
-            intent,
-            intentType,
-            null,
-            Activity.RESULT_OK,
-            null,
-            null,
-            null,
-            null,
-            -1,
-            null,
-            false,
-            false,
-            identifier
-        )
-    } else {
-        broadcastIntentWithFeature(
-            thread,
-            attributionTag,
-            intent,
-            intentType,
-            null,
-            Activity.RESULT_OK,
-            null,
-            null,
-            null,
-            -1,
-            null,
-            false,
-            false,
-            identifier
-        )
+    when {
+        BuildCompat.isAtLeastT() -> {
+            broadcastIntentWithFeature(
+                thread,
+                attributionTag,
+                intent,
+                intentType,
+                null,
+                Activity.RESULT_OK,
+                null,
+                null,
+                null,
+                null,
+                null,
+                -1,
+                null,
+                false,
+                false,
+                identifier
+            )
+        }
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+            broadcastIntentWithFeature(
+                thread,
+                attributionTag,
+                intent,
+                intentType,
+                null,
+                Activity.RESULT_OK,
+                null,
+                null,
+                null,
+                null,
+                -1,
+                null,
+                false,
+                false,
+                identifier
+            )
+        }
+        else -> {
+            broadcastIntentWithFeature(
+                thread,
+                attributionTag,
+                intent,
+                intentType,
+                null,
+                Activity.RESULT_OK,
+                null,
+                null,
+                null,
+                -1,
+                null,
+                false,
+                false,
+                identifier
+            )
+        }
     }
 }
 

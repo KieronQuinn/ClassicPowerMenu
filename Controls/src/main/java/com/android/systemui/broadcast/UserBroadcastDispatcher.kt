@@ -98,6 +98,7 @@ open class UserBroadcastDispatcher(
         bgHandler.obtainMessage(MSG_UNREGISTER_RECEIVER, receiver).sendToTarget()
     }
 
+    @SuppressLint("RestrictedApi")
     private fun handleRegisterReceiver(receiverData: ReceiverData) {
         Preconditions.checkState(bgHandler.looper.isCurrentThread,
             "This method should only be called from BG thread")

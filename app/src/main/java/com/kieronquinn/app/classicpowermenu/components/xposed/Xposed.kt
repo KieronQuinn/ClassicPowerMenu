@@ -96,8 +96,9 @@ class Xposed: IXposedHookLoadPackage, ServiceConnection {
 
         XposedBridge.hookMethod(showMethod, object: XC_MethodHook() {
             override fun beforeHookedMethod(param: MethodHookParam) {
-                val keyguardShowing = param.args[0]
-                val deviceProvisioned = param.args[1]
+                val showingIndex = param.args.indexOfFirst { it is Boolean }
+                val keyguardShowing = param.args[showingIndex]
+                val deviceProvisioned = param.args[showingIndex + 1]
                 mKeyguardShowing.set(param.thisObject, keyguardShowing)
                 mDeviceProvisioned.set(param.thisObject, deviceProvisioned)
                 if(handleShow(param)){

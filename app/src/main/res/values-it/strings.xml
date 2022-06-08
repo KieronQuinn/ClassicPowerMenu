@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <string name="app_name">Classic Power Menu</string>
     <string name="strapline">Menù di avvio alternativo</string>
@@ -45,10 +45,11 @@
     <string name="reboot_safemode_title">Riavvia in modalità provvisoria</string>
     <string name="wallet_code_open_in_pay">Apri in Google Pay</string>
 
-    <string name="settings">Impostazioni</string>
+    <string name="settings" tools:ignore="ExtraTranslation">Impostazioni</string>
     <string name="settings_about">Classic Power Menu v%1s</string>
     <string name="settings_about_desc">"Creato da Kieron Quinn / Quinny899 @ XDA
-Immagini aggiuntive di Rohith R Krishnan e Austin Andrews"</string>
+Immagini aggiuntive di Rohith R Krishnan e Austin Andrews"%1s</string>
+    <string name="settings_about_translators">Traduttrici:\nGiapponese: C0unt-zero\nItaliano: Vladi69\nCinese: wushidi and Ketal</string>
     <string name="settings_about_faq">Domande frequenti</string>
     <string name="settings_about_header">Info</string>
     <string name="settings_accessibility_warning">Servizio di accessibilità non abilitato</string>
@@ -127,7 +128,7 @@ Immagini aggiuntive di Rohith R Krishnan e Austin Andrews"</string>
     <string name="bs_update_download_failed">Scaricamento fallito</string>
     <string name="update_notification_channel_description">Mostra notifica quando l\'app controlla la presenza di aggiornamenti una volta al giorno</string>
     <string name="update_notification_channel_title">Notifiche aggiornamento</string>
-    <string name="update_notification_content" formatted="false">È disponibile un aggiornamento per Classic Power Menu (%1s a %1s)</string>
+    <string name="update_notification_content">È disponibile un aggiornamento per Classic Power Menu (%1s a %1s)</string>
     <string name="update_notification_title">Aggiornamento di Classic Power Menu disponibile</string>
     <string name="shortcut_show_power_menu">Menù di avvio</string>
 

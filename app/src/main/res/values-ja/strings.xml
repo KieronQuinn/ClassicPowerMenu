@@ -1,0 +1,132 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <string name="app_name">Classic Power Menu</string>
+    <string name="strapline">電源メニューの交換</string>
+
+    <string name="accessibility_service_description">電源の長押しイベントをインターセプトするために必要なユーザー補助サービスです。このサービスは、必要最小限のパーミッションを要求し、Classic Power Menuを表示する以外に、画面を追跡したり制御したりすることはありません。</string>
+    <string name="xposed_description">ユーザー補助サービスを使わずに、電源メニューをインターセプトしてClassic Power Menuを表示します。</string>
+
+    <string name="root_check_checking_root">Root権限を確認中...</string>
+    <string name="root_check_checking_root_desc">許可を求められたら許可してください</string>
+    <string name="root_check_failed_bottom_sheet_title">Root権限がありません</string>
+    <string name="root_check_failed_bottom_sheet_content">Classic Power Menuはroot権限が必要です。続けるには、お使いのデバイスをroot化してください</string>
+    <string name="root_check_failed_bottom_sheet_close">閉じる</string>
+
+    <string name="setup_landing_get_started">始める</string>
+    <string name="setup_accessibility_title">ユーザー補助サービスを有効にする</string>
+    <string name="setup_accessibility_content">Classic Power Menuは、電源ボタンイベントに反応するためにユーザー補助サービスが必要です。または、Xposedを使用している場合は、Xposedモジュールを有効にして再起動します。Xposedモジュールを使用しているにもかかわらず、このメッセージが表示される場合は、 <a href="cpm://accessibiilityskip">ここをタップしてスキップ</a></string>
+    <string name="setup_accessibility_button">ユーザー補助サービスを有効にする</string>
+    <string name="setup_wallet_switch">クイック アクセス ウォレットを有効にする</string>
+    <string name="setup_wallet_content">クイック アクセス ウォレットは、デフォルトの決済アプリから、カードやパスへのアクセスを可能にします。NFC対応の支払いカードを切り替えたり、互換性のあるパスにアクセスしたり、電源メニューから直接アクセスできます。\n\nClassic Power Menuはポイントカードをサポートしており、必要であれば後で設定でこれを有効にします。</string>
+    <string name="setup_wallet_button">次へ</string>
+    <string name="setup_controls_switch">デバイス コントロールを有効にする</string>
+    <string name="setup_controls_content">デバイス コントロールは、対応するアプリからスマートホームの機器を電源メニューから操作できる機能です。 \n\nこの機能をサポートするには、Google Homeなど追加のアプリが必要です。</string>
+    <string name="setup_controls_button">次へ</string>
+    <string name="setup_complete_title">設定完了</string>
+    <string name="setup_complete_content">最後に: インストールまたは再起動後に初めてClassic Power Menuを起動しようとすると、Classic Power Menuの前に通常の電源メニューが表示されたり、Classic Power Menuがまったく起動しなかったりすることがあります。 <b>それは正常です。</b> 通常の電源メニューを終了し、再度電源を長押しすると、今度はClassic Power Menuが通常通り起動します。 これは、Androidシステムの制限によるものです。\n\nアプリをお楽しみください!</string>
+    <string name="setup_complete_button">終了</string>
+
+    <string name="power_menu_button_power_off">電源を切る</string>
+    <string name="power_menu_button_reboot">再起動</string>
+    <string name="power_menu_button_reboot_recovery">リカバリーを起動</string>
+    <string name="power_menu_button_reboot_bootloader">ブートローダーを起動</string>
+    <string name="power_menu_button_restart_systemui">システムUIの再起動</string>
+    <string name="power_menu_button_emergency">緊急通報</string>
+    <string name="power_menu_button_lockdown">ロックダウン</string>
+    <string name="power_menu_button_screenshot">画面の保存</string>
+
+    <string name="wallet_loyalty_instructions">• タップして表示</string>
+    <string name="content_creator_mode_warning">コンテンツクリエイターモードが有効になっています</string>
+
+    <string name="reboot_safemode_title">再起動してセーフモードに変更</string>
+    <string name="reboot_safemode_confirm">再起動してセーフモードにしますか？
+         セーフモードでは、インストールしたすべてのサードパーティ製アプリが無効になります。
+         これらのアプリはもう一度再起動すると復元されます。</string>
+    <string name="wallet_code_open_in_pay">Google Payで開く</string>
+
+    <string name="settings_main_switch">Classic Power Menuを有効にする</string>
+    <string name="settings_header_configuration">環境設定</string>
+    <string name="settings_power_options">電源オプション</string>
+    <string name="settings_power_options_desc">電源オプションの設定とボタンの配置を変更</string>
+    <string name="settings_quick_access_wallet">クイック アクセス ウォレット</string>
+    <string name="settings_quick_access_wallet_desc">ポイントカードの表示など、ウォレットの表示方法に関する設定の変更</string>
+    <string name="settings_controls">デバイス コントロール</string>
+    <string name="settings_controls_desc">ロック中の使用など、デバイス コントロールの表示方法の設定を変更</string>
+    <string name="settings_developer_options">開発者向けオプション</string>
+    <string name="settings_theme_configuration">テーマ</string>
+    <string name="settings_monet">Material Youの配色</string>
+    <string name="settings_monet_desc">電源メニューでMaterial You / Monetの色を使用します</string>
+    <string name="settings_monet_color_picker">壁紙の色に基づいた配色</string>
+    <string name="settings_monet_color_picker_desc">壁紙から抽出した色の中から、使用する色を選択します</string>
+    <string name="settings_solid_color">背景にベタ塗りを使用</string>
+    <string name="settings_solid_color_desc">背景はぼかしではなく、ベタ塗りのMaterial Youの色を使用します</string>
+    <string name="settings_power_options_rearrange">電源オプションの編集</string>
+    <string name="settings_power_options_rearrange_desc">電源オプションの追加、削除、配置を変更</string>
+    <string name="settings_power_options_hide_when_locked">ロック中の電源関連オプションの非表示</string>
+    <string name="settings_power_options_hide_when_locked_desc">ロック中に"電源を切る"、"再起動"、"リカバリーを起動"、"ブートローダーを起動"などの各オプションを非表示にします。\n<b>重要：これは盗難防止を目的とした機能ではありません。泥棒は10秒間電源を押し続けたり、SIMカードを抜き取ることができます</b></string>
+    <string name="settings_power_options_open_collapsed">折りたたみ式</string>
+    <string name="settings_power_options_open_collapsed_desc">Classic Power Menuを開いたとき、複数の項目が並んでいる場合は、電源オプションパネルを折りたたんだ状態で開始します</string>
+    <string name="settings_power_options_drag_to_rearrange">タップ＆ホールドでドラッグし、追加、削除、並べ替えができます</string>
+    <string name="settings_power_options_cannot_remove">電源メニューには電源オプションが最低1つ必要です</string>
+    <string name="settings_power_options_rearrange_no_items">ボタンを追加する必要はありません</string>
+    <string name="settings_power_options_allow_rotate">回転を許可する</string>
+    <string name="settings_power_options_allow_rotate_desc">画面の向きを縦画面にも横画面にもできるようにします</string>
+    <string name="settings_power_options_allow_rotate_full">フル回転を許可する</string>
+    <string name="settings_power_options_allow_rotate_full_desc">上下逆さまを含むフル回転で表示できるようになります</string>
+
+    <string name="settings_quick_access_wallet_switch">クイック アクセス ウォレットを表示</string>
+    <string name="settings_quick_access_wallet_header_payment">支払いカード</string>
+    <string name="settings_quick_access_wallet_loyalty_cards">ポイントカード</string>
+    <string name="settings_quick_access_wallet_change_settings_in_pay">Google Payの設定を変更</string>
+    <string name="settings_quick_access_wallet_change_settings_in_pay_desc">支払いカードの順序、規定の支払いカード、動作などの設定を変更</string>
+    <string name="settings_quick_access_wallet_access_while_locked_desc">ロック中にポイントカードのプレビューを表示する。無効の場合、プレビューまたはGoogle Payが開く前に、まずロックを解除するよう促されます</string>
+    <string name="settings_quick_access_wallet_hide_card_number_when_locked">ロック中に決済カード番号をぼかす</string>
+    <string name="settings_quick_access_wallet_show_loyalty_cards">ポイントカードを表示</string>
+    <string name="settings_quick_access_wallet_show_loyalty_cards_desc">Google Payのポイントカードをクイック アクセス ウォレットに読み込んで表示することができます</string>
+    <string name="settings_quick_access_wallet_rearrange">ポイントカードの並べ替えと非表示</string>
+    <string name="settings_quick_access_wallet_rearrange_desc">クイック アクセス ウォレットでのポイントカードの並び替えや表示・非表示の設定</string>
+    <string name="settings_quick_access_wallet_show_preview">ポイントカードのプレビューを表示</string>
+    <string name="settings_quick_access_wallet_show_preview_desc">Google Payを開かずに、店舗でスキャンまたは表示するポイントカードのプレビューを表示することができます</string>
+    <string name="settings_quick_access_wallet_access_while_locked">ロック中にポイントカードにアクセスできるようにする</string>
+    <string name="settings_quick_access_wallet_hide_card_number_when_locked_desc">クイック アクセス ウォレットを開き、端末をロックした状態で、支払いカードの決済番号にぼかしを適用します。<b>注意：カードやウォレットプロバイダーによっては、この機能が使えない場合があります。</b></string>
+    <string name="settings_quick_access_wallet_loyalty_cards_not_supported">ポイントカードは非対応</string>
+    <string name="settings_quick_access_wallet_loyalty_cards_not_supported_desc">残念ながら、ポイントカードは現在、統合された"GPay"アプリではなく、オリジナルのGoogle Payアプリでのみサポートされています。クイック アクセス ウォレットでポイントカードを使用するには、Google Payをインストールし、設定する必要があります</string>
+    <string name="settings_device_controls_switch">デバイス コントロールを表示</string>
+    <string name="settings_device_controls_access_while_locked">ロック中の許可</string>
+    <string name="settings_device_controls_access_while_locked_desc">ロック中のデバイスコントロールとのインタラクションを許可します。ロック中はコントロールの追加や編集はできません。</string>
+    <string name="color_picker_unavailable">現在選択されている壁紙では、壁紙のカラーピッカーは使用できません</string>
+    <string name="settings_quick_access_wallet_loading">ポイントカードの読み込み中...</string>
+    <string name="settings_quick_access_wallet_rearrange_error_no_cards">ポイントカードが見つかりません</string>
+    <string name="settings_quick_access_wallet_rearrange_error_generic">ポイントカードの読み込みエラー</string>
+    <string name="settings_developer_options_content_creator_mode">コンテンツクリエイターモード</string>
+    <string name="settings_developer_options_content_creator_mode_desc">これを有効にすると、支払いカードの番号が常にぼかされ、ポイントカードの<b>ダミーコード</b>がプレビューに表示されます（常に有効にしたい場合は、別途有効にしてください）。
+これは、スクリーンショットや動画を撮影する際に、カード情報を誤って公開しないようにするために有効です。\n警告:このモードを有効にした状態でポイントカードを使用しようとすると、お店側のシステムでエラーを引き起こします。絶対に無効にした状態で使用してください。</string>
+    <string name="settings_accessibility_warning">ユーザー補助サービスが有効になっていません</string>
+    <string name="settings_accessibility_warning_desc">Classic Power Menuには、電源ボタン長押しイベントをインターセプトするためのユーザー補助サービスが必要です。タップして有効にします。</string>
+    <string name="settings_about_header">About</string>
+    <string name="settings_about_faq">よくある質問</string>
+    <string name="settings_about_faq_file">faq_ja.md</string>
+    <string name="settings_about">Classic Power Menu v%1s</string>
+    <string name="settings_about_desc">制作: Kieron Quinn / Quinny899 @ XDA\nその他の画像: Rohith R Krishnan and Austin Andrews</string>
+
+    <string name="chip_donate">寄付する</string>
+    <string name="chip_twitter">Twitterでフォローする</string>
+    <string name="chip_github">GitHub</string>
+    <string name="chip_xda">XDA Thread</string>
+
+    <string name="menu_open_source_libraries">オープンソース ライブラリ</string>
+    <string name="menu_rerun_setup">再セットアップ</string>
+
+    <string name="bottom_sheet_update_available_title">更新が見つかりました</string>
+    <string name="bottom_sheet_update_available_positive">ダウンロード</string>
+    <string name="bottom_sheet_update_available_negative">閉じる</string>
+    <string name="bottom_sheet_update_available_neutral">GitHubを見る</string>
+    <string name="download_manager_description">更新をダウンロード中...</string>
+    <string name="bs_update_download_failed">ダウンロードに失敗しました</string>
+    <string name="update_notification_channel_title">アップデート通知</string>
+    <string name="update_notification_channel_description">1日1回、アプリの更新をチェックする際に表示される通知機能</string>
+    <string name="update_notification_title">Classic Power Menuの更新が可能です</string>
+    <string name="update_notification_content">Classic Power Menu (%1s から %1s) の更新が利用可能です</string>
+    <string name="shortcut_show_power_menu">電源メニュー</string>
+
+</resources>

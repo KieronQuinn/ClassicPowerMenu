@@ -33,7 +33,7 @@
     <string name="power_menu_button_reboot_bootloader">Zrestartuj Bootloader</string>
     <string name="power_menu_button_restart_systemui">Zrestartuj SystemUI</string>
     <string name="power_menu_button_emergency">Pogotowie</string>
-    <string name="power_menu_button_lockdown">Lockdown</string>
+    <string name="power_menu_button_lockdown">Mocna blokada</string>
     <string name="power_menu_button_screenshot">Zrzut ekranu</string>
 
     <string name="wallet_loyalty_instructions">• Dotknij aby pokazać</string>

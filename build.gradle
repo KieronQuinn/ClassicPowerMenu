@@ -1,5 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
+    ext.kotlin_version = '1.7.10'
     ext.koin_version = '3.1.6'
     ext.nav_version = "2.4.2"
     ext.protobufVersion = '0.8.17'
@@ -14,6 +15,7 @@ buildscript {
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
         classpath "com.google.protobuf:protobuf-gradle-plugin:$protobufVersion"
         classpath 'com.google.android.gms:oss-licenses-plugin:0.10.5'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

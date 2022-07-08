@@ -8,10 +8,8 @@ import android.os.IBinder;
 
 public interface IActivityManager extends android.os.IInterface {
 
-    abstract class Stub extends android.os.Binder implements android.app.IServiceConnection
-    {
-        public static IActivityManager asInterface(android.os.IBinder obj)
-        {
+    abstract class Stub extends android.os.Binder implements android.app.IServiceConnection {
+        public static IActivityManager asInterface(android.os.IBinder obj) {
             throw new RuntimeException("Stub!");
         }
     }

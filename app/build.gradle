@@ -6,17 +6,18 @@ plugins {
     id 'kotlin-parcelize'
     id 'com.google.android.gms.oss-licenses-plugin'
 }
+apply plugin: 'kotlin-android'
 
-def version = '1.5'
+def version = '1.5.1'
 
 android {
-    compileSdk 31
+    compileSdk 32
 
     defaultConfig {
         applicationId "com.kieronquinn.app.classicpowermenu"
         minSdk 30
         targetSdk 31
-        versionCode 150
+        versionCode 151
         versionName version
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -147,4 +148,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation "androidx.core:core-ktx:+"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

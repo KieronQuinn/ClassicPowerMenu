@@ -62,6 +62,7 @@ class UpdateDownloadBottomSheetFragment: BaseBottomSheetFragment<FragmentUpdateD
                         Toast.makeText(requireContext(), R.string.bs_update_download_failed, Toast.LENGTH_LONG).show()
                         dismiss()
                     }
+                    else -> {}
                 }
             }
         }

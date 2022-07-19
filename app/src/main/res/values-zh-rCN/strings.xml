@@ -30,6 +30,8 @@
     <string name="power_menu_button_emergency">急救信息</string>
     <string name="power_menu_button_lockdown">锁定</string>
     <string name="power_menu_button_screenshot">截屏</string>
+    <string name="power_menu_button_fastbootd">Fastbootd</string>
+    <string name="power_menu_button_download">Download</string>
     <string name="wallet_loyalty_instructions">• 点击开始显示 </string>
     <string name="content_creator_mode_warning">内容创作者模式已开启</string>
     <string name="reboot_safemode_title">重启至安全模式</string>

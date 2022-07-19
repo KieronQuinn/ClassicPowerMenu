@@ -30,6 +30,8 @@
     <string name="power_menu_button_emergency">Emergency</string>
     <string name="power_menu_button_lockdown">Lockdown</string>
     <string name="power_menu_button_screenshot">Screenshot</string>
+    <string name="power_menu_button_fastbootd">Fastbootd</string>
+    <string name="power_menu_button_download">Download</string>
     <string name="wallet_loyalty_instructions">• Tap to show</string>
     <string name="content_creator_mode_warning">Content Creator Mode enabled</string>
     <string name="reboot_safemode_title">Reboot to safe mode</string>

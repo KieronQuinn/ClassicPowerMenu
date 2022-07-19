@@ -30,6 +30,8 @@
     <string name="power_menu_button_emergency">緊急通報</string>
     <string name="power_menu_button_lockdown">ロックダウン</string>
     <string name="power_menu_button_screenshot">画面の保存</string>
+    <string name="power_menu_button_fastbootd">Fastbootd</string>
+    <string name="power_menu_button_download">Download</string>
     <string name="wallet_loyalty_instructions">• タップして表示</string>
     <string name="content_creator_mode_warning">コンテンツクリエイターモードが有効になっています</string>
     <string name="reboot_safemode_title">再起動してセーフモードに変更</string>

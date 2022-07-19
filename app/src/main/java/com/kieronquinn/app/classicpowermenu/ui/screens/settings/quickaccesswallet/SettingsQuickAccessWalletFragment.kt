@@ -8,8 +8,6 @@ import com.kieronquinn.app.classicpowermenu.model.settings.SettingsItem
 import com.kieronquinn.app.classicpowermenu.ui.base.AutoExpandOnRotate
 import com.kieronquinn.app.classicpowermenu.ui.base.BackAvailable
 import com.kieronquinn.app.classicpowermenu.ui.screens.settings.switched.SettingsSwitchedFragment
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SettingsQuickAccessWalletFragment: SettingsSwitchedFragment(), BackAvailable, AutoExpandOnRotate {
@@ -53,7 +51,7 @@ class SettingsQuickAccessWalletFragment: SettingsSwitchedFragment(), BackAvailab
     private val paymentCardsItems by lazy {
         listOf(
             SettingsItem.Setting(
-                R.drawable.ic_google_pay,
+                R.drawable.ic_google_wallet,
                 getString(R.string.settings_quick_access_wallet_change_settings_in_pay),
                 getString(R.string.settings_quick_access_wallet_change_settings_in_pay_desc),
                 tapAction = viewModel::onChangeGooglePaySettingsClicked
@@ -70,7 +68,7 @@ class SettingsQuickAccessWalletFragment: SettingsSwitchedFragment(), BackAvailab
     private val loyaltyCardsUnsupportedItems by lazy {
         listOf(
             SettingsItem.Setting(
-                R.drawable.ic_google_pay,
+                R.drawable.ic_google_wallet,
                 getString(R.string.settings_quick_access_wallet_loyalty_cards_not_supported),
                 getString(R.string.settings_quick_access_wallet_loyalty_cards_not_supported_desc),
                 visible = viewModel::isGooglePayInstalled

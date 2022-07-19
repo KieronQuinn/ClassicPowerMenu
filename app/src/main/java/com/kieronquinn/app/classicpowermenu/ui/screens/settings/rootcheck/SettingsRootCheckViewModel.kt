@@ -33,7 +33,7 @@ abstract class SettingsRootCheckViewModel: ViewModel() {
 class SettingsRootCheckViewModelImpl(private val containerNavigation: ContainerNavigation): SettingsRootCheckViewModel() {
 
     private val _state = flow<State> {
-        val isRooted = Shell.rootAccess()
+        val isRooted = Shell.cmd("whoami").exec().out.firstOrNull() == "root"
         if(isRooted){
             emit(State.Result(RootResult.ROOTED))
         }else{

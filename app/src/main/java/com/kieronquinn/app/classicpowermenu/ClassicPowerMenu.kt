@@ -164,14 +164,18 @@ class ClassicPowerMenu: LifecycleApplication() {
         }
     }
 
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(base)
+        startKoin {
+            androidContext(base)
+            modules(singletonsModule, serviceModule, walletModule, monetModule, viewModelModule)
+        }
+    }
+
     override fun onCreate() {
         super.onCreate()
         Shell.setDefaultBuilder(Shell.Builder.create().setFlags(Shell.FLAG_MOUNT_MASTER));
         HiddenApiBypass.addHiddenApiExemptions("")
-        startKoin {
-            androidContext(this@ClassicPowerMenu)
-            modules(singletonsModule, serviceModule, walletModule, monetModule, viewModelModule)
-        }
         setupMonet()
     }
 

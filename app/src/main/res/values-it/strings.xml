@@ -36,7 +36,7 @@
     <string name="reboot_safemode_confirm">Vuoi riavviare in modalità provvisoria?
          Disabiliterà tutte le app di terze parti che hai installato.
 	 Verranno ripristinate al riavvio.</string>
-    <string name="wallet_code_open_in_pay">Apri in Google Pay</string>
+    <string name="wallet_code_open_in_pay">Apri in Google Wallet</string>
     <string name="settings_main_switch">Abilita Classic Power Menu</string>
     <string name="settings_header_configuration">Configurazione</string>
     <string name="settings_power_options">Opzioni avvio</string>
@@ -70,20 +70,20 @@
     <string name="settings_quick_access_wallet_switch">Mostra Quick Access Wallet</string>
     <string name="settings_quick_access_wallet_header_payment">Carte di pagamento</string>
     <string name="settings_quick_access_wallet_loyalty_cards">Carte Fedeltà</string>
-    <string name="settings_quick_access_wallet_change_settings_in_pay">Modifica le impostazioni in Google Pay</string>
+    <string name="settings_quick_access_wallet_change_settings_in_pay">Modifica le impostazioni in Google Wallet</string>
     <string name="settings_quick_access_wallet_change_settings_in_pay_desc">Modifica impostazioni come l\'ordine della carta di pagamento, la carta predefinita ed il comportamento</string>
-    <string name="settings_quick_access_wallet_access_while_locked_desc">Mostra l\'anteprima della Carta fedeltà con dispositivo bloccato. Se disabilitato, ti verrà chiesto di sbloccare prima di aprire l\'anteprima o Google Pay</string>
+    <string name="settings_quick_access_wallet_access_while_locked_desc">Mostra l\'anteprima della Carta fedeltà con dispositivo bloccato. Se disabilitato, ti verrà chiesto di sbloccare prima di aprire l\'anteprima o Google Wallet</string>
     <string name="settings_quick_access_wallet_hide_card_number_when_locked">Sfoca il numero della carta di pagamento quando bloccato</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards">Visualizza Carte Fedeltà</string>
-    <string name="settings_quick_access_wallet_show_loyalty_cards_desc">Carica e mostra le tue carte fedeltà da Google Pay nel Quick Access Wallet</string>
+    <string name="settings_quick_access_wallet_show_loyalty_cards_desc">Carica e mostra le tue carte fedeltà da Google Wallet nel Quick Access Wallet</string>
     <string name="settings_quick_access_wallet_rearrange">Riorganizza &amp; Nascondi Carte Fedeltà</string>
     <string name="settings_quick_access_wallet_rearrange_desc">Riordina e mostra/nascondi le carte fedeltà nel Quick Access Wallet</string>
     <string name="settings_quick_access_wallet_show_preview">Mostra Anteprima Carta Fedeltà</string>
-    <string name="settings_quick_access_wallet_show_preview_desc">Mostra un\'anteprima della Carta fedeltà da scansionare o visualizza in negozio senza aprire Google Pay</string>
+    <string name="settings_quick_access_wallet_show_preview_desc">Mostra un\'anteprima della Carta fedeltà da scansionare o visualizza in negozio senza aprire Google Wallet</string>
     <string name="settings_quick_access_wallet_access_while_locked">Consenti l\'accesso alla Carta fedeltà con dispositivo bloccato</string>
     <string name="settings_quick_access_wallet_hide_card_number_when_locked_desc">Applica una sfocatura alla carta di pagamento quando il Quick Access Wallet è aperto e il dispositivo è bloccato. <b>Nota: potrebbe non funzionare per tutte le carte o i fornitori.</b></string>
     <string name="settings_quick_access_wallet_loyalty_cards_not_supported">Carte Fedeltà non supportate</string>
-    <string name="settings_quick_access_wallet_loyalty_cards_not_supported_desc">Sfortunatamente, le carte fedeltà sono attualmente supportate solo nell\'app Google Pay originale, non nell\'app GPay unificata. Installa e configura Google Pay per utilizzare le carte fedeltà nel Quick Access Wallet.</string>
+    <string name="settings_quick_access_wallet_loyalty_cards_not_supported_desc">Sfortunatamente, le carte fedeltà sono attualmente supportate solo nell\'app Google Wallet originale, non nell\'app GPay unificata. Installa e configura Google Wallet per utilizzare le carte fedeltà nel Quick Access Wallet.</string>
     <string name="settings_device_controls_switch">Mostra Controlli Smart</string>
     <string name="settings_device_controls_access_while_locked">Consenti mentre bloccato</string>
     <string name="settings_device_controls_access_while_locked_desc">Consenti l\'interazione con i controlli smart con dispositivo bloccato. Ciò <b>non</b> consente di aggiungere o modificare i controlli con dispositivo bloccato</string>

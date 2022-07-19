@@ -35,7 +35,7 @@ abstract class SetupRootCheckViewModel: ViewModel() {
 class SetupRootCheckViewModelImpl(private val navigation: ContainerNavigation): SetupRootCheckViewModel(){
 
     private val _state = flow<State> {
-        val isRooted = Shell.rootAccess()
+        val isRooted = Shell.cmd("whoami").exec().out.firstOrNull() == "root"
         if(isRooted){
             emit(State.Result(RootResult.ROOTED))
         }else{

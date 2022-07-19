@@ -36,7 +36,7 @@
     <string name="reboot_safemode_confirm">是否重启至安全模式？
          这将会禁用所有你安装的第三方应用。
          再次重启即可恢复。</string>
-    <string name="wallet_code_open_in_pay">在 Google Pay 打开</string>
+    <string name="wallet_code_open_in_pay">在 Google Wallet 打开</string>
     <string name="settings_main_switch">开启高级电源菜单</string>
     <string name="settings_header_configuration">配置</string>
     <string name="settings_power_options">电源菜单选项</string>
@@ -69,20 +69,20 @@
     <string name="settings_quick_access_wallet_switch">显示快捷支付</string>
     <string name="settings_quick_access_wallet_header_payment">支付卡</string>
     <string name="settings_quick_access_wallet_loyalty_cards">积分卡</string>
-    <string name="settings_quick_access_wallet_change_settings_in_pay">修改 Google Pay 设置</string>
+    <string name="settings_quick_access_wallet_change_settings_in_pay">修改 Google Wallet 设置</string>
     <string name="settings_quick_access_wallet_change_settings_in_pay_desc">更改支付卡订单、默认卡和行为等设置</string>
     <string name="settings_quick_access_wallet_access_while_locked_desc">锁定时显示积分卡预览。 禁用本功能后，您需要先解锁才能正常使用</string>
     <string name="settings_quick_access_wallet_hide_card_number_when_locked">锁定时模糊支付卡卡号</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards">显示积分卡</string>
-    <string name="settings_quick_access_wallet_show_loyalty_cards_desc">在快捷支付中显示您的 Google Pay 积分卡</string>
+    <string name="settings_quick_access_wallet_show_loyalty_cards_desc">在快捷支付中显示您的 Google Wallet 积分卡</string>
     <string name="settings_quick_access_wallet_rearrange">重新排序 &amp; 显示积分卡</string>
     <string name="settings_quick_access_wallet_rearrange_desc">在快捷支付中 重新排列 &amp; 显示/隐藏积分卡</string>
     <string name="settings_quick_access_wallet_show_preview">显示积分卡预览</string>
-    <string name="settings_quick_access_wallet_show_preview_desc">在不打开 Google Pay 的情况下显示要在商店中扫描或查看的积分卡的预览</string>
+    <string name="settings_quick_access_wallet_show_preview_desc">在不打开 Google Wallet 的情况下显示要在商店中扫描或查看的积分卡的预览</string>
     <string name="settings_quick_access_wallet_access_while_locked">允许在锁定状态下访问积分卡</string>
     <string name="settings_quick_access_wallet_hide_card_number_when_locked_desc">锁定状态下打开快捷支付功能时在卡号上添加模糊. <b>注意：本功能可能无法对所有钱包卡片生效。</b></string>
     <string name="settings_quick_access_wallet_loyalty_cards_not_supported">不支持该积分卡</string>
-    <string name="settings_quick_access_wallet_loyalty_cards_not_supported_desc">遗憾的是，积分卡目前仅支持原始 Google Pay 应用程序，而不是统一的 GPay 应用程序。安装并设置 Google Pay 以在快捷中使用积分卡。</string>
+    <string name="settings_quick_access_wallet_loyalty_cards_not_supported_desc">遗憾的是，积分卡目前仅支持原始 Google Wallet 应用程序，而不是统一的 GPay 应用程序。安装并设置 Google Wallet 以在快捷中使用积分卡。</string>
     <string name="settings_device_controls_switch">显示设备控制</string>
     <string name="settings_device_controls_access_while_locked">允许在锁定时使用</string>
     <string name="settings_device_controls_access_while_locked_desc">允许在锁定状态下使用电源菜单控件，但<b>不</b>能添加或编辑控件</string>

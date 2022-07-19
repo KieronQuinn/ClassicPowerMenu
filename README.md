@@ -6,14 +6,16 @@ Classic Power Menu is a Power Menu Replacement for Android 11+, with the main ai
 
 **[Please read the FAQ before downloading or creating an issue](https://github.com/KieronQuinn/ClassicPowerMenu/blob/main/app/src/main/assets/faq.md)**
 
+[![Crowdin](https://badges.crowdin.net/classicpowermenu/localized.svg)](https://crowdin.com/project/classicpowermenu)
+
 ## Features
 
-- Up to 7 power options in the Power Menu, including the non-stock options of Screenshot, Reboot Recovery and Reboot Bootloader
+- Up to 10 power options in the Power Menu, including the non-stock options of Screenshot, Reboot Recovery and Reboot Bootloader
     - Fully customisable, including rearranging and hiding buttons you don't use
 
 - Quick Access Wallet in the Power Menu, accessible while locked or unlocked
     - Optional blurring of card numbers while locked
-    - Optional showing of loyalty cards, restoring a previous feature from Android 10 which was removed. Loyalty cards' codes can be shown while locked and without needing to open Google Pay, if you wish.
+    - Optional showing of loyalty cards, restoring a previous feature from Android 10 which was removed. Loyalty cards' codes can be shown while locked and without needing to open Google Wallet, if you wish.
     
 - Device Controls in the Power Menu, accessible while locked or unlocked
     - Optional ability to interact with controls while locked, without requiring authentication

@@ -16,7 +16,7 @@ syntax = "proto3";
 
 package google.type;
 
-import "wrappers.proto";
+import "google/protobuf/wrappers.proto";
 
 option cc_enable_arenas = true;
 option go_package = "google.golang.org/genproto/googleapis/type/color;color";

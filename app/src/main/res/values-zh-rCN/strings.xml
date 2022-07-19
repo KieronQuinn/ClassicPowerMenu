@@ -1,16 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-
     <string name="app_name">高级电源菜单</string>
     <string name="strapline">替换电源菜单</string>
-
     <string name="accessibility_service_description">用于拦截系统电源菜单的无障碍服务，承诺仅用于显示高级电源菜单，不会用于其他用途。</string>
     <string name="xposed_description">拦截系统电源菜单并显示经典电源菜单，无需无障碍功能。</string>
-
     <string name="root_check_checking_root">正在申请 Root …</string>
     <string name="root_check_checking_root_desc">请在授权窗口点击授予</string>
     <string name="root_check_failed_bottom_sheet_title">无 Root</string>
     <string name="root_check_failed_bottom_sheet_content">高级电源菜单需要 Root 权限，请先 Root 你的设备或授予 Root权限</string>
-
+    <string name="root_check_failed_bottom_sheet_close">关闭</string>
     <string name="setup_landing_get_started">开始</string>
     <string name="setup_accessibility_title">启用无障碍服务</string>
     <string name="setup_accessibility_content">高级电源菜单需要通过无障碍服务拦截长按电源键动作，请启用它后继续。或者，如果您有 Xposed，您可以启用 Xposed 模块并重新启动。 如果你已经使用 Xposed 模块并任然看到这条消息， <a href="cpm://accessibiilityskip">点击这里来跳过。</a></string>
@@ -24,24 +22,21 @@
     <string name="setup_complete_title">完成设置</string>
     <string name="setup_complete_content">最后，第一次启动高级电源菜单时，系统的电源菜单可能会先显示，<b>这是由于系统的限制</b>，重新打开即可解决该问题\n\n欢迎使用本应用！</string>
     <string name="setup_complete_button">完成</string>
-
     <string name="power_menu_button_power_off">关机</string>
     <string name="power_menu_button_reboot">重启</string>
     <string name="power_menu_button_reboot_recovery">重启至 Recovery</string>
     <string name="power_menu_button_reboot_bootloader">重启至 Bootloader</string>
+    <string name="power_menu_button_restart_systemui">Restart SystemUI</string>
     <string name="power_menu_button_emergency">急救信息</string>
     <string name="power_menu_button_lockdown">锁定</string>
     <string name="power_menu_button_screenshot">截屏</string>
-
     <string name="wallet_loyalty_instructions">• 点击开始显示 </string>
     <string name="content_creator_mode_warning">内容创作者模式已开启</string>
-
     <string name="reboot_safemode_title">重启至安全模式</string>
     <string name="reboot_safemode_confirm">是否重启至安全模式？
          这将会禁用所有你安装的第三方应用。
          再次重启即可恢复。</string>
     <string name="wallet_code_open_in_pay">在 Google Pay 打开</string>
-
     <string name="settings_main_switch">开启高级电源菜单</string>
     <string name="settings_header_configuration">配置</string>
     <string name="settings_power_options">电源菜单选项</string>
@@ -56,6 +51,8 @@
     <string name="settings_monet_desc">在电源菜单中使用 Material You / 自适应 颜色</string>
     <string name="settings_monet_color_picker">壁纸颜色</string>
     <string name="settings_monet_color_picker_desc">从你的壁纸中提取想要的颜色</string>
+    <string name="settings_solid_color">Use Solid Color</string>
+    <string name="settings_solid_color_desc">Use a solid Material You background rather than a dimmed-blur background</string>
     <string name="settings_power_options_rearrange">编辑电源菜单</string>
     <string name="settings_power_options_rearrange_desc">添加，删除或重新排序电源菜单控件</string>
     <string name="settings_power_options_hide_when_locked">设备锁定时隐藏电源相关选项</string>
@@ -65,6 +62,10 @@
     <string name="settings_power_options_drag_to_rearrange">长按并拖到来添加、删除和重新排序</string>
     <string name="settings_power_options_cannot_remove">您必须选择至少一个控件</string>
     <string name="settings_power_options_rearrange_no_items">无按钮</string>
+    <string name="settings_power_options_allow_rotate">允许旋转屏幕</string>
+    <string name="settings_power_options_allow_rotate_desc">允许横向或纵向旋转电源菜单</string>
+    <string name="settings_power_options_allow_rotate_full">顺滑旋转</string>
+    <string name="settings_power_options_allow_rotate_full_desc">旋转将一步到位，无需按方向依次转动</string>
     <string name="settings_quick_access_wallet_switch">显示快捷支付</string>
     <string name="settings_quick_access_wallet_header_payment">支付卡</string>
     <string name="settings_quick_access_wallet_loyalty_cards">积分卡</string>
@@ -95,18 +96,16 @@
     <string name="settings_accessibility_warning_desc">高级电源菜单需要通过无障碍服务拦截长按电源键的动作。 点此开启无障碍服务</string>
     <string name="settings_about_header">关于</string>
     <string name="settings_about_faq">常见问题</string>
+    <string name="settings_about_faq_file">faq_cn.md</string>
     <string name="settings_about">高级电源菜单 v%1s</string>
     <string name="settings_about_desc">开发： Kieron Quinn / Quinny899 @ XDA\n部分图片由 Rohith R Krishnan 和 Austin Andrews提供\n%1s</string>
     <string name="settings_about_translators">汉化：wushidi 和 ketal\n日本人: C0unt-zero\n意大利语: Vladi69</string>
-
     <string name="chip_donate">捐赠</string>
     <string name="chip_twitter">关注我的 Twitter</string>
     <string name="chip_github">GitHub</string>
     <string name="chip_xda">XDA 帖子</string>
-
     <string name="menu_open_source_libraries">开源许可证</string>
     <string name="menu_rerun_setup">重新执行引导</string>
-
     <string name="bottom_sheet_update_available_title">有更新可用</string>
     <string name="bottom_sheet_update_available_positive">下载</string>
     <string name="bottom_sheet_update_available_negative">关闭</string>
@@ -117,11 +116,5 @@
     <string name="update_notification_channel_description">检查更新通知</string>
     <string name="update_notification_title">高级电源菜单可更新</string>
     <string name="update_notification_content">高级电源菜单有可用更新 (%1s to %1s)</string>
-    <string name="root_check_failed_bottom_sheet_close">关闭</string>
-    <string name="settings_about_faq_file">faq_cn.md</string>
-    <string name="settings_power_options_allow_rotate">允许旋转屏幕</string>
-    <string name="settings_power_options_allow_rotate_desc">允许横向或纵向旋转电源菜单</string>
-    <string name="settings_power_options_allow_rotate_full">顺滑旋转</string>
-    <string name="settings_power_options_allow_rotate_full_desc">旋转将一步到位，无需按方向依次转动</string>
-
+    <string name="shortcut_show_power_menu">Power Menu</string>
 </resources>

@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Device Controls strings -->
     <!-- Device Controls empty state, title [CHAR LIMIT=30] -->
     <string name="quick_controls_title">Controlli Smart</string>
     <!-- Device Controls empty state, subtitle [CHAR LIMIT=100] -->
     <string name="quick_controls_subtitle">Aggiungi controlli smart dei dispositivi connessi</string>
-
     <!-- Device Controls setup, title [CHAR LIMIT=50] -->
     <string name="quick_controls_setup_title">Configura i controlli smart</string>
     <!-- Device Controls setup, subtitle [CHAR LIMIT=100] -->
     <string name="quick_controls_setup_subtitle">Aggiungi controlli smart dei dispositivi connessi</string>
-
     <!-- Controls management providers screen title [CHAR LIMIT=60]-->
     <string name="controls_providers_title">Scegli app per aggiungere i controlli</string>
     <!-- Number of favorites for controls management screen [CHAR LIMIT=NONE]-->
@@ -18,10 +16,8 @@
         <item quantity="one">%s controllo aggiunto.</item>
         <item quantity="other">%s controlli aggiunti.</item>
     </plurals>
-
     <!-- Removed control in management screen [CHAR LIMIT=20] -->
     <string name="controls_removed">Rimosso</string>
-
     <!-- a11y state description for a control that is currently favorited [CHAR LIMIT=NONE] -->
     <string name="accessibility_control_favorite">Preferiti</string>
     <!-- a11y state description for a control that is currently favorited with its position [CHAR LIMIT=NONE] -->
@@ -34,30 +30,24 @@
     <string name="accessibility_control_change_unfavorite">non preferito</string>
     <!-- a11y action to move a control to the position specified by the parameter [CHAR LIMIT=NONE] -->
     <string name="accessibility_control_move">Sposta nella posizione %d</string>
-
     <!-- Controls management controls screen default title [CHAR LIMIT=30] -->
     <string name="controls_favorite_default_title">Controlli</string>
     <!-- Controls management controls screen subtitle [CHAR LIMIT=NONE] -->
     <string name="controls_favorite_subtitle">Scegli i controlli a cui accedere dal menù di avvio</string>
     <!-- Controls management editing screen, user direction for rearranging controls [CHAR LIMIT=NONE] -->
     <string name="controls_favorite_rearrange">Premi &amp; trascina per riorganizzare i controlli</string>
-
     <!-- Controls management editing screen, text to indicate that all the favorites have been removed [CHAR LIMIT=NONE] -->
     <string name="controls_favorite_removed">Tutti i controlli rimossi</string>
-
     <!-- Controls management favorites screen, See other apps with changes made [CHAR LIMIT=NONE] -->
     <string name="controls_favorite_toast_no_changes">Modifiche non salvate</string>
-
     <!-- Controls management favorites screen. See other apps button [CHAR LIMIT=30] -->
     <string name="controls_favorite_see_other_apps">Vedi altre app</string>
-
     <!-- Controls management controls screen error on load message [CHAR LIMIT=NONE] -->
     <string name="controls_favorite_load_error">Impossibile caricare i controlli. Controlla l\'app %s ed assicurati che le impostazioni dell\'app non siano cambiate.</string>
     <!-- Controls management controls screen no controls found on load message [CHAR LIMIT=NONE] -->
     <string name="controls_favorite_load_none">Controlli compatibili non disponibili</string>
     <!-- Controls management controls screen header for Other zone [CHAR LIMIT=60] -->
     <string name="controls_favorite_other_zone_header">Altro</string>
-
     <!-- Controls dialog title [CHAR LIMIT=40] -->
     <string name="controls_dialog_title">Aggiungi ai controlli del dispositivo</string>
     <!-- Controls dialog add to favorites [CHAR LIMIT=40] -->
@@ -66,7 +56,6 @@
     <string name="controls_dialog_message">Suggerito da %s</string>
     <!-- Controls dialog confirmation [CHAR LIMIT=30] -->
     <string name="controls_dialog_confirmation">Controlli aggiornati</string>
-
     <!-- Controls PIN entry dialog, switch to alphanumeric keyboard [CHAR LIMIT=100] -->
     <string name="controls_pin_use_alphanumeric">PIN contiene lettere o simboli</string>
     <!-- Controls PIN entry dialog, title [CHAR LIMIT=30] -->
@@ -83,14 +72,11 @@
     <string name="controls_confirmation_confirming">Conferma…</string>
     <!-- Controls confirmation dialog, user prompt [CHAR LIMIT=NONE] -->
     <string name="controls_confirmation_message">Conferma la modifica per %s</string>
-
     <!-- Tooltip to show in management screen when there are multiple structures [CHAR_LIMIT=50] -->
     <string name="controls_structure_tooltip">Scorri per vedere di più</string>
-
     <!-- Message to tell the user to wait while systemui attempts to load a set of
          recommended controls [CHAR_LIMIT=60] -->
     <string name="controls_seeding_in_progress">Caricamento suggerimenti</string>
-
     <!-- Title for media controls [CHAR_LIMIT=50] -->
     <string name="controls_media_title">Media</string>
     <!-- Explanation for closing controls associated with a specific media session [CHAR_LIMIT=NONE] -->
@@ -103,7 +89,6 @@
     <string name="controls_media_resume">Riprendi</string>
     <!-- Label for button to go to media control settings screen [CHAR_LIMIT=30] -->
     <string name="controls_media_settings_button">Impostazioni</string>
-
     <!-- Error message indicating that a control timed out while waiting for an update [CHAR_LIMIT=30] -->
     <string name="controls_error_timeout">Inattivo, controlla l\'app</string>
     <!-- Error message indicating that an unspecified error occurred while getting the status, and
@@ -125,14 +110,12 @@
     <string name="controls_in_progress">In corso</string>
     <!-- Tooltip informing user where the recently added controls are [CHAR_LIMIT=100] -->
     <string name="controls_added_tooltip">Tieni premuto il pulsante di accensione per vedere i nuovi controlli</string>
-
     <!-- Controls menu, add [CHAR_LIMIT=30] -->
     <string name="controls_menu_add">Aggiungi controlli</string>
     <!-- Controls menu, edit [CHAR_LIMIT=30] -->
     <string name="controls_menu_edit">Modifica controlli</string>
     <string name="save">Salva</string>
     <string name="loading">Caricamento in corso…</string>
-
     <!-- accessibility label for paging indicator in quick settings [CHAR LIMITi=NONE] -->
     <string name="accessibility_quick_settings_page">Pagina %1$d di %2$d</string>
     <string name="accessibility_menu">Menù</string>

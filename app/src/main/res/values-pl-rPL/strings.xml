@@ -36,7 +36,7 @@
     <string name="reboot_safemode_confirm">Do you want to reboot into safe mode?
          This will disable all third party applications you have installed.
          They will be restored when you reboot again.</string>
-    <string name="wallet_code_open_in_pay">Open in Google Pay</string>
+    <string name="wallet_code_open_in_pay">Open in Google Wallet</string>
     <string name="settings_main_switch">Enable Classic Power Menu</string>
     <string name="settings_header_configuration">Configuration</string>
     <string name="settings_power_options">Power Options</string>
@@ -69,20 +69,20 @@
     <string name="settings_quick_access_wallet_switch">Show Quick Access Wallet</string>
     <string name="settings_quick_access_wallet_header_payment">Payment Cards</string>
     <string name="settings_quick_access_wallet_loyalty_cards">Loyalty Cards</string>
-    <string name="settings_quick_access_wallet_change_settings_in_pay">Change settings in Google Pay</string>
+    <string name="settings_quick_access_wallet_change_settings_in_pay">Change settings in Google Wallet</string>
     <string name="settings_quick_access_wallet_change_settings_in_pay_desc">Change settings such as Payment Card order, default card and behaviour</string>
-    <string name="settings_quick_access_wallet_access_while_locked_desc">Show the Loyalty Card preview while locked. If disabled, you will be prompted to unlock first before the preview or Google Pay opens</string>
+    <string name="settings_quick_access_wallet_access_while_locked_desc">Show the Loyalty Card preview while locked. If disabled, you will be prompted to unlock first before the preview or Google Wallet opens</string>
     <string name="settings_quick_access_wallet_hide_card_number_when_locked">Blur Payment Card Number when locked</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards">Show Loyalty Cards</string>
-    <string name="settings_quick_access_wallet_show_loyalty_cards_desc">Load and show your Loyalty Cards from Google Pay in the Quick Access Wallet</string>
+    <string name="settings_quick_access_wallet_show_loyalty_cards_desc">Load and show your Loyalty Cards from Google Wallet in the Quick Access Wallet</string>
     <string name="settings_quick_access_wallet_rearrange">Rearrange &amp; Hide Loyalty Cards</string>
     <string name="settings_quick_access_wallet_rearrange_desc">Re-order and show/hide loyalty cards in the Quick Access Wallet</string>
     <string name="settings_quick_access_wallet_show_preview">Show Loyalty Card Preview</string>
-    <string name="settings_quick_access_wallet_show_preview_desc">Show a preview of the Loyalty Card to be scanned or viewed in store without opening Google Pay</string>
+    <string name="settings_quick_access_wallet_show_preview_desc">Show a preview of the Loyalty Card to be scanned or viewed in store without opening Google Wallet</string>
     <string name="settings_quick_access_wallet_access_while_locked">Allow Loyalty Card access while locked</string>
     <string name="settings_quick_access_wallet_hide_card_number_when_locked_desc">Applies a blur to your Payment Card when the Quick Access Wallet is open and the device is locked. <b>Note: This may not work for all cards or Wallet providers.</b></string>
     <string name="settings_quick_access_wallet_loyalty_cards_not_supported">Loyalty Cards not Supported</string>
-    <string name="settings_quick_access_wallet_loyalty_cards_not_supported_desc">Unfortunately, Loyalty Cards are currently only supported on the original Google Pay app, not the unified \"GPay\" app. Install and set up Google Pay to use Loyalty Cards in the Quick Access Wallet.</string>
+    <string name="settings_quick_access_wallet_loyalty_cards_not_supported_desc">Unfortunately, Loyalty Cards are currently only supported on the original Google Wallet app, not the unified \"GPay\" app. Install and set up Google Wallet to use Loyalty Cards in the Quick Access Wallet.</string>
     <string name="settings_device_controls_switch">Show Device Controls</string>
     <string name="settings_device_controls_access_while_locked">Allow while locked</string>
     <string name="settings_device_controls_access_while_locked_desc">Allow interaction with Device Controls while locked. This does <b>not</b> allow adding or editing controls while locked</string>

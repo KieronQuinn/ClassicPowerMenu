@@ -33,6 +33,8 @@ abstract class PowerMenuViewModel: ViewModel() {
     abstract fun onRebootRecoveryClicked()
     abstract fun onRebootBootloaderClicked()
     abstract fun onRestartSystemUIClicked()
+    abstract fun onRebootFastbootdClicked()
+    abstract fun onRebootDownloadClicked()
 
     abstract fun onEmergencyClicked(context: Context)
     abstract fun onLockdownClicked()
@@ -114,6 +116,24 @@ class PowerMenuViewModelImpl(context: Context, private val service: CPMServiceCo
         viewModelScope.launch {
             service.runWithService {
                 it.rebootWithReason("bootloader")
+            }
+            navigation.closePowerMenu()
+        }
+    }
+
+    override fun onRebootFastbootdClicked() {
+        viewModelScope.launch {
+            service.runWithService {
+                it.rebootWithReason("fastboot")
+            }
+            navigation.closePowerMenu()
+        }
+    }
+
+    override fun onRebootDownloadClicked() {
+        viewModelScope.launch {
+            service.runWithService {
+                it.rebootWithReason("download")
             }
             navigation.closePowerMenu()
         }
@@ -264,6 +284,20 @@ class PowerMenuViewModelImpl(context: Context, private val service: CPMServiceCo
             R.drawable.ic_restart_systemui,
             context.getString(R.string.power_menu_button_restart_systemui),
             ::onRestartSystemUIClicked,
+            shouldShow = ::shouldShowPowerOption
+        )
+        PowerMenuButtonId.REBOOT_FASTBOOTD -> PowerMenuButton.Button(
+            PowerMenuButtonId.REBOOT_FASTBOOTD,
+            R.drawable.ic_reboot_fastbootd,
+            context.getString(R.string.power_menu_button_fastbootd),
+            ::onRebootFastbootdClicked,
+            shouldShow = ::shouldShowPowerOption
+        )
+        PowerMenuButtonId.REBOOT_DOWNLOAD -> PowerMenuButton.Button(
+            PowerMenuButtonId.REBOOT_DOWNLOAD,
+            R.drawable.ic_reboot_download,
+            context.getString(R.string.power_menu_button_download),
+            ::onRebootDownloadClicked,
             shouldShow = ::shouldShowPowerOption
         )
     }

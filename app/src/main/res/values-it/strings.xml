@@ -1,135 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
-
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="app_name">Classic Power Menu</string>
     <string name="strapline">Menù di avvio alternativo</string>
-	
     <string name="accessibility_service_description">Per intercettare la pressione prolungata del tasto di accensione è necessario il servizio di accessibilità. Sono richieste le autorizzazioni minime necessarie senza tracciare lo schermo se non per avviare Classic Power Menu.</string>
     <string name="xposed_description">Intercetta il tasto Power per avviare Classic Power Menu senza accedere al servizio di accessibilità.</string>
-
     <string name="root_check_checking_root">Verifica Root…</string>
     <string name="root_check_checking_root_desc">Concedi i permessi se richiesto</string>
-    <string name="root_check_failed_bottom_sheet_close">Chiudi</string>
-    <string name="root_check_failed_bottom_sheet_content">Classic Power Menu richiede l\'accesso root, concedi i diritti root per continuare</string>
     <string name="root_check_failed_bottom_sheet_title">Diritti root non concessi</string>
-
+    <string name="root_check_failed_bottom_sheet_content">Classic Power Menu richiede l\'accesso root, concedi i diritti root per continuare</string>
+    <string name="root_check_failed_bottom_sheet_close">Chiudi</string>
+    <string name="setup_landing_get_started">Inizia</string>
     <string name="setup_accessibility_title">Abilita servizio accessibilità</string>
     <string name="setup_accessibility_content">Classic Power Menu richiede il servizio di accessibilità per intercettare gli eventi del pulsante Power, abilitalo per continuare. In alternativa, se hai Xposed, puoi abilitare il modulo Xposed e riavviare. Se stai usando il modulo Xposed e vedi ancora questo messaggio, <a href="cpm://accessibiilityskip">tocca qui per saltare.</a></string>
     <string name="setup_accessibility_button">Abilita servizio accessibilità</string>
-    <string name="setup_complete_button">Fine</string>
-    <string name="setup_complete_content">Un\'ultima cosa: la prima volta che tenti di avviare Classic Power Menu dopo la configurazione o un riavvio, potrebbe apparire prima di Classic Power Menu il normale menù di avvio, oppure Classic Power Menu potrebbe non avviarsi affatto. <b>È normale.</b> Chiudi semplicemente il menù di avvio normale e premi di nuovo a lungo il pulsante di accensione e questa volta Classic Power Menu si avvierà normalmente. Ciò è dovuto alle limitazioni del sistema Android.\n\nGoditi l\'app!</string>
-    <string name="setup_complete_title">Configurazione completata</string>
-    <string name="setup_controls_button">Prossimo</string>
-    <string name="setup_controls_content">"I Controlli Smart ti consentono di controllare i dispositivi Smart Home tramite app compatibili, direttamente dal menù di accensione.\n\nSono necessarie app aggiuntive per supportare questa funzione, come Google Home."</string>
-    <string name="setup_controls_switch">Abilita Controlli Smart</string>
-    <string name="setup_landing_get_started">Inizia</string>
-    <string name="setup_wallet_button">Prossimo</string>
-    <string name="setup_wallet_content">"Quick Access Wallet ti dà accesso alle tue carte e ai tuoi pass, dalla tua app di pagamento predefinita. Puoi passare da una carta di pagamento abilitata NFC o accedere a pass compatibili, direttamente dal menù di accensione.\n\nInoltre, Classic Power Menu supporta le carte fedeltà, abilitalo più avanti nelle impostazioni."</string>
     <string name="setup_wallet_switch">Abilita Quick Access Wallet</string>
-
-    <string name="power_menu_button_emergency">Emergenza</string>
-    <string name="power_menu_button_lockdown">Blocca</string>
+    <string name="setup_wallet_content">Quick Access Wallet ti dà accesso alle tue carte e ai tuoi pass, dalla tua app di pagamento predefinita. Puoi passare da una carta di pagamento abilitata NFC o accedere a pass compatibili, direttamente dal menù di accensione.\n\nInoltre, Classic Power Menu supporta le carte fedeltà, abilitalo più avanti nelle impostazioni.</string>
+    <string name="setup_wallet_button">Prossimo</string>
+    <string name="setup_controls_switch">Abilita Controlli Smart</string>
+    <string name="setup_controls_content">I Controlli Smart ti consentono di controllare i dispositivi Smart Home tramite app compatibili, direttamente dal menù di accensione.\n\nSono necessarie app aggiuntive per supportare questa funzione, come Google Home.</string>
+    <string name="setup_controls_button">Prossimo</string>
+    <string name="setup_complete_title">Configurazione completata</string>
+    <string name="setup_complete_content">Un\'ultima cosa: la prima volta che tenti di avviare Classic Power Menu dopo la configurazione o un riavvio, potrebbe apparire prima di Classic Power Menu il normale menù di avvio, oppure Classic Power Menu potrebbe non avviarsi affatto. <b>È normale.</b> Chiudi semplicemente il menù di avvio normale e premi di nuovo a lungo il pulsante di accensione e questa volta Classic Power Menu si avvierà normalmente. Ciò è dovuto alle limitazioni del sistema Android.\n\nGoditi l\'app!</string>
+    <string name="setup_complete_button">Fine</string>
     <string name="power_menu_button_power_off">Spegni</string>
     <string name="power_menu_button_reboot">Riavvia</string>
-    <string name="power_menu_button_reboot_bootloader">Riavvia Bootloader</string>
     <string name="power_menu_button_reboot_recovery">Riavvia Recovery</string>
+    <string name="power_menu_button_reboot_bootloader">Riavvia Bootloader</string>
     <string name="power_menu_button_restart_systemui">Riavvia SystemUI</string>
+    <string name="power_menu_button_emergency">Emergenza</string>
+    <string name="power_menu_button_lockdown">Blocca</string>
     <string name="power_menu_button_screenshot">Screenshot</string>
-
     <string name="wallet_loyalty_instructions">• Tocca per visualizzare</string>
     <string name="content_creator_mode_warning">Modalità Creatore Contenuti abilitata</string>
-
+    <string name="reboot_safemode_title">Riavvia in modalità provvisoria</string>
     <string name="reboot_safemode_confirm">Vuoi riavviare in modalità provvisoria?
          Disabiliterà tutte le app di terze parti che hai installato.
 	 Verranno ripristinate al riavvio.</string>
-    <string name="reboot_safemode_title">Riavvia in modalità provvisoria</string>
     <string name="wallet_code_open_in_pay">Apri in Google Pay</string>
-
-    <string name="settings" tools:ignore="ExtraTranslation">Impostazioni</string>
-    <string name="settings_about">Classic Power Menu v%1s</string>
-    <string name="settings_about_desc">"Creato da Kieron Quinn / Quinny899 @ XDA
-Immagini aggiuntive di Rohith R Krishnan e Austin Andrews"%1s</string>
-    <string name="settings_about_translators">Traduttrici:\nGiapponese: C0unt-zero\nItaliano: Vladi69\nCinese: wushidi and Ketal</string>
-    <string name="settings_about_faq">Domande frequenti</string>
-    <string name="settings_about_header">Info</string>
-    <string name="settings_accessibility_warning">Servizio di accessibilità non abilitato</string>
-    <string name="settings_accessibility_warning_desc">Classic Power Menu richiede il Servizio di accessibilità per intercettare gli eventi alla pressione prolungata del pulsante di accensione. Tocca per abilitare.</string>
+    <string name="settings_main_switch">Abilita Classic Power Menu</string>
+    <string name="settings_header_configuration">Configurazione</string>
+    <string name="settings_power_options">Opzioni avvio</string>
+    <string name="settings_power_options_desc">Configura e riorganizza i pulsanti di riavvio</string>
+    <string name="settings_quick_access_wallet">Quick Access Wallet</string>
+    <string name="settings_quick_access_wallet_desc">Modifica le impostazioni di visualizzazione del Quick Access Wallet, inclusa la visualizzazione delle carte fedeltà</string>
     <string name="settings_controls">Controlli Smart</string>
     <string name="settings_controls_desc">Modifica le impostazioni per la modalità di visualizzazione dei controlli smart, incluso l\'utilizzo durante il blocco</string>
     <string name="settings_developer_options">Opzioni sviluppatore</string>
-    <string name="settings_developer_options_content_creator_mode">Modalità Creatore di contenuti</string>
-    <string name="settings_developer_options_content_creator_mode_desc">Abilita questa opzione per offuscare sempre i numeri delle tue carte di pagamento e mostrare codici fittizi per le carte fedeltà <b>nell\'anteprima</b> (attivalo separatamente se lo desideri sempre attivo). Ciò è utile per acquisire schermate o video senza accidentalmente esporre le informazioni della tua carta.
-<b>Attenzione: non tentare di utilizzare una Carta Fedeltà con questa modalità abilitata, potrebbe causare errori sui sistemi dei negozi.</b></string>
-    <string name="settings_device_controls_access_while_locked">Consenti mentre bloccato</string>
-    <string name="settings_device_controls_access_while_locked_desc">Consenti l\'interazione con i controlli smart con dispositivo bloccato. Ciò <b>non</b> consente di aggiungere o modificare i controlli con dispositivo bloccato</string>
-    <string name="settings_device_controls_switch">Mostra Controlli Smart</string>
-    <string name="settings_header_configuration">Configurazione</string>
-    <string name="settings_main_switch">Abilita Classic Power Menu</string>
+    <string name="settings_theme_configuration">Tema</string>
     <string name="settings_monet">Colori Material You</string>
+    <string name="settings_monet_desc">Usa i colori Material You / Monet nel menù di avvio</string>
     <string name="settings_monet_color_picker">Colore Sfondo</string>
     <string name="settings_monet_color_picker_desc">Seleziona il colore da utilizzare, estratto dal tuo sfondo</string>
-    <string name="settings_monet_desc">Usa i colori Material You / Monet nel menù di avvio</string>
-    <string name="settings_power_options">Opzioni avvio</string>
-    <string name="settings_power_options_allow_rotate">Consenti rotazione</string>
-    <string name="settings_power_options_allow_rotate_desc">Consente di orientare lo schermo in verticale o in orizzontale</string>
-    <string name="settings_power_options_allow_rotate_full">Consenti rotazione completa</string>
-    <string name="settings_power_options_allow_rotate_full_desc">Consente la rotazione completa, incluso il ritratto inverso (sottosopra)</string>
-    <string name="settings_power_options_cannot_remove">Devi impostare almeno un\'opzione nel menù di avvio</string>
-    <string name="settings_power_options_desc">Configura e riorganizza i pulsanti di riavvio</string>
-    <string name="settings_power_options_drag_to_rearrange">Tocca &amp; tieni premuto per trascinare, aggiungere, rimuovere o riordinare</string>
+    <string name="settings_solid_color">Usa tinta unita</string>
+    <string name="settings_solid_color_desc">Usa uno sfondo Material You anziché uno sfondo sfocato</string>
+    <string name="settings_power_options_rearrange">Modifica menù di riavvio</string>
+    <string name="settings_power_options_rearrange_desc">Aggiungi, rimuovi e riorganizza il menù di riavvio</string>
     <string name="settings_power_options_hide_when_locked">Nascondi le opzioni di riavvio con dispositivo bloccato</string>
     <string name="settings_power_options_hide_when_locked_desc">Nasconde le opzioni di spegnimento, riavvio, riavvio recovery e riavvio bootloader con dispositivo bloccato.
 <b>Importante: non è un deterrente per i furti, un ladro può comunque tenere premuto il Pulsante di alimentazione per 10 secondi o rimuovere la scheda SIM!</b></string>
     <string name="settings_power_options_open_collapsed">Apri compresso</string>
     <string name="settings_power_options_open_collapsed_desc">Quando si avvia Classic Power Menu, il pannello di riavvio viene compresso, se è presente più di una riga di elementi</string>
-    <string name="settings_power_options_rearrange">Modifica menù di riavvio</string>
-    <string name="settings_power_options_rearrange_desc">Aggiungi, rimuovi e riorganizza il menù di riavvio</string>
+    <string name="settings_power_options_drag_to_rearrange">Tocca &amp; tieni premuto per trascinare, aggiungere, rimuovere o riordinare</string>
+    <string name="settings_power_options_cannot_remove">Devi impostare almeno un\'opzione nel menù di avvio</string>
     <string name="settings_power_options_rearrange_no_items">Nessun altro pulsante da aggiungere</string>
-    <string name="settings_quick_access_wallet">Quick Access Wallet</string>
-    <string name="settings_quick_access_wallet_access_while_locked">Consenti l\'accesso alla Carta fedeltà con dispositivo bloccato</string>
-    <string name="settings_quick_access_wallet_access_while_locked_desc">Mostra l\'anteprima della Carta fedeltà con dispositivo bloccato. Se disabilitato, ti verrà chiesto di sbloccare prima di aprire l\'anteprima o Google Pay</string>
+    <string name="settings_power_options_allow_rotate">Consenti rotazione</string>
+    <string name="settings_power_options_allow_rotate_desc">Consente di orientare lo schermo in verticale o in orizzontale</string>
+    <string name="settings_power_options_allow_rotate_full">Consenti rotazione completa</string>
+    <string name="settings_power_options_allow_rotate_full_desc">Consente la rotazione completa, incluso il ritratto inverso (sottosopra)</string>
+    <string name="settings_quick_access_wallet_switch">Mostra Quick Access Wallet</string>
+    <string name="settings_quick_access_wallet_header_payment">Carte di pagamento</string>
+    <string name="settings_quick_access_wallet_loyalty_cards">Carte Fedeltà</string>
     <string name="settings_quick_access_wallet_change_settings_in_pay">Modifica le impostazioni in Google Pay</string>
     <string name="settings_quick_access_wallet_change_settings_in_pay_desc">Modifica impostazioni come l\'ordine della carta di pagamento, la carta predefinita ed il comportamento</string>
-    <string name="settings_quick_access_wallet_desc">Modifica le impostazioni di visualizzazione del Quick Access Wallet, inclusa la visualizzazione delle carte fedeltà</string>
-    <string name="settings_quick_access_wallet_header_payment">Carte di pagamento</string>
+    <string name="settings_quick_access_wallet_access_while_locked_desc">Mostra l\'anteprima della Carta fedeltà con dispositivo bloccato. Se disabilitato, ti verrà chiesto di sbloccare prima di aprire l\'anteprima o Google Pay</string>
     <string name="settings_quick_access_wallet_hide_card_number_when_locked">Sfoca il numero della carta di pagamento quando bloccato</string>
-    <string name="settings_quick_access_wallet_hide_card_number_when_locked_desc">Applica una sfocatura alla carta di pagamento quando il Quick Access Wallet è aperto e il dispositivo è bloccato. <b>Nota: potrebbe non funzionare per tutte le carte o i fornitori.</b></string>
-    <string name="settings_quick_access_wallet_loading">Caricamento delle Carte Fedeltà…</string>
-    <string name="settings_quick_access_wallet_loyalty_cards">Carte Fedeltà</string>
-    <string name="settings_quick_access_wallet_loyalty_cards_not_supported">Carte Fedeltà non supportate</string>
-    <string name="settings_quick_access_wallet_loyalty_cards_not_supported_desc">Sfortunatamente, le carte fedeltà sono attualmente supportate solo nell\'app Google Pay originale, non nell\'app GPay unificata. Installa e configura Google Pay per utilizzare le carte fedeltà nel Quick Access Wallet.</string>
-    <string name="settings_quick_access_wallet_rearrange">Riorganizza &amp; Nascondi Carte Fedeltà</string>
-    <string name="settings_quick_access_wallet_rearrange_desc">Riordina e mostra/nascondi le carte fedeltà nel Quick Access Wallet</string>
-    <string name="settings_quick_access_wallet_rearrange_error_generic">Errore durante il caricamento delle Carte Fedeltà</string>
-    <string name="settings_quick_access_wallet_rearrange_error_no_cards">Nessuna Carta Fedeltà trovata</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards">Visualizza Carte Fedeltà</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards_desc">Carica e mostra le tue carte fedeltà da Google Pay nel Quick Access Wallet</string>
+    <string name="settings_quick_access_wallet_rearrange">Riorganizza &amp; Nascondi Carte Fedeltà</string>
+    <string name="settings_quick_access_wallet_rearrange_desc">Riordina e mostra/nascondi le carte fedeltà nel Quick Access Wallet</string>
     <string name="settings_quick_access_wallet_show_preview">Mostra Anteprima Carta Fedeltà</string>
     <string name="settings_quick_access_wallet_show_preview_desc">Mostra un\'anteprima della Carta fedeltà da scansionare o visualizza in negozio senza aprire Google Pay</string>
-    <string name="settings_quick_access_wallet_switch">Mostra Quick Access Wallet</string>
+    <string name="settings_quick_access_wallet_access_while_locked">Consenti l\'accesso alla Carta fedeltà con dispositivo bloccato</string>
+    <string name="settings_quick_access_wallet_hide_card_number_when_locked_desc">Applica una sfocatura alla carta di pagamento quando il Quick Access Wallet è aperto e il dispositivo è bloccato. <b>Nota: potrebbe non funzionare per tutte le carte o i fornitori.</b></string>
+    <string name="settings_quick_access_wallet_loyalty_cards_not_supported">Carte Fedeltà non supportate</string>
+    <string name="settings_quick_access_wallet_loyalty_cards_not_supported_desc">Sfortunatamente, le carte fedeltà sono attualmente supportate solo nell\'app Google Pay originale, non nell\'app GPay unificata. Installa e configura Google Pay per utilizzare le carte fedeltà nel Quick Access Wallet.</string>
+    <string name="settings_device_controls_switch">Mostra Controlli Smart</string>
+    <string name="settings_device_controls_access_while_locked">Consenti mentre bloccato</string>
+    <string name="settings_device_controls_access_while_locked_desc">Consenti l\'interazione con i controlli smart con dispositivo bloccato. Ciò <b>non</b> consente di aggiungere o modificare i controlli con dispositivo bloccato</string>
     <string name="color_picker_unavailable">Selettore colore sfondo non disponibile per lo sfondo selezionato</string>
-    <string name="settings_solid_color">Usa tinta unita</string>
-    <string name="settings_solid_color_desc">Usa uno sfondo Material You anziché uno sfondo sfocato</string>
-    <string name="settings_theme_configuration">Tema</string>
-
+    <string name="settings_quick_access_wallet_loading">Caricamento delle Carte Fedeltà…</string>
+    <string name="settings_quick_access_wallet_rearrange_error_no_cards">Nessuna Carta Fedeltà trovata</string>
+    <string name="settings_quick_access_wallet_rearrange_error_generic">Errore durante il caricamento delle Carte Fedeltà</string>
+    <string name="settings_developer_options_content_creator_mode">Modalità Creatore di contenuti</string>
+    <string name="settings_developer_options_content_creator_mode_desc">Abilita questa opzione per offuscare sempre i numeri delle tue carte di pagamento e mostrare codici fittizi per le carte fedeltà <b>nell\'anteprima</b> (attivalo separatamente se lo desideri sempre attivo). Ciò è utile per acquisire schermate o video senza accidentalmente esporre le informazioni della tua carta.
+<b>Attenzione: non tentare di utilizzare una Carta Fedeltà con questa modalità abilitata, potrebbe causare errori sui sistemi dei negozi.</b></string>
+    <string name="settings_accessibility_warning">Servizio di accessibilità non abilitato</string>
+    <string name="settings_accessibility_warning_desc">Classic Power Menu richiede il Servizio di accessibilità per intercettare gli eventi alla pressione prolungata del pulsante di accensione. Tocca per abilitare.</string>
+    <string name="settings_about_header">Info</string>
+    <string name="settings_about_faq">Domande frequenti</string>
+    <string name="settings_about_faq_file">faq.md</string>
+    <string name="settings_about">Classic Power Menu v%1s</string>
+    <string name="settings_about_desc">\"Creato da Kieron Quinn / Quinny899 @ XDA
+Immagini aggiuntive di Rohith R Krishnan e Austin Andrews\"%1s</string>
+    <string name="settings_about_translators">Traduttrici:\nGiapponese: C0unt-zero\nItaliano: Vladi69\nCinese: wushidi and Ketal</string>
     <string name="chip_donate">Dona</string>
     <string name="chip_twitter">Twitter</string>
     <string name="chip_github">GitHub</string>
     <string name="chip_xda">XDA</string>
-
     <string name="menu_open_source_libraries">Librerie open source</string>
     <string name="menu_rerun_setup">Configurazione iniziale</string>
-
+    <string name="bottom_sheet_update_available_title">Aggiornamento disponibile</string>
+    <string name="bottom_sheet_update_available_positive">Scarica</string>
     <string name="bottom_sheet_update_available_negative">Chiudi</string>
     <string name="bottom_sheet_update_available_neutral">Vai su GitHub</string>
-    <string name="bottom_sheet_update_available_positive">Scarica</string>
-    <string name="bottom_sheet_update_available_title">Aggiornamento disponibile</string>
     <string name="download_manager_description">Scarico aggiornamento…</string>
     <string name="bs_update_download_failed">Scaricamento fallito</string>
-    <string name="update_notification_channel_description">Mostra notifica quando l\'app controlla la presenza di aggiornamenti una volta al giorno</string>
     <string name="update_notification_channel_title">Notifiche aggiornamento</string>
-    <string name="update_notification_content">È disponibile un aggiornamento per Classic Power Menu (%1s a %1s)</string>
+    <string name="update_notification_channel_description">Mostra notifica quando l\'app controlla la presenza di aggiornamenti una volta al giorno</string>
     <string name="update_notification_title">Aggiornamento di Classic Power Menu disponibile</string>
+    <string name="update_notification_content">È disponibile un aggiornamento per Classic Power Menu (%1s a %1s)</string>
     <string name="shortcut_show_power_menu">Menù di avvio</string>
-
 </resources>

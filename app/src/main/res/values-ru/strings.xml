@@ -1,0 +1,134 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <string name="app_name">Classic Power Menu</string>
+    <string name="strapline">Замена Меню Питания</string>
+
+    <string name="accessibility_service_description">Необходим доступ к Специальным Возможностям, чтобы обрабатывать долгое нажатие кнопки питания. Приложение запрашивает необходимые разрешения и испольует их только для показан Меню Питания.</string>
+    <string name="xposed_description">Заменять текущее Меню Питания, на Классичсеское, без использования Специальных Возможностей.</string>
+
+    <string name="root_check_checking_root">Проверяем наличие root-прав…</string>
+    <string name="root_check_checking_root_desc">Пожалуйста, предоставьте разрешение</string>
+    <string name="root_check_failed_bottom_sheet_title">Нет root-прав</string>
+    <string name="root_check_failed_bottom_sheet_content">Для работы Classic Power Menu необходимы root-права, пожалуйста, получить их, чтобы продолжить</string>
+    <string name="root_check_failed_bottom_sheet_close">Закрыть</string>
+
+    <string name="setup_landing_get_started">Начало работы</string>
+    <string name="setup_accessibility_title">Включить Специальные Возможности</string>
+    <string name="setup_accessibility_content">Приложение необходим доступ к Специальным Возможностям, чтобы обрабатывать нажатия на кнопку выключения, пожалуйста, включите их, чтобы продолжить. Если же у вас есть Xposed, вы можете включить Xposed-модуль и перезагрузить устройство. Если вы уже используете Xposed-модуль и видите это сообщение, то <a href="cpm://accessibiilityskip">нажмите сюда.</a></string>
+    <string name="setup_accessibility_button">Включить Специальные Возможности</string>
+    <string name="setup_wallet_switch">Включить быстрый доступ к Google Кошельку</string>
+    <string name="setup_wallet_content">Быстрый доступ к Google Кошельку дают доступ к вашим картам и проездным, из приложения для оплаты по умолчанию. Вы можете переключаться между NFC картами оплаты и проездным прямо из меню питания.\n\nClassic Power Menu, также поддерживает карты лояльности, включите их позже в настройках.</string>
+    <string name="setup_wallet_button">Далее</string>
+    <string name="setup_controls_switch">Включить Управление Устройствами</string>
+    <string name="setup_controls_content">Управление Устройствами позволяет вам управлять устройствами Умного Дома, с помощью поддерживаемых приложений, прямо из меню питания.\n\nДля использования этой функции, необходимы допольнительные приложения, такие как Google Home</string>
+    <string name="setup_controls_button">Далее</string>
+    <string name="setup_complete_title">Настройка завершена</string>
+    <string name="setup_complete_content">На последок: Во время первого запуска Classic Power Menu, после установки и перезагрузки, стандартное меню питания может появится вместе с Classic Power Menu, или появится без Classic Power Menu.<b>Это нормально.</b> Просто закройте стандартное меню питания и вызовите его снова, в этот раз Classic Power Menu запустится нормально. Это связанно с ограничениями Android.\n\nНаслаждайтесь!</string>
+    <string name="setup_complete_button">Завершить</string>
+
+    <string name="power_menu_button_power_off">Выключить</string>
+    <string name="power_menu_button_reboot">Перезагрузка</string>
+    <string name="power_menu_button_reboot_recovery">Перезагрузка в Recovery</string>
+    <string name="power_menu_button_reboot_bootloader">Перезагрузка в Bootloader</string>
+    <string name="power_menu_button_restart_systemui">Перезагрузка интерфейса системы</string>
+    <string name="power_menu_button_emergency">Экстренная помощь</string>
+    <string name="power_menu_button_lockdown">Заблокировать</string>
+    <string name="power_menu_button_screenshot">Снимок экрана</string>
+    <string name="power_menu_button_fastbootd">Fastbootd</string>
+    <string name="power_menu_button_download">Загрузить</string>
+
+    <string name="wallet_loyalty_instructions">• Нажмите, для показа</string>
+    <string name="content_creator_mode_warning">Активирован режим блогера</string>
+
+    <string name="reboot_safemode_title">Перезагрузка в безопасный режим</string>
+    <string name="reboot_safemode_confirm">Вы действительно хотите перезагрузиться в безопасный режим?
+         Это отключит все сторонние приложения, установленные на устройстве.
+         Они будут восстановлены, когда вы перезарузитесь снова.</string>
+    <string name="wallet_code_open_in_pay">Открыть в Google Кошельке</string>
+
+    <string name="settings_main_switch">Активировать Classic Power Menu</string>
+    <string name="settings_header_configuration">Конфигурация</string>
+    <string name="settings_power_options">Опции Питания</string>
+    <string name="settings_power_options_desc">Настрйка и перемещение кнопок Питания</string>
+    <string name="settings_quick_access_wallet">Быстрый доступ к Google Кошельку</string>
+    <string name="settings_quick_access_wallet_desc">Смена настроек отображения Google Кошелька, включая карты лояльности</string>
+    <string name="settings_controls">Управление Устройствами</string>
+    <string name="settings_controls_desc">Смена настроек отображения Управления Устройствами, включае использование с заблокированным экраном</string>
+    <string name="settings_developer_options">Настройки Разработчика</string>
+    <string name="settings_theme_configuration">Темы</string>
+    <string name="settings_monet">Цвета Material You</string>
+    <string name="settings_monet_desc">Использовать цвета Material You / Monet в меню питания</string>
+    <string name="settings_monet_color_picker">Цвет обоев</string>
+    <string name="settings_monet_color_picker_desc">Выбрать цвета для использования, преобладающий на выших обоях</string>
+    <string name="settings_solid_color">Использовать заливку сплошным цветом</string>
+    <string name="settings_solid_color_desc">Использует фон Material You, заместо затемнённо-размытого</string>
+    <string name="settings_power_options_rearrange">Изменить опции питания</string>
+    <string name="settings_power_options_rearrange_desc">Добавить, убрать или переставить опции питания</string>
+    <string name="settings_power_options_hide_when_locked">Скрывать функции, связанные с питанием, когда телефон заблокирован</string>
+    <string name="settings_power_options_hide_when_locked_desc">Скрывать кнопки Выключения, Перезагрузки, Перезагрузки в Recovery и Перезагрузки в Bootloader с заблокированным экраном.\n<b>Важно: Это не спасёт вас от злоумышленника, вор всё также может удерживать кнопку питания 10 секунд или извлечь SIM-карту!</b></string>
+    <string name="settings_power_options_open_collapsed">Сворачивать при запуске</string>
+    <string name="settings_power_options_open_collapsed_desc">При открытии Classic Power Menu, блок управления питание будет свёрнут, если содержит более одной строчки</string>
+    <string name="settings_power_options_drag_to_rearrange">Нажмите и Удерживайте, переместите, чтобы добавить, убрать или переместить</string>
+    <string name="settings_power_options_cannot_remove">Вы должны иметь хотя бы одну кнопку управления питанием в меню</string>
+    <string name="settings_power_options_rearrange_no_items">Кнопки для добавления отсутсвуют</string>
+    <string name="settings_power_options_allow_rotate">Разрешить поворот</string>
+    <string name="settings_power_options_allow_rotate_desc">Позволяет экрану находится как в портеретном, так и в альбомной ориентации</string>
+    <string name="settings_power_options_allow_rotate_full">Разрешить полный поворот</string>
+    <string name="settings_power_options_allow_rotate_full_desc">Позволяет использовать положение вверх ногами</string>
+
+    <string name="settings_quick_access_wallet_switch">Показывать быстрый доступ к Google Кошельку</string>
+    <string name="settings_quick_access_wallet_header_payment">Карты оплаты</string>
+    <string name="settings_quick_access_wallet_loyalty_cards">Карты лояльности</string>
+    <string name="settings_quick_access_wallet_change_settings_in_pay">Изменить настройки в Google Кошельке</string>
+    <string name="settings_quick_access_wallet_change_settings_in_pay_desc">Меняет настройки, такие как порядок Карт оплаты, карты по умолчания и поведения</string>
+    <string name="settings_quick_access_wallet_access_while_locked_desc">Разрешить предпросмотр Карты лояльности с заблокированным экраном. Если отключено, то для открытия Google Кошелька или предпросмотра потребуется разблокировать экран</string>
+    <string name="settings_quick_access_wallet_hide_card_number_when_locked">Скрывать последние цифры Карты Оплаты при заблокированном экране</string>
+    <string name="settings_quick_access_wallet_show_loyalty_cards">Показывать Карты лояльности</string>
+    <string name="settings_quick_access_wallet_show_loyalty_cards_desc">Загружать ваши Карты лояльности из Google Кошелька и показывать их в Быстром доступе</string>
+    <string name="settings_quick_access_wallet_rearrange">Переместить и Скрыть Карты лояльности</string>
+    <string name="settings_quick_access_wallet_rearrange_desc">Переместить и показать/скрыть карты лояльности в быстром доступе Кошелька</string>
+    <string name="settings_quick_access_wallet_show_preview">Показывать предпросмотр Карт лояльности</string>
+    <string name="settings_quick_access_wallet_show_preview_desc">Использовать предпросмотр Карт лояльности для сканирования или предоставления в магазине без открытия Google Кошелька</string>
+    <string name="settings_quick_access_wallet_access_while_locked">Разрешить доступ к Картам лояльности с заблокированным экраном</string>
+    <string name="settings_quick_access_wallet_hide_card_number_when_locked_desc">Применяет размытие к Картам оплаты в Быстром доступе Google Кошелька, пока экран заблокирован. <b>Замечание: Это может работать не для всех карт и приложений оплаты.</b></string>
+    <string name="settings_quick_access_wallet_loyalty_cards_not_supported">Карты лояльности не поддерживаются</string>
+    <string name="settings_quick_access_wallet_loyalty_cards_not_supported_desc">К сожалению, сейчас Карты Лояльности поддерживаются только в Google Кошельке, не в едином "GPay". Установите и настройке Google Кошелёк, чтобы использовать Карты Лояльности в Быстром Доступе.</string>
+    <string name="settings_device_controls_switch">Показать Управление Устройствами</string>
+    <string name="settings_device_controls_access_while_locked">Разрешить с заблокированным экраном</string>
+    <string name="settings_device_controls_access_while_locked_desc">Позволяет использовать Управление Устрояствами с заблокированным экраном. Эта настройка <b>не</b> позволяет добавлять или редактировать устройства с заблокированным экраном</string>
+    <string name="color_picker_unavailable">Выбор цвета не доступен для текущих обоев</string>
+    <string name="settings_quick_access_wallet_loading">Загрузка Карт Лояльности…</string>
+    <string name="settings_quick_access_wallet_rearrange_error_no_cards">Карты Лояльности не найдены</string>
+    <string name="settings_quick_access_wallet_rearrange_error_generic">Ошибка во время загрузки Карт Лояльности</string>
+    <string name="settings_developer_options_content_creator_mode">Режим Блогера</string>
+    <string name="settings_developer_options_content_creator_mode_desc">Включите, чтобы размыть последние цифры Карты Оплаты и показывать коды-заглушки для Карт Лояльности <b>во время предпросмотра</b>. Используйте, чтобы не раскрывать данные карты на снимках экрана или видео.\n<b>Осторожно: Не пытайтесь использвать Карты Лояльности с этой настройкой, это может привести к сбоям систем магазина.</b></string>
+    <string name="settings_accessibility_warning">Специальные Возможности отключены</string>
+    <string name="settings_accessibility_warning_desc">Classic Power Menu необходим доступ к Специальным Возможностям, чтобы реагировать на удержание кнопки питания. Нажмите, чтобы включить.</string>
+    <string name="settings_about_header">О приложении</string>
+    <string name="settings_about_faq">Часто Задаваемые Вопросы</string>
+    <string name="settings_about_faq_file">faq.md</string>
+    <string name="settings_about">Classic Power Menu v%1s</string>
+    <string name="settings_about_desc">Создал Kieron Quinn / Quinny899 @ XDA\nДополнительные изображения создали Rohith R Krishnan и Austin Andrews\n%1s</string>
+    <string name="settings_about_translators">Локализаторы:\nЯпонский: C0unt-zero\nИтальянский: Vladi69\nКитайский: wushidi и Ketal\nПольский: Chefski\nРусский: ctrl-kitty</string>
+
+    <string name="chip_donate">Поддержка</string>
+    <string name="chip_twitter">Подписаться в Twitter</string>
+    <string name="chip_github">GitHub</string>
+    <string name="chip_xda">XDA Thread</string>
+
+    <string name="menu_open_source_libraries">Библиотеки с открытым исходным кодом</string>
+    <string name="menu_rerun_setup">Запустить настройку заново</string>
+
+    <string name="bottom_sheet_update_available_title">Доступно обновление</string>
+    <string name="bottom_sheet_update_available_positive">Скачать</string>
+    <string name="bottom_sheet_update_available_negative">Закрыть</string>
+    <string name="bottom_sheet_update_available_neutral">Посмотреть на GitHub</string>
+    <string name="download_manager_description">Загрузка обновления…</string>
+    <string name="bs_update_download_failed">Ошибка загрузки</string>
+    <string name="update_notification_channel_title">Уведомления о новой версии</string>
+    <string name="update_notification_channel_description">Уведомления показываются, во время проверки обновления (раз в день)</string>
+    <string name="update_notification_title">Вышла новая версия Classic Power Menu</string>
+    <string name="update_notification_content">Доступно обновление для Classic Power Menu (%1s до %1s)</string>
+    <string name="shortcut_show_power_menu">Power Menu</string>
+
+</resources>

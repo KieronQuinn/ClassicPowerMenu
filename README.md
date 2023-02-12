@@ -33,7 +33,11 @@ Classic Power Menu is a Power Menu Replacement for Android 11+, with the main ai
 
 ## Download
 
-[Download the latest release from the Releases page](https://github.com/KieronQuinn/ClassicPowerMenu/releases)
+[<img src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroid.png"
+     alt="Get it on IzzyOnDroid"
+     height="80">](https://apt.izzysoft.de/fdroid/index/apk/com.kieronquinn.app.classicpowermenu)
+
+[Download the latest APK from the Releases Section](https://github.com/KieronQuinn/ClassicPowerMenu/releases/latest)
 
 ### Content Creators
 

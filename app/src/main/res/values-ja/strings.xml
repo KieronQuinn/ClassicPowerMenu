@@ -72,7 +72,7 @@
     <string name="settings_quick_access_wallet_header_payment">支払いカード</string>
     <string name="settings_quick_access_wallet_loyalty_cards">ポイントカード</string>
     <string name="settings_quick_access_wallet_change_settings_in_pay">Google Walletの設定を変更</string>
-    <string name="settings_quick_access_wallet_change_settings_in_pay_desc">支払いカードの順序、規定の支払いカード、動作などの設定を変更</string>
+    <string name="settings_quick_access_wallet_change_settings_in_pay_desc">支払いカードの順序、既定の支払いカード、動作などの設定を変更</string>
     <string name="settings_quick_access_wallet_access_while_locked_desc">ロック中にポイントカードのプレビューを表示する。無効の場合、プレビューまたはGoogle Walletが開く前に、まずロックを解除するよう促されます</string>
     <string name="settings_quick_access_wallet_hide_card_number_when_locked">ロック中に決済カード番号をぼかす</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards">ポイントカードを表示</string>
@@ -102,7 +102,7 @@
     <string name="settings_about_faq_file">faq_ja.md</string>
     <string name="settings_about">Classic Power Menu v%1s</string>
     <string name="settings_about_desc">制作: Kieron Quinn / Quinny899 @ XDA\nその他の画像: Rohith R Krishnan and Austin Andrews%1s</string>
-    <string name="settings_about_translators">Translators:\nJapanese: C0unt-zero\nItalian: Vladi69\nChinese: wushidi and Ketal\nPolish: Chefski</string>
+    <string name="settings_about_translators">翻訳者:\n日本語: C0unt-zero\nイタリア語: Vladi69\n中国語: wushidi and Ketal\nポーランド語: Chefski</string>
     <string name="chip_donate">寄付する</string>
     <string name="chip_twitter">Twitterでフォローする</string>
     <string name="chip_github">GitHub</string>

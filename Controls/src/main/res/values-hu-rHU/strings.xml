@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Device Controls strings -->
+    <!-- Device Controls empty state, title [CHAR LIMIT=30] -->
+    <string name="quick_controls_title">Eszközvezérlők</string>
+    <!-- Device Controls empty state, subtitle [CHAR LIMIT=100] -->
+    <string name="quick_controls_subtitle">Vezérlők hozzáadása a csatlakoztatott eszközökhöz</string>
+    <!-- Device Controls setup, title [CHAR LIMIT=50] -->
+    <string name="quick_controls_setup_title">Eszközvezérlők beállítása</string>
+    <!-- Device Controls setup, subtitle [CHAR LIMIT=100] -->
+    <string name="quick_controls_setup_subtitle">Tartsa lenyomva a kikapcsoló gombot a vezérlő elemekhez való hozzáféréshez</string>
+    <!-- Controls management providers screen title [CHAR LIMIT=60]-->
+    <string name="controls_providers_title">Válasszon alkalmazást a vezérlők hozzáadásához</string>
+    <!-- Number of favorites for controls management screen [CHAR LIMIT=NONE]-->
+    <plurals name="controls_number_of_favorites">
+        <item quantity="one"><xliff:g id="number" example="1">%s</xliff:g> vezérlő hozzáadva.</item>
+        <item quantity="other"><xliff:g id="number" example="1">%s</xliff:g> vezérlő hozzáadva.</item>
+    </plurals>
+    <!-- Removed control in management screen [CHAR LIMIT=20] -->
+    <string name="controls_removed">Eltávolítva</string>
+    <!-- a11y state description for a control that is currently favorited [CHAR LIMIT=NONE] -->
+    <string name="accessibility_control_favorite">Kedvenc</string>
+    <!-- a11y state description for a control that is currently favorited with its position [CHAR LIMIT=NONE] -->
+    <string name="accessibility_control_favorite_position">Kedvenc, a <xliff:g id="number" example="1">%d</xliff:g>. pozícióban</string>
+    <!-- a11y state description for a control that is currently not favorited [CHAR LIMIT=NONE] -->
+    <string name="accessibility_control_not_favorite">Nem kedvenc</string>
+    <!-- a11y action to favorite a control. It will read as "Double-tap to favorite" in screen readers [CHAR LIMIT=NONE] -->
+    <string name="accessibility_control_change_favorite">kedvencekhez adás</string>
+    <!-- a11y action to unfavorite a control. It will read as "Double-tap to unfavorite" in screen readers [CHAR LIMIT=NONE] -->
+    <string name="accessibility_control_change_unfavorite">eltávolítás a kedvencek közül</string>
+    <!-- a11y action to move a control to the position specified by the parameter [CHAR LIMIT=NONE] -->
+    <string name="accessibility_control_move">Áthelyezés a <xliff:g id="number" example="1">%d</xliff:g> pozícióba</string>
+    <!-- Controls management controls screen default title [CHAR LIMIT=30] -->
+    <string name="controls_favorite_default_title">Vezérlők</string>
+    <!-- Controls management controls screen subtitle [CHAR LIMIT=NONE] -->
+    <string name="controls_favorite_subtitle">Válassza ki azokat a vezérlőket, amelyhez hozzá szeretne férni a Kikapcsoló menüben</string>
+    <!-- Controls management editing screen, user direction for rearranging controls [CHAR LIMIT=NONE] -->
+    <string name="controls_favorite_rearrange">Koppintás és húzás a vezérlők átrendezéséhez</string>
+    <!-- Controls management editing screen, text to indicate that all the favorites have been removed [CHAR LIMIT=NONE] -->
+    <string name="controls_favorite_removed">Minden vezérlő eltávolítva</string>
+    <!-- Controls management favorites screen, See other apps with changes made [CHAR LIMIT=NONE] -->
+    <string name="controls_favorite_toast_no_changes">A módosítások nincsenek elmentve</string>
+    <!-- Controls management favorites screen. See other apps button [CHAR LIMIT=30] -->
+    <string name="controls_favorite_see_other_apps">Többi alkalmazás megtekintése</string>
+    <!-- Controls management controls screen error on load message [CHAR LIMIT=NONE] -->
+    <string name="controls_favorite_load_error">A vezérlők betöltése sikertelen. Ellenőrizze a(z) <xliff:g id="app" example="System UI">%s</xliff:g> alkalmazást, hogy a beállítások nem változtak-e.</string>
+    <!-- Controls management controls screen no controls found on load message [CHAR LIMIT=NONE] -->
+    <string name="controls_favorite_load_none">Nem állnak rendelkezésre kompatibilis vezérlők</string>
+    <!-- Controls management controls screen header for Other zone [CHAR LIMIT=60] -->
+    <string name="controls_favorite_other_zone_header">Egyéb</string>
+    <!-- Controls dialog title [CHAR LIMIT=40] -->
+    <string name="controls_dialog_title">Hozzáadás az eszközvezérlőkhöz</string>
+    <!-- Controls dialog add to favorites [CHAR LIMIT=40] -->
+    <string name="controls_dialog_ok">Hozzáadás</string>
+    <!-- Controls dialog message. Indicates app that suggested this control [CHAR LIMIT=NONE] -->
+    <string name="controls_dialog_message">Ajánlotta a(z) <xliff:g id="app" example="System UI">%s</xliff:g></string>
+    <!-- Controls dialog confirmation [CHAR LIMIT=30] -->
+    <string name="controls_dialog_confirmation">Vezérlők frissítve</string>
+    <!-- Controls PIN entry dialog, switch to alphanumeric keyboard [CHAR LIMIT=100] -->
+    <string name="controls_pin_use_alphanumeric">A PIN betűket vagy szimbólumokat tartalmaz</string>
+    <!-- Controls PIN entry dialog, title [CHAR LIMIT=30] -->
+    <string name="controls_pin_verify"><xliff:g id="device" example="Backdoor lock">%s</xliff:g> ellenőrzése</string>
+    <!-- Controls PIN entry dialog, title when 1st attempt failed [CHAR LIMIT=30] -->
+    <string name="controls_pin_wrong">Helytelen PIN</string>
+    <!-- Controls PIN entry dialog, waiting to verify [CHAR LIMIT=30] -->
+    <string name="controls_pin_verifying">Hitelesítés\u2026</string>
+    <!-- Controls PIN entry dialog, text hint [CHAR LIMIT=30] -->
+    <string name="controls_pin_instructions">PIN megadása</string>
+    <!-- Controls PIN entry dialog, text hint, retry [CHAR LIMIT=30] -->
+    <string name="controls_pin_instructions_retry">Próbálkozzon másik PIN-el</string>
+    <!-- Controls confirmation dialog, waiting to confirm [CHAR LIMIT=30] -->
+    <string name="controls_confirmation_confirming">Megerősítés\u2026</string>
+    <!-- Controls confirmation dialog, user prompt [CHAR LIMIT=NONE] -->
+    <string name="controls_confirmation_message"><xliff:g id="device" example="Backdoor lock">%s</xliff:g> változtatásának jóváhagyása</string>
+    <!-- Tooltip to show in management screen when there are multiple structures [CHAR_LIMIT=50] -->
+    <string name="controls_structure_tooltip">Továbbiak megtekintéséhez csúsztasson</string>
+    <!-- Message to tell the user to wait while systemui attempts to load a set of
+         recommended controls [CHAR_LIMIT=60] -->
+    <string name="controls_seeding_in_progress">Javaslatok betöltése</string>
+    <!-- Title for media controls [CHAR_LIMIT=50] -->
+    <string name="controls_media_title">Média</string>
+    <!-- Explanation for closing controls associated with a specific media session [CHAR_LIMIT=NONE] -->
+    <string name="controls_media_close_session">Az aktuális munkamenet elrejtése.</string>
+    <!-- Explanation that controls associated with a specific media session are active [CHAR_LIMIT=NONE] -->
+    <string name="controls_media_active_session">Az aktuális munkamenet nem rejthető el.</string>
+    <!-- Label for a button that will hide media controls [CHAR_LIMIT=30] -->
+    <string name="controls_media_dismiss_button">Elutasítás</string>
+    <!-- Label for button to resume media playback [CHAR_LIMIT=NONE] -->
+    <string name="controls_media_resume">Folytatás</string>
+    <!-- Label for button to go to media control settings screen [CHAR_LIMIT=30] -->
+    <string name="controls_media_settings_button">Beállítások</string>
+    <!-- Error message indicating that a control timed out while waiting for an update [CHAR_LIMIT=30] -->
+    <string name="controls_error_timeout">Inaktív, ellenőrizze az appot</string>
+    <!-- Error message indicating that an unspecified error occurred while getting the status, and
+         a retry will be attempted [CHAR LIMIT=30] -->
+    <string name="controls_error_retryable">Hiba, újrapróbálkozás\u2026</string>
+    <!-- Error message indicating that the control is no longer available in the application [CHAR LIMIT=30] -->
+    <string name="controls_error_removed">Nem található</string>
+    <!-- Title for dialog indicating that the control is no longer available in the application [CHAR LIMIT=30] -->
+    <string name="controls_error_removed_title">A vezérlő nem elérhető</string>
+    <!-- Message body for dialog indicating that the control is no longer available in the application [CHAR LIMIT=NONE] -->
+    <string name="controls_error_removed_message">Nem lehet hozzáférni ehhez: <xliff:g id="device" example="Backdoor lock">%1$s</xliff:g>. Ellenőrizze a(z) <xliff:g id="application" example="Google Home">%2$s</xliff:g> alkalmazást, hogy a beállítások nem változtak-e.</string>
+    <!-- Text for button to open the corresponding application [CHAR_LIMIT=20] -->
+    <string name="controls_open_app">Alkalmazás megnyitása</string>
+    <!-- Error message indicating that an unspecified error occurred while getting the status [CHAR LIMIT=30] -->
+    <string name="controls_error_generic">Állapot betöltése sikertelen</string>
+    <!-- Error message indicating that a control action failed [CHAR_LIMIT=30] -->
+    <string name="controls_error_failed">Hiba, próbálja újra</string>
+    <!-- Stateless control message informing the user that a routine has started [CHAR_LIMIT=30] -->
+    <string name="controls_in_progress">Folyamatban</string>
+    <!-- Tooltip informing user where the recently added controls are [CHAR_LIMIT=100] -->
+    <string name="controls_added_tooltip">Tartsa lenyomva a kikapcsoló gombot az új vezérlő elemek megtekintéséhez</string>
+    <!-- Controls menu, add [CHAR_LIMIT=30] -->
+    <string name="controls_menu_add">Vezérlők hozzáadása</string>
+    <!-- Controls menu, edit [CHAR_LIMIT=30] -->
+    <string name="controls_menu_edit">Vezérlők szerkesztése</string>
+    <string name="save">Mentés</string>
+    <string name="loading">Betöltés…</string>
+    <!-- accessibility label for paging indicator in quick settings [CHAR LIMITi=NONE] -->
+    <string name="accessibility_quick_settings_page"><xliff:g name="current_page" example="1">%1$d</xliff:g>. oldal, összesen <xliff:g name="num_pages" example="2">%2$d</xliff:g></string>
+    <string name="accessibility_menu">Menü</string>
+    <string name="accessibility_desc_close">Bezárás</string>
+</resources>

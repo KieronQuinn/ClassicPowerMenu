@@ -2,121 +2,121 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Device Controls strings -->
     <!-- Device Controls empty state, title [CHAR LIMIT=30] -->
-    <string name="quick_controls_title">Device controls</string>
+    <string name="quick_controls_title">デバイス コントロール</string>
     <!-- Device Controls empty state, subtitle [CHAR LIMIT=100] -->
-    <string name="quick_controls_subtitle">Add controls for your connected devices</string>
+    <string name="quick_controls_subtitle">接続済みデバイスのコントロールを追加します</string>
     <!-- Device Controls setup, title [CHAR LIMIT=50] -->
-    <string name="quick_controls_setup_title">Set up device controls</string>
+    <string name="quick_controls_setup_title">デバイス コントロールの設定</string>
     <!-- Device Controls setup, subtitle [CHAR LIMIT=100] -->
-    <string name="quick_controls_setup_subtitle">Hold the Power button to access your controls</string>
+    <string name="quick_controls_setup_subtitle">コントロールにアクセスするには、電源ボタンを長押しします</string>
     <!-- Controls management providers screen title [CHAR LIMIT=60]-->
-    <string name="controls_providers_title">Choose app to add controls</string>
+    <string name="controls_providers_title">コントロールを追加するアプリの選択</string>
     <!-- Number of favorites for controls management screen [CHAR LIMIT=NONE]-->
     <plurals name="controls_number_of_favorites">
-        <item quantity="other"><xliff:g id="number" example="3">%s</xliff:g> controls added.</item>
+        <item quantity="other"><xliff:g id="number" example="3">%s</xliff:g> 件のコントロールを追加しました。</item>
     </plurals>
     <!-- Removed control in management screen [CHAR LIMIT=20] -->
-    <string name="controls_removed">Removed</string>
+    <string name="controls_removed">削除済み</string>
     <!-- a11y state description for a control that is currently favorited [CHAR LIMIT=NONE] -->
-    <string name="accessibility_control_favorite">Favorited</string>
+    <string name="accessibility_control_favorite">お気に入りに追加済み</string>
     <!-- a11y state description for a control that is currently favorited with its position [CHAR LIMIT=NONE] -->
-    <string name="accessibility_control_favorite_position">Favorited, position <xliff:g id="number" example="1">%d</xliff:g></string>
+    <string name="accessibility_control_favorite_position">お気に入りに追加済み、位置:  <xliff:g id="number" example="1">%d</xliff:g></string>
     <!-- a11y state description for a control that is currently not favorited [CHAR LIMIT=NONE] -->
-    <string name="accessibility_control_not_favorite">Unfavorited</string>
+    <string name="accessibility_control_not_favorite">お気に入りから削除済み</string>
     <!-- a11y action to favorite a control. It will read as "Double-tap to favorite" in screen readers [CHAR LIMIT=NONE] -->
-    <string name="accessibility_control_change_favorite">favorite</string>
+    <string name="accessibility_control_change_favorite">お気に入りに追加</string>
     <!-- a11y action to unfavorite a control. It will read as "Double-tap to unfavorite" in screen readers [CHAR LIMIT=NONE] -->
-    <string name="accessibility_control_change_unfavorite">unfavorite</string>
+    <string name="accessibility_control_change_unfavorite">お気に入りから削除</string>
     <!-- a11y action to move a control to the position specified by the parameter [CHAR LIMIT=NONE] -->
-    <string name="accessibility_control_move">Move to position <xliff:g id="number" example="1">%d</xliff:g></string>
+    <string name="accessibility_control_move">ポジション <xliff:g id="number" example="1">%d</xliff:g> に移動</string>
     <!-- Controls management controls screen default title [CHAR LIMIT=30] -->
-    <string name="controls_favorite_default_title">Controls</string>
+    <string name="controls_favorite_default_title">コントロール</string>
     <!-- Controls management controls screen subtitle [CHAR LIMIT=NONE] -->
-    <string name="controls_favorite_subtitle">Choose controls to access from the power menu</string>
+    <string name="controls_favorite_subtitle">電源メニューからアクセスするコントロールを選択してください</string>
     <!-- Controls management editing screen, user direction for rearranging controls [CHAR LIMIT=NONE] -->
-    <string name="controls_favorite_rearrange">Hold &amp; drag to rearrange controls</string>
+    <string name="controls_favorite_rearrange">コントロールを並べ替えるには長押ししてドラッグします</string>
     <!-- Controls management editing screen, text to indicate that all the favorites have been removed [CHAR LIMIT=NONE] -->
-    <string name="controls_favorite_removed">All controls removed</string>
+    <string name="controls_favorite_removed">すべてのコントロールを削除しました</string>
     <!-- Controls management favorites screen, See other apps with changes made [CHAR LIMIT=NONE] -->
-    <string name="controls_favorite_toast_no_changes">Changes not saved</string>
+    <string name="controls_favorite_toast_no_changes">変更が保存されていません</string>
     <!-- Controls management favorites screen. See other apps button [CHAR LIMIT=30] -->
-    <string name="controls_favorite_see_other_apps">See other apps</string>
+    <string name="controls_favorite_see_other_apps">その他のアプリを表示</string>
     <!-- Controls management controls screen error on load message [CHAR LIMIT=NONE] -->
-    <string name="controls_favorite_load_error">Controls could not be loaded. Check the <xliff:g id="app" example="System UI">%s</xliff:g> app to make sure that the app settings haven\u2019t changed.</string>
+    <string name="controls_favorite_load_error">コントロールを読み込めませんでした。 <xliff:g id="app" example="System UI">%s</xliff:g> アプリで、アプリの設定が変更されていないことをご確認ください。</string>
     <!-- Controls management controls screen no controls found on load message [CHAR LIMIT=NONE] -->
-    <string name="controls_favorite_load_none">Compatible controls unavailable</string>
+    <string name="controls_favorite_load_none">互換性のあるコントロールがありません</string>
     <!-- Controls management controls screen header for Other zone [CHAR LIMIT=60] -->
-    <string name="controls_favorite_other_zone_header">Other</string>
+    <string name="controls_favorite_other_zone_header">その他</string>
     <!-- Controls dialog title [CHAR LIMIT=40] -->
-    <string name="controls_dialog_title">Add to device controls</string>
+    <string name="controls_dialog_title">デバイス コントロールに追加</string>
     <!-- Controls dialog add to favorites [CHAR LIMIT=40] -->
-    <string name="controls_dialog_ok">Add</string>
+    <string name="controls_dialog_ok">追加</string>
     <!-- Controls dialog message. Indicates app that suggested this control [CHAR LIMIT=NONE] -->
-    <string name="controls_dialog_message">Suggested by <xliff:g id="app" example="System UI">%s</xliff:g></string>
+    <string name="controls_dialog_message"><xliff:g id="app" example="System UI">%s</xliff:g> によるおすすめ</string>
     <!-- Controls dialog confirmation [CHAR LIMIT=30] -->
-    <string name="controls_dialog_confirmation">Controls updated</string>
+    <string name="controls_dialog_confirmation">コントロールを更新しました</string>
     <!-- Controls PIN entry dialog, switch to alphanumeric keyboard [CHAR LIMIT=100] -->
-    <string name="controls_pin_use_alphanumeric">PIN contains letters or symbols</string>
+    <string name="controls_pin_use_alphanumeric">PIN に英字や記号を含める</string>
     <!-- Controls PIN entry dialog, title [CHAR LIMIT=30] -->
-    <string name="controls_pin_verify">Verify <xliff:g id="device" example="Backdoor lock">%s</xliff:g></string>
+    <string name="controls_pin_verify"><xliff:g id="device" example="Backdoor lock">%s</xliff:g> の確認</string>
     <!-- Controls PIN entry dialog, title when 1st attempt failed [CHAR LIMIT=30] -->
-    <string name="controls_pin_wrong">Wrong PIN</string>
+    <string name="controls_pin_wrong">PIN が間違っています</string>
     <!-- Controls PIN entry dialog, waiting to verify [CHAR LIMIT=30] -->
-    <string name="controls_pin_verifying">Verifying\u2026</string>
+    <string name="controls_pin_verifying">確認しています…</string>
     <!-- Controls PIN entry dialog, text hint [CHAR LIMIT=30] -->
-    <string name="controls_pin_instructions">Enter PIN</string>
+    <string name="controls_pin_instructions">PIN の入力</string>
     <!-- Controls PIN entry dialog, text hint, retry [CHAR LIMIT=30] -->
-    <string name="controls_pin_instructions_retry">Try another PIN</string>
+    <string name="controls_pin_instructions_retry">別の PIN をお試しください</string>
     <!-- Controls confirmation dialog, waiting to confirm [CHAR LIMIT=30] -->
-    <string name="controls_confirmation_confirming">Confirming\u2026</string>
+    <string name="controls_confirmation_confirming">確認しています…</string>
     <!-- Controls confirmation dialog, user prompt [CHAR LIMIT=NONE] -->
-    <string name="controls_confirmation_message">Confirm change for <xliff:g id="device" example="Backdoor lock">%s</xliff:g></string>
+    <string name="controls_confirmation_message"><xliff:g id="device" example="Backdoor lock">%s</xliff:g>  の変更を確認する</string>
     <!-- Tooltip to show in management screen when there are multiple structures [CHAR_LIMIT=50] -->
-    <string name="controls_structure_tooltip">Swipe to see more</string>
+    <string name="controls_structure_tooltip">スワイプすると他の構造が表示されます</string>
     <!-- Message to tell the user to wait while systemui attempts to load a set of
          recommended controls [CHAR_LIMIT=60] -->
-    <string name="controls_seeding_in_progress">Loading recommendations</string>
+    <string name="controls_seeding_in_progress">候補を読み込んでいます</string>
     <!-- Title for media controls [CHAR_LIMIT=50] -->
-    <string name="controls_media_title">Media</string>
+    <string name="controls_media_title">メディア</string>
     <!-- Explanation for closing controls associated with a specific media session [CHAR_LIMIT=NONE] -->
-    <string name="controls_media_close_session">Hide the current session.</string>
+    <string name="controls_media_close_session">このメディア セッションを非表示にしますか？</string>
     <!-- Explanation that controls associated with a specific media session are active [CHAR_LIMIT=NONE] -->
-    <string name="controls_media_active_session">Current session cannot be hidden.</string>
+    <string name="controls_media_active_session">現在のメディア セッションは非表示にできません。</string>
     <!-- Label for a button that will hide media controls [CHAR_LIMIT=30] -->
-    <string name="controls_media_dismiss_button">Dismiss</string>
+    <string name="controls_media_dismiss_button">閉じる</string>
     <!-- Label for button to resume media playback [CHAR_LIMIT=NONE] -->
-    <string name="controls_media_resume">Resume</string>
+    <string name="controls_media_resume">再開</string>
     <!-- Label for button to go to media control settings screen [CHAR_LIMIT=30] -->
-    <string name="controls_media_settings_button">Settings</string>
+    <string name="controls_media_settings_button">設定</string>
     <!-- Error message indicating that a control timed out while waiting for an update [CHAR_LIMIT=30] -->
-    <string name="controls_error_timeout">Inactive, check app</string>
+    <string name="controls_error_timeout">無効: アプリをご確認ください</string>
     <!-- Error message indicating that an unspecified error occurred while getting the status, and
          a retry will be attempted [CHAR LIMIT=30] -->
-    <string name="controls_error_retryable">Error, retrying\u2026</string>
+    <string name="controls_error_retryable">エラー。再試行しています…</string>
     <!-- Error message indicating that the control is no longer available in the application [CHAR LIMIT=30] -->
-    <string name="controls_error_removed">Not found</string>
+    <string name="controls_error_removed">見つかりませんでした</string>
     <!-- Title for dialog indicating that the control is no longer available in the application [CHAR LIMIT=30] -->
-    <string name="controls_error_removed_title">Control is unavailable</string>
+    <string name="controls_error_removed_title">コントロールを使用できません</string>
     <!-- Message body for dialog indicating that the control is no longer available in the application [CHAR LIMIT=NONE] -->
-    <string name="controls_error_removed_message">Couldn\u2019t access <xliff:g id="device" example="Backdoor lock">%1$s</xliff:g>. Check the <xliff:g id="application" example="Google Home">%2$s</xliff:g> app to make sure the control is still available and that the app settings haven\u2019t changed.</string>
+    <string name="controls_error_removed_message">「 <xliff:g id="device" example="Backdoor lock">%1$s</xliff:g>」にアクセスできませんでした。 <xliff:g id="application" example="Google Home">%2$s</xliff:g> アプリで、コントロールが使用可能な状態でアプリの設定が変更されていないことをご確認ください。</string>
     <!-- Text for button to open the corresponding application [CHAR_LIMIT=20] -->
-    <string name="controls_open_app">Open app</string>
+    <string name="controls_open_app">アプリを開く</string>
     <!-- Error message indicating that an unspecified error occurred while getting the status [CHAR LIMIT=30] -->
-    <string name="controls_error_generic">Can\u2019t load status</string>
+    <string name="controls_error_generic">ステータスを読み込めません</string>
     <!-- Error message indicating that a control action failed [CHAR_LIMIT=30] -->
-    <string name="controls_error_failed">Error, try again</string>
+    <string name="controls_error_failed">エラー: もう一度お試しください</string>
     <!-- Stateless control message informing the user that a routine has started [CHAR_LIMIT=30] -->
-    <string name="controls_in_progress">In progress</string>
+    <string name="controls_in_progress">処理中</string>
     <!-- Tooltip informing user where the recently added controls are [CHAR_LIMIT=100] -->
-    <string name="controls_added_tooltip">Hold Power button to see new controls</string>
+    <string name="controls_added_tooltip">電源ボタンを長押しすると、新しいコントロールが表示されます</string>
     <!-- Controls menu, add [CHAR_LIMIT=30] -->
-    <string name="controls_menu_add">Add controls</string>
+    <string name="controls_menu_add">コントロールを追加</string>
     <!-- Controls menu, edit [CHAR_LIMIT=30] -->
-    <string name="controls_menu_edit">Edit controls</string>
-    <string name="save">Save</string>
-    <string name="loading">Loading…</string>
+    <string name="controls_menu_edit">コントロールを編集</string>
+    <string name="save">保存</string>
+    <string name="loading">読み込み中…</string>
     <!-- accessibility label for paging indicator in quick settings [CHAR LIMITi=NONE] -->
-    <string name="accessibility_quick_settings_page">Page <xliff:g name="current_page" example="1">%1$d</xliff:g> of <xliff:g name="num_pages" example="2">%2$d</xliff:g></string>
-    <string name="accessibility_menu">Menu</string>
-    <string name="accessibility_desc_close">Close</string>
+    <string name="accessibility_quick_settings_page">ページ <xliff:g name="current_page" example="1">%1$d</xliff:g> of <xliff:g name="num_pages" example="2">%2$d</xliff:g></string>
+    <string name="accessibility_menu">メニュー</string>
+    <string name="accessibility_desc_close">閉じる</string>
 </resources>

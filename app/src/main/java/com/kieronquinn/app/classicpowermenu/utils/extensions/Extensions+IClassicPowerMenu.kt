@@ -30,8 +30,7 @@ fun IClassicPowerMenu.bindService(context: Context, intent: Intent, serviceConne
     val applicationThread = Context::class.java.getMethod("getIApplicationThread").invoke(context) as IApplicationThread
     val activityToken = Context::class.java.getMethod("getActivityToken").invoke(context) as? IBinder
     val mainThreadHandler = Context::class.java.getMethod("getMainThreadHandler").invoke(context) as Handler
-    val serviceDispatcher = Context::class.java.getMethod("getServiceDispatcher", ServiceConnection::class.java, Handler::class.java, Integer.TYPE)
-        .invoke(context, serviceConnection, mainThreadHandler, flags) as IServiceConnection
+    val serviceDispatcher = context.getServiceDispatcher(serviceConnection, mainThreadHandler, flags)
     val result = bindServicePrivileged(ServiceBindContainer(if(omitThread) null else applicationThread, activityToken, serviceDispatcher), intent, flags)
     boundServices[serviceConnection.hashCode()] = serviceDispatcher
     return result

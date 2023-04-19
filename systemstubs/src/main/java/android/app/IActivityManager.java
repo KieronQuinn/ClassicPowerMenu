@@ -37,6 +37,18 @@ public interface IActivityManager extends android.os.IInterface {
             String callingPackage,
             int userId);
 
+    //Android 14
+    int bindServiceInstance(
+            IApplicationThread caller,
+            IBinder token,
+            Intent service,
+            String resolvedType,
+            IServiceConnection connection,
+            long flags,
+            String instanceName,
+            String callingPackage,
+            int userId);
+
     boolean unbindService(IServiceConnection arg1);
 
     //Android 11

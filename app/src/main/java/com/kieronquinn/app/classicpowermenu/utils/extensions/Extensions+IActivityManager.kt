@@ -142,29 +142,45 @@ fun IActivityManager.bindServiceInstanceCompat(
     callingPackage: String?,
     userId: Int
 ): Int {
-    return if (BuildCompat.isAtLeastT()) {
-        bindServiceInstance(
-            caller,
-            token,
-            service,
-            resolvedType,
-            connection,
-            flags,
-            instanceName,
-            callingPackage,
-            userId
-        )
-    } else {
-        bindIsolatedService(
-            caller,
-            token,
-            service,
-            resolvedType,
-            connection,
-            flags,
-            instanceName,
-            callingPackage,
-            userId
-        )
+    return when {
+        BuildCompat.isAtLeastU() -> {
+            bindServiceInstance(
+                caller,
+                token,
+                service,
+                resolvedType,
+                connection,
+                flags.toLong(),
+                instanceName,
+                callingPackage,
+                userId
+            )
+        }
+        BuildCompat.isAtLeastT() -> {
+            bindServiceInstance(
+                caller,
+                token,
+                service,
+                resolvedType,
+                connection,
+                flags,
+                instanceName,
+                callingPackage,
+                userId
+            )
+        }
+        else -> {
+            bindIsolatedService(
+                caller,
+                token,
+                service,
+                resolvedType,
+                connection,
+                flags,
+                instanceName,
+                callingPackage,
+                userId
+            )
+        }
     }
 }

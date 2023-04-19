@@ -29,7 +29,6 @@ class CPMServiceContainerImpl(context: Context): CPMServiceContainer {
 
     private val serviceIntent = Intent(context, CPMRootService::class.java)
 
-    @Synchronized
     override suspend fun <T> runWithService(block: suspend (IClassicPowerMenu) -> T): T {
         val service = withContext(Dispatchers.Main){
             getServiceLocked()
@@ -57,7 +56,6 @@ class CPMServiceContainerImpl(context: Context): CPMServiceContainer {
         RootService.bind(serviceIntent, serviceConnection)
     }
 
-    @Synchronized
     override suspend fun unbindServiceIfNeeded() {
         serviceConnection?.let {
             RootService.unbind(it)

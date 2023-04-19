@@ -7,16 +7,16 @@ plugins {
     id 'com.google.android.gms.oss-licenses-plugin'
 }
 
-def version = '1.6'
+def version = '1.6.1'
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.kieronquinn.app.classicpowermenu"
         minSdk 30
-        targetSdk 31
-        versionCode 160
+        targetSdk 33
+        versionCode 161
         versionName version
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -41,6 +41,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    namespace 'com.kieronquinn.app.classicpowermenu'
 }
 
 protobuf {
@@ -65,22 +66,22 @@ protobuf {
 
 dependencies {
     //AndroidX
-    def lifecycle_version = "2.5.0"
-    implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.4.2'
+    def lifecycle_version = "2.6.1"
+    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-process:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-service:$lifecycle_version"
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.work:work-runtime-ktx:2.7.1'
-    implementation "androidx.core:core-splashscreen:1.0.0-rc01"
+    implementation 'androidx.work:work-runtime-ktx:2.8.1'
+    implementation "androidx.core:core-splashscreen:1.0.0"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     //Material
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
 
     //Monet
     implementation 'com.github.KieronQuinn:MonetCompat:0.4.1'
@@ -89,7 +90,7 @@ dependencies {
     implementation "io.insert-koin:koin-android:$koin_version"
 
     //Protobuf
-    implementation "com.google.protobuf:protobuf-javalite:3.19.2"
+    implementation "com.google.protobuf:protobuf-javalite:3.21.9"
 
     //Guava for hashing code (to match what Gpay uses)
     implementation 'com.google.guava:guava:30.1.1-android'
@@ -111,7 +112,7 @@ dependencies {
     implementation 'com.journeyapps:zxing-android-embedded:4.1.0@aar'
 
     //libsu for root operations
-    def libsuVersion = '5.0.2'
+    def libsuVersion = '5.0.3'
     implementation "com.github.topjohnwu.libsu:core:${libsuVersion}"
     implementation "com.github.topjohnwu.libsu:service:${libsuVersion}"
     implementation "com.github.topjohnwu.libsu:io:${libsuVersion}"
@@ -132,13 +133,13 @@ dependencies {
 
     //Other third party
     implementation 'org.lsposed.hiddenapibypass:hiddenapibypass:4.3'
-    implementation 'com.airbnb.android:lottie:5.0.3'
+    implementation 'com.airbnb.android:lottie:5.2.0'
     implementation 'com.jakewharton:process-phoenix:2.1.2'
     implementation 'me.saket:better-link-movement-method:2.2.0'
     implementation "io.noties.markwon:core:4.6.2"
 
     //Test
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }

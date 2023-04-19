@@ -1,5 +1,6 @@
 package com.kieronquinn.app.classicpowermenu.workers
 
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -34,6 +35,9 @@ class UpdateCheckWorker(private val context: Context, workerParams: WorkerParame
         private const val UPDATE_NOTIFICATION_ID = 1002
         private const val UPDATE_CHECK_HOUR = 12L
 
+        //Removed from WorkManager for some reason???
+        private const val MIN_BACKOFF_MILLIS = 10 * 1000L // 10 seconds.
+
         private fun clearCheckWorker(context: Context){
             val workManager = WorkManager.getInstance(context)
             workManager.cancelAllWorkByTag(UPDATE_CHECK_WORK_TAG)
@@ -47,6 +51,7 @@ class UpdateCheckWorker(private val context: Context, workerParams: WorkerParame
         }
     }
 
+    @SuppressLint("MissingPermission")
     override fun doWork(): Result {
         GlobalScope.launch {
             updateChecker.getLatestRelease().collect { update ->
@@ -88,7 +93,7 @@ class UpdateCheckWorker(private val context: Context, workerParams: WorkerParame
             return PeriodicWorkRequest.Builder(UpdateCheckWorker::class.java, 24, TimeUnit.HOURS).addTag(UPDATE_CHECK_WORK_TAG)
                 .setInitialDelay(delay, TimeUnit.MINUTES)
                 .setConstraints(constraints)
-                .setBackoffCriteria(BackoffPolicy.LINEAR, PeriodicWorkRequest.MIN_BACKOFF_MILLIS, TimeUnit.MILLISECONDS)
+                .setBackoffCriteria(BackoffPolicy.LINEAR, MIN_BACKOFF_MILLIS, TimeUnit.MILLISECONDS)
                 .build()
         }
     }

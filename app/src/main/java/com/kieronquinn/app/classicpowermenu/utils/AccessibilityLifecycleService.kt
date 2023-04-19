@@ -16,7 +16,13 @@ import androidx.lifecycle.ServiceLifecycleDispatcher
  */
 abstract class AccessibilityLifecycleService: AccessibilityService(), LifecycleOwner {
 
-    private val mDispatcher = ServiceLifecycleDispatcher(this)
+    private val mDispatcher by lazy {
+        ServiceLifecycleDispatcher(this)
+    }
+
+    override val lifecycle by lazy {
+        mDispatcher.lifecycle
+    }
 
     @CallSuper
     override fun onCreate() {
@@ -37,11 +43,6 @@ abstract class AccessibilityLifecycleService: AccessibilityService(), LifecycleO
     override fun onDestroy() {
         mDispatcher.onServicePreSuperOnDestroy()
         super.onDestroy()
-    }
-
-    @NonNull
-    override fun getLifecycle(): Lifecycle {
-        return mDispatcher.lifecycle
     }
 
 }

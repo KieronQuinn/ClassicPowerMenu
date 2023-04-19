@@ -23,6 +23,10 @@ abstract class LifecycleApplication : Application(), LifecycleObserver, Lifecycl
         ProcessLifecycleOwner.get().lifecycle
     }
 
+    override val lifecycle by lazy {
+        processLifecycleOwner
+    }
+
     override fun onCreate() {
         super.onCreate()
         processLifecycleOwner.addObserver(this)
@@ -45,9 +49,5 @@ abstract class LifecycleApplication : Application(), LifecycleObserver, Lifecycl
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun destroyed() {}
-
-    override fun getLifecycle(): Lifecycle {
-        return processLifecycleOwner
-    }
 
 }

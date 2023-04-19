@@ -1,5 +1,6 @@
 package com.kieronquinn.app.classicpowermenu.service.root.impl
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.ActivityManager
 import android.app.ActivityOptions
@@ -165,9 +166,16 @@ class CPMRootServiceImpl: IClassicPowerMenu.Stub() {
     override fun getGooglePayDatabaseForLoyalty(): ParcelFileDescriptor? {
         try {
             val googlePayContext = getGooglePayContext()
-            val googlePayAccountId = getGooglePayCurrentAccountId(googlePayContext) ?: return null
-            val hashedAccountId = Hashing.md5().hashUnencodedChars(googlePayAccountId)
-            val database = googlePayContext.getDatabasePath("${hashedAccountId}_tapandpay.db")
+            val googlePayAccountId = getGooglePayCurrentAccountId(googlePayContext)
+            val database = if(googlePayAccountId != null) {
+                val hashedAccountId = Hashing.md5().hashUnencodedChars(googlePayAccountId)
+                googlePayContext.getDatabasePath("${hashedAccountId}_tapandpay.db")
+            }else{
+                val databaseName = context.databaseList().firstOrNull {
+                    it.endsWith("_tapandpay.db")
+                } ?: return null
+                googlePayContext.getDatabasePath(databaseName)
+            }
             if (!database.exists()) return null
             return ParcelFileDescriptor.open(database, ParcelFileDescriptor.MODE_READ_ONLY)
         }catch (e: Exception){
@@ -179,13 +187,19 @@ class CPMRootServiceImpl: IClassicPowerMenu.Stub() {
     override fun getGooglePayLoyaltyImageForId(id: String): ParcelFileDescriptor? {
         try {
             val googlePayContext = getGooglePayContext()
-            val googlePayAccountId = getGooglePayCurrentAccountId(googlePayContext) ?: return null
-            val hashedAccountId = Hashing.md5().hashString(googlePayAccountId, Charsets.UTF_8).toString()
+            val googlePayAccountId = getGooglePayCurrentAccountId(googlePayContext)
+            val hashedAccountId = googlePayAccountId?.let {
+                Hashing.md5().hashString(it, Charsets.UTF_8).toString()
+            }
             val valuablesDir = File(googlePayContext.filesDir, "valuables")
             if (!valuablesDir.exists()) return null
             val imagesDir = File(valuablesDir, "images")
             if (!imagesDir.exists()) return null
-            val userImagesDir = File(imagesDir, hashedAccountId)
+            val userImagesDir = if(hashedAccountId != null){
+                File(imagesDir, hashedAccountId)
+            }else{
+                imagesDir.listFiles()?.firstOrNull() ?: return null
+            }
             if (!userImagesDir.exists()) return null
             val valuableImage = File(userImagesDir, id)
             if (!valuableImage.exists()) return null
@@ -250,6 +264,23 @@ class CPMRootServiceImpl: IClassicPowerMenu.Stub() {
 
     override fun resumeAppSwitches() {
         activityManager.resumeAppSwitches()
+    }
+
+    private fun grantNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            Runtime.getRuntime().exec("pm grant ${BuildConfig.APPLICATION_ID} ${Manifest.permission.POST_NOTIFICATIONS}")
+        }
+    }
+
+    private fun grantAccessibilityPermission() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            Runtime.getRuntime().exec("appops set ${BuildConfig.APPLICATION_ID} ACCESS_RESTRICTED_SETTINGS allow")
+        }
+    }
+
+    init {
+        grantNotificationPermission()
+        grantAccessibilityPermission()
     }
 
 }

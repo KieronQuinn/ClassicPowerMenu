@@ -1,7 +1,9 @@
 package com.kieronquinn.app.classicpowermenu.utils.extensions
 
 import android.annotation.SuppressLint
+import android.app.IServiceConnection
 import android.content.Context
+import android.content.ServiceConnection
 import android.content.res.Configuration
 import android.database.ContentObserver
 import android.os.Handler
@@ -11,6 +13,7 @@ import android.util.TypedValue
 import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
+import androidx.core.os.BuildCompat
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
 
@@ -54,4 +57,15 @@ fun Context.getColorResCompat(@AttrRes id: Int): Int {
     this.theme.resolveAttribute(id, resolvedAttr, true)
     val colorRes = resolvedAttr.run { if (resourceId != 0) resourceId else data }
     return ContextCompat.getColor(this, colorRes)
+}
+
+@SuppressLint("UnsafeOptInUsageError")
+fun Context.getServiceDispatcher(serviceConnection: ServiceConnection, handler: Handler, flags: Int): IServiceConnection {
+    return if(BuildCompat.isAtLeastU()){
+        Context::class.java.getMethod("getServiceDispatcher", ServiceConnection::class.java, Handler::class.java, Long::class.java)
+            .invoke(this, serviceConnection, handler, flags.toLong()) as IServiceConnection
+    }else{
+        Context::class.java.getMethod("getServiceDispatcher", ServiceConnection::class.java, Handler::class.java, Integer.TYPE)
+            .invoke(this, serviceConnection, handler, flags) as IServiceConnection
+    }
 }

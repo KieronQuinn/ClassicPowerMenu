@@ -5,6 +5,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 
 interface BackAvailable
+interface Root
 interface AutoExpandOnRotate
 
 interface StandaloneFragment {

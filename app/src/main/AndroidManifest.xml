@@ -14,6 +14,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
+        android:enableOnBackInvokedCallback="true"
         android:name="com.kieronquinn.app.classicpowermenu.ClassicPowerMenu"
         android:theme="@style/Theme.ClassicPowerMenu.Splash">
 
@@ -39,7 +40,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:scheme="classicpowermenu"/>
             </intent-filter>
-
+            <intent-filter>
+                <action android:name="android.intent.action.ASSIST" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
 
         <service android:name=".service.accessibility.CPMAccessibilityService"

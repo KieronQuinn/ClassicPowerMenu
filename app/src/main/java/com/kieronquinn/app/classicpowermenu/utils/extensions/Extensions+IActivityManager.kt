@@ -143,7 +143,7 @@ fun IActivityManager.bindServiceInstanceCompat(
     userId: Int
 ): Int {
     return when {
-        BuildCompat.isAtLeastU() -> {
+        isAtLeastU() -> {
             bindServiceInstance(
                 caller,
                 token,
@@ -156,7 +156,7 @@ fun IActivityManager.bindServiceInstanceCompat(
                 userId
             )
         }
-        BuildCompat.isAtLeastT() -> {
+        isAtLeastT() -> {
             bindServiceInstance(
                 caller,
                 token,

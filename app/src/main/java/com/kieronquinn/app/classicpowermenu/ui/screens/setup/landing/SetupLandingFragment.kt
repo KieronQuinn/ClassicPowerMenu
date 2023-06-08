@@ -11,11 +11,12 @@ import androidx.core.view.updateMargins
 import com.kieronquinn.app.classicpowermenu.R
 import com.kieronquinn.app.classicpowermenu.databinding.FragmentSetupLandingBinding
 import com.kieronquinn.app.classicpowermenu.ui.base.BoundFragment
+import com.kieronquinn.app.classicpowermenu.ui.base.Root
 import com.kieronquinn.app.classicpowermenu.utils.extensions.onApplyInsets
 import com.kieronquinn.monetcompat.extensions.views.overrideRippleColor
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SetupLandingFragment: BoundFragment<FragmentSetupLandingBinding>(FragmentSetupLandingBinding::inflate) {
+class SetupLandingFragment: BoundFragment<FragmentSetupLandingBinding>(FragmentSetupLandingBinding::inflate), Root {
 
     private val viewModel by viewModel<SetupLandingViewModel>()
 

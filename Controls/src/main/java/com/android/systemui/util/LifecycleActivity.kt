@@ -20,21 +20,23 @@ import android.app.Activity
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.PersistableBundle
+import androidx.lifecycle.Lifecycle.Event
 import androidx.lifecycle.LifecycleOwner
 import com.android.settingslib.core.lifecycle.Lifecycle
 import org.koin.android.ext.android.inject
 
 open class LifecycleActivity : Activity(), LifecycleOwner {
 
-    private val lifecycle = Lifecycle(this)
+    private val _lifecycle = Lifecycle(this)
     private val monet by inject<MonetColorProvider>()
 
-    override fun getLifecycle() = lifecycle
+    override val lifecycle: Lifecycle
+        get() = _lifecycle
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        lifecycle.onAttach(this)
-        lifecycle.onCreate(savedInstanceState)
-        lifecycle.handleLifecycleEvent(androidx.lifecycle.Lifecycle.Event.ON_CREATE)
+        _lifecycle.onAttach(this)
+        _lifecycle.onCreate(savedInstanceState)
+        _lifecycle.handleLifecycleEvent(Event.ON_CREATE)
         super.onCreate(savedInstanceState)
         val backgroundColor = monet.getBackgroundColor(this, true)
         window.setBackgroundDrawable(ColorDrawable(backgroundColor))
@@ -45,34 +47,35 @@ open class LifecycleActivity : Activity(), LifecycleOwner {
         savedInstanceState: Bundle?,
         persistentState: PersistableBundle?
     ) {
-        lifecycle.onAttach(this)
-        lifecycle.onCreate(savedInstanceState)
-        lifecycle.handleLifecycleEvent(androidx.lifecycle.Lifecycle.Event.ON_CREATE)
+        _lifecycle.onAttach(this)
+        _lifecycle.onCreate(savedInstanceState)
+        _lifecycle.handleLifecycleEvent(Event.ON_CREATE)
         super.onCreate(savedInstanceState, persistentState)
     }
 
     override fun onStart() {
-        lifecycle.handleLifecycleEvent(androidx.lifecycle.Lifecycle.Event.ON_START)
+        _lifecycle.handleLifecycleEvent(Event.ON_START)
         super.onStart()
     }
 
     override fun onResume() {
-        lifecycle.handleLifecycleEvent(androidx.lifecycle.Lifecycle.Event.ON_RESUME)
+        _lifecycle.handleLifecycleEvent(Event.ON_RESUME)
         super.onResume()
     }
 
     override fun onPause() {
-        lifecycle.handleLifecycleEvent(androidx.lifecycle.Lifecycle.Event.ON_PAUSE)
+        _lifecycle.handleLifecycleEvent(Event.ON_PAUSE)
         super.onPause()
     }
 
     override fun onStop() {
-        lifecycle.handleLifecycleEvent(androidx.lifecycle.Lifecycle.Event.ON_STOP)
+        _lifecycle.handleLifecycleEvent(Event.ON_STOP)
         super.onStop()
     }
 
     override fun onDestroy() {
-        lifecycle.handleLifecycleEvent(androidx.lifecycle.Lifecycle.Event.ON_DESTROY)
+        _lifecycle.handleLifecycleEvent(Event.ON_DESTROY)
         super.onDestroy()
     }
+
 }

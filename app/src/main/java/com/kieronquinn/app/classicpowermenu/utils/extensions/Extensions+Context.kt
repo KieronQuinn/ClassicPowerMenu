@@ -61,7 +61,7 @@ fun Context.getColorResCompat(@AttrRes id: Int): Int {
 
 @SuppressLint("UnsafeOptInUsageError")
 fun Context.getServiceDispatcher(serviceConnection: ServiceConnection, handler: Handler, flags: Int): IServiceConnection {
-    return if(BuildCompat.isAtLeastU()){
+    return if(isAtLeastU()){
         Context::class.java.getMethod("getServiceDispatcher", ServiceConnection::class.java, Handler::class.java, Long::class.java)
             .invoke(this, serviceConnection, handler, flags.toLong()) as IServiceConnection
     }else{

@@ -6,6 +6,7 @@ import android.util.TypedValue
 import android.view.MenuInflater
 import android.view.View
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
@@ -26,10 +27,14 @@ import com.kieronquinn.app.classicpowermenu.ui.base.AutoExpandOnRotate
 import com.kieronquinn.app.classicpowermenu.ui.base.BackAvailable
 import com.kieronquinn.app.classicpowermenu.ui.base.BoundFragment
 import com.kieronquinn.app.classicpowermenu.ui.base.ProvidesOverflow
+import com.kieronquinn.app.classicpowermenu.ui.base.Root
+import com.kieronquinn.app.classicpowermenu.ui.base.StandaloneFragment
 import com.kieronquinn.app.classicpowermenu.utils.extensions.awaitPost
+import com.kieronquinn.app.classicpowermenu.utils.extensions.getTopFragment
 import com.kieronquinn.app.classicpowermenu.utils.extensions.isLandscape
 import com.kieronquinn.app.classicpowermenu.utils.extensions.navigateSafely
 import com.kieronquinn.app.classicpowermenu.utils.extensions.onApplyInsets
+import com.kieronquinn.app.classicpowermenu.utils.extensions.onDestinationChanged
 import kotlinx.coroutines.flow.collect
 import org.koin.android.ext.android.inject
 import kotlin.math.roundToInt
@@ -119,12 +124,23 @@ class SettingsContainerFragment: BoundFragment<FragmentSettingsContainerBinding>
         }
     }
 
+    private fun shouldBackDispatcherBeEnabled(): Boolean {
+        val top = navHostFragment.getTopFragment()
+        return top is StandaloneFragment || top !is Root
+    }
+
     private fun setupBack() {
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object: OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                if(!navController.navigateUp()) requireActivity().finish()
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(
+            this,
+            shouldBackDispatcherBeEnabled()
+        ) {
+            if(!navController.navigateUp()) requireActivity().finish()
+        }
+        viewLifecycleOwner.lifecycleScope.launchWhenResumed {
+            navController.onDestinationChanged().collect {
+                callback.isEnabled = shouldBackDispatcherBeEnabled()
             }
-        })
+        }
     }
 
     private fun getTopFragment(): Fragment? {

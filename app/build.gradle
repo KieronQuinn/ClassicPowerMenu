@@ -7,16 +7,16 @@ plugins {
     id 'com.google.android.gms.oss-licenses-plugin'
 }
 
-def version = '1.6.1'
+def version = '1.7'
 
 android {
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.kieronquinn.app.classicpowermenu"
         minSdk 30
         targetSdk 33
-        versionCode 161
+        versionCode 170
         versionName version
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -67,7 +67,7 @@ protobuf {
 dependencies {
     //AndroidX
     def lifecycle_version = "2.6.1"
-    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
@@ -76,12 +76,12 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-service:$lifecycle_version"
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.work:work-runtime-ktx:2.8.1'
-    implementation "androidx.core:core-splashscreen:1.0.0"
+    implementation "androidx.core:core-splashscreen:1.0.1"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     //Material
-    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'com.google.android.material:material:1.9.0'
 
     //Monet
     implementation 'com.github.KieronQuinn:MonetCompat:0.4.1'
@@ -125,7 +125,7 @@ dependencies {
     compileOnly 'de.robv.android.xposed:api:82'
 
     //OSS libraries activity
-    implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'
+    implementation 'com.google.android.gms:play-services-oss-licenses:17.0.1'
 
     //Retrofit for update checking
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'

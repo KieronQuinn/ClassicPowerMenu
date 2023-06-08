@@ -171,7 +171,7 @@ class CPMRootServiceImpl: IClassicPowerMenu.Stub() {
                 val hashedAccountId = Hashing.md5().hashUnencodedChars(googlePayAccountId)
                 googlePayContext.getDatabasePath("${hashedAccountId}_tapandpay.db")
             }else{
-                val databaseName = context.databaseList().firstOrNull {
+                val databaseName = googlePayContext.databaseList().firstOrNull {
                     it.endsWith("_tapandpay.db")
                 } ?: return null
                 googlePayContext.getDatabasePath(databaseName)

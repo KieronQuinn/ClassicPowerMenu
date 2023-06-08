@@ -12,12 +12,13 @@ import com.kieronquinn.app.classicpowermenu.R
 import com.kieronquinn.app.classicpowermenu.model.settings.SettingsItem
 import com.kieronquinn.app.classicpowermenu.ui.base.AutoExpandOnRotate
 import com.kieronquinn.app.classicpowermenu.ui.base.ProvidesOverflow
+import com.kieronquinn.app.classicpowermenu.ui.base.Root
 import com.kieronquinn.app.classicpowermenu.ui.screens.settings.switched.SettingsSwitchedFragment
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SettingsMainFragment : SettingsSwitchedFragment(), AutoExpandOnRotate, ProvidesOverflow {
+class SettingsMainFragment : SettingsSwitchedFragment(), AutoExpandOnRotate, ProvidesOverflow, Root {
 
     private val viewModel by viewModel<SettingsMainViewModel>()
 

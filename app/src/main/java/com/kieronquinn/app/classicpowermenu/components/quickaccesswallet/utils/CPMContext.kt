@@ -24,8 +24,6 @@ import java.io.InputStream
 
 class CPMContext(private val originalContext: Context): Context() {
 
-
-
     override fun getAssets(): AssetManager {
         return originalContext.assets
     }
@@ -39,7 +37,7 @@ class CPMContext(private val originalContext: Context): Context() {
     }
 
     override fun getContentResolver(): ContentResolver {
-        TODO("Not yet implemented")
+        return originalContext.contentResolver
     }
 
     override fun getMainLooper(): Looper {
@@ -404,7 +402,7 @@ class CPMContext(private val originalContext: Context): Context() {
         return originalContext.stopService(p0)
     }
 
-    override fun bindService(p0: Intent?, p1: ServiceConnection, p2: Int): Boolean {
+    override fun bindService(p0: Intent, p1: ServiceConnection, p2: Int): Boolean {
         return originalContext.bindService(p0, p1, p2)
     }
 

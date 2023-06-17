@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Device Controls strings -->
+    <!-- Device Controls empty state, title [CHAR LIMIT=30] -->
+    <string name="quick_controls_title">أدوات التحكم بالأجهزة</string>
+    <!-- Device Controls empty state, subtitle [CHAR LIMIT=100] -->
+    <string name="quick_controls_subtitle">إضافة عناصر تحكم لأجهزتك المتصلة</string>
+    <!-- Device Controls setup, title [CHAR LIMIT=50] -->
+    <string name="quick_controls_setup_title">التحكم في الجهاز</string>
+    <!-- Device Controls setup, subtitle [CHAR LIMIT=100] -->
+    <string name="quick_controls_setup_subtitle">اضغط على زر الطاقة للوصول إلى عناصر التحكم الخاصة بك</string>
+    <!-- Controls management providers screen title [CHAR LIMIT=60]-->
+    <string name="controls_providers_title">اختر تطبيق لإضافة عناصر تحكم</string>
+    <!-- Number of favorites for controls management screen [CHAR LIMIT=NONE]-->
+    <plurals name="controls_number_of_favorites">
+        <item quantity="zero"><xliff:g id="number" example="1">%s</xliff:g> تم إضافة التحكم.</item>
+        <item quantity="one"><xliff:g id="number" example="1">%s</xliff:g> تم إضافة التحكم.</item>
+        <item quantity="two"><xliff:g id="number" example="1">%s</xliff:g> تم إضافة التحكم.</item>
+        <item quantity="few"><xliff:g id="number" example="1">%s</xliff:g> تم إضافة التحكم.</item>
+        <item quantity="many"><xliff:g id="number" example="1">%s</xliff:g> تم إضافة التحكم.</item>
+        <item quantity="other">&lt;xliff: g id="number" example="3"&gt;%s&lt;/xliff:g&gt; عناصر التحكم مضافة.</item>
+    </plurals>
+    <!-- Removed control in management screen [CHAR LIMIT=20] -->
+    <string name="controls_removed">تمت الإزالة</string>
+    <!-- a11y state description for a control that is currently favorited [CHAR LIMIT=NONE] -->
+    <string name="accessibility_control_favorite">المفضلة</string>
+    <!-- a11y state description for a control that is currently favorited with its position [CHAR LIMIT=NONE] -->
+    <string name="accessibility_control_favorite_position">المفضلة، الموضع <xliff:g id="number" example="1">%d</xliff:g></string>
+    <!-- a11y state description for a control that is currently not favorited [CHAR LIMIT=NONE] -->
+    <string name="accessibility_control_not_favorite">غير مفضل</string>
+    <!-- a11y action to favorite a control. It will read as "Double-tap to favorite" in screen readers [CHAR LIMIT=NONE] -->
+    <string name="accessibility_control_change_favorite">المفضلة</string>
+    <!-- a11y action to unfavorite a control. It will read as "Double-tap to unfavorite" in screen readers [CHAR LIMIT=NONE] -->
+    <string name="accessibility_control_change_unfavorite">إزالة من المفضّلة</string>
+    <!-- a11y action to move a control to the position specified by the parameter [CHAR LIMIT=NONE] -->
+    <string name="accessibility_control_move">الانتقال إلى الموضع <xliff:g id="number" example="1">%d</xliff:g></string>
+    <!-- Controls management controls screen default title [CHAR LIMIT=30] -->
+    <string name="controls_favorite_default_title">التحكم</string>
+    <!-- Controls management controls screen subtitle [CHAR LIMIT=NONE] -->
+    <string name="controls_favorite_subtitle">اختر عناصر تحكم للوصول من قائمة الطاقة</string>
+    <!-- Controls management editing screen, user direction for rearranging controls [CHAR LIMIT=NONE] -->
+    <string name="controls_favorite_rearrange">اضغط &amp; اسحب لإعادة ترتيب التحكم</string>
+    <!-- Controls management editing screen, text to indicate that all the favorites have been removed [CHAR LIMIT=NONE] -->
+    <string name="controls_favorite_removed">تم حذف جميع الضوابط</string>
+    <!-- Controls management favorites screen, See other apps with changes made [CHAR LIMIT=NONE] -->
+    <string name="controls_favorite_toast_no_changes">لم يتم حفظ التغييرات</string>
+    <!-- Controls management favorites screen. See other apps button [CHAR LIMIT=30] -->
+    <string name="controls_favorite_see_other_apps">عرض التطبيقات الأخرى</string>
+    <!-- Controls management controls screen error on load message [CHAR LIMIT=NONE] -->
+    <string name="controls_favorite_load_error">لا يمكن تحميل التحكّم. تحقق من تطبيق <xliff:g id="app" example="System UI">%s</xliff:g> للتأكد من أن إعدادات التطبيق قد تغيرت\u2019ت.</string>
+    <!-- Controls management controls screen no controls found on load message [CHAR LIMIT=NONE] -->
+    <string name="controls_favorite_load_none">عناصر التحكم المتوافقة غير متوفرة</string>
+    <!-- Controls management controls screen header for Other zone [CHAR LIMIT=60] -->
+    <string name="controls_favorite_other_zone_header">اخرى</string>
+    <!-- Controls dialog title [CHAR LIMIT=40] -->
+    <string name="controls_dialog_title">إضافة إلى عناصر تحكم الجهاز</string>
+    <!-- Controls dialog add to favorites [CHAR LIMIT=40] -->
+    <string name="controls_dialog_ok">إضافة</string>
+    <!-- Controls dialog message. Indicates app that suggested this control [CHAR LIMIT=NONE] -->
+    <string name="controls_dialog_message">مقترح من قبل <xliff:g id="app" example="System UI">%s</xliff:g></string>
+    <!-- Controls dialog confirmation [CHAR LIMIT=30] -->
+    <string name="controls_dialog_confirmation">تم تحديث الضوابط</string>
+    <!-- Controls PIN entry dialog, switch to alphanumeric keyboard [CHAR LIMIT=100] -->
+    <string name="controls_pin_use_alphanumeric">رمز PIN يحتوي على أحرف أو رموز</string>
+    <!-- Controls PIN entry dialog, title [CHAR LIMIT=30] -->
+    <string name="controls_pin_verify">تحقق من <xliff:g id="device" example="Backdoor lock">%s</xliff:g></string>
+    <!-- Controls PIN entry dialog, title when 1st attempt failed [CHAR LIMIT=30] -->
+    <string name="controls_pin_wrong">رمز PIN خاطئ</string>
+    <!-- Controls PIN entry dialog, waiting to verify [CHAR LIMIT=30] -->
+    <string name="controls_pin_verifying">التحقق\u2026</string>
+    <!-- Controls PIN entry dialog, text hint [CHAR LIMIT=30] -->
+    <string name="controls_pin_instructions">أدخل رمز PIN</string>
+    <!-- Controls PIN entry dialog, text hint, retry [CHAR LIMIT=30] -->
+    <string name="controls_pin_instructions_retry">جرب رمز PIN آخر</string>
+    <!-- Controls confirmation dialog, waiting to confirm [CHAR LIMIT=30] -->
+    <string name="controls_confirmation_confirming">تأكيد\u2026</string>
+    <!-- Controls confirmation dialog, user prompt [CHAR LIMIT=NONE] -->
+    <string name="controls_confirmation_message">تأكيد التغيير لـ <xliff:g id="device" example="Backdoor lock">%s</xliff:g></string>
+    <!-- Tooltip to show in management screen when there are multiple structures [CHAR_LIMIT=50] -->
+    <string name="controls_structure_tooltip">اسحب لرؤية المزيد</string>
+    <!-- Message to tell the user to wait while systemui attempts to load a set of
+         recommended controls [CHAR_LIMIT=60] -->
+    <string name="controls_seeding_in_progress">تحميل التوصيات</string>
+    <!-- Title for media controls [CHAR_LIMIT=50] -->
+    <string name="controls_media_title">الوسائط</string>
+    <!-- Explanation for closing controls associated with a specific media session [CHAR_LIMIT=NONE] -->
+    <string name="controls_media_close_session">إخفاء الجلسة الحالية.</string>
+    <!-- Explanation that controls associated with a specific media session are active [CHAR_LIMIT=NONE] -->
+    <string name="controls_media_active_session">لا يمكن إخفاء الجلسة الحالية.</string>
+    <!-- Label for a button that will hide media controls [CHAR_LIMIT=30] -->
+    <string name="controls_media_dismiss_button">تجاهل</string>
+    <!-- Label for button to resume media playback [CHAR_LIMIT=NONE] -->
+    <string name="controls_media_resume">إستكمال</string>
+    <!-- Label for button to go to media control settings screen [CHAR_LIMIT=30] -->
+    <string name="controls_media_settings_button">إعدادات</string>
+    <!-- Error message indicating that a control timed out while waiting for an update [CHAR_LIMIT=30] -->
+    <string name="controls_error_timeout">غير نشط، تحقق من التطبيق</string>
+    <!-- Error message indicating that an unspecified error occurred while getting the status, and
+         a retry will be attempted [CHAR LIMIT=30] -->
+    <string name="controls_error_retryable">خطأ، إعادة المحاولة\u2026</string>
+    <!-- Error message indicating that the control is no longer available in the application [CHAR LIMIT=30] -->
+    <string name="controls_error_removed">لم يتم العثور عليه</string>
+    <!-- Title for dialog indicating that the control is no longer available in the application [CHAR LIMIT=30] -->
+    <string name="controls_error_removed_title">التحكم غير متوفر</string>
+    <!-- Message body for dialog indicating that the control is no longer available in the application [CHAR LIMIT=NONE] -->
+    <string name="controls_error_removed_message">تعذر\u2019الوصول إلى <xliff:g id="device" example="Backdoor lock">%1$s</xliff:g>. تحقق من تطبيق <xliff:g id="application" example="Google Home">%2$s</xliff:g> للتأكد من أن التحكم لا يزال متاحاً وأن إعدادات التطبيق \u2019t تغيرت.</string>
+    <!-- Text for button to open the corresponding application [CHAR_LIMIT=20] -->
+    <string name="controls_open_app">أفتح التطبيق</string>
+    <!-- Error message indicating that an unspecified error occurred while getting the status [CHAR LIMIT=30] -->
+    <string name="controls_error_generic">يمكن\u2019حالة التحميل</string>
+    <!-- Error message indicating that a control action failed [CHAR_LIMIT=30] -->
+    <string name="controls_error_failed">خطأ، حاول مرة أخرى</string>
+    <!-- Stateless control message informing the user that a routine has started [CHAR_LIMIT=30] -->
+    <string name="controls_in_progress">قيد التقدم</string>
+    <!-- Tooltip informing user where the recently added controls are [CHAR_LIMIT=100] -->
+    <string name="controls_added_tooltip">اضغط على زر التشغيل لمشاهدة ضوابط جديدة</string>
+    <!-- Controls menu, add [CHAR_LIMIT=30] -->
+    <string name="controls_menu_add">إضافة عناصر تحكّم</string>
+    <!-- Controls menu, edit [CHAR_LIMIT=30] -->
+    <string name="controls_menu_edit">تعديل عناصر التحكّم</string>
+    <string name="save">حفظ</string>
+    <string name="loading">جارٍ التحميل…</string>
+    <!-- accessibility label for paging indicator in quick settings [CHAR LIMITi=NONE] -->
+    <string name="accessibility_quick_settings_page">الصفحة <xliff:g name="current_page" example="1">%1$d</xliff:g> من <xliff:g name="num_pages" example="2">%2$d</xliff:g></string>
+    <string name="accessibility_menu">القائمة</string>
+    <string name="accessibility_desc_close">إغلاق</string>
+</resources>

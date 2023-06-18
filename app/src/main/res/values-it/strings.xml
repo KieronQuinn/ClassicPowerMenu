@@ -102,8 +102,7 @@
     <string name="settings_about_faq">Domande frequenti</string>
     <string name="settings_about_faq_file">faq.md</string>
     <string name="settings_about">Classic Power Menu v%1s</string>
-    <string name="settings_about_desc">\"Creato da Kieron Quinn / Quinny899 @ XDA
-Immagini aggiuntive di Rohith R Krishnan e Austin Andrews\"%1s</string>
+    <string name="settings_about_desc">Creato da Kieron Quinn / Quinny899 @ XDA\nImmagini aggiuntive di Rohith R Krishnan e Austin Andrews\n%1s</string>
     <string name="settings_about_translators">Traduttrici:\nGiapponese: C0unt-zero\nItaliano: Vladi69\nCinese: wushidi and Ketal</string>
     <string name="chip_donate">Dona</string>
     <string name="chip_twitter">Twitter</string>

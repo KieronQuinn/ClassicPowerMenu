@@ -23,8 +23,11 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     namespace 'com.android.internal'
+    buildFeatures {
+        aidl true
+    }
 }
 
 dependencies {
-    implementation 'androidx.annotation:annotation:1.4.0'
+    implementation 'androidx.annotation:annotation:1.7.0'
 }

@@ -124,6 +124,11 @@ class PowerMenuFragment :
         setupInsets(view)
     }
 
+    override fun onStop() {
+        super.onStop()
+        contentAdapter?.controlsUiController?.hide()
+    }
+
     private fun setupInsets(view: View) {
         ViewCompat.setOnApplyWindowInsetsListener(view) { _, insets ->
             val cutout = insets.displayCutout

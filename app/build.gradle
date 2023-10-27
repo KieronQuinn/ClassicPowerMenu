@@ -16,7 +16,7 @@ android {
         applicationId "com.kieronquinn.app.classicpowermenu"
         minSdk 30
         targetSdk 33
-        versionCode 170
+        versionCode 171
         versionName version
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

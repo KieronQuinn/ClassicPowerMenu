@@ -26,6 +26,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.database.ContentObserver
 import android.net.Uri
+import android.os.Build
 import android.os.Environment
 import android.os.UserHandle
 import android.provider.Settings
@@ -468,10 +469,15 @@ class ControlsControllerImpl constructor (
             addCategory(Intent.CATEGORY_LAUNCHER)
             this.`package` = componentName.packageName
         }
+        val flags = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            PendingIntent.FLAG_MUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        } else {
+            PendingIntent.FLAG_UPDATE_CURRENT
+        }
         val pendingIntent = PendingIntent.getActivity(context,
                 componentName.hashCode(),
                 intent,
-                0)
+            flags)
         val control = Control.StatelessBuilder(controlInfo.controlId, pendingIntent)
                 .setTitle(controlInfo.controlTitle)
                 .setSubtitle(controlInfo.controlSubtitle)

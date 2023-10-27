@@ -2,6 +2,7 @@ package com.kieronquinn.app.classicpowermenu.components.starter
 
 import android.content.Context
 import android.content.Intent
+import com.android.systemui.util.extensions.ServiceRunner
 import com.kieronquinn.app.classicpowermenu.service.container.CPMServiceContainer
 import com.kieronquinn.app.classicpowermenu.ui.activities.PowerMenuActivity
 import kotlinx.coroutines.GlobalScope
@@ -20,20 +21,18 @@ interface PowerMenuStarter {
 
 }
 
-class PowerMenuStarterImpl(context: Context, private val service: CPMServiceContainer): PowerMenuStarter {
+class PowerMenuStarterImpl(context: Context, private val service: ServiceRunner): PowerMenuStarter {
 
     private val defaultStarter = {
         GlobalScope.launch {
-            service.runWithService {
-                it.resumeAppSwitches()
-            }
-            context.startActivity(Intent(context, PowerMenuActivity::class.java).apply {
+            val intent = Intent(context, PowerMenuActivity::class.java).apply {
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
                 addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                 addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-            })
+            }
+            service.startActivity(context, intent)
         }
 
     }

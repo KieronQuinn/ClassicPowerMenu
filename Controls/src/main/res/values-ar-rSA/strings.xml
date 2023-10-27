@@ -18,7 +18,7 @@
         <item quantity="two"><xliff:g id="number" example="1">%s</xliff:g> تم إضافة التحكم.</item>
         <item quantity="few"><xliff:g id="number" example="1">%s</xliff:g> تم إضافة التحكم.</item>
         <item quantity="many"><xliff:g id="number" example="1">%s</xliff:g> تم إضافة التحكم.</item>
-        <item quantity="other">&lt;xliff: g id="number" example="3"&gt;%s&lt;/xliff:g&gt; عناصر التحكم مضافة.</item>
+        <item quantity="other">&lt;xliff: g id=\"number\" example=\"3\"&gt;%s&lt;/xliff:g&gt; عناصر التحكم مضافة.</item>
     </plurals>
     <!-- Removed control in management screen [CHAR LIMIT=20] -->
     <string name="controls_removed">تمت الإزالة</string>

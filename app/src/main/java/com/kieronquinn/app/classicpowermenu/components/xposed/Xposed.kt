@@ -8,8 +8,6 @@ import android.content.pm.ApplicationInfo
 import android.os.Build
 import android.os.IBinder
 import android.util.Log
-import android.view.View
-import androidx.core.os.BuildCompat
 import com.kieronquinn.app.classicpowermenu.BuildConfig
 import com.kieronquinn.app.classicpowermenu.IGlobalActions
 import com.kieronquinn.app.classicpowermenu.service.globalactions.GlobalActionsService
@@ -34,8 +32,16 @@ class Xposed: IXposedHookLoadPackage, ServiceConnection {
     private var service: IGlobalActions? = null
 
     private var isHooked = false
+    private var miuiVersion = -1
+    private var oneuiVersion = -1
 
     override fun handleLoadPackage(lpparam: XC_LoadPackage.LoadPackageParam) {
+        miuiVersion = SystemProperties_getString("ro.miui.ui.version.name", "V0")
+            .substring(1).toIntOrNull() ?: -1
+        oneuiVersion = try {
+            Build.VERSION::class.java.getDeclaredField("SEM_PLATFORM_INT").getInt(null)
+        } catch(e: Exception) {-1}
+
         if(lpparam.packageName == "com.android.systemui") hookSystemUI(lpparam)
         if(lpparam.packageName == BuildConfig.APPLICATION_ID) hookSelf(lpparam)
     }
@@ -53,12 +59,68 @@ class Xposed: IXposedHookLoadPackage, ServiceConnection {
     }
 
     private fun hookSystemUI(lpparam: XC_LoadPackage.LoadPackageParam){
-        val miuiVersion = SystemProperties_getString("ro.miui.ui.version.name", "V0")
-            .substring(1).toIntOrNull() ?: -1
         when {
             miuiVersion >= 125 -> hookMiuiSystemUI(lpparam)
+            oneuiVersion >= 90000 -> hookOneUISystemUI(lpparam)
             else -> hookAospSystemUI(lpparam)
         }
+    }
+
+    private fun hookOneUISystemUI(lpparam: XC_LoadPackage.LoadPackageParam) {
+        val globalActionsDialogClassName = if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S){
+            "com.android.systemui.globalactions.GlobalActionsDialogLite"
+        }else{
+            "com.android.systemui.globalactions.GlobalActionsDialog"
+        }
+        val globalActionsDialogClass = XposedHelpers.findClass(globalActionsDialogClassName, lpparam.classLoader)
+        val samsungGlobalActionsPresenterClassName = "com.samsung.android.globalactions.presentation.SamsungGlobalActionsPresenter"
+        val samsungGlobalActionsPresenterClass = XposedHelpers.findClass(samsungGlobalActionsPresenterClassName, lpparam.classLoader)
+
+        //Bind the service when the dialog starts for the best chance of it being ready
+        XposedBridge.hookMethod(globalActionsDialogClass.constructors[0], object: XC_MethodHook(){
+            override fun afterHookedMethod(param: MethodHookParam) {
+                tryBindService(param.args[0] as Context)
+            }
+        })
+
+        val mIsShowing = samsungGlobalActionsPresenterClass
+            .getDeclaredField("mIsShowing").apply { isAccessible = true }
+        val mIsKeyguardShowing = samsungGlobalActionsPresenterClass
+            .getDeclaredField("mIsKeyguardShowing").apply { isAccessible = true }
+        val mIsDeviceProvisioned = samsungGlobalActionsPresenterClass
+            .getDeclaredField("mIsDeviceProvisioned").apply { isAccessible = true }
+        val mSideKeyType = samsungGlobalActionsPresenterClass
+            .getDeclaredField("mSideKeyType").apply { isAccessible = true }
+        val showMethod = samsungGlobalActionsPresenterClass.declaredMethods
+            .firstOrNull { it.name == "onStart" } ?: return
+
+        val hideMethod = globalActionsDialogClass.getDeclaredMethod(
+            "dismissGlobalActionsMenu")
+
+        XposedBridge.hookMethod(showMethod, object: XC_MethodHook() {
+            override fun beforeHookedMethod(param: MethodHookParam) {
+                if (mIsShowing.getBoolean(param.thisObject))
+                    return
+                val showingIndex = param.args.indexOfFirst { it is Boolean }
+
+                val keyguardShowing = param.args[showingIndex]
+                val deviceProvisioned = param.args[showingIndex + 1]
+                val sideKeyType = param.args[showingIndex + 3]
+                mIsKeyguardShowing.set(param.thisObject, keyguardShowing)
+                mIsDeviceProvisioned.set(param.thisObject, deviceProvisioned)
+                mSideKeyType.set(param.thisObject, sideKeyType)
+
+                if (handleShow(param)){
+                    param.result = false
+                }
+            }
+        })
+        XposedBridge.hookMethod(hideMethod, object: XC_MethodHook() {
+            override fun beforeHookedMethod(param: MethodHookParam?) {
+                super.beforeHookedMethod(param)
+                handleDismiss()
+            }
+        })
     }
 
     private fun hookAospSystemUI(lpparam: XC_LoadPackage.LoadPackageParam) {
@@ -174,7 +236,12 @@ class Xposed: IXposedHookLoadPackage, ServiceConnection {
             } else false
         } ?: run {
             //Bind service for next time
-            val context = XposedHelpers.getObjectField(param.thisObject, "mContext") as Context
+            val context = if (oneuiVersion >= 90000){
+                val contentObserverWrapper = XposedHelpers.getObjectField(param.thisObject, "mContentObserverWrapper")
+                XposedHelpers.getObjectField(contentObserverWrapper, "mContext") as Context
+            } else {
+                XposedHelpers.getObjectField(param.thisObject, "mContext") as Context
+            }
             tryBindService(context)
             return@run false
         }

@@ -31,6 +31,7 @@ import androidx.core.util.Preconditions
 import com.android.systemui.Dumpable
 import com.android.systemui.broadcast.logging.BroadcastDispatcherLogger
 import com.android.systemui.util.extensions.indentIfPossible
+import com.android.systemui.util.extensions.registerReceiverCompat
 import java.io.FileDescriptor
 import java.io.PrintWriter
 import java.util.concurrent.Executor
@@ -120,7 +121,7 @@ open class UserBroadcastDispatcher(
             action,
             userId,
             {
-                context.registerReceiver(this, it, null, bgHandler)
+                context.registerReceiverCompat(this, it, null, bgHandler)
                 logger.logContextReceiverRegistered(userId, it)
             },
             {

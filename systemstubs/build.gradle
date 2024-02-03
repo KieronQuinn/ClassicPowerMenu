@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 34
     buildToolsVersion "31.0.0"
 
     defaultConfig {
         minSdkVersion 28
-        targetSdkVersion 31
+        targetSdkVersion 34
         consumerProguardFiles "consumer-rules.pro"
     }
 
@@ -29,5 +29,5 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.annotation:annotation:1.7.0'
+    implementation 'androidx.annotation:annotation:1.7.1'
 }

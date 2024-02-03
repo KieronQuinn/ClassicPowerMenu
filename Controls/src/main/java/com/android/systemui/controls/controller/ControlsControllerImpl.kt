@@ -243,7 +243,7 @@ class ControlsControllerImpl constructor (
                 executor,
                 UserHandle_ALL
         )
-        context.registerReceiver(
+        context.registerReceiverCompat(
             restoreFinishedReceiver,
             IntentFilter(BackupHelper.ACTION_RESTORE_FINISHED),
             PERMISSION_SELF,

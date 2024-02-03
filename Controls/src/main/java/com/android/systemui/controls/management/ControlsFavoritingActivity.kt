@@ -148,7 +148,7 @@ class ControlsFavoritingActivity: LifecycleActivity() {
             statusText.text = resources.getText(R.string.loading)
             val emptyZoneString = resources.getText(
                     R.string.controls_favorite_other_zone_header)
-            controller.loadForComponent(it, Consumer { data ->
+            controller.loadForComponent(it, { data ->
                 val allControls = data.allControls
                 val favoriteKeys = data.favoritesIds
                 val error = data.errorOnLoad
@@ -187,7 +187,7 @@ class ControlsFavoritingActivity: LifecycleActivity() {
 
                         ControlsAnimations.enterAnimation(pageIndicator).apply {
                             addListener(object : AnimatorListenerAdapter() {
-                                override fun onAnimationEnd(animation: Animator?) {
+                                override fun onAnimationEnd(animation: Animator) {
                                     // Position the tooltip if necessary after animations are complete
                                     // so we can get the position on screen. The tooltip is not
                                     // rooted in the layout root.
@@ -206,7 +206,7 @@ class ControlsFavoritingActivity: LifecycleActivity() {
                         ControlsAnimations.enterAnimation(structurePager).start()
                     }
                 }
-            }, Consumer { runnable -> cancelLoadRunnable = runnable })
+            }, { runnable -> cancelLoadRunnable = runnable })
         }
     }
 

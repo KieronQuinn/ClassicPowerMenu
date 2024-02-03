@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import com.android.systemui.util.extensions.registerReceiverCompat
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
 
@@ -14,7 +15,7 @@ fun Context.registerReceiver(vararg actions: String, onReceive: (Intent) -> Unit
         }
     }
     actions.forEach {
-        registerReceiver(receiver, IntentFilter(it))
+        registerReceiverCompat(receiver, IntentFilter(it))
     }
     return receiver
 }

@@ -33,6 +33,8 @@ import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 
+import com.android.systemui.util.extensions.Extensions_ContextKt;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -87,7 +89,7 @@ public class ServiceListing {
             filter.addAction(Intent.ACTION_PACKAGE_REMOVED);
             filter.addAction(Intent.ACTION_PACKAGE_REPLACED);
             filter.addDataScheme("package");
-            mContext.registerReceiver(mPackageReceiver, filter);
+            Extensions_ContextKt.registerReceiverCompat(mContext, mPackageReceiver, filter);
             mContentResolver.registerContentObserver(Settings.Secure.getUriFor(mSetting),
                     false, mSettingsObserver);
         } else {

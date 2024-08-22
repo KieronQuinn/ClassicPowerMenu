@@ -4,7 +4,6 @@ import android.app.KeyguardManager
 import android.content.Context
 import android.content.Intent
 import android.telecom.TelecomManager
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.android.systemui.plugin.globalactions.wallet.WalletCardViewInfo
@@ -50,6 +49,8 @@ abstract class PowerMenuViewModel: ViewModel() {
     abstract val showControls: Boolean
     abstract val monetEnabled: Boolean
     abstract val useSolidBackground: Boolean
+    abstract val quickAccessWalletAutoSwitchService: Boolean
+    abstract val quickAccessWalletSelectedAutoSwitchService: String
 
 }
 
@@ -69,6 +70,8 @@ class PowerMenuViewModelImpl(context: Context, private val service: CPMServiceCo
     override val showQuickAccessWallet by settings::quickAccessWalletShow
     override val monetEnabled by settings::useMonet
     override val useSolidBackground by settings::useSolidBackground
+    override val quickAccessWalletAutoSwitchService by settings::quickAccessWalletAutoSwitchService
+    override val quickAccessWalletSelectedAutoSwitchService by settings::quickAccessWalletSelectedAutoSwitchService
 
     override suspend fun shouldShowLockdown(): Boolean {
         //No point showing lockdown without a lock

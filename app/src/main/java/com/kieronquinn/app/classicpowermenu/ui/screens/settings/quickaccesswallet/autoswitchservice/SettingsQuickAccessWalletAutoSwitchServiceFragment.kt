@@ -1,4 +1,4 @@
-package com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.autoswitch
+package com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.autoswitchservice
 
 import android.os.Bundle
 import android.view.View
@@ -8,20 +8,20 @@ import androidx.core.view.updatePadding
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kieronquinn.app.classicpowermenu.R
-import com.kieronquinn.app.classicpowermenu.databinding.FragmentSettingsQuickAccessWalletChangeDefaultPaymentMethodBinding
+import com.kieronquinn.app.classicpowermenu.databinding.FragmentSettingsQuickAccessWalletAutoSwitchServiceBinding
 import com.kieronquinn.app.classicpowermenu.ui.base.BoundFragment
 import com.kieronquinn.app.classicpowermenu.ui.base.StandaloneFragment
 import com.kieronquinn.app.classicpowermenu.utils.extensions.onApplyInsets
 import com.kieronquinn.monetcompat.extensions.views.applyMonet
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SettingsQuickAccessWalletChangeDefaultPaymentMethodFragment: BoundFragment<FragmentSettingsQuickAccessWalletChangeDefaultPaymentMethodBinding>(FragmentSettingsQuickAccessWalletChangeDefaultPaymentMethodBinding::inflate), StandaloneFragment {
+class SettingsQuickAccessWalletAutoSwitchServiceFragment: BoundFragment<FragmentSettingsQuickAccessWalletAutoSwitchServiceBinding>(FragmentSettingsQuickAccessWalletAutoSwitchServiceBinding::inflate), StandaloneFragment {
 
     private val adapter by lazy {
-        SettingsQuickAccessWalletChangeDefaultPaymentMethodAdapter(requireContext(), emptyList(), viewModel::onServiceClicked)
+        SettingsQuickAccessWalletAutoSwitchServiceAdapter(requireContext(), emptyList(), viewModel::onServiceClicked)
     }
 
-    private val viewModel by viewModel<SettingsQuickAccessWalletChangeDefaultPaymentMethodViewModel>()
+    private val viewModel by viewModel<SettingsQuickAccessWalletAutoSwitchServiceViewModel>()
 
     override val onBackPressed by lazy {
         return@lazy viewModel::onBackPressed
@@ -42,21 +42,26 @@ class SettingsQuickAccessWalletChangeDefaultPaymentMethodFragment: BoundFragment
         }
     }
 
-    private fun handleState(state: SettingsQuickAccessWalletChangeDefaultPaymentMethodViewModel.State){
+    private fun handleState(state: SettingsQuickAccessWalletAutoSwitchServiceViewModel.State){
         when(state){
-            is SettingsQuickAccessWalletChangeDefaultPaymentMethodViewModel.State.Loading -> {
-                binding.quickAccessWalletChangeDefaultPaymentMethodRecyclerview.isVisible = false
+            is SettingsQuickAccessWalletAutoSwitchServiceViewModel.State.Loading -> {
+                binding.quickAccessWalletAutoSwitchServiceRecyclerview.isVisible = false
+                binding.quickAccessWalletAutoSwitchServiceEmpty.isVisible = false
+
                 binding.quickAccessWalletAutoSwitchServiceLoading.isVisible = true
             }
-            is SettingsQuickAccessWalletChangeDefaultPaymentMethodViewModel.State.Error -> {
-                //binding.quickAccessWalletRearrangeRecyclerview.isVisible = false
-                //binding.quickAccessWalletRearrangeEmpty.isVisible = true
-                //binding.quickAccessWalletRearrangeEmptyText.setText(state.type.contentRes)
-                //binding.quickAccessWalletRearrangeLoading.isVisible = false
-            }
-            is SettingsQuickAccessWalletChangeDefaultPaymentMethodViewModel.State.Loaded -> {
-                binding.quickAccessWalletChangeDefaultPaymentMethodRecyclerview.isVisible = true
+            is SettingsQuickAccessWalletAutoSwitchServiceViewModel.State.Error -> {
+                binding.quickAccessWalletAutoSwitchServiceRecyclerview.isVisible = false
                 binding.quickAccessWalletAutoSwitchServiceLoading.isVisible = false
+
+                binding.quickAccessWalletAutoSwitchServiceEmptyText.setText(state.type.contentRes)
+                binding.quickAccessWalletAutoSwitchServiceEmpty.isVisible = true
+            }
+            is SettingsQuickAccessWalletAutoSwitchServiceViewModel.State.Loaded -> {
+                binding.quickAccessWalletAutoSwitchServiceLoading.isVisible = false
+                binding.quickAccessWalletAutoSwitchServiceEmpty.isVisible = false
+
+                binding.quickAccessWalletAutoSwitchServiceRecyclerview.isVisible = true
                 adapter.cards = state.services
             }
         }
@@ -66,16 +71,16 @@ class SettingsQuickAccessWalletChangeDefaultPaymentMethodFragment: BoundFragment
 
     private fun setupToolbar(){
         with(binding.toolbar){
-            setupWithScrollableView(binding.quickAccessWalletChangeDefaultPaymentMethodRecyclerview)
+            setupWithScrollableView(binding.quickAccessWalletAutoSwitchServiceRecyclerview)
             setNavigationOnClickListener {
                 viewModel.onBackPressed()
             }
         }
     }
 
-    private fun setupRecyclerView() = with(binding.quickAccessWalletChangeDefaultPaymentMethodRecyclerview) {
+    private fun setupRecyclerView() = with(binding.quickAccessWalletAutoSwitchServiceRecyclerview) {
         layoutManager = LinearLayoutManager(context)
-        adapter = this@SettingsQuickAccessWalletChangeDefaultPaymentMethodFragment.adapter
+        adapter = this@SettingsQuickAccessWalletAutoSwitchServiceFragment.adapter
     }
 
     private fun setupMonet(){
@@ -88,7 +93,7 @@ class SettingsQuickAccessWalletChangeDefaultPaymentMethodFragment: BoundFragment
             val topInset = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
             view.updatePadding(top = topInset)
         }
-        binding.quickAccessWalletChangeDefaultPaymentMethodRecyclerview.onApplyInsets { view, insets ->
+        binding.quickAccessWalletAutoSwitchServiceRecyclerview.onApplyInsets { view, insets ->
             val bottomPadding = resources.getDimension(R.dimen.margin_16).toInt()
             val bottomInset = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
             view.updatePadding(bottom = bottomPadding + bottomInset)

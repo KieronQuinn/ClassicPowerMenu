@@ -1,4 +1,4 @@
-package com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.autoswitch
+package com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.autoswitchservice
 
 import android.graphics.drawable.Drawable
 import androidx.annotation.StringRes
@@ -7,40 +7,37 @@ import androidx.lifecycle.viewModelScope
 import com.kieronquinn.app.classicpowermenu.R
 import com.kieronquinn.app.classicpowermenu.components.navigation.ContainerNavigation
 import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.autoswitch.AutoSwitchServicesRepository
-import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.loyaltycards.LoyaltyCardsRepository
 import com.kieronquinn.app.classicpowermenu.components.settings.Settings
-import com.kieronquinn.app.classicpowermenu.model.quickaccesswallet.WalletLoyaltyCardViewInfo
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
-abstract class SettingsQuickAccessWalletChangeDefaultPaymentMethodViewModel: ViewModel() {
+abstract class SettingsQuickAccessWalletAutoSwitchServiceViewModel: ViewModel() {
 
     abstract val state: Flow<State>
 
     abstract fun onBackPressed()
-    abstract fun onServiceClicked(service: SelectAutoSwitchService)
+    abstract fun onServiceClicked(service: AutoSwitchServiceItem)
 
-    data class SelectAutoSwitchService(val name: String, val componentName: String, val image: Drawable) {
+    data class AutoSwitchServiceItem(val name: String, val componentName: String, val image: Drawable) {
         var selected = false
     }
 
     sealed class State {
         object Loading: State()
-        data class Loaded(val services: ArrayList<SelectAutoSwitchService>): State()
+        data class Loaded(val services: ArrayList<AutoSwitchServiceItem>): State()
         data class Error(val type: ErrorType): State()
     }
 
     enum class ErrorType(@StringRes val contentRes: Int) {
-        NO_SERVICES(R.string.settings_quick_access_wallet_rearrange_error_no_cards)
+        NO_SERVICES(R.string.settings_quick_access_wallet_auto_switch_service_error_no_cards)
     }
 
 }
 
-class SettingsQuickAccessWalletChangeDefaultPaymentMethodViewModelImpl(private val autoSwitchServicesRepository: AutoSwitchServicesRepository, private val settings: Settings, private val containerNavigation: ContainerNavigation): SettingsQuickAccessWalletChangeDefaultPaymentMethodViewModel() {
+class SettingsQuickAccessWalletAutoSwitchServiceViewModelImpl(private val autoSwitchServicesRepository: AutoSwitchServicesRepository, private val settings: Settings, private val containerNavigation: ContainerNavigation): SettingsQuickAccessWalletAutoSwitchServiceViewModel() {
 
     private val autoSwitchServices = flow {
         val services = autoSwitchServicesRepository.getAutoSwitchServices()
@@ -67,7 +64,7 @@ class SettingsQuickAccessWalletChangeDefaultPaymentMethodViewModelImpl(private v
         }
     }
 
-    override fun onServiceClicked(service: SelectAutoSwitchService) {
+    override fun onServiceClicked(service: AutoSwitchServiceItem) {
         viewModelScope.launch {
             settings.quickAccessWalletSelectedAutoSwitchService = service.componentName
             containerNavigation.navigateBack()

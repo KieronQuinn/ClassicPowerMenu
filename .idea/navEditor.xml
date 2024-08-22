@@ -224,6 +224,11 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="action_global_updateAvailableBottomSheetFragment">
+                    <value>
+                      <LayoutPositions />
+                    </value>
+                  </entry>
                   <entry key="settingsContainerFragment">
                     <value>
                       <LayoutPositions>
@@ -236,6 +241,11 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_settingsContainerFragment_to_settingsPowerOptionsRearrangeFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_settingsContainerFragment_to_settingsQuickAccessWalletChangeDefaultPaymentMethod">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -255,8 +265,20 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="454" />
-                            <option name="y" value="12" />
+                            <option name="x" value="560" />
+                            <option name="y" value="-145" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="settingsQuickAccessWalletChangeDefaultPaymentMethod">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="764" />
+                            <option name="y" value="99" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -267,8 +289,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="454" />
-                            <option name="y" value="368" />
+                            <option name="x" value="624" />
+                            <option name="y" value="402" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -291,11 +313,6 @@
                               </value>
                             </entry>
                             <entry key="action_settingsRootCheckFragment_to_settingsRootCheckNoRootBottomSheetFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_settingsRootCheckFragment_to_updateAvailableBottomSheetFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -325,6 +342,15 @@
                             <option name="x" value="15" />
                             <option name="y" value="420" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_updateAvailableBottomSheetFragment_to_updateDownloadBottomSheetFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

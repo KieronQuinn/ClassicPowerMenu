@@ -9,7 +9,6 @@ import com.kieronquinn.app.classicpowermenu.components.navigation.ContainerNavig
 import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.GooglePayConstants
 import com.kieronquinn.app.classicpowermenu.components.settings.Settings
 import com.kieronquinn.app.classicpowermenu.ui.screens.settings.container.SettingsContainerFragmentDirections
-import com.kieronquinn.app.classicpowermenu.utils.extensions.isAppInstalled
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
@@ -22,13 +21,17 @@ abstract class SettingsQuickAccessWalletViewModel: ViewModel() {
     abstract var showPreview: Boolean
     abstract var accessWhileLocked: Boolean
     abstract var hideCardNumber: Boolean
+    abstract var autoSwitchService: Boolean
+    abstract val selectedAutoSwitchService: String
     abstract val showLoyaltyCardsChanged: Flow<Unit>
+    abstract val autoSwitchServiceChanged: Flow<Unit>
 
     abstract val isGooglePayInstalled: Boolean
 
     abstract fun onSwitchClicked()
     abstract fun onChangeGooglePaySettingsClicked()
     abstract fun onReorderLoyaltyCardsClicked()
+    abstract fun onAutoSwitchServiceClicked()
 
 }
 
@@ -42,6 +45,9 @@ class SettingsQuickAccessWalletViewModelImpl(context: Context, private val setti
     override var showPreview by settings::quickAccessWalletShowPreview
     override var accessWhileLocked by settings::quickAccessWalletAccessWhileLocked
     override var hideCardNumber by settings::quickAccessWalletHideCardNumberWhenLocked
+    override var autoSwitchService by settings::quickAccessWalletAutoSwitchService
+    override var selectedAutoSwitchService by settings::quickAccessWalletSelectedAutoSwitchService
+    override val autoSwitchServiceChanged = settings.quickAccessWalletAutoSwitchServiceFlow.map{}
     override val showLoyaltyCardsChanged = settings.quickAccessWalletShowLoyaltyCardsFlow.map { }
 
     override val isGooglePayInstalled
@@ -60,6 +66,12 @@ class SettingsQuickAccessWalletViewModelImpl(context: Context, private val setti
     override fun onReorderLoyaltyCardsClicked() {
         viewModelScope.launch {
             containerNavigation.navigate(SettingsContainerFragmentDirections.actionSettingsContainerFragmentToSettingsQuickAccessWalletRearrangeFragment())
+        }
+    }
+
+    override fun onAutoSwitchServiceClicked() {
+        viewModelScope.launch {
+            containerNavigation.navigate(SettingsContainerFragmentDirections.actionSettingsContainerFragmentToSettingsQuickAccessWalletAutoSwitchServiceFragment())
         }
     }
 

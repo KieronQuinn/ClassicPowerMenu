@@ -3,18 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/wallet_rearrange_item_height"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
     android:clipToPadding="false"
     android:padding="@dimen/margin_16">
 
     <ImageView
-        android:id="@+id/wallet_rearrange_card_card"
+        android:id="@+id/wallet_select_service_card_image"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/wallet_rearrange_card_height"
         android:adjustViewBounds="true"
-        android:outlineProvider="background"
-        android:elevation="4dp"
         android:background="@drawable/clip_wallet_rearrange_card"
+        android:elevation="4dp"
+        android:outlineProvider="background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,66 +25,34 @@
         tools:layout_width="64dp" />
 
     <TextView
-        android:id="@+id/wallet_rearrange_card_title"
+        android:id="@+id/wallet_select_service_card_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingEnd="@dimen/margin_8"
+        android:layout_marginStart="@dimen/margin_16"
         android:ellipsize="end"
         android:maxLines="1"
-        android:layout_marginStart="@dimen/margin_16"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium.ClassicPowerMenu"
         android:textColor="?android:textColorPrimary"
-        app:layout_constraintBottom_toTopOf="@id/wallet_rearrange_card_text"
-        app:layout_constraintEnd_toStartOf="@id/wallet_rearrange_card_visibility_toggle"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toEndOf="@id/wallet_rearrange_card_card"
+        app:layout_constraintBottom_toTopOf="@id/wallet_select_service_card_text"
+        app:layout_constraintStart_toEndOf="@id/wallet_select_service_card_image"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-        tools:text="Card Name" />
+        tools:text="Service Name" />
 
     <TextView
-        android:id="@+id/wallet_rearrange_card_text"
+        android:id="@+id/wallet_select_service_card_text"
         android:layout_width="0dp"
-        android:paddingEnd="@dimen/margin_8"
-        android:ellipsize="end"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_16"
-        android:maxLines="1"
+        android:layout_marginEnd="16dp"
+        android:ellipsize="end"
+        android:scrollHorizontally="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Small.ClassicPowerMenu.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/wallet_rearrange_card_visibility_toggle"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toEndOf="@id/wallet_rearrange_card_card"
-        app:layout_constraintTop_toBottomOf="@id/wallet_rearrange_card_title"
-        tools:text="Card Type" />
-
-    <ImageButton
-        android:id="@+id/wallet_rearrange_card_visibility_toggle"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="@dimen/margin_16"
-        android:adjustViewBounds="true"
-        android:background="@null"
-        android:padding="@dimen/margin_8"
-        android:scaleType="fitXY"
-        android:foreground="@drawable/rounded_ripple_48"
-        android:src="@drawable/ic_quick_access_wallet_visibility_visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/wallet_rearrange_card_drag_handle"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/wallet_rearrange_card_drag_handle"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@null"
-        android:scaleType="fitXY"
-        android:padding="@dimen/margin_8"
-        android:foreground="@drawable/rounded_ripple_48"
-        android:src="@drawable/ic_drag_handle"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/wallet_select_service_card_image"
+        app:layout_constraintTop_toBottomOf="@id/wallet_select_service_card_title"
+        tools:text="Service ComponentName" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,7 +31,14 @@ import com.kieronquinn.app.classicpowermenu.model.power.PowerMenuButton
 import com.kieronquinn.app.classicpowermenu.model.power.PowerMenuContentItem
 import com.kieronquinn.app.classicpowermenu.service.container.CPMServiceContainer
 import com.kieronquinn.app.classicpowermenu.ui.base.BoundFragment
-import com.kieronquinn.app.classicpowermenu.utils.extensions.*
+import com.kieronquinn.app.classicpowermenu.utils.extensions.animateToInvisible
+import com.kieronquinn.app.classicpowermenu.utils.extensions.animateToVisible
+import com.kieronquinn.app.classicpowermenu.utils.extensions.awaitPost
+import com.kieronquinn.app.classicpowermenu.utils.extensions.changed
+import com.kieronquinn.app.classicpowermenu.utils.extensions.isScrolled
+import com.kieronquinn.app.classicpowermenu.utils.extensions.scrollPercentage
+import com.kieronquinn.app.classicpowermenu.utils.extensions.sendDismissIntent
+import com.kieronquinn.app.classicpowermenu.utils.extensions.setSecondaryAlpha
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
@@ -126,12 +133,19 @@ class PowerMenuFragment :
 
     override fun onStop() {
         super.onStop()
-        contentAdapter?.controlsUiController?.hide()
+        contentAdapter.controlsUiController?.hide()
     }
 
     private fun changeDefaultPaymentMethod() {
-        val googlePay = "com.google.android.gms/com.google.android.gms.tapandpay.hce.service.TpHceService"
-        Settings.Secure.putString(powerMenuApplication.contentResolver, "nfc_payment_default_component", googlePay)
+        if (viewModel.showQuickAccessWallet &&
+            viewModel.quickAccessWalletAutoSwitchService &&
+            viewModel.quickAccessWalletSelectedAutoSwitchService != "") {
+            try {
+                Settings.Secure.putString(powerMenuApplication.contentResolver, "nfc_payment_default_component", viewModel.quickAccessWalletSelectedAutoSwitchService)
+            } catch (e: Exception) {
+                Log.e("CPM", "Failed to apply default payment service", e)
+            }
+        }
     }
 
     private fun setupInsets(view: View) {

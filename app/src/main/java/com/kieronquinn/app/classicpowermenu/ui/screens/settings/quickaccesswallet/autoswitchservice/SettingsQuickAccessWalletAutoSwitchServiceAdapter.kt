@@ -1,4 +1,4 @@
-package com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.autoswitch
+package com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.autoswitchservice
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kieronquinn.app.classicpowermenu.databinding.ItemWalletSelectServiceCardBinding
 import com.kieronquinn.monetcompat.core.MonetCompat
 
-class SettingsQuickAccessWalletChangeDefaultPaymentMethodAdapter(context: Context, var cards: List<SettingsQuickAccessWalletChangeDefaultPaymentMethodViewModel.SelectAutoSwitchService>, val onServiceClicked: (SettingsQuickAccessWalletChangeDefaultPaymentMethodViewModel.SelectAutoSwitchService) -> Unit): RecyclerView.Adapter<SettingsQuickAccessWalletChangeDefaultPaymentMethodAdapter.ViewHolder>() {
+class SettingsQuickAccessWalletAutoSwitchServiceAdapter(context: Context, var cards: List<SettingsQuickAccessWalletAutoSwitchServiceViewModel.AutoSwitchServiceItem>, val onServiceClicked: (SettingsQuickAccessWalletAutoSwitchServiceViewModel.AutoSwitchServiceItem) -> Unit): RecyclerView.Adapter<SettingsQuickAccessWalletAutoSwitchServiceAdapter.ViewHolder>() {
 
     init {
         setHasStableIds(true)

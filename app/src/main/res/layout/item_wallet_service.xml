@@ -11,7 +11,7 @@
     android:padding="@dimen/margin_16">
 
     <ImageView
-        android:id="@+id/wallet_select_service_card_image"
+        android:id="@+id/wallet_service_image"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/wallet_rearrange_card_height"
         android:adjustViewBounds="true"
@@ -25,7 +25,7 @@
         tools:layout_width="64dp" />
 
     <TextView
-        android:id="@+id/wallet_select_service_card_title"
+        android:id="@+id/wallet_service_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_16"
@@ -33,14 +33,14 @@
         android:maxLines="1"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium.ClassicPowerMenu"
         android:textColor="?android:textColorPrimary"
-        app:layout_constraintBottom_toTopOf="@id/wallet_select_service_card_text"
-        app:layout_constraintStart_toEndOf="@id/wallet_select_service_card_image"
+        app:layout_constraintBottom_toTopOf="@id/wallet_service_text"
+        app:layout_constraintStart_toEndOf="@id/wallet_service_image"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
         tools:text="Service Name" />
 
     <TextView
-        android:id="@+id/wallet_select_service_card_text"
+        android:id="@+id/wallet_service_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_16"
@@ -50,8 +50,8 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Small.ClassicPowerMenu.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/wallet_select_service_card_image"
-        app:layout_constraintTop_toBottomOf="@id/wallet_select_service_card_title"
+        app:layout_constraintStart_toEndOf="@id/wallet_service_image"
+        app:layout_constraintTop_toBottomOf="@id/wallet_service_title"
         tools:text="Service ComponentName" />
 
 

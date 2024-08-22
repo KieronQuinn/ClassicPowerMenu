@@ -32,7 +32,7 @@ abstract class SettingsQuickAccessWalletAutoSwitchServiceViewModel: ViewModel() 
     }
 
     enum class ErrorType(@StringRes val contentRes: Int) {
-        NO_SERVICES(R.string.settings_quick_access_wallet_auto_switch_service_error_no_cards)
+        NO_SERVICES(R.string.settings_quick_access_wallet_auto_switch_service_error_no_services)
     }
 
 }

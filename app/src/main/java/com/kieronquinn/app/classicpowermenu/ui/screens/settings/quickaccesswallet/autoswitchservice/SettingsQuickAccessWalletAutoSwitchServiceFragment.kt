@@ -62,7 +62,7 @@ class SettingsQuickAccessWalletAutoSwitchServiceFragment: BoundFragment<Fragment
                 binding.quickAccessWalletAutoSwitchServiceEmpty.isVisible = false
 
                 binding.quickAccessWalletAutoSwitchServiceRecyclerview.isVisible = true
-                adapter.cards = state.services
+                adapter.services = state.services
             }
         }
     }

@@ -4,10 +4,10 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.kieronquinn.app.classicpowermenu.databinding.ItemWalletSelectServiceCardBinding
+import com.kieronquinn.app.classicpowermenu.databinding.ItemWalletServiceBinding
 import com.kieronquinn.monetcompat.core.MonetCompat
 
-class SettingsQuickAccessWalletAutoSwitchServiceAdapter(context: Context, var cards: List<SettingsQuickAccessWalletAutoSwitchServiceViewModel.AutoSwitchServiceItem>, val onServiceClicked: (SettingsQuickAccessWalletAutoSwitchServiceViewModel.AutoSwitchServiceItem) -> Unit): RecyclerView.Adapter<SettingsQuickAccessWalletAutoSwitchServiceAdapter.ViewHolder>() {
+class SettingsQuickAccessWalletAutoSwitchServiceAdapter(context: Context, var services: List<SettingsQuickAccessWalletAutoSwitchServiceViewModel.AutoSwitchServiceItem>, val onServiceClicked: (SettingsQuickAccessWalletAutoSwitchServiceViewModel.AutoSwitchServiceItem) -> Unit): RecyclerView.Adapter<SettingsQuickAccessWalletAutoSwitchServiceAdapter.ViewHolder>() {
 
     init {
         setHasStableIds(true)
@@ -22,22 +22,22 @@ class SettingsQuickAccessWalletAutoSwitchServiceAdapter(context: Context, var ca
     }
 
     override fun getItemId(position: Int): Long {
-        return cards[position].componentName.hashCode().toLong()
+        return services[position].componentName.hashCode().toLong()
     }
 
-    override fun getItemCount() = cards.size
+    override fun getItemCount() = services.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ItemWalletSelectServiceCardBinding.inflate(layoutInflater, parent, false))
+        return ViewHolder(ItemWalletServiceBinding.inflate(layoutInflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = cards[position]
+        val item = services[position]
         with(holder.binding){
-            walletSelectServiceCardTitle.text = item.name
-            walletSelectServiceCardText.text = item.componentName
-            walletSelectServiceCardImage.clipToOutline = true
-            walletSelectServiceCardImage.setImageDrawable(item.image)
+            walletServiceTitle.text = item.name
+            walletServiceText.text = item.componentName
+            walletServiceImage.clipToOutline = true
+            walletServiceImage.setImageDrawable(item.image)
         }
 
         if (item.selected) holder.itemView.setBackgroundColor(monet.getSecondaryColor(holder.itemView.context))
@@ -47,6 +47,6 @@ class SettingsQuickAccessWalletAutoSwitchServiceAdapter(context: Context, var ca
         }
     }
 
-    data class ViewHolder(val binding: ItemWalletSelectServiceCardBinding): RecyclerView.ViewHolder(binding.root)
+    data class ViewHolder(val binding: ItemWalletServiceBinding): RecyclerView.ViewHolder(binding.root)
 
 }

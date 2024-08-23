@@ -76,6 +76,11 @@
     <string name="settings_quick_access_wallet_change_settings_in_pay_desc">Modifica impostazioni come l\'ordine della carta di pagamento, la carta predefinita ed il comportamento</string>
     <string name="settings_quick_access_wallet_access_while_locked_desc">Mostra l\'anteprima della Carta fedeltà con dispositivo bloccato. Se disabilitato, ti verrà chiesto di sbloccare prima di aprire l\'anteprima o Google Wallet</string>
     <string name="settings_quick_access_wallet_hide_card_number_when_locked">Sfoca il numero della carta di pagamento quando bloccato</string>
+    <string name="settings_quick_access_wallet_auto_switch_service">Auto switch default payment method</string>
+    <string name="settings_quick_access_wallet_auto_switch_service_desc">When CPM is opened auto switch the default payment method to the selected service. <b>Note: This is only needed if your wallet app is not the \"Default Contactless Payment\"</b></string>
+    <string name="settings_quick_access_wallet_auto_switch_service_select">Select service for auto switch</string>
+    <string name="settings_quick_access_wallet_auto_switch_service_loading">Loading NFC emulation services…</string>
+    <string name="settings_quick_access_wallet_auto_switch_service_error_no_services">No NFC emulation services found</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards">Visualizza Carte Fedeltà</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards_desc">Carica e mostra le tue carte fedeltà da Google Wallet nel Quick Access Wallet</string>
     <string name="settings_quick_access_wallet_rearrange">Riorganizza &amp; Nascondi Carte Fedeltà</string>

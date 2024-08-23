@@ -75,6 +75,11 @@
     <string name="settings_quick_access_wallet_change_settings_in_pay_desc">更改支付卡订单、默认卡和行为等设置</string>
     <string name="settings_quick_access_wallet_access_while_locked_desc">锁定时显示积分卡预览。 禁用本功能后，您需要先解锁才能正常使用</string>
     <string name="settings_quick_access_wallet_hide_card_number_when_locked">锁定时模糊支付卡卡号</string>
+    <string name="settings_quick_access_wallet_auto_switch_service">Auto switch default payment method</string>
+    <string name="settings_quick_access_wallet_auto_switch_service_desc">When CPM is opened auto switch the default payment method to the selected service. <b>Note: This is only needed if your wallet app is not the \"Default Contactless Payment\"</b></string>
+    <string name="settings_quick_access_wallet_auto_switch_service_select">Select service for auto switch</string>
+    <string name="settings_quick_access_wallet_auto_switch_service_loading">Loading NFC emulation services…</string>
+    <string name="settings_quick_access_wallet_auto_switch_service_error_no_services">No NFC emulation services found</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards">显示积分卡</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards_desc">在快捷支付中显示您的 Google Wallet 积分卡</string>
     <string name="settings_quick_access_wallet_rearrange">重新排序 &amp; 显示积分卡</string>

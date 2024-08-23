@@ -75,6 +75,11 @@
     <string name="settings_quick_access_wallet_change_settings_in_pay_desc">Αλλαγή ρυθμίσεων, όπως η σειρά Καρτών Πληρωμής, η προεπιλεγμένη κάρτα και η συμπεριφορά</string>
     <string name="settings_quick_access_wallet_access_while_locked_desc">Εμφάνιση προεπισκόπησης της Κάρτας Αφοσίωσης στην οθόνη κλειδώματος. Αν απενεργοποιηθεί, θα σας ζητηθεί να ξεκλειδώσετε πρώτα πριν ανοίξει η προεπισκόπηση ή το Πορτοφόλι Google</string>
     <string name="settings_quick_access_wallet_hide_card_number_when_locked">Θάμπωμα αριθμού κάρτας πληρωμής στην οθόνη κλειδώματος</string>
+    <string name="settings_quick_access_wallet_auto_switch_service">Auto switch default payment method</string>
+    <string name="settings_quick_access_wallet_auto_switch_service_desc">When CPM is opened auto switch the default payment method to the selected service. <b>Note: This is only needed if your wallet app is not the \"Default Contactless Payment\"</b></string>
+    <string name="settings_quick_access_wallet_auto_switch_service_select">Select service for auto switch</string>
+    <string name="settings_quick_access_wallet_auto_switch_service_loading">Loading NFC emulation services…</string>
+    <string name="settings_quick_access_wallet_auto_switch_service_error_no_services">No NFC emulation services found</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards">Εμφάνιση Καρτών Αφοσίωσης</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards_desc">Φορτώστε και δείξτε τις Κάρτες Αφοσίωσης από το Πορτοφόλι Google στο Πορτοφόλι Γρήγορης Πρόσβασης</string>
     <string name="settings_quick_access_wallet_rearrange">Αναδιάταξη &amp; Απόκρυψη Καρτών Αφοσίωσης</string>

@@ -1,6 +1,5 @@
 package com.kieronquinn.app.classicpowermenu
 
-import android.app.DownloadManager
 import android.content.Context
 import android.os.HandlerThread
 import android.os.Looper
@@ -68,6 +67,10 @@ import com.kieronquinn.app.classicpowermenu.ui.screens.settings.poweroptions.rea
 import com.kieronquinn.app.classicpowermenu.ui.screens.settings.poweroptions.rearrange.SettingsPowerOptionsRearrangeViewModelImpl
 import com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.SettingsQuickAccessWalletViewModel
 import com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.SettingsQuickAccessWalletViewModelImpl
+import com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.autoswitchservice.SettingsQuickAccessWalletAutoSwitchServiceViewModel
+import com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.autoswitchservice.SettingsQuickAccessWalletAutoSwitchServiceViewModelImpl
+import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.autoswitch.AutoSwitchServicesRepository
+import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.autoswitch.AutoSwitchServicesRepositoryImpl
 import com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.rearrange.SettingsQuickAccessWalletRearrangeViewModel
 import com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.rearrange.SettingsQuickAccessWalletRearrangeViewModelImpl
 import com.kieronquinn.app.classicpowermenu.ui.screens.settings.rootcheck.SettingsRootCheckViewModel
@@ -130,6 +133,7 @@ class ClassicPowerMenu: LifecycleApplication() {
         single<WalletActivityStarter> { WalletActivityStarterImpl(get(), get()) }
         single<WalletCardBlurProvider> { WalletCardBlurProviderImpl(get(), get()) }
         single<LoyaltyCardsRepository> { LoyaltyCardsRepositoryImpl(get(), get(), get()) }
+        single<AutoSwitchServicesRepository> { AutoSwitchServicesRepositoryImpl(get(), get()) }
     }
     
     private val monetModule = module {
@@ -157,6 +161,7 @@ class ClassicPowerMenu: LifecycleApplication() {
             viewModel<SettingsQuickAccessWalletViewModel> { SettingsQuickAccessWalletViewModelImpl(get(), get(), get(), get()) }
             viewModel<SettingsDeviceControlsViewModel> { SettingsDeviceControlsViewModelImpl(get(), get()) }
             viewModel<SettingsQuickAccessWalletRearrangeViewModel> { SettingsQuickAccessWalletRearrangeViewModelImpl(get(), get(), get()) }
+            viewModel<SettingsQuickAccessWalletAutoSwitchServiceViewModel> { SettingsQuickAccessWalletAutoSwitchServiceViewModelImpl(get(), get(), get()) }
             viewModel<SettingsDeveloperOptionsViewModel> { SettingsDeveloperOptionsViewModelImpl(get()) }
             viewModel<SettingsRootCheckViewModel> { SettingsRootCheckViewModelImpl(get()) }
             viewModel<UpdateAvailableBottomSheetViewModel> { UpdateAvailableBottomSheetViewModelImpl(get()) }

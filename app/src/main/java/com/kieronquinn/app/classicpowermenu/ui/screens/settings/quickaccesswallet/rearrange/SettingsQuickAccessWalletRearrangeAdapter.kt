@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kieronquinn.app.classicpowermenu.R
 import com.kieronquinn.app.classicpowermenu.databinding.ItemWalletRearrangeCardBinding
-import com.kieronquinn.app.classicpowermenu.model.quickaccesswallet.LoyaltyCard
-import com.kieronquinn.app.classicpowermenu.model.quickaccesswallet.WalletLoyaltyCardViewInfo
 import com.kieronquinn.monetcompat.core.MonetCompat
 
 class SettingsQuickAccessWalletRearrangeAdapter(context: Context, var cards: List<SettingsQuickAccessWalletRearrangeViewModel.RearrangeLoyaltyCard>, val onCardVisibilityToggleClicked: (SettingsQuickAccessWalletRearrangeViewModel.RearrangeLoyaltyCard) -> Unit, val onHandleLongPress: (ViewHolder) -> Unit): RecyclerView.Adapter<SettingsQuickAccessWalletRearrangeAdapter.ViewHolder>() {

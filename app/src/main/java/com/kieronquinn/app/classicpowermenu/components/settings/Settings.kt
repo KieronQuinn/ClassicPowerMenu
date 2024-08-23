@@ -31,6 +31,9 @@ abstract class Settings {
     abstract var quickAccessWalletShowPreview: Boolean
     abstract var quickAccessWalletAccessWhileLocked: Boolean
     abstract var quickAccessWalletHideCardNumberWhenLocked: Boolean
+    abstract var quickAccessWalletAutoSwitchService: Boolean
+    abstract val quickAccessWalletAutoSwitchServiceFlow: Flow<Boolean>
+    abstract var quickAccessWalletSelectedAutoSwitchService: String
     abstract var quickAccessWalletLoyaltyCardsOrder: List<String>
     abstract var quickAccessWalletLoyaltyCardsHidden: List<String>
     abstract val quickAccessWalletLoyaltyCardsHiddenFlow: Flow<List<String>>
@@ -93,6 +96,12 @@ class SettingsImpl(context: Context): Settings() {
         private const val KEY_QUICK_ACCESS_WALLET_HIDE_CARD_NUMBER_WHEN_LOCKED = "quick_access_wallet_hide_card_number_when_locked"
         private const val DEFAULT_QUICK_ACCESS_WALLET_HIDE_CARD_NUMBER_WHEN_LOCKED = false
 
+        private const val KEY_QUICK_ACCESS_WALLET_AUTO_SWITCH_SERVICE = "quick_access_wallet_auto_switch_service"
+        private const val DEFAULT_QUICK_ACCESS_WALLET_AUTO_SWITCH_SERVICE = false
+
+        private const val KEY_QUICK_ACCESS_WALLET_SELECTED_AUTO_SWITCH_SERVICE = "quick_access_wallet_selected_auto_switch_service"
+        private const val DEFAULT_QUICK_ACCESS_WALLET_SELECTED_AUTO_SWITCH_SERVICE = ""
+
         private const val KEY_QUICK_ACCESS_WALLET_LOYALTY_HIDDEN_CARDS = "quick_access_wallet_hidden_cards"
         private val DEFAULT_QUICK_ACCESS_LOYALTY_WALLET_HIDDEN_CARDS = emptyList<String>()
 
@@ -136,11 +145,16 @@ class SettingsImpl(context: Context): Settings() {
     override var quickAccessWalletShowPreview by shared(KEY_QUICK_ACCESS_WALLET_SHOW_PREVIEW, DEFAULT_QUICK_ACCESS_SHOW_PREVIEW)
     override var quickAccessWalletAccessWhileLocked by shared(KEY_QUICK_ACCESS_WALLET_ACCESS_WHILE_LOCKED, DEFAULT_QUICK_ACCESS_WALLET_ACCESS_WHILE_LOCKED)
     override var quickAccessWalletHideCardNumberWhenLocked by shared(KEY_QUICK_ACCESS_WALLET_HIDE_CARD_NUMBER_WHEN_LOCKED, DEFAULT_QUICK_ACCESS_WALLET_HIDE_CARD_NUMBER_WHEN_LOCKED)
+    override var quickAccessWalletAutoSwitchService by shared(KEY_QUICK_ACCESS_WALLET_AUTO_SWITCH_SERVICE, DEFAULT_QUICK_ACCESS_WALLET_AUTO_SWITCH_SERVICE)
+    override var quickAccessWalletSelectedAutoSwitchService by shared(KEY_QUICK_ACCESS_WALLET_SELECTED_AUTO_SWITCH_SERVICE, DEFAULT_QUICK_ACCESS_WALLET_SELECTED_AUTO_SWITCH_SERVICE)
     override val quickAccessWalletShowFlow by lazy {
         sharedPreferences.getPreferenceAsFlow(KEY_QUICK_ACCESS_WALLET_SHOW, ::quickAccessWalletShow)
     }
     override val quickAccessWalletShowLoyaltyCardsFlow by lazy {
         sharedPreferences.getPreferenceAsFlow(KEY_QUICK_ACCESS_WALLET_SHOW_LOYALTY_CARDS, ::quickAccessWalletShowLoyaltyCards)
+    }
+    override val quickAccessWalletAutoSwitchServiceFlow by lazy {
+        sharedPreferences.getPreferenceAsFlow(KEY_QUICK_ACCESS_WALLET_AUTO_SWITCH_SERVICE, ::quickAccessWalletAutoSwitchService)
     }
 
     override var quickAccessWalletLoyaltyCardsOrder by sharedList(KEY_QUICK_ACCESS_WALLET_LOYALTY_CARD_ORDER, DEFAULT_KEY_QUICK_ACCESS_WALLET_LOYALTY_CARD_ORDER, this::stringListTypeConverter, this::stringListTypeReverseConverter)

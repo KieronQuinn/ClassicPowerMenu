@@ -83,6 +83,11 @@
     <string name="settings_quick_access_wallet_change_settings_in_pay_desc">Change settings such as Payment Card order, default card and behaviour</string>
     <string name="settings_quick_access_wallet_access_while_locked_desc">Show the Loyalty Card preview while locked. If disabled, you will be prompted to unlock first before the preview or Google Wallet opens</string>
     <string name="settings_quick_access_wallet_hide_card_number_when_locked">Blur Payment Card Number when locked</string>
+    <string name="settings_quick_access_wallet_auto_switch_service">Auto switch default payment method</string>
+    <string name="settings_quick_access_wallet_auto_switch_service_desc">When CPM is opened auto switch the default payment method to the selected service. <b>Note: This is only needed if your wallet app is not the "Default Contactless Payment"</b></string>
+    <string name="settings_quick_access_wallet_auto_switch_service_select">Select service for auto switch</string>
+    <string name="settings_quick_access_wallet_auto_switch_service_loading">Loading NFC emulation services…</string>
+    <string name="settings_quick_access_wallet_auto_switch_service_error_no_services">No NFC emulation services found</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards">Show Loyalty Cards</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards_desc">Load and show your Loyalty Cards from Google Wallet in the Quick Access Wallet</string>
     <string name="settings_quick_access_wallet_rearrange">Rearrange &amp; Hide Loyalty Cards</string>

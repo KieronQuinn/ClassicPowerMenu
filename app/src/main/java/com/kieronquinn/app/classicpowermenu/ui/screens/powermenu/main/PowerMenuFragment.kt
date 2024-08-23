@@ -6,11 +6,11 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.provider.Settings
 import android.service.quickaccesswallet.CPMQuickAccessWalletClientImpl
-import android.view.Surface
+import android.util.Log
 import android.view.View
 import androidx.core.graphics.ColorUtils
-import androidx.core.view.DisplayCutoutCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
@@ -31,8 +31,14 @@ import com.kieronquinn.app.classicpowermenu.model.power.PowerMenuButton
 import com.kieronquinn.app.classicpowermenu.model.power.PowerMenuContentItem
 import com.kieronquinn.app.classicpowermenu.service.container.CPMServiceContainer
 import com.kieronquinn.app.classicpowermenu.ui.base.BoundFragment
-import com.kieronquinn.app.classicpowermenu.utils.extensions.*
-import kotlinx.coroutines.flow.collect
+import com.kieronquinn.app.classicpowermenu.utils.extensions.animateToInvisible
+import com.kieronquinn.app.classicpowermenu.utils.extensions.animateToVisible
+import com.kieronquinn.app.classicpowermenu.utils.extensions.awaitPost
+import com.kieronquinn.app.classicpowermenu.utils.extensions.changed
+import com.kieronquinn.app.classicpowermenu.utils.extensions.isScrolled
+import com.kieronquinn.app.classicpowermenu.utils.extensions.scrollPercentage
+import com.kieronquinn.app.classicpowermenu.utils.extensions.sendDismissIntent
+import com.kieronquinn.app.classicpowermenu.utils.extensions.setSecondaryAlpha
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
@@ -122,11 +128,24 @@ class PowerMenuFragment :
         setupAppbar()
         setupSecondaryAlpha()
         setupInsets(view)
+        changeDefaultPaymentMethod()
     }
 
     override fun onStop() {
         super.onStop()
-        contentAdapter?.controlsUiController?.hide()
+        contentAdapter.controlsUiController?.hide()
+    }
+
+    private fun changeDefaultPaymentMethod() {
+        if (viewModel.showQuickAccessWallet &&
+            viewModel.quickAccessWalletAutoSwitchService &&
+            viewModel.quickAccessWalletSelectedAutoSwitchService != "") {
+            try {
+                Settings.Secure.putString(powerMenuApplication.contentResolver, "nfc_payment_default_component", viewModel.quickAccessWalletSelectedAutoSwitchService)
+            } catch (e: Exception) {
+                Log.e("CPM", "Failed to apply default payment service", e)
+            }
+        }
     }
 
     private fun setupInsets(view: View) {

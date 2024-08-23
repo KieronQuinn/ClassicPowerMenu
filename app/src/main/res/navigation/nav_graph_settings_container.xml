@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_settingsContainerFragment_to_settingsQuickAccessWalletRearrangeFragment"
             app:destination="@id/settingsQuickAccessWalletRearrangeFragment" />
+        <action
+            android:id="@+id/action_settingsContainerFragment_to_settingsQuickAccessWalletAutoSwitchServiceFragment"
+            app:destination="@id/settingsQuickAccessWalletAutoSwitchServiceFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsPowerOptionsRearrangeFragment"
@@ -27,6 +30,11 @@
         android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.rearrange.SettingsQuickAccessWalletRearrangeFragment"
         android:label="SettingsQuickAccessWalletRearrangeFragment"
         tools:layout="@layout/fragment_settings_quick_access_wallet_rearrange" />
+    <fragment
+        android:id="@+id/settingsQuickAccessWalletAutoSwitchServiceFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.autoswitchservice.SettingsQuickAccessWalletAutoSwitchServiceFragment"
+        android:label="SettingsQuickAccessWalletAutoSwitchServiceFragment"
+        tools:layout="@layout/fragment_settings_quick_access_wallet_auto_switch_service" />
     <fragment
         android:id="@+id/settingsRootCheckFragment"
         android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.rootcheck.SettingsRootCheckFragment"

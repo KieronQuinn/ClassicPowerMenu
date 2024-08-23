@@ -278,9 +278,16 @@ class CPMRootServiceImpl: IClassicPowerMenu.Stub() {
         }
     }
 
+    private fun grantSecureSettingsPermission() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            Runtime.getRuntime().exec("pm grant ${BuildConfig.APPLICATION_ID} ${Manifest.permission.WRITE_SECURE_SETTINGS}")
+        }
+    }
+
     init {
         grantNotificationPermission()
         grantAccessibilityPermission()
+        grantSecureSettingsPermission()
     }
 
 }

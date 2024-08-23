@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:clipToPadding="false"
+    android:padding="@dimen/margin_16">
+
+    <ImageView
+        android:id="@+id/wallet_service_image"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/wallet_rearrange_card_height"
+        android:adjustViewBounds="true"
+        android:background="@drawable/clip_wallet_rearrange_card"
+        android:elevation="4dp"
+        android:outlineProvider="background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@android:color/holo_red_dark"
+        tools:layout_width="64dp" />
+
+    <TextView
+        android:id="@+id/wallet_service_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium.ClassicPowerMenu"
+        android:textColor="?android:textColorPrimary"
+        app:layout_constraintBottom_toTopOf="@id/wallet_service_text"
+        app:layout_constraintStart_toEndOf="@id/wallet_service_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Service Name" />
+
+    <TextView
+        android:id="@+id/wallet_service_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16"
+        android:layout_marginEnd="16dp"
+        android:ellipsize="end"
+        android:scrollHorizontally="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small.ClassicPowerMenu.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/wallet_service_image"
+        app:layout_constraintTop_toBottomOf="@id/wallet_service_title"
+        tools:text="Service ComponentName" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

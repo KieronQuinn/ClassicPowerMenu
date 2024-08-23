@@ -61,7 +61,20 @@ class SettingsQuickAccessWalletFragment: SettingsSwitchedFragment(), BackAvailab
                 getString(R.string.settings_quick_access_wallet_hide_card_number_when_locked),
                 getText(R.string.settings_quick_access_wallet_hide_card_number_when_locked_desc),
                 viewModel::hideCardNumber
-            )
+            ),
+            SettingsItem.SwitchSetting(
+                R.drawable.ic_quick_access_wallet_rearrange,
+                getString(R.string.settings_quick_access_wallet_auto_switch_service),
+                getText(R.string.settings_quick_access_wallet_auto_switch_service_desc),
+                viewModel::autoSwitchService
+            ),
+            SettingsItem.Setting(
+                R.drawable.ic_quick_access_wallet_rearrange,
+                getString(R.string.settings_quick_access_wallet_auto_switch_service_select),
+                null,
+                enabled = { viewModel.autoSwitchService },
+                tapAction = viewModel::onAutoSwitchServiceClicked
+            ),
         )
     }
 
@@ -119,6 +132,7 @@ class SettingsQuickAccessWalletFragment: SettingsSwitchedFragment(), BackAvailab
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupLoyaltyCardsListener()
+        setupAutoSwitchServiceListener()
     }
 
     private fun setupLoyaltyCardsListener(){
@@ -129,5 +143,12 @@ class SettingsQuickAccessWalletFragment: SettingsSwitchedFragment(), BackAvailab
             }
         }
     }
-
+    private fun setupAutoSwitchServiceListener(){
+        val recyclerView = recyclerView.invoke()
+        lifecycleScope.launchWhenResumed {
+            viewModel.autoSwitchServiceChanged.collect {
+                recyclerView.adapter?.notifyDataSetChanged()
+            }
+        }
+    }
 }

@@ -27,5 +27,6 @@
     <dimen name="setup_image_size">172dp</dimen>
     <dimen name="setup_image_size_lottie">200dp</dimen>
     <dimen name="setup_image_size_lottie_large">300dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 
 </resources>

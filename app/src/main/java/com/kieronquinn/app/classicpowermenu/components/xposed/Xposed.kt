@@ -14,7 +14,6 @@ import com.kieronquinn.app.classicpowermenu.service.globalactions.GlobalActionsS
 import com.kieronquinn.app.classicpowermenu.utils.extensions.SystemProperties_getString
 import de.robv.android.xposed.*
 import de.robv.android.xposed.callbacks.XC_LoadPackage
-import java.lang.reflect.Method
 
 class Xposed: IXposedHookLoadPackage, ServiceConnection {
 
@@ -60,10 +59,23 @@ class Xposed: IXposedHookLoadPackage, ServiceConnection {
 
     private fun hookSystemUI(lpparam: XC_LoadPackage.LoadPackageParam){
         when {
+            miuiVersion >= 816 -> hookHyperOSSystemUI(lpparam)
             miuiVersion >= 125 -> hookMiuiSystemUI(lpparam)
             oneuiVersion >= 90000 -> hookOneUISystemUI(lpparam)
             else -> hookAospSystemUI(lpparam)
         }
+    }
+
+    private fun hookHyperOSSystemUI(lpparam: XC_LoadPackage.LoadPackageParam) {
+        XposedHelpers.findAndHookMethod("com.android.systemui.plugins.PluginEnablerImpl", lpparam.classLoader, "isEnabled", ComponentName::class.java, object: XC_MethodHook() {
+            override fun beforeHookedMethod(param: MethodHookParam) {
+                if (param.args[0].toString().contains("GlobalActions")) {
+                    param.result = false
+                }
+            }
+        })
+
+        hookAospSystemUI(lpparam)
     }
 
     private fun hookOneUISystemUI(lpparam: XC_LoadPackage.LoadPackageParam) {

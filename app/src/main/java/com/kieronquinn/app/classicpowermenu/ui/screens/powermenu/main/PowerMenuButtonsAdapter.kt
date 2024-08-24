@@ -23,6 +23,8 @@ import androidx.core.view.doOnNextLayout
 import androidx.core.view.doOnPreDraw
 import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.LifecycleCoroutineScope
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.kieronquinn.app.classicpowermenu.R
@@ -32,6 +34,7 @@ import com.kieronquinn.app.classicpowermenu.databinding.ItemPowerMenuButtonEmpty
 import com.kieronquinn.app.classicpowermenu.model.power.PowerMenuButton
 import com.kieronquinn.app.classicpowermenu.model.power.PowerMenuButtonId
 import com.kieronquinn.app.classicpowermenu.model.power.PowerMenuButtonType
+import com.kieronquinn.app.classicpowermenu.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.core.MonetCompat
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -186,7 +189,8 @@ class PowerMenuButtonsAdapter(context: Context, var items: MutableList<PowerMenu
         }
     }
 
-    fun setupDrag(recyclerView: RecyclerView, lifecycle: LifecycleCoroutineScope){
+    fun setupDrag(recyclerView: RecyclerView, lifecycleOwner: LifecycleOwner){
+        val lifecycle = lifecycleOwner.lifecycleScope
         this.lifecycle = lifecycle
         registerAdapterDataObserver(object: RecyclerView.AdapterDataObserver() {
 
@@ -234,7 +238,7 @@ class PowerMenuButtonsAdapter(context: Context, var items: MutableList<PowerMenu
             }
             dragEvent.action == android.view.DragEvent.ACTION_DRAG_STARTED
         }
-        lifecycle.launchWhenResumed {
+        lifecycleOwner.whenResumed {
             launch {
                 dragEventCallback.debounce(100).collect { dragEvent ->
                     onDragEvent(dragEvent)

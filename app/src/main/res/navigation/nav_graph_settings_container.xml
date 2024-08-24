@@ -43,7 +43,7 @@
         <action
             android:id="@+id/action_settingsRootCheckFragment_to_settingsContainerFragment"
             app:destination="@id/settingsContainerFragment"
-            app:popUpTo="@null" />
+            app:popUpTo="@id/nav_graph_settings_container"/>
         <action
             android:id="@+id/action_settingsRootCheckFragment_to_settingsRootCheckNoRootBottomSheetFragment"
             app:destination="@id/settingsRootCheckNoRootBottomSheetFragment" />

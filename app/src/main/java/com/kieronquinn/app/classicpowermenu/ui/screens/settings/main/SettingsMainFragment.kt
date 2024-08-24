@@ -14,6 +14,7 @@ import com.kieronquinn.app.classicpowermenu.ui.base.AutoExpandOnRotate
 import com.kieronquinn.app.classicpowermenu.ui.base.ProvidesOverflow
 import com.kieronquinn.app.classicpowermenu.ui.base.Root
 import com.kieronquinn.app.classicpowermenu.ui.screens.settings.switched.SettingsSwitchedFragment
+import com.kieronquinn.app.classicpowermenu.utils.extensions.whenResumed
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -120,13 +121,13 @@ class SettingsMainFragment : SettingsSwitchedFragment(), AutoExpandOnRotate, Pro
         viewModel.onResume()
     }
 
-    private fun setupDeveloperOptions() = lifecycleScope.launchWhenResumed {
+    private fun setupDeveloperOptions() = whenResumed {
         viewModel.developerOptionsEnabled.collect {
             recyclerView().adapter?.notifyDataSetChanged()
         }
     }
 
-    private fun setupAccessibilityWarning() = lifecycleScope.launchWhenResumed {
+    private fun setupAccessibilityWarning() = whenResumed {
         viewModel.accessibilityServiceDisabledFlow.collect {
             recyclerView().adapter?.notifyDataSetChanged()
         }

@@ -17,6 +17,7 @@ import com.kieronquinn.app.classicpowermenu.databinding.FragmentSettingsGenericB
 import com.kieronquinn.app.classicpowermenu.model.settings.SettingsItem
 import com.kieronquinn.app.classicpowermenu.ui.base.BoundFragment
 import com.kieronquinn.app.classicpowermenu.utils.extensions.onApplyInsets
+import com.kieronquinn.app.classicpowermenu.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.extensions.views.enableStretchOverscroll
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
@@ -52,7 +53,7 @@ abstract class SettingsGenericBaseFragment<T: ViewBinding>(private val inflate: 
     }
 
     private fun SettingsGenericAdapter.setup() = adapterEnabled?.let {
-        lifecycleScope.launchWhenResumed {
+        whenResumed {
             it.collect { enabled ->
                 isAdapterEnabled = enabled
                 notifyDataSetChanged()

@@ -10,6 +10,7 @@ import com.kieronquinn.app.classicpowermenu.databinding.FragmentSetupControlsBin
 import com.kieronquinn.app.classicpowermenu.ui.base.BoundFragment
 import com.kieronquinn.app.classicpowermenu.ui.base.StandaloneFragment
 import com.kieronquinn.app.classicpowermenu.utils.extensions.onApplyInsets
+import com.kieronquinn.app.classicpowermenu.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.extensions.views.overrideRippleColor
 import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -63,7 +64,7 @@ class SetupControlsFragment: BoundFragment<FragmentSetupControlsBinding>(Fragmen
             setOnClickListener {
                 viewModel.onControlsSwitchClicked()
             }
-            lifecycleScope.launchWhenResumed {
+            whenResumed {
                 viewModel.controlsEnabledFlow.collect {
                     isChecked = it
                 }

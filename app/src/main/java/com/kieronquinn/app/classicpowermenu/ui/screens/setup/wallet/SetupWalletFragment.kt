@@ -10,6 +10,7 @@ import com.kieronquinn.app.classicpowermenu.databinding.FragmentSetupWalletBindi
 import com.kieronquinn.app.classicpowermenu.ui.base.BoundFragment
 import com.kieronquinn.app.classicpowermenu.ui.base.StandaloneFragment
 import com.kieronquinn.app.classicpowermenu.utils.extensions.onApplyInsets
+import com.kieronquinn.app.classicpowermenu.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.extensions.views.overrideRippleColor
 import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -63,7 +64,7 @@ class SetupWalletFragment: BoundFragment<FragmentSetupWalletBinding>(FragmentSet
             setOnClickListener {
                 viewModel.onWalletSwitchClicked()
             }
-            lifecycleScope.launchWhenResumed {
+            whenResumed {
                 viewModel.walletEnabledFlow.collect {
                     isChecked = it
                 }

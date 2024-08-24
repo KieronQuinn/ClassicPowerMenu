@@ -12,6 +12,7 @@ import androidx.viewbinding.ViewBinding
 import autoCleared
 import com.kieronquinn.app.classicpowermenu.components.blur.BlurProvider
 import com.kieronquinn.app.classicpowermenu.utils.extensions.awaitPost
+import com.kieronquinn.app.classicpowermenu.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.core.MonetCompat
 import org.koin.android.ext.android.inject
 
@@ -39,7 +40,7 @@ abstract class BaseDialogFragment<T: ViewBinding>(private val inflate: (LayoutIn
     private var showBlurAnimation: ValueAnimator? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        lifecycleScope.launchWhenResumed {
+        whenResumed {
             view.awaitPost()
             showBlurAnimation = ValueAnimator.ofFloat(0f, 1.25f).apply {
                 duration = 250L
@@ -74,7 +75,7 @@ abstract class BaseDialogFragment<T: ViewBinding>(private val inflate: (LayoutIn
     private fun applyBlur(ratio: Float){
         val dialogWindow = dialog?.window ?: return
         val appWindow = activity?.window ?: return
-        lifecycleScope.launchWhenResumed {
+        whenResumed {
             dialogWindow.decorView.awaitPost()
             blurProvider.applyDialogBlur(dialogWindow, appWindow, ratio)
         }
@@ -83,7 +84,7 @@ abstract class BaseDialogFragment<T: ViewBinding>(private val inflate: (LayoutIn
     override fun onResume() {
         super.onResume()
         if(isBlurShowing){
-            lifecycleScope.launchWhenResumed {
+            whenResumed {
                 view?.awaitPost()
                 applyBlur(1.25f)
             }

@@ -5,6 +5,7 @@ import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.kieronquinn.app.classicpowermenu.databinding.FragmentSettingsSwitchedBinding
 import com.kieronquinn.app.classicpowermenu.ui.screens.settings.generic.SettingsGenericBaseFragment
+import com.kieronquinn.app.classicpowermenu.utils.extensions.whenResumed
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 
@@ -33,7 +34,7 @@ abstract class SettingsSwitchedFragment: SettingsGenericBaseFragment<FragmentSet
             onSwitchClicked()
         }
         isChecked = switchStartState
-        lifecycleScope.launchWhenResumed {
+        whenResumed {
             switchChecked.collect {
                 isChecked = it
             }

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.kieronquinn.app.classicpowermenu.ui.activities.MainActivityViewModel
+import com.kieronquinn.app.classicpowermenu.utils.extensions.whenResumed
 import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -26,7 +27,7 @@ class DecisionFragment: Fragment() {
         return View(context)
     }
 
-    private fun setupAppReady() = viewLifecycleOwner.lifecycleScope.launchWhenResumed {
+    private fun setupAppReady() = whenResumed {
         viewModel.decisionMade.collect {
             appViewModel.onDecisionMade()
         }

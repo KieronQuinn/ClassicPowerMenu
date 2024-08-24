@@ -10,7 +10,9 @@
     <androidx.fragment.app.FragmentContainerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:id="@+id/fragment_settings_root"
-        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.root.SettingsRootFragment"/>
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph_root" />
 
 </FrameLayout>

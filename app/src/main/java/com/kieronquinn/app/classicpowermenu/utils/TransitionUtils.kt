@@ -2,9 +2,9 @@ package com.kieronquinn.app.classicpowermenu.utils
 
 import android.content.Context
 import android.view.animation.AnimationUtils
-import com.google.android.material.transition.platform.FadeThroughProvider
-import com.google.android.material.transition.platform.MaterialSharedAxis
-import com.google.android.material.transition.platform.SlideDistanceProvider
+import com.google.android.material.transition.FadeThroughProvider
+import com.google.android.material.transition.MaterialSharedAxis
+import com.google.android.material.transition.SlideDistanceProvider
 import com.kieronquinn.app.classicpowermenu.R
 import kotlin.math.roundToInt
 

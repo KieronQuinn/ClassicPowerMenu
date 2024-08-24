@@ -16,6 +16,8 @@ import com.kieronquinn.app.classicpowermenu.components.starter.PowerMenuStarter
 import com.kieronquinn.app.classicpowermenu.service.container.CPMServiceContainer
 import com.kieronquinn.app.classicpowermenu.utils.extensions.awaitPost
 import com.kieronquinn.app.classicpowermenu.utils.extensions.sendDismissIntent
+import com.kieronquinn.app.classicpowermenu.utils.extensions.whenCreated
+import com.kieronquinn.app.classicpowermenu.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.app.MonetCompatActivity
 import kotlinx.coroutines.flow.collect
 import org.koin.android.ext.android.inject
@@ -39,7 +41,7 @@ class PowerMenuActivity : MonetCompatActivity(), PowerMenuStarter.PowerMenuStart
         super.onCreate(savedInstanceState)
         requestedOrientation = viewModel.getRequestedOrientation()
         hideStatusBar()
-        lifecycleScope.launchWhenCreated {
+        whenCreated {
             setContentView(R.layout.activity_power_menu)
             WindowCompat.setDecorFitsSystemWindows(window, false)
             window.setupLayout()
@@ -57,7 +59,7 @@ class PowerMenuActivity : MonetCompatActivity(), PowerMenuStarter.PowerMenuStart
         }
     }
 
-    private fun sendDismiss(runAfter: () -> Unit) = lifecycleScope.launchWhenResumed {
+    private fun sendDismiss(runAfter: () -> Unit) = whenResumed {
         serviceContainer.runWithService {
             it.sendDismissIntent(this@PowerMenuActivity)
             runAfter()
@@ -67,7 +69,7 @@ class PowerMenuActivity : MonetCompatActivity(), PowerMenuStarter.PowerMenuStart
     override fun onResume() {
         super.onResume()
         starter.setEventListener(this)
-        lifecycleScope.launchWhenResumed {
+        whenResumed {
             window.decorView.awaitPost()
             if(!viewModel.useSolidBackground){
                 blurProvider.applyBlurToWindow(window, 1.5f)
@@ -80,13 +82,13 @@ class PowerMenuActivity : MonetCompatActivity(), PowerMenuStarter.PowerMenuStart
         starter.setEventListener(null)
     }
 
-    private fun setupClose() = lifecycleScope.launchWhenCreated {
+    private fun setupClose() = whenCreated {
         navigation.closePowerMenuBus.collect {
             closePowerMenu()
         }
     }
 
-    private fun setupCloseBroadcast() = lifecycleScope.launchWhenCreated {
+    private fun setupCloseBroadcast() = whenCreated {
         viewModel.closeBroadcast.collect {
             closePowerMenu()
         }

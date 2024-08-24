@@ -56,10 +56,8 @@ class StatefulControlSubscriber(
     }
 
     override fun onNext(token: IBinder, control: Control) {
-        Log.d("SCS", "onNext ${control.title}")
         run(token) {
             if (!subscriptionOpen) {
-                Log.w(TAG, "Refresh outside of window for token:$token")
             } else {
                 controller.refreshStatus(provider.componentName, control)
             }

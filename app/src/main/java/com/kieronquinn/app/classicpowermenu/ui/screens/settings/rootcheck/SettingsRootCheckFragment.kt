@@ -5,6 +5,7 @@ import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.kieronquinn.app.classicpowermenu.databinding.FragmentSettingsRootCheckBinding
 import com.kieronquinn.app.classicpowermenu.ui.base.BoundFragment
+import com.kieronquinn.app.classicpowermenu.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.extensions.views.applyMonet
 import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -27,7 +28,7 @@ class SettingsRootCheckFragment: BoundFragment<FragmentSettingsRootCheckBinding>
     }
 
     private fun setupState() {
-        viewLifecycleOwner.lifecycleScope.launchWhenResumed {
+        whenResumed {
             viewModel.state.collect {
                 handleState(it)
             }

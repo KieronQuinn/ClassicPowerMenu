@@ -8,6 +8,7 @@ import com.kieronquinn.app.classicpowermenu.model.settings.SettingsItem
 import com.kieronquinn.app.classicpowermenu.ui.base.AutoExpandOnRotate
 import com.kieronquinn.app.classicpowermenu.ui.base.BackAvailable
 import com.kieronquinn.app.classicpowermenu.ui.screens.settings.switched.SettingsSwitchedFragment
+import com.kieronquinn.app.classicpowermenu.utils.extensions.whenResumed
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SettingsQuickAccessWalletFragment: SettingsSwitchedFragment(), BackAvailable, AutoExpandOnRotate {
@@ -137,7 +138,7 @@ class SettingsQuickAccessWalletFragment: SettingsSwitchedFragment(), BackAvailab
 
     private fun setupLoyaltyCardsListener(){
         val recyclerView = recyclerView.invoke()
-        lifecycleScope.launchWhenResumed {
+        whenResumed {
             viewModel.showLoyaltyCardsChanged.collect {
                 recyclerView.adapter?.notifyDataSetChanged()
             }
@@ -145,7 +146,7 @@ class SettingsQuickAccessWalletFragment: SettingsSwitchedFragment(), BackAvailab
     }
     private fun setupAutoSwitchServiceListener(){
         val recyclerView = recyclerView.invoke()
-        lifecycleScope.launchWhenResumed {
+        whenResumed {
             viewModel.autoSwitchServiceChanged.collect {
                 recyclerView.adapter?.notifyDataSetChanged()
             }

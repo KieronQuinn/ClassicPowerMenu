@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver
 import android.view.animation.AnticipateInterpolator
@@ -19,6 +20,8 @@ import com.kieronquinn.app.classicpowermenu.components.settings.Settings
 import com.kieronquinn.app.classicpowermenu.service.accessibility.CPMAccessibilityService
 import com.kieronquinn.app.classicpowermenu.utils.TransitionUtils
 import com.kieronquinn.app.classicpowermenu.utils.extensions.broadcastReceiverAsFlow
+import com.kieronquinn.app.classicpowermenu.utils.extensions.delayPreDrawUntilFlow
+import com.kieronquinn.app.classicpowermenu.utils.extensions.whenCreated
 import com.kieronquinn.app.classicpowermenu.workers.UpdateCheckWorker
 import com.kieronquinn.monetcompat.app.MonetCompatActivity
 import kotlinx.coroutines.flow.collect
@@ -34,21 +37,22 @@ class MainActivity : MonetCompatActivity() {
         super.onCreate(savedInstanceState)
         installSplashScreen()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            //TODO move when android.core:splashscreen supports it
             setupSplashScreen()
-            setupSplashDelay()
         }
-        setupTransition()
         setupBringToFront()
         setupInsets()
         WindowCompat.setDecorFitsSystemWindows(window, false)
         UpdateCheckWorker.queueCheckWorker(this)
-        lifecycleScope.launchWhenCreated {
+        whenCreated {
             monet.awaitMonetReady()
             window.setBackgroundDrawable(ColorDrawable(monet.getBackgroundColor(this@MainActivity)))
             setContentView(R.layout.activity_main)
             setupStatusNav()
         }
+        findViewById<View>(android.R.id.content).delayPreDrawUntilFlow(
+            viewModel.appReady,
+            lifecycle
+        )
     }
 
     private fun setupInsets(){
@@ -65,22 +69,6 @@ class MainActivity : MonetCompatActivity() {
             isAppearanceLightStatusBars = lightStatusNav
             isAppearanceLightNavigationBars = lightStatusNav
         }
-    }
-
-    private fun setupSplashDelay(){
-        val content: View = findViewById(android.R.id.content)
-        content.viewTreeObserver.addOnPreDrawListener(
-            object : ViewTreeObserver.OnPreDrawListener {
-                override fun onPreDraw(): Boolean {
-                    return if (viewModel.appReady.value) {
-                        content.viewTreeObserver.removeOnPreDrawListener(this)
-                        true
-                    } else {
-                        false
-                    }
-                }
-            }
-        )
     }
 
     @RequiresApi(Build.VERSION_CODES.S)
@@ -102,17 +90,12 @@ class MainActivity : MonetCompatActivity() {
         }
     }
 
-    private fun setupBringToFront() = lifecycleScope.launchWhenCreated {
+    private fun setupBringToFront() = whenCreated {
         broadcastReceiverAsFlow(CPMAccessibilityService.INTENT_ACTION_BRING_TO_FRONT, oneShot = true).collect {
             startActivity(Intent(this@MainActivity, MainActivity::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
             })
         }
-    }
-
-    private fun setupTransition() = with(window) {
-        exitTransition = TransitionUtils.getMaterialSharedAxis(this@MainActivity, true)
-        reenterTransition = TransitionUtils.getMaterialSharedAxis(this@MainActivity, false)
     }
 
 }

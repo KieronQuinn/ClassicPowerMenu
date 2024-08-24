@@ -14,6 +14,7 @@ import com.kieronquinn.app.classicpowermenu.databinding.FragmentSettingsQuickAcc
 import com.kieronquinn.app.classicpowermenu.ui.base.BoundFragment
 import com.kieronquinn.app.classicpowermenu.ui.base.StandaloneFragment
 import com.kieronquinn.app.classicpowermenu.utils.extensions.onApplyInsets
+import com.kieronquinn.app.classicpowermenu.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.extensions.views.applyMonet
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
@@ -50,7 +51,7 @@ class SettingsQuickAccessWalletRearrangeFragment: BoundFragment<FragmentSettings
         binding.quickAccessWalletRearrangeLoadingBar.applyMonet()
     }
 
-    private fun setupState() = lifecycleScope.launchWhenResumed {
+    private fun setupState() = whenResumed {
         viewModel.state.collect {
             handleState(it)
         }

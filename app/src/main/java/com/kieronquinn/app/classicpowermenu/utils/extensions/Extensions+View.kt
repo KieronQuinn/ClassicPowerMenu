@@ -3,6 +3,10 @@ package com.kieronquinn.app.classicpowermenu.utils.extensions
 import android.graphics.Point
 import android.graphics.Rect
 import android.view.View
+import android.view.ViewTreeObserver
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.coroutineScope
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
@@ -32,4 +36,24 @@ fun View.contains(point: Point): Boolean {
         Rect(this[0], this[1], this[0] + width, this[0] + height)
     }
     return position.contains(point.x, point.y)
+}
+
+fun View.delayPreDrawUntilFlow(flow: Flow<Boolean>, lifecycle: Lifecycle) {
+    val listener = ViewTreeObserver.OnPreDrawListener {
+        false
+    }
+    val removeListener = {
+        if (viewTreeObserver.isAlive) {
+            viewTreeObserver.removeOnPreDrawListener(listener)
+        }
+    }
+    lifecycle.runOnDestroy {
+        removeListener()
+    }
+    viewTreeObserver.addOnPreDrawListener(listener)
+    lifecycle.coroutineScope.launchWhenResumed {
+        flow.collect {
+            removeListener()
+        }
+    }
 }

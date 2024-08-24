@@ -1,5 +1,6 @@
 package com.kieronquinn.app.classicpowermenu.utils.extensions
 
+import androidx.activity.OnBackPressedCallback
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -26,7 +27,16 @@ fun NavController.onDestinationChanged() = callbackFlow {
         trySend(destination)
     }
     addOnDestinationChangedListener(listener)
+    currentDestination?.let {
+        trySend(it)
+    }
     awaitClose {
         removeOnDestinationChangedListener(listener)
     }
 }.debounce(250L)
+
+fun NavController.setOnBackPressedCallback(callback: OnBackPressedCallback) {
+    NavController::class.java.getDeclaredField("onBackPressedCallback").apply {
+        isAccessible = true
+    }.set(this, callback)
+}

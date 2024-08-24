@@ -1,5 +1,6 @@
 package com.kieronquinn.app.classicpowermenu.ui.screens.settings.container
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
@@ -35,6 +36,8 @@ import com.kieronquinn.app.classicpowermenu.utils.extensions.isLandscape
 import com.kieronquinn.app.classicpowermenu.utils.extensions.navigateSafely
 import com.kieronquinn.app.classicpowermenu.utils.extensions.onApplyInsets
 import com.kieronquinn.app.classicpowermenu.utils.extensions.onDestinationChanged
+import com.kieronquinn.app.classicpowermenu.utils.extensions.setOnBackPressedCallback
+import com.kieronquinn.app.classicpowermenu.utils.extensions.whenResumed
 import kotlinx.coroutines.flow.collect
 import org.koin.android.ext.android.inject
 import kotlin.math.roundToInt
@@ -107,7 +110,7 @@ class SettingsContainerFragment: BoundFragment<FragmentSettingsContainerBinding>
             collapsingToolbar.title = getString(R.string.app_name)
             appBar.setExpanded(!requireContext().isLandscape && getTopFragment() is AutoExpandOnRotate)
             toolbar.setNavigationOnClickListener {
-                lifecycleScope.launchWhenResumed {
+                whenResumed {
                     navigation.navigateBack()
                 }
             }
@@ -118,7 +121,7 @@ class SettingsContainerFragment: BoundFragment<FragmentSettingsContainerBinding>
         }
     }
 
-    private fun setupNavigation() = viewLifecycleOwner.lifecycleScope.launchWhenResumed {
+    private fun setupNavigation() = viewLifecycleOwner.whenResumed {
         navigation.navigationBus.collect {
             handleNavigationEvent(it)
         }
@@ -126,19 +129,28 @@ class SettingsContainerFragment: BoundFragment<FragmentSettingsContainerBinding>
 
     private fun shouldBackDispatcherBeEnabled(): Boolean {
         val top = navHostFragment.getTopFragment()
-        return top is StandaloneFragment || top !is Root
+        return top is StandaloneFragment
     }
 
+    @SuppressLint("RestrictedApi")
     private fun setupBack() {
-        val callback = requireActivity().onBackPressedDispatcher.addCallback(
-            this,
-            shouldBackDispatcherBeEnabled()
-        ) {
-            if(!navController.navigateUp()) requireActivity().finish()
+        val callback = object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                (navHostFragment.getTopFragment() as? StandaloneFragment)?.let {
+                    it.onBackPressed()
+                    return
+                }
+                if(!navController.popBackStack()) {
+                    requireActivity().finish()
+                }
+            }
         }
-        viewLifecycleOwner.lifecycleScope.launchWhenResumed {
+        navController.setOnBackPressedCallback(callback)
+        navController.enableOnBackPressed(shouldBackDispatcherBeEnabled())
+        navController.setOnBackPressedDispatcher(requireActivity().onBackPressedDispatcher)
+        whenResumed {
             navController.onDestinationChanged().collect {
-                callback.isEnabled = shouldBackDispatcherBeEnabled()
+                navController.enableOnBackPressed(shouldBackDispatcherBeEnabled())
             }
         }
     }
@@ -148,15 +160,10 @@ class SettingsContainerFragment: BoundFragment<FragmentSettingsContainerBinding>
         return navHostFragment.childFragmentManager.fragments.firstOrNull()
     }
 
-    private fun setupFragmentListener(){
-        navHostFragment.childFragmentManager.addOnBackStackChangedListener {
-            getTopFragment()?.let {
-                onTopFragmentChanged(it)
-            }
-        }
-        lifecycleScope.launchWhenResumed {
-            binding.navHostFragment.awaitPost()
-            onTopFragmentChanged(getTopFragment() ?: return@launchWhenResumed)
+    private fun setupFragmentListener() = whenResumed {
+        navController.onDestinationChanged().collect {
+            binding.root.awaitPost()
+            onTopFragmentChanged(navHostFragment.getTopFragment() ?: return@collect)
         }
     }
 

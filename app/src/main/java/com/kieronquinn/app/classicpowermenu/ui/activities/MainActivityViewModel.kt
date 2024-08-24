@@ -42,7 +42,7 @@ class MainActivityViewModelImpl(context: Context, private val updateChecker: Upd
         emit(true)
     }
 
-    private val _appReady = combine(splashDelay, decisionMade){ requirements, _ ->
+    private val _appReady = combine(splashDelay, decisionMade){ requirements, decision ->
         requirements
     }
 

@@ -173,7 +173,6 @@ class ControlActionCoordinatorImpl constructor(
                         it.show()
                     }*/
                     activityStarter.dismissKeyguardThenExecute({
-                        Log.d("CACI", "startActivity")
                         activityStarter.dismissPowerMenu()
                         serviceRunner.startActivity(context, intent.createLaunchIntent()){
                             serviceRunner.overridePendingTransition(R.anim.bottomsheet_in, R.anim.bottomsheet_out)

@@ -14,6 +14,7 @@ import com.kieronquinn.app.classicpowermenu.R
 import com.kieronquinn.app.classicpowermenu.components.settings.Settings
 import com.kieronquinn.app.classicpowermenu.databinding.FragmentBottomSheetColorPickerBinding
 import com.kieronquinn.app.classicpowermenu.ui.base.BaseBottomSheetFragment
+import com.kieronquinn.app.classicpowermenu.utils.extensions.whenResumed
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
@@ -29,14 +30,14 @@ class ColorPickerBottomSheetFragment : BaseBottomSheetFragment<FragmentBottomShe
             view.updatePadding(left = navigationInsets.left, right = navigationInsets.right, bottom = navigationInsets.bottom + extraPadding)
             insets
         }
-        lifecycleScope.launchWhenResumed {
+        whenResumed {
             with(binding){
                 val availableColors = monet.getAvailableWallpaperColors() ?: emptyList()
                 //No available colors = likely using a live wallpaper, show a toast and dismiss
                 if(availableColors.isEmpty()){
                     Toast.makeText(requireContext(), getString(R.string.color_picker_unavailable), Toast.LENGTH_LONG).show()
                     dismiss()
-                    return@launchWhenResumed
+                    return@whenResumed
                 }
                 root.backgroundTintList = ColorStateList.valueOf(monet.getBackgroundColor(requireContext()))
                 colorPickerList.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
@@ -51,7 +52,7 @@ class ColorPickerBottomSheetFragment : BaseBottomSheetFragment<FragmentBottomShe
         }
     }
 
-    private fun onColorPicked(color: Int) = lifecycleScope.launchWhenResumed {
+    private fun onColorPicked(color: Int) = whenResumed {
         settings.monetColor = color
         //Trigger a manual update
         monet.updateMonetColors()

@@ -31,6 +31,7 @@ import org.koin.android.ext.android.inject
 import com.google.zxing.BarcodeFormat
 import com.kieronquinn.app.classicpowermenu.components.settings.Settings
 import com.kieronquinn.app.classicpowermenu.utils.extensions.awaitPost
+import com.kieronquinn.app.classicpowermenu.utils.extensions.whenResumed
 
 class WalletCodeDialogFragment: BaseDialogFragment<FragmentDialogWalletCodeBinding>(FragmentDialogWalletCodeBinding::inflate) {
 
@@ -165,7 +166,7 @@ class WalletCodeDialogFragment: BaseDialogFragment<FragmentDialogWalletCodeBindi
     }
 
     private fun setupCode() = with(binding.walletCodeCodeImage) {
-        lifecycleScope.launchWhenResumed {
+        whenResumed {
             awaitPost()
             generateCode(measuredWidth, measuredHeight)?.let {
                 setImageBitmap(it)

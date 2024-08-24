@@ -75,6 +75,28 @@
             </LayoutPositions>
           </value>
         </entry>
+        <entry key="nav_graph_root.xml">
+          <value>
+            <LayoutPositions>
+              <option name="myPositions">
+                <map>
+                  <entry key="settingsRootFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="40" />
+                            <option name="y" value="40" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </LayoutPositions>
+          </value>
+        </entry>
         <entry key="nav_graph_settings.xml">
           <value>
             <LayoutPositions>
@@ -245,7 +267,7 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_settingsContainerFragment_to_settingsQuickAccessWalletChangeDefaultPaymentMethod">
+                            <entry key="action_settingsContainerFragment_to_settingsQuickAccessWalletAutoSwitchServiceFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -272,13 +294,13 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="settingsQuickAccessWalletChangeDefaultPaymentMethod">
+                  <entry key="settingsQuickAccessWalletAutoSwitchServiceFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="764" />
-                            <option name="y" value="99" />
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -301,8 +323,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="97" />
+                            <option name="x" value="-310" />
+                            <option name="y" value="145" />
                           </Point>
                         </option>
                         <option name="myPositions">

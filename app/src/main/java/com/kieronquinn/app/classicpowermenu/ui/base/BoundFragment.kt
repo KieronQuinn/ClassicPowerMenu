@@ -39,19 +39,4 @@ abstract class BoundFragment<T: ViewBinding>(private val inflate: (LayoutInflate
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        if(this is StandaloneFragment){
-            setupStandaloneFragment()
-        }
-    }
-
-    private fun setupStandaloneFragment(){
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object: OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                (this@BoundFragment as StandaloneFragment).onBackPressed()
-            }
-        })
-    }
-
 }

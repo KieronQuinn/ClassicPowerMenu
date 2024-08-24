@@ -13,6 +13,7 @@ import com.kieronquinn.app.classicpowermenu.ui.activities.MainActivityViewModel
 import com.kieronquinn.app.classicpowermenu.ui.base.BoundFragment
 import com.kieronquinn.app.classicpowermenu.ui.screens.settings.rootcheck.SettingsRootCheckFragmentDirections
 import com.kieronquinn.app.classicpowermenu.utils.extensions.navigateSafely
+import com.kieronquinn.app.classicpowermenu.utils.extensions.whenResumed
 import kotlinx.coroutines.flow.collect
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -36,7 +37,7 @@ class SettingsRootFragment: BoundFragment<FragmentSettingsRootBinding>(FragmentS
         setupUpdateChecker()
     }
 
-    private fun setupNavigation() = viewLifecycleOwner.lifecycleScope.launchWhenResumed {
+    private fun setupNavigation() = whenResumed {
         navigation.navigationBus.collect {
             handleNavigationEvent(it)
         }
@@ -53,7 +54,8 @@ class SettingsRootFragment: BoundFragment<FragmentSettingsRootBinding>(FragmentS
     }
 
     private fun setupUpdateChecker(){
-        lifecycleScope.launchWhenResumed {
+        return
+        whenResumed {
             sharedViewModel.update.collect {
                 if(it != null) {
                     navigation.navigate(SettingsRootCheckFragmentDirections.actionGlobalUpdateAvailableBottomSheetFragment())

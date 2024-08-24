@@ -19,6 +19,7 @@ import com.kieronquinn.app.classicpowermenu.R
 import com.kieronquinn.app.classicpowermenu.components.blur.BlurProvider
 import com.kieronquinn.app.classicpowermenu.utils.extensions.awaitPost
 import com.kieronquinn.app.classicpowermenu.utils.extensions.isDarkMode
+import com.kieronquinn.app.classicpowermenu.utils.extensions.whenResumed
 import com.kieronquinn.monetcompat.core.MonetCompat
 import org.koin.android.ext.android.inject
 
@@ -136,7 +137,7 @@ abstract class BaseBottomSheetFragment<T: ViewBinding>(private val inflate: (Lay
     private fun applyBlur(ratio: Float){
         val dialogWindow = dialog?.window ?: return
         val appWindow = activity?.window ?: return
-        lifecycleScope.launchWhenResumed {
+        whenResumed {
             dialogWindow.decorView.awaitPost()
             blurProvider.applyDialogBlur(dialogWindow, appWindow, ratio)
         }
@@ -145,7 +146,7 @@ abstract class BaseBottomSheetFragment<T: ViewBinding>(private val inflate: (Lay
     override fun onResume() {
         super.onResume()
         if(isBlurShowing){
-            lifecycleScope.launchWhenResumed {
+            whenResumed {
                 view?.awaitPost()
                 applyBlur(1f)
             }

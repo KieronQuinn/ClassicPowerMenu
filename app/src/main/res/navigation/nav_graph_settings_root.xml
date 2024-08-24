@@ -9,10 +9,12 @@
         android:label="DecisionFragment" >
         <action
             android:id="@+id/action_decisionFragment_to_nav_graph_settings_container"
-            app:destination="@id/nav_graph_settings_container" />
+            app:destination="@id/nav_graph_settings_container"
+            app:popUpTo="@id/nav_graph_settings_root" />
         <action
             android:id="@+id/action_decisionFragment_to_nav_graph_setup"
-            app:destination="@id/nav_graph_setup" />
+            app:destination="@id/nav_graph_setup"
+            app:popUpTo="@id/nav_graph_settings_root" />
     </fragment>
     <include app:graph="@navigation/nav_graph_settings_container" />
     <include app:graph="@navigation/nav_graph_setup" />
@@ -21,5 +23,5 @@
         app:destination="@id/nav_graph_settings_container"
         app:enterAnim="@anim/activity_fade_in"
         app:exitAnim="@anim/activity_fade_out"
-        app:popUpTo="@null" />
+        app:popUpTo="@string/root_check_checking_root" />
 </navigation>

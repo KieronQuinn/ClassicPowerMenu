@@ -20,7 +20,7 @@
             android:layout_height="44dp"
             android:id="@+id/settings_switched_switch_background"/>
 
-        <com.kieronquinn.monetcompat.view.MonetSwitch
+        <com.kieronquinn.app.classicpowermenu.ui.views.MonetSwitch
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/settings_switched_switch"

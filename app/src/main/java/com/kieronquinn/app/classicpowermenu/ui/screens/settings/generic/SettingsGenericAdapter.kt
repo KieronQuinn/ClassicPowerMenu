@@ -19,6 +19,7 @@ import com.kieronquinn.app.classicpowermenu.utils.extensions.applyMonet
 import com.kieronquinn.app.classicpowermenu.utils.openLink
 import com.kieronquinn.monetcompat.core.MonetCompat
 import com.kieronquinn.monetcompat.extensions.views.applyMonet
+import com.kieronquinn.monetcompat.extensions.views.applyMonetLight
 
 class SettingsGenericAdapter(context: Context, private var items: List<SettingsItem>, var isAdapterEnabled: Boolean): RecyclerView.Adapter<SettingsGenericAdapter.ViewHolder>() {
 
@@ -202,7 +203,7 @@ class SettingsGenericAdapter(context: Context, private var items: List<SettingsI
         val isEnabled = isAdapterEnabled && item.enabled()
         root.alpha = if(isEnabled) 1f else 0.5f
         itemSettingSwitchTitle.text = item.title
-        itemSettingSwitchSwitch.applyMonet(monet)
+        itemSettingSwitchSwitch.applyMonetLight()
         if(item.content.isNullOrEmpty()){
             itemSettingSwitchContent.isVisible = false
         }else{

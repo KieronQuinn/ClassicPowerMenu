@@ -39,6 +39,7 @@ import com.kieronquinn.app.classicpowermenu.utils.extensions.isScrolled
 import com.kieronquinn.app.classicpowermenu.utils.extensions.scrollPercentage
 import com.kieronquinn.app.classicpowermenu.utils.extensions.sendDismissIntent
 import com.kieronquinn.app.classicpowermenu.utils.extensions.setSecondaryAlpha
+import com.kieronquinn.app.classicpowermenu.utils.extensions.whenResumed
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
@@ -189,7 +190,7 @@ class PowerMenuFragment :
         }
     }
 
-    private fun setupService() = lifecycleScope.launchWhenResumed {
+    private fun setupService() = whenResumed {
         serviceContainer.runWithService {
             setupWallet(it)
             setupControls()
@@ -197,7 +198,7 @@ class PowerMenuFragment :
     }
 
     private var appBarBackgroundAnimation: ValueAnimator? = null
-    private fun setupAppbar() = lifecycleScope.launchWhenResumed {
+    private fun setupAppbar() = whenResumed {
         //Start alpha is 0
         binding.powerMenuAppbar.background.alpha = 0
         binding.powerMenuAppbar.backgroundTintList = ColorStateList.valueOf(monet.getBackgroundColor(requireContext()))
@@ -226,7 +227,7 @@ class PowerMenuFragment :
         return roundToInt()
     }
 
-    private fun setupSecondaryAlpha() = lifecycleScope.launchWhenResumed {
+    private fun setupSecondaryAlpha() = whenResumed {
         binding.powerMenuAppbar.scrollPercentage.collect {
             buttonsLayoutManager.setSecondaryAlpha(1 - it)
         }
@@ -251,7 +252,7 @@ class PowerMenuFragment :
         contentAdapter.notifyItemChangeOfType(PowerMenuContentItem.Controls)
     }
 
-    private fun setupButtons() = lifecycleScope.launchWhenResumed {
+    private fun setupButtons() = whenResumed {
         buttonsAdapter.items = powerMenuButtons.filter { it.shouldShow() }.toMutableList()
         buttonsAdapter.notifyDataSetChanged()
     }
@@ -260,7 +261,7 @@ class PowerMenuFragment :
         sendDismiss()
     }
 
-    private fun sendDismiss() = lifecycleScope.launchWhenResumed {
+    private fun sendDismiss() = whenResumed {
         serviceContainer.runWithService {
             it.sendDismissIntent(requireContext())
         }

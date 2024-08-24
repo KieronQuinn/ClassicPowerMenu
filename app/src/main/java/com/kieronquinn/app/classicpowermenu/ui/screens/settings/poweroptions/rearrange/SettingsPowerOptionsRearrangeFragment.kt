@@ -117,7 +117,7 @@ class SettingsPowerOptionsRearrangeFragment: BoundFragment<FragmentSettingsPower
         adapter = workspaceAdapter
         background = ColorDrawable(monet.getBackgroundColor(context))
         binding.monetBackgroundFix.setBackgroundColor(monet.getBackgroundColor(context))
-        lifecycleScope.launchWhenResumed {
+        whenResumed {
             workspaceAdapter.changed.debounce(100).collect {
                 viewModel.savePowerMenuButtons(it)
             }
@@ -138,8 +138,8 @@ class SettingsPowerOptionsRearrangeFragment: BoundFragment<FragmentSettingsPower
     }
 
     private fun setupDragListener(){
-        workspaceAdapter.setupDrag(binding.powerOptionsRearrangeWorkspace, viewLifecycleOwner.lifecycleScope)
-        optionsAdapter.setupDrag(binding.powerOptionsRearrangeOptions, viewLifecycleOwner.lifecycleScope)
+        workspaceAdapter.setupDrag(binding.powerOptionsRearrangeWorkspace, viewLifecycleOwner)
+        optionsAdapter.setupDrag(binding.powerOptionsRearrangeOptions, viewLifecycleOwner)
     }
 
 }

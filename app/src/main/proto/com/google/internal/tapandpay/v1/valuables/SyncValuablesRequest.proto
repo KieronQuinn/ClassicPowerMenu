@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package com.google.internal.tapandpay.v1.valuables;
+
+import "com/google/internal/tapandpay/v1/valuables/ValuableWrapper.proto";
+
+option java_package = "com.google.internal.tapandpay.v1.valuables";
+option java_outer_classname = "SyncValuablesRequestProto";
+
+message SyncValuablesRequest {
+
+  SyncValuablesRequestInner request = 2;
+
+  message SyncValuablesRequestInner {
+
+    Request request = 2;
+
+    message Request {
+      bytes header = 1;
+      string timezone = 2;
+      repeated CachedValuable cached_valuable = 3;
+
+      message CachedValuable {
+        string id = 1;
+        int64 hash = 2;
+      }
+    }
+
+  }
+}

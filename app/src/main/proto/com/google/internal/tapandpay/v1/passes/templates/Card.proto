@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package com.google.internal.tapandpay.v1.passes.templates;
+
+import "com/google/internal/tapandpay/v1/Common.proto";
+import "com/google/internal/tapandpay/v1/passes/templates/ColorProfile.proto";
+import "com/google/internal/tapandpay/v1/passes/templates/Logo.proto";
+import "com/google/internal/tapandpay/v1/passes/templates/Reference.proto";
+import "com/google/internal/tapandpay/v1/passes/templates/TransitMode.proto";
+import "com/google/internal/tapandpay/v1/valuables/Common.proto";
+
+option java_package = "com.google.internal.tapandpay.v1.passes.templates";
+option java_outer_classname = "CardProto";
+
+message PassCardHeaderTemplateInfo {
+    PassLogo logo = 1;
+    ReferenceValue title_label = 2;
+    ReferenceValue title = 3;
+    ReferenceValue subtitle = 4;
+}
+
+message PassCardRowTemplateInfo {
+    oneof Row {
+        PassCardRowItems items = 2;
+        PassCardRowTransit transit = 3;
+        PassCardRowDivider divider = 4;
+        PassCardRowSpace space = 5;
+    }
+}
+
+message PassCardRowItems {
+    repeated PassCardRowItem item = 1;
+
+    message PassCardRowItem {
+        //This is actually a oneof but we only care for this one
+        PassCardRowItemReferenceValue reference_value = 2;
+
+        message PassCardRowItemReferenceValue {
+            ItemReference item_reference = 1;
+
+            message ItemReference {
+                ReferenceValue title = 1;
+                ReferenceValue subtitle = 2;
+            }
+        }
+    }
+}
+
+message PassCardRowTransit {
+    ReferenceValue route_name = 6;
+    TransitLocation start_location = 3;
+    TransitLocation end_location = 4;
+    TransitModeInfo tranist_mode_info = 5;
+
+    message TransitLocation {
+        ReferenceValue name = 1;
+        ReferenceValue short_name = 2;
+    }
+}
+
+message PassCardRowDivider {
+    //Stub
+}
+
+message PassCardRowSpace {
+    //Stub
+}

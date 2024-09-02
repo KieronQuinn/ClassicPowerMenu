@@ -72,6 +72,19 @@ import com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswalle
 import com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.autoswitchservice.SettingsQuickAccessWalletAutoSwitchServiceViewModelImpl
 import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.autoswitch.AutoSwitchServicesRepository
 import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.autoswitch.AutoSwitchServicesRepositoryImpl
+import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.loyaltycards.GoogleApiRepository
+import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.loyaltycards.GoogleApiRepositoryImpl
+import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.loyaltycards.GoogleWalletRepository
+import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.loyaltycards.GoogleWalletRepositoryImpl
+import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.loyaltycards.ValuablesDatabaseRepository
+import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.loyaltycards.ValuablesDatabaseRepositoryImpl
+import com.kieronquinn.app.classicpowermenu.components.settings.EncryptedSettings
+import com.kieronquinn.app.classicpowermenu.components.settings.EncryptedSettingsImpl
+import com.kieronquinn.app.classicpowermenu.components.settings.RoomEncryptedSettingsRepository
+import com.kieronquinn.app.classicpowermenu.components.settings.RoomEncryptedSettingsRepositoryImpl
+import com.kieronquinn.app.classicpowermenu.model.quickaccesswallet.database.WalletDatabase
+import com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.loyaltycards.SignInWithGoogleViewModel
+import com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.loyaltycards.SignInWithGoogleViewModelImpl
 import com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.rearrange.SettingsQuickAccessWalletRearrangeViewModel
 import com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.rearrange.SettingsQuickAccessWalletRearrangeViewModelImpl
 import com.kieronquinn.app.classicpowermenu.ui.screens.settings.rootcheck.SettingsRootCheckViewModel
@@ -125,7 +138,14 @@ class ClassicPowerMenu: LifecycleApplication() {
             single<PowerMenuNavigation> { PowerMenuNavigationImpl() }
             single<ContainerNavigation> { ContainerNavigationImpl() }
             single<AppNavigation> { AppNavigationImpl() }
+
+            single { WalletDatabase.getDatabase(get()) }
+            single<ValuablesDatabaseRepository> { ValuablesDatabaseRepositoryImpl(get()) }
+            single { get<ValuablesDatabaseRepository>() as RoomEncryptedSettingsRepository }
+
             single<Settings> { SettingsImpl(get()) }
+            single<EncryptedSettings> { EncryptedSettingsImpl(get()) }
+            single<RoomEncryptedSettingsRepository> { RoomEncryptedSettingsRepositoryImpl(get()) }
             single { UpdateChecker() }
         }
     }
@@ -133,8 +153,11 @@ class ClassicPowerMenu: LifecycleApplication() {
     private val walletModule = module {
         single<WalletActivityStarter> { WalletActivityStarterImpl(get(), get()) }
         single<WalletCardBlurProvider> { WalletCardBlurProviderImpl(get(), get()) }
-        single<LoyaltyCardsRepository> { LoyaltyCardsRepositoryImpl(get(), get(), get()) }
         single<AutoSwitchServicesRepository> { AutoSwitchServicesRepositoryImpl(get(), get()) }
+        single<GoogleWalletRepository> { GoogleWalletRepositoryImpl(get(), get(), get(), get()) }
+        single<GoogleApiRepository> { GoogleApiRepositoryImpl(get(), get()) }
+        single<LoyaltyCardsRepository> { LoyaltyCardsRepositoryImpl(get(), get(), get(), get(), get(), get()) }
+
     }
     
     private val monetModule = module {
@@ -147,7 +170,7 @@ class ClassicPowerMenu: LifecycleApplication() {
         module {
             viewModel<MainActivityViewModel> { MainActivityViewModelImpl(get(), get()) }
             viewModel<DecisionViewModel> { DecisionViewModelImpl(get(), get()) }
-            viewModel<PowerMenuViewModel> { PowerMenuViewModelImpl(get(), get(), get(), get(), get(), get()) }
+            viewModel<PowerMenuViewModel> { PowerMenuViewModelImpl(get(), get(), get(), get(), get(), get(), get()) }
             viewModel<PowerMenuActivityViewModel> { PowerMenuActivityViewModelImpl(get(), get(), get()) }
             viewModel<SafeModeTopSheetViewModel> { SafeModeTopSheetViewModelImpl(get(), get()) }
             viewModel<SetupLandingViewModel> { SetupLandingViewModelImpl(get()) }
@@ -161,8 +184,11 @@ class ClassicPowerMenu: LifecycleApplication() {
             viewModel<SettingsPowerOptionsRearrangeViewModel> { SettingsPowerOptionsRearrangeViewModelImpl(get(), get()) }
             viewModel<SettingsQuickAccessWalletViewModel> { SettingsQuickAccessWalletViewModelImpl(get(), get(), get(), get()) }
             viewModel<SettingsDeviceControlsViewModel> { SettingsDeviceControlsViewModelImpl(get(), get()) }
-            viewModel<SettingsQuickAccessWalletRearrangeViewModel> { SettingsQuickAccessWalletRearrangeViewModelImpl(get(), get(), get()) }
+            viewModel<SettingsQuickAccessWalletRearrangeViewModel> { SettingsQuickAccessWalletRearrangeViewModelImpl(get(), get(), get(), get()) }
             viewModel<SettingsQuickAccessWalletAutoSwitchServiceViewModel> { SettingsQuickAccessWalletAutoSwitchServiceViewModelImpl(get(), get(), get()) }
+
+            viewModel<SignInWithGoogleViewModel> { SignInWithGoogleViewModelImpl(get(), get(), get()) }
+
             viewModel<SettingsDeveloperOptionsViewModel> { SettingsDeveloperOptionsViewModelImpl(get()) }
             viewModel<SettingsRootCheckViewModel> { SettingsRootCheckViewModelImpl(get()) }
             viewModel<UpdateAvailableBottomSheetViewModel> { UpdateAvailableBottomSheetViewModelImpl(get()) }

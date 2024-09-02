@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package com.google.internal.tapandpay.v1.valuables;
+
+import "com/google/internal/tapandpay/v1/Common.proto";
+import "com/google/internal/tapandpay/v1/notifications/ScheduledNotificationProto.proto";
+import "com/google/internal/tapandpay/v1/passes/templates/Pass.proto";
+import "com/google/internal/tapandpay/v1/valuables/Common.proto";
+import "google/type/color.proto";
+
+option java_package = "com.google.internal.tapandpay.v1.valuables";
+option java_outer_classname = "FlightProto";
+
+message Flight {
+    string id = 1;
+    Metadata metadata = 2;
+    IssuerInfo issuer_info = 3;
+    RedemptionInfo redemption_info = 4;
+    string carrier_code_and_flight_number = 5;
+    AirportInfo origin = 6;
+    AirportInfo destination = 7;
+    FlightStatus airline_flight_status = 8;
+    string passenger_name = 9;
+    BoardingAndSeatingInfo boarding_and_seating_info = 10;
+    ReservationInfo reservation_info = 12;
+    GroupingInfo grouping_info = 13;
+    FlightCarrier flight_carrier = 14;
+    string security_program_logo_url = 15;
+    notifications.ScheduledNotification upcoming_flight_notification = 16;
+    string operating_carrier_info = 18;
+    FlightStatus google_flight_status = 20;
+    passes.templates.PassTemplateInfo template_info = 21;
+
+    message AirportInfo {
+        string serves_city = 1;
+        string airport_iata_code = 3;
+        string terminal = 4;
+        string gate = 5;
+    }
+
+    message FlightStatus {
+        string status = 1;
+        DateTime boarding = 7;
+        DateTime scheduled_departure = 8;
+        DateTime actual_departure = 9;
+        DateTime scheduled_arrival = 10;
+        DateTime actual_arrival = 11;
+        DateTime gate_closes = 12;
+        .google.type.Color status_color = 13;
+        string status_message = 14;
+        string more_details_uri = 15;
+        string more_details_message = 16;
+    }
+
+    message BoardingAndSeatingInfo {
+        LabeledStringValue boarding_group = 1;
+        LabeledStringValue seat_number = 2;
+        LabeledStringValue seat_class = 3;
+        LabeledStringValue boarding_position = 4;
+        LabeledStringValue sequence_number = 5;
+        LabeledStringValue boarding_door = 6;
+        string boarding_privilege_image_url = 7;
+    }
+
+    message ReservationInfo {
+        string confirmation_code = 1;
+        LabeledStringValue frequent_flyer_number = 2;
+        string eticket_number = 3;
+    }
+
+    message FlightCarrier {
+        string airline_alliance_logo_url = 3;
+        int32 airline_alliance_logo_location = 4;
+    }
+}

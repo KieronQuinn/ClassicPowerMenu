@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package com.google.internal.tapandpay.v1.notifications;
+
+import "com/google/internal/tapandpay/v1/Common.proto";
+import "google/protobuf/duration.proto";
+
+option java_package = "com.google.internal.tapandpay.v1.notifications";
+option java_outer_classname = "ScheduledNotificationProto";
+
+message ScheduledNotification {
+    string title = 2;
+    string message = 3;
+    string opt_out_label = 4;
+    string issuer_logo_url = 5;
+    DateTime date_time_to_show = 7;
+    .google.protobuf.Duration timeout_after = 11;
+    string id = 12;
+    bool display_after_time_to_show = 13;
+    int32 priority = 14;
+}

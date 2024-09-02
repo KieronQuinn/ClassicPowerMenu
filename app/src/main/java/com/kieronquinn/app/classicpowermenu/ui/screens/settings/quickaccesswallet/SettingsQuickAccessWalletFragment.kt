@@ -105,6 +105,13 @@ class SettingsQuickAccessWalletFragment: SettingsSwitchedFragment(), BackAvailab
                 enabled = { viewModel.showLoyaltyCards },
                 tapAction = viewModel::onReorderLoyaltyCardsClicked
             ),
+            SettingsItem.Setting(
+                R.drawable.ic_quick_access_wallet_rearrange,
+                "Sign into google",
+                null,
+                enabled = { viewModel.showLoyaltyCards },
+                tapAction = viewModel::onSignIntoGoogle
+            ),
             SettingsItem.SwitchSetting(
                 R.drawable.ic_power_options_hide_when_locked,
                 getString(R.string.settings_quick_access_wallet_access_while_locked),

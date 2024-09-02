@@ -97,7 +97,7 @@ data class LoyaltyCard(
 
 }
 
-fun LoyaltyCardProtos.LoyaltyCard.extract(valuableImage: Bitmap?, context: Context): LoyaltyCard {
+fun LoyaltyCardProtos.LoyaltyCard_.extract(valuableImage: Bitmap?, context: Context): LoyaltyCard {
     val valuableId = this.id
     val id = this.issuerInfo.id
     val title = this.issuerInfo.title

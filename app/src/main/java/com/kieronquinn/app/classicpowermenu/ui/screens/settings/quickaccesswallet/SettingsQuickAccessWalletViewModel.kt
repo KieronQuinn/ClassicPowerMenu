@@ -32,7 +32,7 @@ abstract class SettingsQuickAccessWalletViewModel: ViewModel() {
     abstract fun onChangeGooglePaySettingsClicked()
     abstract fun onReorderLoyaltyCardsClicked()
     abstract fun onAutoSwitchServiceClicked()
-
+    abstract fun onSignIntoGoogle()
 }
 
 class SettingsQuickAccessWalletViewModelImpl(context: Context, private val settings: Settings, private val navigation: AppNavigation, private val containerNavigation: ContainerNavigation): SettingsQuickAccessWalletViewModel() {
@@ -72,6 +72,12 @@ class SettingsQuickAccessWalletViewModelImpl(context: Context, private val setti
     override fun onAutoSwitchServiceClicked() {
         viewModelScope.launch {
             containerNavigation.navigate(SettingsContainerFragmentDirections.actionSettingsContainerFragmentToSettingsQuickAccessWalletAutoSwitchServiceFragment())
+        }
+    }
+
+    override fun onSignIntoGoogle() {
+        viewModelScope.launch {
+            containerNavigation.navigate(SettingsContainerFragmentDirections.actionSettingsContainerFragmentToSettingsQuickAccessWalletSignInToGoogle())
         }
     }
 

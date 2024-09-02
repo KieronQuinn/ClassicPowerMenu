@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package com.google.internal.tapandpay.v1.valuables;
+
+import "com/google/internal/tapandpay/v1/valuables/EventTicket.proto";
+import "com/google/internal/tapandpay/v1/valuables/Flight.proto";
+import "com/google/internal/tapandpay/v1/valuables/GenericCard.proto";
+import "com/google/internal/tapandpay/v1/valuables/GiftCard.proto";
+import "com/google/internal/tapandpay/v1/valuables/HealthCard.proto";
+import "com/google/internal/tapandpay/v1/valuables/LoyaltyCard.proto";
+import "com/google/internal/tapandpay/v1/valuables/Offer.proto";
+import "com/google/internal/tapandpay/v1/valuables/Transit.proto";
+
+option java_package = "com.google.internal.tapandpay.v1.valuables";
+option java_outer_classname = "ValuableWrapperProto";
+
+message ValuableWrapper {
+    oneof Valuable {
+        LoyaltyCard loyalty_card = 1;
+        GiftCard gift_card = 2;
+        Offer offer = 3;
+        EventTicket event_ticket = 4;
+        Flight flight = 5;
+        TransitCard transit_card = 6;
+        HealthCard health_card = 7;
+        GenericCard generic_card = 8;
+        GenericCard sensitive_generic_pass = 9;
+    }
+}

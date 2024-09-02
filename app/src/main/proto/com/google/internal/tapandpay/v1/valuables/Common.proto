@@ -1,0 +1,158 @@
+syntax = "proto3";
+
+package com.google.internal.tapandpay.v1.valuables;
+
+import "com/google/android/libraries/commerce/hce/ndef/Format.proto";
+import "google/protobuf/timestamp.proto";
+import "google/type/color.proto";
+
+option java_package = "com.google.internal.tapandpay.v1.valuables";
+option java_outer_classname = "CommonProto";
+
+message Metadata {
+    string sort_key = 1;
+    .google.protobuf.Timestamp create_time = 2;
+    .google.protobuf.Timestamp update_time = 3;
+    bool editable = 4;
+    bool is_active = 5;
+    bool device_pinned_valuable = 8;
+    bool prevent_auto_save = 9;
+    bool has_linked_valuables = 10;
+    int32 source = 11;
+    string gmail_permalink_id = 12;
+    OnViewConfig on_view_config = 14;
+
+    message OnViewConfig {
+        bool notify_on_view = 1;
+    }
+}
+
+message IssuerInfo {
+    string id = 1;
+    string title = 2;
+    string issuer_name = 3;
+    repeated IssuerMessage message = 5;
+    repeated LinkInfo link = 6;
+    repeated MainImageInfo main_image = 7;
+    repeated ExtraText extra_text = 8;
+    Logo logo = 9;
+    repeated ExtraKeyedInfo extra_keyed_info = 10;
+    HeroImage hero_image = 11;
+    .google.type.Color background_color = 13;
+    string save_to_android_pay_preview_message = 14;
+}
+
+message IssuerMessage {
+    string header = 1;
+    string body = 2;
+}
+
+message LinkInfo {
+    string url = 1;
+    string label = 2;
+    int32 type = 3;
+}
+
+message MainImageInfo {
+    string uri = 1;
+}
+
+message ExtraText {
+    string header = 1;
+    string body = 2;
+}
+
+message Logo {
+    string url = 1;
+    .google.type.Color dominant_color = 2;
+}
+
+message ExtraKeyedInfo {
+    string label = 1;
+    string value = 2;
+}
+
+message HeroImage {
+    string url = 1;
+    .google.type.Color dominant_color = 2;
+}
+
+message RedemptionInfo {
+    string identifier = 1;
+    Barcode barcode = 2;
+    repeated SmartTapRedemptionInfo smart_tap_redemption_info = 4;
+    bool hide_barcode = 5;
+    int64 issuing_smart_tap_collector_id = 7;
+    bool use_expanded_barcode_view = 10;
+    bool smart_tap_enabled = 11;
+    ObjectId object_id = 12;
+}
+
+message Barcode {
+    BarcodeType type = 1;
+    string encoded_value = 2;
+    string display_text = 3;
+    BarcodeRenderEncoding barcode_render_encoding = 5;
+}
+
+enum BarcodeType {
+    BARCODE_TYPE_UNSPECIFIED = 0;
+    BARCODE_TYPE_UNRECOGNIZED = 1;
+    BARCODE_TYPE_AZTEC = 2;
+    BARCODE_TYPE_CODE_39 = 3;
+    BARCODE_TYPE_CODE_128 = 5;
+    BARCODE_TYPE_CODABAR = 6;
+    BARCODE_TYPE_DATA_MATRIX = 7;
+    BARCODE_TYPE_EAN_8 = 8;
+    BARCODE_TYPE_EAN_13 = 9;
+    BARCODE_TYPE_ITF_14 = 10;
+    BARCODE_TYPE_PDF_417 = 11;
+    BARCODE_TYPE_QR_CODE = 14;
+    BARCODE_TYPE_UPC_A = 15;
+    BARCODE_TYPE_UPC_E = 16;
+    BARCODE_TYPE_TEXT_ONLY = 19;
+}
+
+message SmartTapRedemptionInfo {
+    int64 collector_id = 1;
+    android.libraries.commerce.hce.ndef.Format type = 2;
+    bool encryption_required = 22;
+    bool authentication_required = 23;
+    repeated IssuerAuthenticationKey issuer_authentication_key = 24;
+    bool unlock_required = 25;
+    bool multiple_transmission_required = 29;
+}
+
+message IssuerAuthenticationKey {
+    bytes compressed_public_key = 1;
+    int32 id = 2;
+}
+
+message ObjectId {
+    int64 issuer_id = 1;
+    string issuer_object_id = 2;
+}
+
+enum BarcodeRenderEncoding {
+    BARCODE_RENDER_ENCODING_UNSPECIFIED = 0;
+    BARCODE_RENDER_ENCODING_UTF_8 = 1;
+}
+
+message GroupingInfo {
+    string grouping_id = 1;
+    GroupingImage grouping_image = 2;
+    string grouping_title = 3;
+    string grouping_subtitle = 4;
+    string grouping_hint = 5;
+    .google.type.Color background_color = 6;
+    int32 sort_index = 7;
+}
+
+message GroupingImage {
+    string uri = 1;
+}
+
+message LabeledStringValue {
+    string label = 1;
+    string value = 2;
+}

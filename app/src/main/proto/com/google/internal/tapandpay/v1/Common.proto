@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package com.google.internal.tapandpay.v1;
+
+import "google/protobuf/duration.proto";
+import "google/type/date.proto";
+import "google/type/timeofday.proto";
+
+option java_package = "com.google.internal.tapandpay.v1";
+option java_outer_classname = "CommonProto";
+
+message Money {
+    int64 micros = 1;
+    string currency_code = 2;
+}
+
+message DateTime {
+    .google.type.Date local_date = 1;
+    .google.type.TimeOfDay local_time = 2;
+    .google.protobuf.Duration offset_from_utc = 3;
+}

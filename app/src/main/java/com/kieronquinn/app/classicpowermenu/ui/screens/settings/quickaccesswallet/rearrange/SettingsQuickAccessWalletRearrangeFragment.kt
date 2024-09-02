@@ -44,6 +44,10 @@ class SettingsQuickAccessWalletRearrangeFragment: BoundFragment<FragmentSettings
         setupState()
         setupMonet()
         setupInsets()
+
+        binding.button.setOnClickListener {
+            viewModel.tempSync()
+        }
     }
 
     private fun setupMonet(){

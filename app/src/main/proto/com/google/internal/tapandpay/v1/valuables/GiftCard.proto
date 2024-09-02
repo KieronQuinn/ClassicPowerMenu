@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package com.google.internal.tapandpay.v1.valuables;
+
+import "com/google/internal/tapandpay/v1/Common.proto";
+import "com/google/internal/tapandpay/v1/passes/templates/Pass.proto";
+import "com/google/internal/tapandpay/v1/valuables/Common.proto";
+import "google/protobuf/timestamp.proto";
+
+option java_package = "com.google.internal.tapandpay.v1.valuables";
+option java_outer_classname = "GiftCardProto";
+
+message GiftCard {
+    string id = 1;
+    int64 hash = 2;
+    Metadata metadata = 3;
+    IssuerInfo issuer_info = 4;
+    RedemptionInfo redemption_info = 5;
+    .google.protobuf.Timestamp expiration_time = 6;
+    BalanceInfo balance_info = 7;
+    string pin = 8;
+    string notes = 9;
+    string event_number = 10;
+    string pin_label = 11;
+    string default_currency_code = 12;
+    string country_display_name = 13;
+    int32 input_mode = 14;
+    string country_code = 15;
+    passes.templates.PassTemplateInfo template_info = 16;
+    GroupingInfo grouping_info = 17;
+
+    message BalanceInfo {
+        Money balance = 1;
+        int32 balance_source = 2;
+        .google.protobuf.Timestamp balance_update_time = 3;
+    }
+}

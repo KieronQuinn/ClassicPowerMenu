@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package com.google.internal.tapandpay.v1.passes.templates;
+
+import "com/google/internal/tapandpay/v1/Common.proto";
+import "com/google/internal/tapandpay/v1/passes/templates/ColorProfile.proto";
+import "com/google/internal/tapandpay/v1/passes/templates/Detail.proto";
+import "com/google/internal/tapandpay/v1/valuables/Common.proto";
+
+option java_package = "com.google.internal.tapandpay.v1.passes.templates";
+option java_outer_classname = "PassProto";
+
+message PassTemplateInfo {
+    PassColorProfile color_profile = 1;
+    PassDetailCardTemplateInfo details_card_info = 2;
+    PassColorProfile dark_color_profile = 4;
+}

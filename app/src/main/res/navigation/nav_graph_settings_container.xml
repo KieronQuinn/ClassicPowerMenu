@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_settingsContainerFragment_to_settingsQuickAccessWalletAutoSwitchServiceFragment"
             app:destination="@id/settingsQuickAccessWalletAutoSwitchServiceFragment" />
+        <action
+            android:id="@+id/action_settingsContainerFragment_to_settingsQuickAccessWalletSignInToGoogle"
+            app:destination="@+id/settingsQuickAccessWalletSignInToGoogle" />
     </fragment>
     <fragment
         android:id="@+id/settingsPowerOptionsRearrangeFragment"
@@ -30,6 +33,11 @@
         android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.rearrange.SettingsQuickAccessWalletRearrangeFragment"
         android:label="SettingsQuickAccessWalletRearrangeFragment"
         tools:layout="@layout/fragment_settings_quick_access_wallet_rearrange" />
+    <fragment
+        android:id="@+id/settingsQuickAccessWalletSignInToGoogle"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.loyaltycards.SignInWithGoogleFragment"
+        android:label="SettingsSignInWithGoogleFragment"
+        tools:layout="@layout/fragment_sign_in_with_google" />
     <fragment
         android:id="@+id/settingsQuickAccessWalletAutoSwitchServiceFragment"
         android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.autoswitchservice.SettingsQuickAccessWalletAutoSwitchServiceFragment"

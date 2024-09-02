@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package com.google.internal.tapandpay.v1.valuables;
+
+import "com/google/internal/tapandpay/v1/passes/templates/Pass.proto";
+
+option java_package = "com.google.internal.tapandpay.v1.valuables";
+option java_outer_classname = "HealthCardProto";
+
+message HealthCard {
+    //Not currently supported - no examples, no class on API - what is this valuable type?
+}

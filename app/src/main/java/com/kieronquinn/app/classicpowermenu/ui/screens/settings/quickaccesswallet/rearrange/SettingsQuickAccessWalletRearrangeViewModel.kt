@@ -1,10 +1,20 @@
 package com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.rearrange
 
+import android.os.StrictMode
+import android.util.Base64
 import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.internal.tapandpay.v1.valuables.SyncValuablesRequestProto.SyncValuablesRequest
+import com.google.internal.tapandpay.v1.valuables.SyncValuablesRequestProto.SyncValuablesRequest.SyncValuablesRequestInner.Request
+import com.google.internal.tapandpay.v1.valuables.SyncValuablesResponseProto
+import com.google.internal.tapandpay.v1.valuables.SyncValuablesResponseProto.SyncValuablesResponse
+import com.google.internal.tapandpay.v1.valuables.SyncValuablesResponseProto.SyncValuablesResponse.Inner.Valuables.Valuable
+import com.google.protobuf.ByteString
 import com.kieronquinn.app.classicpowermenu.R
 import com.kieronquinn.app.classicpowermenu.components.navigation.ContainerNavigation
+import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.loyaltycards.GoogleApiRepository
+import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.loyaltycards.GoogleWalletRepository
 import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.loyaltycards.LoyaltyCardsRepository
 import com.kieronquinn.app.classicpowermenu.components.settings.Settings
 import com.kieronquinn.app.classicpowermenu.model.quickaccesswallet.WalletLoyaltyCardViewInfo
@@ -36,9 +46,17 @@ abstract class SettingsQuickAccessWalletRearrangeViewModel: ViewModel() {
         ERROR(R.string.settings_quick_access_wallet_rearrange_error_generic), NO_CARDS(R.string.settings_quick_access_wallet_rearrange_error_no_cards)
     }
 
+    abstract fun tempSync()
+
 }
 
-class SettingsQuickAccessWalletRearrangeViewModelImpl(private val loyaltyCardsRepository: LoyaltyCardsRepository, private val settings: Settings, private val containerNavigation: ContainerNavigation): SettingsQuickAccessWalletRearrangeViewModel() {
+class SettingsQuickAccessWalletRearrangeViewModelImpl(private val loyaltyCardsRepository: LoyaltyCardsRepository, val walletRepository: GoogleWalletRepository, private val settings: Settings, private val containerNavigation: ContainerNavigation): SettingsQuickAccessWalletRearrangeViewModel() {
+
+    override fun tempSync() {
+        viewModelScope.launch {
+            walletRepository.syncValuables()
+        }
+    }
 
     private val loyaltyCards = flow {
         val cards = loyaltyCardsRepository.getLoyaltyCards({ false }, true)

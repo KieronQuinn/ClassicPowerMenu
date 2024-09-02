@@ -7,6 +7,19 @@
     android:transitionGroup="true"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|left"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sync" />
+    </LinearLayout>
+
     <com.kieronquinn.monetcompat.view.MonetToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -24,7 +37,9 @@
         tools:visibility="visible"
         android:clipToPadding="false"
         android:overScrollMode="never"
-        android:paddingTop="@dimen/margin_16" />
+        android:paddingTop="@dimen/margin_16" >
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <LinearLayout
         android:id="@+id/quick_access_wallet_rearrange_loading"

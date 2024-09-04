@@ -85,8 +85,6 @@
     <string name="settings_quick_access_wallet_hide_card_number_when_locked">Скрывать последние цифры Карты Оплаты при заблокированном экране</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards">Показывать Карты лояльности</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards_desc">Загружать ваши Карты лояльности из Google Кошелька и показывать их в Быстром доступе</string>
-    <string name="settings_quick_access_wallet_rearrange">Переместить и Скрыть Карты лояльности</string>
-    <string name="settings_quick_access_wallet_rearrange_desc">Переместить и показать/скрыть карты лояльности в быстром доступе Кошелька</string>
     <string name="settings_quick_access_wallet_show_preview">Показывать предпросмотр Карт лояльности</string>
     <string name="settings_quick_access_wallet_show_preview_desc">Использовать предпросмотр Карт лояльности для сканирования или предоставления в магазине без открытия Google Кошелька</string>
     <string name="settings_quick_access_wallet_access_while_locked">Разрешить доступ к Картам лояльности с заблокированным экраном</string>
@@ -98,8 +96,8 @@
     <string name="settings_device_controls_access_while_locked_desc">Позволяет использовать Управление Устрояствами с заблокированным экраном. Эта настройка <b>не</b> позволяет добавлять или редактировать устройства с заблокированным экраном</string>
     <string name="color_picker_unavailable">Выбор цвета не доступен для текущих обоев</string>
     <string name="settings_quick_access_wallet_loading">Загрузка Карт Лояльности…</string>
-    <string name="settings_quick_access_wallet_rearrange_error_no_cards">Карты Лояльности не найдены</string>
-    <string name="settings_quick_access_wallet_rearrange_error_generic">Ошибка во время загрузки Карт Лояльности</string>
+    <string name="settings_quick_access_wallet_manage_error_no_cards">Карты Лояльности не найдены</string>
+    <string name="settings_quick_access_wallet_manage_error_generic">Ошибка во время загрузки Карт Лояльности</string>
     <string name="settings_developer_options_content_creator_mode">Режим Блогера</string>
     <string name="settings_developer_options_content_creator_mode_desc">Включите, чтобы размыть последние цифры Карты Оплаты и показывать коды-заглушки для Карт Лояльности <b>во время предпросмотра</b>. Используйте, чтобы не раскрывать данные карты на снимках экрана или видео.\n<b>Осторожно: Не пытайтесь использвать Карты Лояльности с этой настройкой, это может привести к сбоям систем магазина.</b></string>
     <string name="settings_accessibility_warning">Специальные Возможности отключены</string>

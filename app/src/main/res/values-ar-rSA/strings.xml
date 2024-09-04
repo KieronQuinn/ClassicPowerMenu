@@ -82,8 +82,6 @@
     <string name="settings_quick_access_wallet_auto_switch_service_error_no_services">No NFC emulation services found</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards">إظهار بطاقات الولاء</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards_desc">تحميل وعرض بطاقات الولاء الخاصة بك من محفظة جوجل في محفظة الوصول السريع</string>
-    <string name="settings_quick_access_wallet_rearrange">إعادة ترتيب &amp; إخفاء بطاقات الولاء</string>
-    <string name="settings_quick_access_wallet_rearrange_desc">إعادة ترتيب وإظهار/إخفاء بطاقات الولاء في محفظة الوصول السريع</string>
     <string name="settings_quick_access_wallet_show_preview">إظهار معاينة بطاقة الولاء</string>
     <string name="settings_quick_access_wallet_show_preview_desc">إظهار معاينة لبطاقة الولاء التي سيتم فحصها أو عرضها في المتجر دون فتح محفظة جوجل</string>
     <string name="settings_quick_access_wallet_access_while_locked">السماح بدخول بطاقة الولاء أثناء القفل</string>
@@ -95,8 +93,8 @@
     <string name="settings_device_controls_access_while_locked_desc">السماح بالتفاعل مع عناصر التحكم في الجهاز أثناء تأمينه. هذا <b>لا</b> يسمح بإضافة أو تعديل عناصر التحكم أثناء قفل</string>
     <string name="color_picker_unavailable">اختيار لون الخلفية غير متوفر لخلفية الحائط المحددة حاليا</string>
     <string name="settings_quick_access_wallet_loading">تحميل بطاقات الولاء…</string>
-    <string name="settings_quick_access_wallet_rearrange_error_no_cards">لا توجد بطاقات الولاء</string>
-    <string name="settings_quick_access_wallet_rearrange_error_generic">خطأ في تحميل بطاقات الولاء</string>
+    <string name="settings_quick_access_wallet_manage_error_no_cards">لا توجد بطاقات الولاء</string>
+    <string name="settings_quick_access_wallet_manage_error_generic">خطأ في تحميل بطاقات الولاء</string>
     <string name="settings_developer_options_content_creator_mode">وضع منشئ المحتوى</string>
     <string name="settings_developer_options_content_creator_mode_desc">تمكين هذا لطمس دائما أرقام بطاقة الدفع الخاصة بك، وعرض الكود الدموي لبطاقات الولاء <b>في المعاينة</b> (تمكين ذلك بشكل منفصل إذا كنت تريد ذلك دائما). هذا مفيد لالتقاط لقطات شاشة أو مقاطع فيديو دون الكشف عن معلومات بطاقتك عن طريق الخطأ.\n<b>تحذير: لا تحاول استخدام بطاقة الولاء مع تمكين هذا الوضع، قد يسبب أخطاء في أنظمة المتجر.</b></string>
     <string name="settings_accessibility_warning">خدمة إمكانية الوصول غير مفعلة</string>

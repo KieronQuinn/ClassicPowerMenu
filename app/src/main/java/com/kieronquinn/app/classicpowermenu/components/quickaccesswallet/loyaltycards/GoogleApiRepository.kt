@@ -8,7 +8,6 @@ import com.kieronquinn.app.classicpowermenu.utils.extensions.getPackageInfoCompa
 import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.loyaltycards.GoogleApiRepository.Scope
 import com.kieronquinn.app.classicpowermenu.components.settings.EncryptedSettings
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import okhttp3.ResponseBody
@@ -19,7 +18,6 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.Header
 import retrofit2.http.POST
 import java.util.Locale
-
 
 interface GoogleApiRepository {
 
@@ -48,9 +46,6 @@ class GoogleApiRepositoryImpl(val context: Context, val encryptedSettings: Encry
         private const val PACKAGE_GMS = "com.google.android.gms"
         private const val VERSION_GMS_DEFAULT = "19629032"
     }
-    private val scope = MainScope()
-
-    val aasToken2 = encryptedSettings.aasToken
 
     private val service = Retrofit.Builder()
         .baseUrl("http://localhost/")
@@ -68,8 +63,6 @@ class GoogleApiRepositoryImpl(val context: Context, val encryptedSettings: Encry
             is Result.Success -> String(tokenResult.data.bytes())
             is Result.Failed -> return@withContext null
         }
-        val token = tokenBody.decodeForm()["Token"]
-        //if (token != null) getToken(Scope.WALLET, token)
         tokenBody.decodeForm()["Token"]
     }
 
@@ -100,11 +93,10 @@ class GoogleApiRepositoryImpl(val context: Context, val encryptedSettings: Encry
         }
         tokenBody.decodeForm()["Auth"]
     }
-    private val isSignedIn = encryptedSettings.aasToken.isNotEmpty()
 
     override fun isSignedIn(): Boolean {
         return runBlocking {
-            !isSignedIn
+            encryptedSettings.aasToken.isNotEmpty()
         }
     }
 

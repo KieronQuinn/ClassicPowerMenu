@@ -272,7 +272,7 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_settingsContainerFragment_to_settingsQuickAccessWalletRearrangeFragment">
+                            <entry key="action_settingsContainerFragment_to_settingsQuickAccessWalletManageFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -311,14 +311,23 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="settingsQuickAccessWalletRearrangeFragment">
+                  <entry key="settingsQuickAccessWalletManageFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="845" />
-                            <option name="y" value="116" />
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_settingsQuickAccessWalletManageFragment_to_settingsQuickAccessWalletSignInToGoogle">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -328,8 +337,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="679" />
-                            <option name="y" value="445" />
+                            <option name="x" value="1238" />
+                            <option name="y" value="242" />
                           </Point>
                         </option>
                       </LayoutPositions>

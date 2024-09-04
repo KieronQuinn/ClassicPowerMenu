@@ -3,24 +3,14 @@ package com.kieronquinn.app.classicpowermenu.ui.screens.powermenu.main
 import android.app.KeyguardManager
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager.NameNotFoundException
-import android.os.Build
-import android.os.StrictMode
 import android.telecom.TelecomManager
-import android.util.Base64
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.android.systemui.plugin.globalactions.wallet.WalletCardViewInfo
 import com.android.systemui.plugins.ActivityStarter
-import com.google.internal.tapandpay.v1.valuables.SyncValuablesRequestProto.SyncValuablesRequest
-import com.google.internal.tapandpay.v1.valuables.SyncValuablesRequestProto.SyncValuablesRequest.SyncValuablesRequestInner.Request
-import com.google.internal.tapandpay.v1.valuables.SyncValuablesResponseProto.SyncValuablesResponse
-import com.google.internal.tapandpay.v1.valuables.SyncValuablesResponseProto.SyncValuablesResponse.Inner.Valuables.Valuable
-import com.google.protobuf.ByteString
 import com.kieronquinn.app.classicpowermenu.R
 import com.kieronquinn.app.classicpowermenu.components.navigation.PowerMenuNavigation
-import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.loyaltycards.GoogleApiRepository
-import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.loyaltycards.LoyaltyCardsRepository
+import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.loyaltycards.GoogleWalletRepository
 import com.kieronquinn.app.classicpowermenu.components.settings.Settings
 import com.kieronquinn.app.classicpowermenu.model.power.PowerMenuButton
 import com.kieronquinn.app.classicpowermenu.model.power.PowerMenuButtonId
@@ -28,23 +18,7 @@ import com.kieronquinn.app.classicpowermenu.model.quickaccesswallet.LoyaltyCard
 import com.kieronquinn.app.classicpowermenu.service.container.CPMServiceContainer
 import com.kieronquinn.app.classicpowermenu.utils.EmergencyDialerConstants
 import com.kieronquinn.app.classicpowermenu.utils.extensions.*
-import com.kieronquinn.app.classicpowermenu.utils.Result
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.plus
-import kotlinx.coroutines.withContext
-import okhttp3.RequestBody
-import okhttp3.ResponseBody
-import retrofit2.Call
-import retrofit2.Retrofit
-import retrofit2.http.Body
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.Header
-import retrofit2.http.POST
-import java.time.ZoneId
-import java.time.format.TextStyle
-import java.util.Locale
 
 abstract class PowerMenuViewModel: ViewModel() {
 
@@ -79,7 +53,7 @@ abstract class PowerMenuViewModel: ViewModel() {
     abstract val quickAccessWalletSelectedAutoSwitchService: String
 }
 
-class PowerMenuViewModelImpl(val context: Context, private val service: CPMServiceContainer, private val navigation: PowerMenuNavigation, private val settings: Settings, private val loyaltyCards: LoyaltyCardsRepository, private val activityStarter: ActivityStarter, val googleApiRepository: GoogleApiRepository): PowerMenuViewModel() {
+class PowerMenuViewModelImpl(context: Context, private val service: CPMServiceContainer, private val navigation: PowerMenuNavigation, private val settings: Settings, private val googleWalletRepository: GoogleWalletRepository, private val activityStarter: ActivityStarter): PowerMenuViewModel() {
 
     private val telecomManager by lazy {
         context.getSystemService(Context.TELECOM_SERVICE) as TelecomManager
@@ -217,7 +191,7 @@ class PowerMenuViewModelImpl(val context: Context, private val service: CPMServi
 
     override fun addLoyaltyCardsToWallet(list: ArrayList<WalletCardViewInfo>, callback: Runnable) {
         viewModelScope.launch {
-            val loyaltyCards = loyaltyCards.getLoyaltyCards(this@PowerMenuViewModelImpl::onCardClicked)?.run {
+            val loyaltyCards = googleWalletRepository.getLoyaltyCards(this@PowerMenuViewModelImpl::onCardClicked)?.run {
                 val hidden = settings.quickAccessWalletLoyaltyCardsHidden
                 val order = settings.quickAccessWalletLoyaltyCardsOrder
                 filterNot { hidden.contains(it.getLoyaltyIdOrNull()) }.sortedBy {

@@ -82,8 +82,6 @@
     <string name="settings_quick_access_wallet_auto_switch_service_error_no_services">No NFC emulation services found</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards">Εμφάνιση Καρτών Αφοσίωσης</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards_desc">Φορτώστε και δείξτε τις Κάρτες Αφοσίωσης από το Πορτοφόλι Google στο Πορτοφόλι Γρήγορης Πρόσβασης</string>
-    <string name="settings_quick_access_wallet_rearrange">Αναδιάταξη &amp; Απόκρυψη Καρτών Αφοσίωσης</string>
-    <string name="settings_quick_access_wallet_rearrange_desc">Αναδιάταξη και εμφάνιση/απόκρυψη καρτών αφοσίωσης στο Πορτοφόλι Γρήγορης Πρόσβασης</string>
     <string name="settings_quick_access_wallet_show_preview">Εμφάνιση Προεπισκόπησης Κάρτας Αφοσίωσης</string>
     <string name="settings_quick_access_wallet_show_preview_desc">Εμφάνιση μιας προεπισκόπησης της Κάρτας Αφοσίωσης που θα σαρωθεί ή θα προβληθεί στο κατάστημα χωρίς άνοιγμα του Πορτοφολιού Google</string>
     <string name="settings_quick_access_wallet_access_while_locked">Επιτρέψτε την πρόσβαση σε Κάρτα Αφοσίωσης απ\' την οθόνη κλειδώματος</string>
@@ -95,8 +93,8 @@
     <string name="settings_device_controls_access_while_locked_desc">Να επιτρέπεται η αλληλεπίδραση με τα Στοιχεία Ελέγχου Συσκευής ενώ είναι κλειδωμένη η συσκευή. Αυτό <b>δεν </b> επιτρέπει την προσθήκη ή επεξεργασία στοιχείων ενώ είναι κλειδωμένη</string>
     <string name="color_picker_unavailable">Επιλογέας Χρώματος Ταπετσαρίας μη διαθέσιμος για την τρέχουσα επιλεγμένη ταπετσαρία</string>
     <string name="settings_quick_access_wallet_loading">Φόρτωση Καρτών Αφοσίωσης…</string>
-    <string name="settings_quick_access_wallet_rearrange_error_no_cards">Δεν βρέθηκαν Κάρτες Αφοσίωσης</string>
-    <string name="settings_quick_access_wallet_rearrange_error_generic">Σφάλμα κατά τη φόρτωση Καρτών Αφοσίωσης</string>
+    <string name="settings_quick_access_wallet_manage_error_no_cards">Δεν βρέθηκαν Κάρτες Αφοσίωσης</string>
+    <string name="settings_quick_access_wallet_manage_error_generic">Σφάλμα κατά τη φόρτωση Καρτών Αφοσίωσης</string>
     <string name="settings_developer_options_content_creator_mode">Λειτουργία Δημιουργού Περιεχομένου</string>
     <string name="settings_developer_options_content_creator_mode_desc">Ενεργοποιήστε αυτή την επιλογή για να θολώνονται πάντα οι αριθμοί της Κάρτας Πληρωμής και να εμφανίζονται εικονικοί κωδικοί για τις Κάρτες Αφοσίωσης <b>στην προεπισκόπηση</b> (ενεργοποιήστε το ξεχωριστά αν θέλετε πάντα ενεργοποιημένο). Αυτό είναι χρήσιμο για τη λήψη στιγμιότυπων οθόνης ή βίντεο χωρίς να εκθέτετε κατά λάθος τις πληροφορίες της κάρτας σας.\n<b>Προειδοποίηση: Μην προσπαθήσετε να χρησιμοποιήσετε μια Κάρτα Αφοσίωσης με ενεργοποιημένη αυτή τη λειτουργία, μπορεί να προκαλέσει σφάλματα στα συστήματα των καταστημάτων.</b></string>
     <string name="settings_accessibility_warning">Η Υπηρεσία Προσβασιμότητας Δεν Είναι Ενεργοποιημένη</string>

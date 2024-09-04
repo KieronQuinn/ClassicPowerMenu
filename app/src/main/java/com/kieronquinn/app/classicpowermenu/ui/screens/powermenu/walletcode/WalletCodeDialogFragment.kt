@@ -151,14 +151,10 @@ class WalletCodeDialogFragment: BaseDialogFragment<FragmentDialogWalletCodeBindi
     private fun setupFab() = with(binding.walletCodeOpenInPay) {
         backgroundTintList = ColorStateList.valueOf(card.backgroundColor)
         setOnClickListener {
-            activityStarter.runAfterKeyguardDismissed({
-                startActivity(Intent().apply {
-                    component = GooglePayConstants.WALLET_DEEP_LINK_COMPONENT
-                    data = Uri.parse(String.format(GooglePayConstants.WALLET_DEEP_LINK_VALUABLE, card.valuableId))
-                })
-                true
-            }, null, true)
-
+            val intent = Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse(String.format(GooglePayConstants.WALLET_DEEP_LINK_VALUABLE, card.valuableId))
+            }
+            startActivity(intent)
         }
         typeface = googleSansMedium
         setTextColor(textColor)

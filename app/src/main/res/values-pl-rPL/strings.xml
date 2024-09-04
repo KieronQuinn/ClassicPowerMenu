@@ -83,8 +83,6 @@
     <string name="settings_quick_access_wallet_show_loyalty_cards">Pokaż karty lojalnościowe</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards_desc">Załaduj i pokaż karty lojalnościowe z portfela Google w 
 łatwym dostępie do portfela</string>
-    <string name="settings_quick_access_wallet_rearrange">Zmień kolejność i ukryj karty lojalnościowe</string>
-    <string name="settings_quick_access_wallet_rearrange_desc">Zmień kolejność i pokaż/ukryj karty lojalnościowe w łatwym dostępie do portfela</string>
     <string name="settings_quick_access_wallet_show_preview">Pokaż podgląd kart lojalnościowych</string>
     <string name="settings_quick_access_wallet_show_preview_desc">Pokaż podgląd karty lojalnościowej do zeskanowania lub okazania w sklepie bez otwierania portfela Google</string>
     <string name="settings_quick_access_wallet_access_while_locked">Zezwalaj na dostęp do kart lojalnościowych po zablokowaniu ekranu</string>
@@ -96,8 +94,8 @@
     <string name="settings_device_controls_access_while_locked_desc">Zezwalaj na interakcję ze sterowaniem urządzeniami po zablokowaniu. <b>Nie</b> pozwala na dodawanie lub edytowanie ustawień po zablokowaniu</string>
     <string name="color_picker_unavailable">Wybór kolorów tapety jest niedostępny dla aktualnie wybranej tapety</string>
     <string name="settings_quick_access_wallet_loading">Ładowanie kart lojalnościowych…</string>
-    <string name="settings_quick_access_wallet_rearrange_error_no_cards">Nie znaleziono kart lojalnościowych</string>
-    <string name="settings_quick_access_wallet_rearrange_error_generic">Podczas ładowania kart lojalnościowych wystąpił błąd</string>
+    <string name="settings_quick_access_wallet_manage_error_no_cards">Nie znaleziono kart lojalnościowych</string>
+    <string name="settings_quick_access_wallet_manage_error_generic">Podczas ładowania kart lojalnościowych wystąpił błąd</string>
     <string name="settings_developer_options_content_creator_mode">Tryb tworzenia treści</string>
     <string name="settings_developer_options_content_creator_mode_desc">Włącz, aby zawsze rozmywać numery kart płatniczych, i pokaż kody pozorowane dla kart lojalnościowych <b>w podglądzie</b> (jeśli chcesz, by były rozmyte <b>zawsze</b>, jest od tego oddzielna opcja). Jest to przydatne przy wykonywaniu zrzutów ekranu lub filmów bez przypadkowego ujawnienia informacji o karcie.\n<b>Ostrzeżenie: Nie próbuj używać karty lojalnościowej z włączonym trybem, może to powodować błędy w systemach sklepu.</b></string>
     <string name="settings_accessibility_warning">Usługa dostępności nie jest aktywna</string>

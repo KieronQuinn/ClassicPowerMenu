@@ -14,6 +14,7 @@
         <intent>
             <action android:name="android.nfc.cardemulation.action.HOST_APDU_SERVICE" />
         </intent>
+        <package android:name="com.google.android.apps.walletnfcrel"/>
     </queries>
 
     <application
@@ -42,6 +43,7 @@
             android:theme="@style/Theme.ClassicPowerMenu.Fullscreen"
             android:noHistory="true"
             android:exported="true"
+            android:showOnLockScreen="true"
             android:launchMode="singleInstance"
             android:excludeFromRecents="true">
             <intent-filter>

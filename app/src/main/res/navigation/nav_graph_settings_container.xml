@@ -14,8 +14,8 @@
             android:id="@+id/action_settingsContainerFragment_to_settingsPowerOptionsRearrangeFragment"
             app:destination="@id/settingsPowerOptionsRearrangeFragment" />
         <action
-            android:id="@+id/action_settingsContainerFragment_to_settingsQuickAccessWalletRearrangeFragment"
-            app:destination="@id/settingsQuickAccessWalletRearrangeFragment" />
+            android:id="@+id/action_settingsContainerFragment_to_settingsQuickAccessWalletManageFragment"
+            app:destination="@id/settingsQuickAccessWalletManageFragment" />
         <action
             android:id="@+id/action_settingsContainerFragment_to_settingsQuickAccessWalletAutoSwitchServiceFragment"
             app:destination="@id/settingsQuickAccessWalletAutoSwitchServiceFragment" />
@@ -29,10 +29,14 @@
         android:label="SettingsPowerOptionsRearrangeFragment"
         tools:layout="@layout/fragment_settings_power_options_rearrange" />
     <fragment
-        android:id="@+id/settingsQuickAccessWalletRearrangeFragment"
-        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.rearrange.SettingsQuickAccessWalletRearrangeFragment"
-        android:label="SettingsQuickAccessWalletRearrangeFragment"
-        tools:layout="@layout/fragment_settings_quick_access_wallet_rearrange" />
+        android:id="@+id/settingsQuickAccessWalletManageFragment"
+        android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.manage.SettingsQuickAccessWalletManageFragment"
+        android:label="SettingsQuickAccessWalletManageFragment"
+        tools:layout="@layout/fragment_settings_quick_access_wallet_manage" >
+        <action
+            android:id="@+id/action_settingsQuickAccessWalletManageFragment_to_settingsQuickAccessWalletSignInToGoogle"
+            app:destination="@id/settingsQuickAccessWalletSignInToGoogle" />
+    </fragment>
     <fragment
         android:id="@+id/settingsQuickAccessWalletSignInToGoogle"
         android:name="com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.loyaltycards.SignInWithGoogleFragment"

@@ -4,16 +4,21 @@ import android.content.Context
 import android.graphics.BitmapFactory
 import android.os.StrictMode
 import android.util.Base64
+import androidx.core.content.res.ResourcesCompat
+import com.android.systemui.plugin.globalactions.wallet.WalletCardViewInfo
 import com.google.internal.tapandpay.v1.valuables.SyncValuablesRequestProto.SyncValuablesRequest
 import com.google.internal.tapandpay.v1.valuables.SyncValuablesRequestProto.SyncValuablesRequest.SyncValuablesRequestInner.Request
 import com.google.internal.tapandpay.v1.valuables.SyncValuablesResponseProto
-import com.google.internal.tapandpay.v1.valuables.SyncValuablesResponseProto.SyncValuablesResponse
 import com.google.internal.tapandpay.v1.valuables.SyncValuablesResponseProto.SyncValuablesResponse.Inner.Valuables.Valuable
 import com.google.internal.tapandpay.v1.valuables.ValuableWrapperProto
 import com.google.protobuf.ByteString
+import com.kieronquinn.app.classicpowermenu.R
+import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.GooglePayConstants
 import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.loyaltycards.GoogleWalletRepository.SyncValuablesResult
 import com.kieronquinn.app.classicpowermenu.components.settings.EncryptedSettings
+import com.kieronquinn.app.classicpowermenu.components.settings.Settings
 import com.kieronquinn.app.classicpowermenu.model.quickaccesswallet.LoyaltyCard
+import com.kieronquinn.app.classicpowermenu.model.quickaccesswallet.WalletLoyaltyCardViewInfo
 import com.kieronquinn.app.classicpowermenu.model.quickaccesswallet.database.WalletValuable
 import com.kieronquinn.app.classicpowermenu.utils.extensions.CONTENT_TYPE_PROTOBUF
 import com.kieronquinn.app.classicpowermenu.utils.extensions.compress
@@ -21,12 +26,9 @@ import com.kieronquinn.app.classicpowermenu.utils.extensions.toColor
 import com.kieronquinn.app.classicpowermenu.utils.extensions.toRequestBody
 import com.kieronquinn.app.classicpowermenu.utils.room.EncryptedValue
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.withContext
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
@@ -45,7 +47,7 @@ interface GoogleWalletRepository {
 
     suspend fun syncValuables(): SyncValuablesResult
 
-    fun tempGetValuables(): List<Valuable>
+    suspend fun getLoyaltyCards(onCardClicked: (LoyaltyCard) -> Boolean, ignoreSetting: Boolean = false): List<WalletCardViewInfo>?
 
     /**
      *  Current valuables from the database. Call [syncValuables] to trigger a sync.
@@ -75,6 +77,7 @@ interface GoogleWalletRepository {
 
 class GoogleWalletRepositoryImpl(
     private val context: Context,
+    private val settings: Settings,
     private val encryptedSettings: EncryptedSettings,
     private val googleApiRepository: GoogleApiRepository,
     private val valuablesDatabaseRepository: ValuablesDatabaseRepository
@@ -84,44 +87,50 @@ class GoogleWalletRepositoryImpl(
         private const val HEADER_REQUEST = "ExoBBA8FCxQMCAcJAwYOCg0QEhYYHA=="
     }
 
-
-
-    init {
-        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
+    private val isGooglePayInstalled by lazy {
+        GooglePayConstants.isGooglePayInstalled(context.packageManager)
     }
 
-    private val scope = MainScope()
+    private val googleSansMedium by lazy {
+        ResourcesCompat.getFont(context, R.font.google_sans_text_medium)!!
+    }
+
+    init {
+        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
+        StrictMode.setThreadPolicy(policy)
+    }
 
     override suspend fun syncValuables() = withContext(Dispatchers.IO) {
         syncValuablesInternal()
     }
 
-    override fun getValuables(): Flow<List<LoyaltyCard>> {
-        return valuables.map { it ?: emptyList() }
+    override suspend fun getLoyaltyCards(onCardClicked: (LoyaltyCard) -> Boolean, ignoreSetting: Boolean): List<WalletCardViewInfo>? {
+        if((!settings.quickAccessWalletShowLoyaltyCards && !ignoreSetting) || !isGooglePayInstalled) return null
+        return getValuables().first().map { WalletLoyaltyCardViewInfo(context, it, googleSansMedium, onCardClicked) }
     }
 
-    private val valuables = valuablesDatabaseRepository.getWalletValuables()
-        .map { it.map { it.toValuable() } }
-        .flowOn(Dispatchers.IO)
-        .stateIn(scope, SharingStarted.Eagerly, null)
+    override fun getValuables(): Flow<List<LoyaltyCard>> {
+        return valuablesDatabaseRepository.getWalletValuables().map { it.map { it.toValuable() } }
+    }
 
     private fun WalletValuable.toValuable(): LoyaltyCard {
         val valuable = ValuableWrapperProto.ValuableWrapper.parseFrom(valuable.bytes)
 
         val imageBytes = image?.bytes
         val bitmap = if (imageBytes != null) BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size) else null
-        val loyaltyCard = LoyaltyCard(id,
+        val loyaltyCard = LoyaltyCard(
+            id,
             bitmap,
             valuable.loyaltyCard.issuerInfo.id,
             valuable.loyaltyCard.issuerInfo.title,
             valuable.loyaltyCard.issuerInfo.issuerName,
             valuable.loyaltyCard.groupingInfo.backgroundColor.toColor(),
-            LoyaltyCard.RedemptionInfo(valuable.loyaltyCard.redemptionInfo.identifier,
+            LoyaltyCard.RedemptionInfo(
+                valuable.loyaltyCard.redemptionInfo.identifier,
                 valuable.loyaltyCard.redemptionInfo.barcode.typeValue,
                 valuable.loyaltyCard.redemptionInfo.barcode.encodedValue,
                 valuable.loyaltyCard.redemptionInfo.barcode.displayText,
-                "not found?"))
+                valuable.loyaltyCard.redemptionInfo.barcode.displayText))
         return loyaltyCard
     }
 
@@ -178,53 +187,6 @@ class GoogleWalletRepositoryImpl(
         }
     }
 
-    private fun GoogleWalletService.syncValuables2(
-        token: String,
-    ): SyncValuablesResponse {
-        val currentValuables = ArrayList<Valuable>()
-        val cachedValuables = currentValuables.map {
-            Request.CachedValuable.newBuilder()
-                .setId(it.id)
-                .setHash(it.hash)
-                .build()
-        }
-        val prerequest = Request.newBuilder()
-            .setHeader(ByteString.copyFrom(Base64.decode(HEADER_REQUEST, Base64.DEFAULT)))
-            .setTimezone(
-                ZoneId.systemDefault().getDisplayName(
-                    TextStyle.FULL_STANDALONE, Locale.ENGLISH
-                ))
-            .addAllCachedValuable(cachedValuables)
-            .build()
-
-        val request = SyncValuablesRequest.SyncValuablesRequestInner.newBuilder()
-            .setRequest(prerequest)
-            .build()
-
-        val requestBody = SyncValuablesRequest.newBuilder()
-            .setRequest(request)
-            .build().toByteArray().toRequestBody(CONTENT_TYPE_PROTOBUF)
-
-
-        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-
-        return try {
-            val response = syncValuables("Bearer $token", body = requestBody).execute()
-            when(response.code()){
-                200 -> {
-                    response.body()?.let { body ->
-                        SyncValuablesResponse.Success(body)
-                    } ?: SyncValuablesResponse.GenericError
-                }
-                401 -> SyncValuablesResponse.BadAuthentication
-                else -> SyncValuablesResponse.GenericError
-            }
-        }catch (e: Exception){
-            SyncValuablesResponse.GenericError
-        }
-    }
-
     private suspend fun syncValuablesInternal(isRetry: Boolean = false): SyncValuablesResult {
         val token = getToken() ?: return SyncValuablesResult.FATAL_ERROR
         val result = loadValuables(token)
@@ -245,12 +207,6 @@ class GoogleWalletRepositoryImpl(
         }
     }
 
-    private var tempValuables = emptyList<Valuable>()
-
-    override fun tempGetValuables(): List<Valuable> {
-        return tempValuables
-    }
-
 
     private suspend fun loadValuables(token: String): SyncValuablesResult {
         val valuables = service.run {
@@ -261,7 +217,6 @@ class GoogleWalletRepositoryImpl(
                 val bytes = valuables.body.bytes()
                 val response = SyncValuablesResponseProto.SyncValuablesResponse.parseFrom(bytes)
                 commitValuables(response)
-                tempValuables = response.inner.valuables.valuableList
                 SyncValuablesResult.SUCCESS
             }
             is SyncValuablesResponse.GenericError -> SyncValuablesResult.ERROR

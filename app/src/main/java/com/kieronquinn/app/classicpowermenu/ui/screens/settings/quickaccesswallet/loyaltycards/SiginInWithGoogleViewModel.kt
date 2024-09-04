@@ -37,7 +37,6 @@ class SignInWithGoogleViewModelImpl(
         if(it == null) return@mapLatest State.SignIn
         val aasToken = googleApiRepository.getAasToken(it)
         if(aasToken != null){
-            //encryptedSettings.aasToken.set(aasToken)
             encryptedSettings.aasToken = aasToken
             State.Success
         }else{

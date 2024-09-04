@@ -7,6 +7,9 @@ import androidx.lifecycle.viewModelScope
 import com.kieronquinn.app.classicpowermenu.components.navigation.AppNavigation
 import com.kieronquinn.app.classicpowermenu.components.navigation.ContainerNavigation
 import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.GooglePayConstants
+import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.loyaltycards.GoogleApiRepository
+import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.loyaltycards.ValuablesDatabaseRepository
+import com.kieronquinn.app.classicpowermenu.components.settings.EncryptedSettings
 import com.kieronquinn.app.classicpowermenu.components.settings.Settings
 import com.kieronquinn.app.classicpowermenu.ui.screens.settings.container.SettingsContainerFragmentDirections
 import kotlinx.coroutines.flow.Flow
@@ -25,6 +28,7 @@ abstract class SettingsQuickAccessWalletViewModel: ViewModel() {
     abstract val selectedAutoSwitchService: String
     abstract val showLoyaltyCardsChanged: Flow<Unit>
     abstract val autoSwitchServiceChanged: Flow<Unit>
+    abstract val showLogoutOption: Boolean
 
     abstract val isGooglePayInstalled: Boolean
 
@@ -32,10 +36,10 @@ abstract class SettingsQuickAccessWalletViewModel: ViewModel() {
     abstract fun onChangeGooglePaySettingsClicked()
     abstract fun onReorderLoyaltyCardsClicked()
     abstract fun onAutoSwitchServiceClicked()
-    abstract fun onSignIntoGoogle()
+    abstract fun onLogoutClicked()
 }
 
-class SettingsQuickAccessWalletViewModelImpl(context: Context, private val settings: Settings, private val navigation: AppNavigation, private val containerNavigation: ContainerNavigation): SettingsQuickAccessWalletViewModel() {
+class SettingsQuickAccessWalletViewModelImpl(context: Context, private val settings: Settings, private val googleApiRepository: GoogleApiRepository, private val encryptedSettings: EncryptedSettings, private val valuablesDatabaseRepository: ValuablesDatabaseRepository, val navigation: AppNavigation, private val containerNavigation: ContainerNavigation): SettingsQuickAccessWalletViewModel() {
 
     private val packageManager = context.packageManager
 
@@ -53,6 +57,10 @@ class SettingsQuickAccessWalletViewModelImpl(context: Context, private val setti
     override val isGooglePayInstalled
         get() = GooglePayConstants.isGooglePayInstalled(packageManager) || GooglePayConstants.isGPayInstalled(packageManager)
 
+    override val showLogoutOption
+        get() = googleApiRepository.isSignedIn()
+
+
     override fun onSwitchClicked() {
         settings.quickAccessWalletShow = !settings.quickAccessWalletShow
     }
@@ -65,7 +73,7 @@ class SettingsQuickAccessWalletViewModelImpl(context: Context, private val setti
 
     override fun onReorderLoyaltyCardsClicked() {
         viewModelScope.launch {
-            containerNavigation.navigate(SettingsContainerFragmentDirections.actionSettingsContainerFragmentToSettingsQuickAccessWalletRearrangeFragment())
+            containerNavigation.navigate(SettingsContainerFragmentDirections.actionSettingsContainerFragmentToSettingsQuickAccessWalletManageFragment())
         }
     }
 
@@ -75,9 +83,11 @@ class SettingsQuickAccessWalletViewModelImpl(context: Context, private val setti
         }
     }
 
-    override fun onSignIntoGoogle() {
+    override fun onLogoutClicked() {
+        encryptedSettings.walletToken = ""
+        encryptedSettings.aasToken = ""
         viewModelScope.launch {
-            containerNavigation.navigate(SettingsContainerFragmentDirections.actionSettingsContainerFragmentToSettingsQuickAccessWalletSignInToGoogle())
+            valuablesDatabaseRepository.deleteAllRecords()
         }
     }
 

@@ -16,6 +16,7 @@ interface ValuablesDatabaseRepository {
 
     suspend fun addWalletValuable(walletValuable: WalletValuable)
     suspend fun deleteWalletValuable(id: String)
+    suspend fun deleteAllRecords()
 
 }
 
@@ -43,6 +44,12 @@ class ValuablesDatabaseRepositoryImpl(
     override suspend fun deleteWalletValuable(id: String) = withContext(Dispatchers.IO) {
         databaseLock.withLock {
             this@ValuablesDatabaseRepositoryImpl.walletValuable.delete(id)
+        }
+    }
+
+    override suspend fun deleteAllRecords() = withContext(Dispatchers.IO) {
+        databaseLock.withLock {
+            this@ValuablesDatabaseRepositoryImpl.walletValuable.clear()
         }
     }
 

@@ -226,7 +226,6 @@ class GoogleWalletRepositoryImpl(
 
     private suspend fun commitValuables(response: SyncValuablesResponseProto.SyncValuablesResponse) {
         val valuableList = response.inner.valuables.valuableList
-        // val currentValuables = valuables.value ?: emptyList()
         valuableList.forEach {
             // For now we only care about loyalty cards
             if(it.hash != 0L && it.valuable.loyaltyCard != null) {

@@ -7,8 +7,6 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.kieronquinn.app.classicpowermenu.utils.room.EncryptedValueConverter
 import com.kieronquinn.app.classicpowermenu.utils.room.GsonSetConverter
-//import com.kieronquinn.app.smartspacer.plugin.shared.model.database.TargetData
-//import com.kieronquinn.app.smartspacer.plugin.shared.model.database.TargetDataDao
 
 @Database(entities = [
     //TargetData::class,
@@ -28,6 +26,4 @@ abstract class WalletDatabase: RoomDatabase() {
     }
 
     abstract fun walletValuableDao(): WalletValuableDao
-    //abstract fun targetDataDao(): TargetDataDao
-
 }

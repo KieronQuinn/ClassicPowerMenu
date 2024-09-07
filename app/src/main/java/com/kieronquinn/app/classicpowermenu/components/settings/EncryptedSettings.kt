@@ -30,7 +30,7 @@ class EncryptedSettingsImpl(context: Context): EncryptedSettings() {
     override var walletToken by shared(KEY_WALLET_TOKEN, "")
 
     private val sharedPreferences: SharedPreferences by lazy {
-        context.createEncryptedSharedPrefDestructively("${BuildConfig.APPLICATION_ID}_encrypted_shared_prefs")
+        context.createEncryptedSharedPrefDestructively("encrypted_shared_prefs")
     }
 
     private fun shared(key: String, default: Boolean) = ReadWriteProperty({

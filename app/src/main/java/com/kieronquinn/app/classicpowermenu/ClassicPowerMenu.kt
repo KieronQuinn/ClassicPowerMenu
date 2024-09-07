@@ -135,11 +135,9 @@ class ClassicPowerMenu: LifecycleApplication() {
             single<PowerMenuNavigation> { PowerMenuNavigationImpl() }
             single<ContainerNavigation> { ContainerNavigationImpl() }
             single<AppNavigation> { AppNavigationImpl() }
-
             single { WalletDatabase.getDatabase(get()) }
             single<ValuablesDatabaseRepository> { ValuablesDatabaseRepositoryImpl(get()) }
             single { get<ValuablesDatabaseRepository>() as RoomEncryptedSettingsRepository }
-
             single<Settings> { SettingsImpl(get()) }
             single<EncryptedSettings> { EncryptedSettingsImpl(get()) }
             single<RoomEncryptedSettingsRepository> { RoomEncryptedSettingsRepositoryImpl(get()) }
@@ -153,7 +151,6 @@ class ClassicPowerMenu: LifecycleApplication() {
         single<AutoSwitchServicesRepository> { AutoSwitchServicesRepositoryImpl(get(), get()) }
         single<GoogleWalletRepository> { GoogleWalletRepositoryImpl(get(), get(), get(), get(), get()) }
         single<GoogleApiRepository> { GoogleApiRepositoryImpl(get(), get()) }
-
     }
     
     private val monetModule = module {

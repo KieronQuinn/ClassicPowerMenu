@@ -51,7 +51,7 @@ class RoomEncryptedSettingsRepositoryImpl(
     var encryptionIV by shared(KEY_ENCRYPTION_IV, "")
 
     private val sharedPreferences: SharedPreferences by lazy {
-        context.createEncryptedSharedPrefDestructively("${BuildConfig.APPLICATION_ID}_room_encrypted_shared_prefs")
+        context.createEncryptedSharedPrefDestructively("room_encrypted_shared_prefs")
     }
 
     @Synchronized

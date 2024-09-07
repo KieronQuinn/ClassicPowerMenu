@@ -83,6 +83,12 @@
     <string name="settings_quick_access_wallet_show_loyalty_cards">Pokaż karty lojalnościowe</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards_desc">Załaduj i pokaż karty lojalnościowe z portfela Google w 
 łatwym dostępie do portfela</string>
+    <string name="settings_quick_access_wallet_manage">Manage Account &amp; Loyalty Cards</string>
+    <string name="settings_quick_access_wallet_manage_desc">Login, re-order and show/hide Loyalty Cards in the Quick Access Wallet</string>
+    <string name="settings_quick_access_wallet_manage_logout">Logout of account</string>
+    <string name="settings_quick_access_wallet_manage_logout_desc">Delete stored Loyalty Cards data and current account</string>
+    <string name="settings_quick_access_wallet_manage_sign_in">Sign in required</string>
+    <string name="settings_quick_access_wallet_manage_sign_in_desc">To use Loyalty Cards you need to log into your Google Account using the regular account flow to use Google Wallet integration. This is required as the API is not accessible using the regular android account sign in.\n\n<b>Your Wallet data is kept encrypted on your device and never transmitted, nor is it included in backups, for your privacy and security.</b></string>
     <string name="settings_quick_access_wallet_show_preview">Pokaż podgląd kart lojalnościowych</string>
     <string name="settings_quick_access_wallet_show_preview_desc">Pokaż podgląd karty lojalnościowej do zeskanowania lub okazania w sklepie bez otwierania portfela Google</string>
     <string name="settings_quick_access_wallet_access_while_locked">Zezwalaj na dostęp do kart lojalnościowych po zablokowaniu ekranu</string>
@@ -110,6 +116,7 @@
     <string name="chip_twitter">Śledź mnie na Twitterze</string>
     <string name="chip_github">GitHub</string>
     <string name="chip_xda">Wątek na XDA</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
     <string name="menu_open_source_libraries">Biblioteki open source</string>
     <string name="menu_rerun_setup">Uruchom ponownie konfigurację</string>
     <string name="bottom_sheet_update_available_title">Dostępna aktualizacja</string>

@@ -1,5 +1,6 @@
 package com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.manage
 
+import android.util.Log
 import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -67,20 +68,25 @@ class SettingsQuickAccessWalletManageViewModelImpl(private val walletRepository:
         if (cards.isEmpty()) return state.emit(State.Error(ErrorType.NO_CARDS))
 
         val order = settings.quickAccessWalletLoyaltyCardsOrder
-        val ordered = cards.sortedBy { order.indexOf(it.id) }.map { RearrangeLoyaltyCard(true, it) }
+        val hidden = settings.quickAccessWalletLoyaltyCardsHidden
+        val ordered = cards.sortedBy {
+            order.indexOf(it.id)
+        }.map {
+            RearrangeLoyaltyCard(!hidden.contains(it.id), it)
+        }
         state.emit(State.Loaded(ordered))
     }
 
     override fun onCardVisibilityClicked(card: RearrangeLoyaltyCard) {
         viewModelScope.launch {
             if(card.visible){
-                settings.quickAccessWalletLoyaltyCardsHidden = settings.quickAccessWalletLoyaltyCardsHidden.toMutableList().apply {
+                settings.quickAccessWalletLoyaltyCardsHidden = settings.quickAccessWalletLoyaltyCardsHidden.toMutableSet().apply {
                     remove(card.id)
-                }
+                }.toList()
             }else{
-                settings.quickAccessWalletLoyaltyCardsHidden = settings.quickAccessWalletLoyaltyCardsHidden.toMutableList().apply {
+                settings.quickAccessWalletLoyaltyCardsHidden = settings.quickAccessWalletLoyaltyCardsHidden.toMutableSet().apply {
                     add(card.id)
-                }
+                }.toList()
             }
         }
     }

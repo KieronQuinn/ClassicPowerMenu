@@ -19,6 +19,8 @@
     <LinearLayout
         android:id="@+id/sync_button_container"
         android:layout_width="match_parent"
+        android:clipToPadding="false"
+        android:padding="@dimen/margin_16"
         android:layout_height="match_parent"
         android:gravity="bottom|end"
         android:orientation="vertical"

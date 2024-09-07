@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.StrictMode
 import android.util.Base64
+import android.util.Log
 import androidx.core.content.res.ResourcesCompat
 import com.android.systemui.plugin.globalactions.wallet.WalletCardViewInfo
 import com.google.internal.tapandpay.v1.valuables.SyncValuablesRequestProto.SyncValuablesRequest
@@ -12,6 +13,7 @@ import com.google.internal.tapandpay.v1.valuables.SyncValuablesRequestProto.Sync
 import com.google.internal.tapandpay.v1.valuables.SyncValuablesResponseProto
 import com.google.internal.tapandpay.v1.valuables.SyncValuablesResponseProto.SyncValuablesResponse.Inner.Valuables.Valuable
 import com.google.internal.tapandpay.v1.valuables.ValuableWrapperProto
+import com.google.internal.tapandpay.v1.valuables.ValuableWrapperProto.ValuableWrapper
 import com.google.protobuf.ByteString
 import com.kieronquinn.app.classicpowermenu.R
 import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.GooglePayConstants
@@ -115,7 +117,7 @@ class GoogleWalletRepositoryImpl(
     }
 
     private fun WalletValuable.toValuable(): LoyaltyCard {
-        val valuable = ValuableWrapperProto.ValuableWrapper.parseFrom(valuable.bytes)
+        val valuable = ValuableWrapper.parseFrom(valuable.bytes)
 
         val imageBytes = image?.bytes
         val bitmap = if (imageBytes != null) BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size) else null
@@ -237,7 +239,7 @@ class GoogleWalletRepositoryImpl(
         val valuableList = response.inner.valuables.valuableList
         valuableList.forEach {
             // For now we only care about loyalty cards
-            if(it.hash != 0L && it.valuable.loyaltyCard != null) {
+            if(it.hash != 0L && it.valuable.isValidValuable()) {
 
                 var image: Bitmap? = null
                 if (it.valuable.loyaltyCard.groupingInfo.groupingImage.uri.isNotEmpty()) {
@@ -256,6 +258,12 @@ class GoogleWalletRepositoryImpl(
                 valuablesDatabaseRepository.deleteWalletValuable(it.id)
             }
         }
+    }
+
+    private fun ValuableWrapper.isValidValuable(): Boolean {
+        if(loyaltyCard == null) return false
+        if(loyaltyCard.issuerInfo.issuerName.isNullOrBlank()) return false
+        return true
     }
 
     sealed class SyncValuablesResponse {

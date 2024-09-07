@@ -64,6 +64,8 @@ class SettingsQuickAccessWalletManageFragment: BoundFragment<FragmentSettingsQui
         binding.loadingBar.applyMonet()
         binding.syncButton.applyMonet()
         binding.signInButton.applyMonet()
+        binding.signInButton.setTextColor(monet.getPrimaryColor(requireContext()))
+        binding.syncButton.drawable.setTint(monet.getPrimaryColor(requireContext()))
         binding.signInInfoCard.run {
             val background = monet.getPrimaryColor(context, !context.isDarkMode)
             backgroundTintList = ColorStateList.valueOf(background)
@@ -141,7 +143,16 @@ class SettingsQuickAccessWalletManageFragment: BoundFragment<FragmentSettingsQui
             val topInset = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
             view.updatePadding(top = topInset)
         }
+        binding.signIn.onApplyInsets { view, insets ->
+            val topInset = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
+            view.updatePadding(top = topInset)
+        }
         binding.recyclerview.onApplyInsets { view, insets ->
+            val bottomPadding = resources.getDimension(R.dimen.margin_16).toInt()
+            val bottomInset = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+            view.updatePadding(bottom = bottomPadding + bottomInset)
+        }
+        binding.syncButtonContainer.onApplyInsets { view, insets ->
             val bottomPadding = resources.getDimension(R.dimen.margin_16).toInt()
             val bottomInset = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
             view.updatePadding(bottom = bottomPadding + bottomInset)

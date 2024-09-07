@@ -82,8 +82,6 @@
     <string name="settings_quick_access_wallet_auto_switch_service_error_no_services">No NFC emulation services found</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards">显示积分卡</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards_desc">在快捷支付中显示您的 Google Wallet 积分卡</string>
-    <string name="settings_quick_access_wallet_rearrange">重新排序 &amp; 显示积分卡</string>
-    <string name="settings_quick_access_wallet_rearrange_desc">在快捷支付中 重新排列 &amp; 显示/隐藏积分卡</string>
     <string name="settings_quick_access_wallet_show_preview">显示积分卡预览</string>
     <string name="settings_quick_access_wallet_show_preview_desc">在不打开 Google Wallet 的情况下显示要在商店中扫描或查看的积分卡的预览</string>
     <string name="settings_quick_access_wallet_access_while_locked">允许在锁定状态下访问积分卡</string>
@@ -95,8 +93,8 @@
     <string name="settings_device_controls_access_while_locked_desc">允许在锁定状态下使用电源菜单控件，但<b>不</b>能添加或编辑控件</string>
     <string name="color_picker_unavailable">壁纸颜色选择工具无法选取当前壁纸的颜色</string>
     <string name="settings_quick_access_wallet_loading">正在加载积分卡…</string>
-    <string name="settings_quick_access_wallet_rearrange_error_no_cards">未找到积分卡</string>
-    <string name="settings_quick_access_wallet_rearrange_error_generic">加载积分卡时出错</string>
+    <string name="settings_quick_access_wallet_manage_error_no_cards">未找到积分卡</string>
+    <string name="settings_quick_access_wallet_manage_error_generic">加载积分卡时出错</string>
     <string name="settings_developer_options_content_creator_mode">内容创作者模式</string>
     <string name="settings_developer_options_content_creator_mode_desc">启用此功能可始终模糊您的支付卡号码，并在<b>预览中</b>显示积分卡的虚拟卡号（如果您希望它始终开启，请单独启用）。本功能将在截图或录制视频时保护您的卡号不被泄露\n<b>警告：请勿尝试在启用此模式的情况下使用会员卡，这可能会导致商店系统出错。</b></string>
     <string name="settings_accessibility_warning">无障碍服务没有启用</string>

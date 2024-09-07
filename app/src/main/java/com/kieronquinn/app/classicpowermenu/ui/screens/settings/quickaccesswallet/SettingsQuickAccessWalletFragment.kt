@@ -2,7 +2,6 @@ package com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswall
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.lifecycleScope
 import com.kieronquinn.app.classicpowermenu.R
 import com.kieronquinn.app.classicpowermenu.model.settings.SettingsItem
 import com.kieronquinn.app.classicpowermenu.ui.base.AutoExpandOnRotate
@@ -99,11 +98,22 @@ class SettingsQuickAccessWalletFragment: SettingsSwitchedFragment(), BackAvailab
                 viewModel::showLoyaltyCards
             ),
             SettingsItem.Setting(
-                R.drawable.ic_quick_access_wallet_rearrange,
-                getString(R.string.settings_quick_access_wallet_rearrange),
-                getString(R.string.settings_quick_access_wallet_rearrange_desc),
+                R.drawable.ic_quick_access_wallet_manage,
+                getString(R.string.settings_quick_access_wallet_manage),
+                getString(R.string.settings_quick_access_wallet_manage_desc),
                 enabled = { viewModel.showLoyaltyCards },
                 tapAction = viewModel::onReorderLoyaltyCardsClicked
+            ),
+            SettingsItem.Setting(
+                R.drawable.ic_quick_access_wallet_remove_account,
+                getString(R.string.settings_quick_access_wallet_manage_logout),
+                getString(R.string.settings_quick_access_wallet_manage_logout_desc),
+                enabled = { viewModel.showLogoutOption },
+                tapAction = {
+                    viewModel.onLogoutClicked()
+                    val recyclerView = recyclerView.invoke()
+                    recyclerView.adapter?.notifyDataSetChanged()
+                }
             ),
             SettingsItem.SwitchSetting(
                 R.drawable.ic_power_options_hide_when_locked,

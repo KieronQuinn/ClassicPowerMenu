@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.os.StrictMode
 import android.provider.Settings
 import android.service.quickaccesswallet.CPMQuickAccessWalletClientImpl
 import android.util.Log

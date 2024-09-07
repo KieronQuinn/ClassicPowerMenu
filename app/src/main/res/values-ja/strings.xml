@@ -82,8 +82,6 @@
     <string name="settings_quick_access_wallet_auto_switch_service_error_no_services">No NFC emulation services found</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards">ポイントカードを表示</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards_desc">Google Walletのポイントカードをクイック アクセス ウォレットに読み込んで表示することができます</string>
-    <string name="settings_quick_access_wallet_rearrange">ポイントカードの並べ替えと非表示</string>
-    <string name="settings_quick_access_wallet_rearrange_desc">クイック アクセス ウォレットでのポイントカードの並び替えや表示・非表示の設定</string>
     <string name="settings_quick_access_wallet_show_preview">ポイントカードのプレビューを表示</string>
     <string name="settings_quick_access_wallet_show_preview_desc">Google Walletを開かずに、店舗でスキャンまたは表示するポイントカードのプレビューを表示することができます</string>
     <string name="settings_quick_access_wallet_access_while_locked">ロック中にポイントカードにアクセスできるようにする</string>
@@ -95,8 +93,8 @@
     <string name="settings_device_controls_access_while_locked_desc">ロック中のデバイスコントロールとのインタラクションを許可します。ロック中はコントロールの追加や編集はできません。</string>
     <string name="color_picker_unavailable">現在選択されている壁紙では、壁紙のカラーピッカーは使用できません</string>
     <string name="settings_quick_access_wallet_loading">ポイントカードの読み込み中...</string>
-    <string name="settings_quick_access_wallet_rearrange_error_no_cards">ポイントカードが見つかりません</string>
-    <string name="settings_quick_access_wallet_rearrange_error_generic">ポイントカードの読み込みエラー</string>
+    <string name="settings_quick_access_wallet_manage_error_no_cards">ポイントカードが見つかりません</string>
+    <string name="settings_quick_access_wallet_manage_error_generic">ポイントカードの読み込みエラー</string>
     <string name="settings_developer_options_content_creator_mode">コンテンツクリエイターモード</string>
     <string name="settings_developer_options_content_creator_mode_desc">これを有効にすると、支払いカードの番号が常にぼかされ、ポイントカードの<b>ダミーコード</b>がプレビューに表示されます（常に有効にしたい場合は、別途有効にしてください）。
 これは、スクリーンショットや動画を撮影する際に、カード情報を誤って公開しないようにするために有効です。\n警告:このモードを有効にした状態でポイントカードを使用しようとすると、お店側のシステムでエラーを引き起こします。絶対に無効にした状態で使用してください。</string>

@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package com.google.internal.tapandpay.v1;
+
+option java_package = "com.google.internal.tapandpay.v1";
+option java_outer_classname = "ListTokenizedCardsRequestProto";
+
+message ListTokenizedCardsRequest {
+    Inner inner = 1;
+
+    message Inner {
+        int64 header = 1;
+        PackageVersion wallet_version = 2;
+        PackageVersion gms_version = 3;
+        bytes data = 7;
+        repeated Token tokens = 9;
+
+        message PackageVersion {
+            string package_name = 1;
+            string version_code = 2;
+            string version = 3;
+            bool caller = 4;
+        }
+
+        message Token {
+            string package_name = 1;
+            string token = 2;
+        }
+    }
+}

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package com.google.internal.tapandpay.v1.valuables;
+
+import "com/google/internal/tapandpay/v1/passes/templates/Pass.proto";
+import "com/google/internal/tapandpay/v1/valuables/Common.proto";
+
+option java_package = "com.google.internal.tapandpay.v1.valuables";
+option java_outer_classname = "GenericCardProto";
+
+message GenericCard {
+    string id = 1;
+    Metadata metadata = 2;
+    IssuerInfo issuer_info = 3;
+    RedemptionInfo redemption_info = 4;
+    GroupingInfo grouping_info = 5;
+    passes.templates.PassTemplateInfo template_info = 6;
+}

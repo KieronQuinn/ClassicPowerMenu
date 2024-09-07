@@ -1,4 +1,4 @@
-package com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.rearrange
+package com.kieronquinn.app.classicpowermenu.ui.screens.settings.quickaccesswallet.manage
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -9,7 +9,7 @@ import com.kieronquinn.app.classicpowermenu.R
 import com.kieronquinn.app.classicpowermenu.databinding.ItemWalletRearrangeCardBinding
 import com.kieronquinn.monetcompat.core.MonetCompat
 
-class SettingsQuickAccessWalletRearrangeAdapter(context: Context, var cards: List<SettingsQuickAccessWalletRearrangeViewModel.RearrangeLoyaltyCard>, val onCardVisibilityToggleClicked: (SettingsQuickAccessWalletRearrangeViewModel.RearrangeLoyaltyCard) -> Unit, val onHandleLongPress: (ViewHolder) -> Unit): RecyclerView.Adapter<SettingsQuickAccessWalletRearrangeAdapter.ViewHolder>() {
+class SettingsQuickAccessWalletManageAdapter(context: Context, var cards: List<SettingsQuickAccessWalletManageViewModel.RearrangeLoyaltyCard>, val onCardVisibilityToggleClicked: (SettingsQuickAccessWalletManageViewModel.RearrangeLoyaltyCard) -> Unit, val onHandleLongPress: (ViewHolder) -> Unit): RecyclerView.Adapter<SettingsQuickAccessWalletManageAdapter.ViewHolder>() {
 
     init {
         setHasStableIds(true)

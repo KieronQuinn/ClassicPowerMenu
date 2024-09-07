@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package com.google.internal.tapandpay.v1.valuables;
+
+import "com/google/internal/tapandpay/v1/Common.proto";
+import "com/google/internal/tapandpay/v1/notifications/ScheduledNotificationProto.proto";
+import "com/google/internal/tapandpay/v1/passes/templates/Pass.proto";
+import "com/google/internal/tapandpay/v1/valuables/Common.proto";
+import "google/protobuf/timestamp.proto";
+
+option java_package = "com.google.internal.tapandpay.v1.valuables";
+option java_outer_classname = "EventTicketProto";
+
+message EventTicket {
+    string id = 1;
+    Metadata metadata = 2;
+    IssuerInfo issuer_info = 3;
+    RedemptionInfo redemption_info = 4;
+    EventVenue venue = 6;
+    EventDateTime date_time = 7;
+    EventSeat seat_info = 8;
+    EventReservationInfo reservation_info = 9;
+    string ticket_holder_name = 10;
+    string ticket_number = 11;
+    string ticket_type = 12;
+    Money face_value = 13;
+    string fine_print = 14;
+    GroupingInfo grouping_info = 15;
+    notifications.ScheduledNotification upcoming_event_notification = 16;
+    passes.templates.PassTemplateInfo template_info = 17;
+
+    message EventVenue {
+        string maps_uri = 1;
+        string name = 2;
+        string address = 3;
+    }
+
+    message EventDateTime {
+        string doors_open_label = 1;
+        DateTime doors_open = 2;
+        DateTime start = 3;
+        DateTime end = 4;
+    }
+
+    message EventSeat {
+        LabeledStringValue seat = 1;
+        LabeledStringValue row = 2;
+        LabeledStringValue section = 3;
+        LabeledStringValue gate = 4;
+    }
+
+    message EventReservationInfo {
+        LabeledStringValue confirmation_code = 1;
+    }
+
+}

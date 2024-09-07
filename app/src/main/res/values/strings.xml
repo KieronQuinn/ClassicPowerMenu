@@ -90,8 +90,14 @@
     <string name="settings_quick_access_wallet_auto_switch_service_error_no_services">No NFC emulation services found</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards">Show Loyalty Cards</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards_desc">Load and show your Loyalty Cards from Google Wallet in the Quick Access Wallet</string>
-    <string name="settings_quick_access_wallet_rearrange">Rearrange &amp; Hide Loyalty Cards</string>
-    <string name="settings_quick_access_wallet_rearrange_desc">Re-order and show/hide loyalty cards in the Quick Access Wallet</string>
+    <string name="settings_quick_access_wallet_manage">Manage Account &amp; Loyalty Cards</string>
+    <string name="settings_quick_access_wallet_manage_desc">Login, re-order and show/hide Loyalty Cards in the Quick Access Wallet</string>
+
+    <string name="settings_quick_access_wallet_manage_logout">Logout of account</string>
+    <string name="settings_quick_access_wallet_manage_logout_desc">Delete stored Loyalty Cards data and current account</string>
+    <string name="settings_quick_access_wallet_manage_sign_in">Sign in required</string>
+    <string name="settings_quick_access_wallet_manage_sign_in_desc">To use Loyalty Cards you need to log into your Google Account using the regular account flow to use Google Wallet integration. This is required as the API is not accessible using the regular android account sign in.\n\n<b>Your Wallet data is kept encrypted on your device and never transmitted, nor is it included in backups, for your privacy and security.</b></string>
+
     <string name="settings_quick_access_wallet_show_preview">Show Loyalty Card Preview</string>
     <string name="settings_quick_access_wallet_show_preview_desc">Show a preview of the Loyalty Card to be scanned or viewed in store without opening Google Wallet</string>
     <string name="settings_quick_access_wallet_access_while_locked">Allow Loyalty Card access while locked</string>
@@ -103,8 +109,8 @@
     <string name="settings_device_controls_access_while_locked_desc">Allow interaction with Device Controls while locked. This does <b>not</b> allow adding or editing controls while locked</string>
     <string name="color_picker_unavailable">Wallpaper Color Picker unavailable for the currently selected wallpaper</string>
     <string name="settings_quick_access_wallet_loading">Loading Loyalty Cards…</string>
-    <string name="settings_quick_access_wallet_rearrange_error_no_cards">No Loyalty Cards found</string>
-    <string name="settings_quick_access_wallet_rearrange_error_generic">Error loading Loyalty Cards</string>
+    <string name="settings_quick_access_wallet_manage_error_no_cards">No Loyalty Cards loaded. \n Press the sync button to load Loyalty Cards from Google Wallet!</string>
+    <string name="settings_quick_access_wallet_manage_error_generic">Error loading Loyalty Cards</string>
     <string name="settings_developer_options_content_creator_mode">Content Creator Mode</string>
     <string name="settings_developer_options_content_creator_mode_desc">Enable this to always blur your Payment Card numbers, and show dummy codes for Loyalty Cards <b>in the preview</b> (enable that separately if you want it always on). This is useful for taking screenshots or videos without accidentally exposing your card info.\n<b>Warning: Don\'t try to use a Loyalty Card with this mode enabled, it may cause errors on stores\' systems.</b></string>
     <string name="settings_accessibility_warning">Accessibility Service Not Enabled</string>
@@ -121,6 +127,7 @@
     <string name="chip_github">GitHub</string>
     <string name="chip_xda">XDA Thread</string>
 
+    <string name="sign_in_with_google">Sign in with Google</string>
     <string name="menu_open_source_libraries">Open source libraries</string>
     <string name="menu_rerun_setup">Re-run setup</string>
 

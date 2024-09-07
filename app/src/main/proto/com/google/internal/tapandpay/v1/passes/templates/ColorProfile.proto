@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package com.google.internal.tapandpay.v1.passes.templates;
+
+import "google/type/color.proto";
+
+option java_package = "com.google.internal.tapandpay.v1.passes.templates";
+option java_outer_classname = "ColorProfileProto";
+
+message PassColorProfile {
+    .google.type.Color backdrop_color = 1;
+    .google.type.Color card_color = 2;
+    .google.type.Color card_icon_color = 3;
+    .google.type.Color card_label_text_color = 4;
+    .google.type.Color card_content_text_color = 5;
+    .google.type.Color card_divider_color = 6;
+    .google.type.Color list_icon_color = 7;
+    .google.type.Color list_label_text_color = 8;
+    .google.type.Color list_content_text_color = 9;
+    .google.type.Color action_primary_color = 11;
+}

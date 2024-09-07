@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <exclude domain="sharedpref" path="encrypted_shared_prefs.xml"/>
+    <exclude domain="sharedpref" path="room_encrypted_shared_prefs.xml"/>
+    <exclude domain="database" path="." />
+    <exclude domain="root" path="./app_webview"/>
+</full-backup-content>

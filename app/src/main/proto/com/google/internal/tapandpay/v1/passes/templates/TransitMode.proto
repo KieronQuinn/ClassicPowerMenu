@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package com.google.internal.tapandpay.v1.passes.templates;
+
+option java_package = "com.google.internal.tapandpay.v1.passes.templates";
+option java_outer_classname = "TransitModeProto";
+
+message TransitModeInfo {
+    TransitMode transit_mode = 1;
+    string image_content_description = 2;
+
+    enum TransitMode {
+        UNDEFINED = 0;
+        BOAT = 1;
+        BUS = 2;
+        CAR = 3;
+        FLIGHT = 4;
+        SUBWAY = 5;
+        TAXI = 6;
+        TRAIN = 7;
+        TRAM = 8;
+        FLIGHT_LAND = 9;
+        FLIGHT_TAKEOFF = 10;
+        WALK = 11;
+        TRANSFER = 12;
+        FORWARD = 13;
+        BACK = 14;
+        SWAP = 15;
+    }
+}

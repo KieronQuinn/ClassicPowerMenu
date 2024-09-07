@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package com.google.internal.tapandpay.v1.valuables;
+
+import "com/google/internal/tapandpay/v1/Common.proto";
+import "com/google/internal/tapandpay/v1/passes/templates/Pass.proto";
+import "com/google/internal/tapandpay/v1/valuables/Common.proto";
+
+option java_package = "com.google.internal.tapandpay.v1.valuables";
+option java_outer_classname = "LoyaltyCardProto";
+
+message LoyaltyCard {
+    string id = 1;
+    int64 hash = 2;
+    Metadata metadata = 3;
+    IssuerInfo issuer_info = 4;
+    RedemptionInfo redemption_info = 5;
+    string card_holder_name = 6;
+    RewardsInfo rewards_info = 7;
+    string card_holder_name_label = 8;
+    string membership_id_label = 9;
+    string country_display_name = 10;
+    int32 input_mode = 11;
+    string country_code = 12;
+    RewardsInfo secondary_rewards_info = 13;
+    passes.templates.PassTemplateInfo template_info = 16;
+    GroupingInfo grouping_info = 17;
+
+    message RewardsInfo {
+        oneof Points {
+            string points_string = 1;
+            int64 points_long = 2;
+            double points_double = 3;
+        }
+        string label = 5;
+        string tier = 6;
+        string tier_label = 7;
+    }
+}

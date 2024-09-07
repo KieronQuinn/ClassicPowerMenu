@@ -82,8 +82,12 @@
     <string name="settings_quick_access_wallet_auto_switch_service_error_no_services">No NFC emulation services found</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards">Hűségkártyák megjelenítése</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards_desc">Hűségkártyák betöltése és megjelenítése a Google Wallet-ből a Gyorstárcában</string>
-    <string name="settings_quick_access_wallet_rearrange">Hűségkártyák átrendezése és elrejtése</string>
-    <string name="settings_quick_access_wallet_rearrange_desc">A Gyorstárca hűségkártyáinak átrendezése és elrejtése vagy megjelenítése</string>
+    <string name="settings_quick_access_wallet_manage">Fiók és hűségkártyák kezelése</string>
+    <string name="settings_quick_access_wallet_manage_desc">A Gyorstárca hűségkártyáinak bejelentkezés, átrendezése és elrejtése vagy megjelenítése</string>
+    <string name="settings_quick_access_wallet_manage_logout">Kijelentkezés</string>
+    <string name="settings_quick_access_wallet_manage_logout_desc">Törölje a tárolt hűségkártya adatait és fiókot</string>
+    <string name="settings_quick_access_wallet_manage_sign_in">Bejelentkezés szükséges</string>
+    <string name="settings_quick_access_wallet_manage_sign_in_desc">A hűségkártyák használatához be kell jelentkeznie Google Fiókjába a szokásos Google bejelentkezéssel. Erre azért van szükség, mert az API nem érhető el a szokásos android fiókbejelentkezéssel.\n\n<b>Az Ön Wallet-adatai titkosítva vannak az eszközön, soha nincsenek továbbítva, és nem szerepelnek a biztonsági másolatokban, az Ön adatainak védelme és biztonsága érdekében.</b></string>
     <string name="settings_quick_access_wallet_show_preview">Hűségkártya előnézetének megjelenítése</string>
     <string name="settings_quick_access_wallet_show_preview_desc">Mutassa a hűségkártya előnézetét, hogy leolvasható vagy megtekinthető legyen a Google Wallet megnyitása nélkül</string>
     <string name="settings_quick_access_wallet_access_while_locked">Hűségkártyákhoz való hozzáférés engedélyezése lezárt állapotban</string>
@@ -95,8 +99,8 @@
     <string name="settings_device_controls_access_while_locked_desc">Az Eszközvezérlők használatának engedélyezése lezárt állapotban. Ez <b>nem</b> teszi lehetővé a vezérlőelemek hozzáadását vagy szerkesztését zárolt állapotban</string>
     <string name="color_picker_unavailable">A háttérszínválasztó nem érhető el a jelenleg kiválasztott háttérhez</string>
     <string name="settings_quick_access_wallet_loading">Hűségkártyák betöltése…</string>
-    <string name="settings_quick_access_wallet_rearrange_error_no_cards">Nincs talált hűségkártya</string>
-    <string name="settings_quick_access_wallet_rearrange_error_generic">A hűségkártyák betöltése sikertelen</string>
+    <string name="settings_quick_access_wallet_manage_error_no_cards">Nincs talált hűségkártya</string>
+    <string name="settings_quick_access_wallet_manage_error_generic">A hűségkártyák betöltése sikertelen</string>
     <string name="settings_developer_options_content_creator_mode">Tartalomkészítő mód</string>
     <string name="settings_developer_options_content_creator_mode_desc">Engedélyezze ezt a funkciót, hogy mindig kitakarja a fizető kártyák számait, és az <b>előnézetben</b> a hűségkártyák hamis kódokkal jelenjenek meg (engedélyezze ezt külön, hogy mindig be legyen kapcsolva). Ez hasznos képernyőképek vagy videók készítéséhez anélkül, hogy véletlenül felfedné a kártya adatait.\n<b>Figyelmeztetés: Ne próbáljon meg hűségkártyát használni ezzel a móddal, mert hibát okozhat az üzletek rendszereiben.</b></string>
     <string name="settings_accessibility_warning">Kisegítő lehetőségek szolgáltatás nincs engedélyezve</string>

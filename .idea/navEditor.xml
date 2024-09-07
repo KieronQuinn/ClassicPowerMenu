@@ -272,7 +272,12 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_settingsContainerFragment_to_settingsQuickAccessWalletRearrangeFragment">
+                            <entry key="action_settingsContainerFragment_to_settingsQuickAccessWalletManageFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_settingsContainerFragment_to_settingsQuickAccessWalletSignInToGoogle">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -287,8 +292,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="560" />
-                            <option name="y" value="-145" />
+                            <option name="x" value="458" />
+                            <option name="y" value="-385" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -299,20 +304,41 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="12" />
+                            <option name="x" value="759" />
+                            <option name="y" value="-219" />
                           </Point>
                         </option>
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="settingsQuickAccessWalletRearrangeFragment">
+                  <entry key="settingsQuickAccessWalletManageFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="624" />
-                            <option name="y" value="402" />
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_settingsQuickAccessWalletManageFragment_to_settingsQuickAccessWalletSignInToGoogle">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="settingsQuickAccessWalletSignInToGoogle">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="1238" />
+                            <option name="y" value="242" />
                           </Point>
                         </option>
                       </LayoutPositions>

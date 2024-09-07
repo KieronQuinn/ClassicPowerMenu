@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package com.google.android.libraries.commerce.hce.ndef;
+
+option java_package = "com.google.android.libraries.commerce.hce.ndef";
+option java_outer_classname = "FormatProto";
+
+enum Format {
+    FORMAT_UNSPECIFIED = 0;
+    FORMAT_ASCII = 1;
+    FORMAT_UTF_8 = 2;
+    FORMAT_UTF_16 = 3;
+    FORMAT_BINARY = 4;
+    FORMAT_BCD = 5;
+}

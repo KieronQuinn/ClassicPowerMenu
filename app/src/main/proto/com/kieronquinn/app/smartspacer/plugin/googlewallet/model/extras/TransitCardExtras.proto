@@ -1,0 +1,87 @@
+syntax = "proto3";
+
+package com.kieronquinn.app.smartspacer.plugin.googlewallet.model.extras;
+
+import "com/google/internal/tapandpay/v1/Common.proto";
+
+option java_package = "com.kieronquinn.app.smartspacer.plugin.googlewallet.model.extras";
+option java_outer_classname = "TransitCardExtrasProto";
+
+/**
+ *  Generic Transit Card extra proto message. This is designed to encompass every type of transit
+ *  extra that could be shown by Smartspacer. If your transit provider exposes more data, you may
+ *  add more fields and messages, but do not change the field numbers or names of the current ones.
+ */
+message TransitCardExtras {
+  //Internal service ID for the overall service, usually constructed from the time, origin & destination
+  string service_id = 1;
+  //The legs of the journey
+  repeated TransitLeg leg = 2;
+  //If the journey is no longer possible due to delays, the index of the first impossible leg change
+  int32 impossible_leg_change = 3;
+  //Items to show in the list area of the Target, if set (up to 4)
+  repeated string items = 4;
+
+  message TransitLeg {
+    //Whether the service can be tracked using realtime data, or if data is effectively static
+    bool has_realtime = 1;
+    //The internal ID of the service, for example "Y41331"
+    string service_id = 2;
+    //The internal ID of the operator, for example "urn:trainline:atoc:carrier:NT"
+    string operator_id = 3;
+    //The user-visible "origin" of the service, this should be where they board the service at
+    string origin = 4;
+    //The user-visible destination of the service, this may not be where they alight but the eventual destination
+    string destination = 5;
+    //The internal ID of the "origin" of the service, for example "urn:trainline:atoc:loc:MAN2968"
+    string origin_id = 6;
+    //The internal ID of the destination of the service, for example "urn:trainline:atoc:loc:PRE2753"
+    string destination_id = 7;
+    //The scheduled departure time of this service from the "origin", should always be supplied
+    com.google.internal.tapandpay.v1.DateTime scheduled_departure = 8;
+    //The scheduled arrival time of this service to the destination, should always be supplied
+    com.google.internal.tapandpay.v1.DateTime scheduled_arrival = 9;
+    //The estimated or actual departure time of this service from the "origin", optional
+    com.google.internal.tapandpay.v1.DateTime actual_departure = 10;
+    //The estimated or actual arrival time of this service to the destination, optional
+    com.google.internal.tapandpay.v1.DateTime actual_arrival = 11;
+    //Whether the service has been cancelled
+    bool cancelled = 12;
+    //The mode of this leg
+    Mode mode = 13;
+    //A contextual message for this leg, optional
+    Message message = 14;
+    //The platform or gate this service is leaving from, if available
+    string platform_or_gate = 15;
+    //A user-visible service name, for example "Caledonian Sleeper", or in some cases the route ID
+    string service = 16;
+    //A user-visible operator name, for example "Northern"
+    string operator = 17;
+
+    //Pre-set messages for each leg of the journey, ordered by increasing severity
+    enum Message {
+      //Unset
+      MESSAGE_UNSPECIFIED = 0;
+      //The leg is on time
+      ON_TIME = 1;
+      //The leg is delayed, the service may define what this means
+      DELAYED = 2;
+      //The leg is partially or fully cancelled
+      CANCELLED = 4;
+    }
+
+    //Modes for tranist legs
+    enum Mode {
+      //Unknown mode, fallback
+      MODE_UNSPECIFIED = 0;
+      //Main modes
+      TRAIN = 1;
+      //May also be used for rail replacement
+      BUS = 2;
+      TRAM = 4;
+      FERRY = 5;
+      //For moving between nearby interchanges
+      WALK = 6;
+    }
+  }
+}

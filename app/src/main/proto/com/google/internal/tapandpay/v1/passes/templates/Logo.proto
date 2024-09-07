@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package com.google.internal.tapandpay.v1.passes.templates;
+
+option java_package = "com.google.internal.tapandpay.v1.passes.templates";
+option java_outer_classname = "LogoProto";
+
+message PassLogo {
+    string url = 1;
+    string fallback_display_letter = 2;
+    string image_content_description = 3;
+}

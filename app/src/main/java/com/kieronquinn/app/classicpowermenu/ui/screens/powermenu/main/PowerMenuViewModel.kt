@@ -10,7 +10,7 @@ import com.android.systemui.plugin.globalactions.wallet.WalletCardViewInfo
 import com.android.systemui.plugins.ActivityStarter
 import com.kieronquinn.app.classicpowermenu.R
 import com.kieronquinn.app.classicpowermenu.components.navigation.PowerMenuNavigation
-import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.loyaltycards.LoyaltyCardsRepository
+import com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.loyaltycards.GoogleWalletRepository
 import com.kieronquinn.app.classicpowermenu.components.settings.Settings
 import com.kieronquinn.app.classicpowermenu.model.power.PowerMenuButton
 import com.kieronquinn.app.classicpowermenu.model.power.PowerMenuButtonId
@@ -51,10 +51,9 @@ abstract class PowerMenuViewModel: ViewModel() {
     abstract val useSolidBackground: Boolean
     abstract val quickAccessWalletAutoSwitchService: Boolean
     abstract val quickAccessWalletSelectedAutoSwitchService: String
-
 }
 
-class PowerMenuViewModelImpl(context: Context, private val service: CPMServiceContainer, private val navigation: PowerMenuNavigation, private val settings: Settings, private val loyaltyCards: LoyaltyCardsRepository, private val activityStarter: ActivityStarter): PowerMenuViewModel() {
+class PowerMenuViewModelImpl(context: Context, private val service: CPMServiceContainer, private val navigation: PowerMenuNavigation, private val settings: Settings, private val googleWalletRepository: GoogleWalletRepository, private val activityStarter: ActivityStarter): PowerMenuViewModel() {
 
     private val telecomManager by lazy {
         context.getSystemService(Context.TELECOM_SERVICE) as TelecomManager
@@ -192,7 +191,7 @@ class PowerMenuViewModelImpl(context: Context, private val service: CPMServiceCo
 
     override fun addLoyaltyCardsToWallet(list: ArrayList<WalletCardViewInfo>, callback: Runnable) {
         viewModelScope.launch {
-            val loyaltyCards = loyaltyCards.getLoyaltyCards(this@PowerMenuViewModelImpl::onCardClicked)?.run {
+            val loyaltyCards = googleWalletRepository.getLoyaltyCards(this@PowerMenuViewModelImpl::onCardClicked)?.run {
                 val hidden = settings.quickAccessWalletLoyaltyCardsHidden
                 val order = settings.quickAccessWalletLoyaltyCardsOrder
                 filterNot { hidden.contains(it.getLoyaltyIdOrNull()) }.sortedBy {

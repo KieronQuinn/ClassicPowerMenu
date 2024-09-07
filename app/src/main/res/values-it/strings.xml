@@ -83,8 +83,6 @@
     <string name="settings_quick_access_wallet_auto_switch_service_error_no_services">No NFC emulation services found</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards">Visualizza Carte Fedeltà</string>
     <string name="settings_quick_access_wallet_show_loyalty_cards_desc">Carica e mostra le tue carte fedeltà da Google Wallet nel Quick Access Wallet</string>
-    <string name="settings_quick_access_wallet_rearrange">Riorganizza &amp; Nascondi Carte Fedeltà</string>
-    <string name="settings_quick_access_wallet_rearrange_desc">Riordina e mostra/nascondi le carte fedeltà nel Quick Access Wallet</string>
     <string name="settings_quick_access_wallet_show_preview">Mostra Anteprima Carta Fedeltà</string>
     <string name="settings_quick_access_wallet_show_preview_desc">Mostra un\'anteprima della Carta fedeltà da scansionare o visualizza in negozio senza aprire Google Wallet</string>
     <string name="settings_quick_access_wallet_access_while_locked">Consenti l\'accesso alla Carta fedeltà con dispositivo bloccato</string>
@@ -96,8 +94,8 @@
     <string name="settings_device_controls_access_while_locked_desc">Consenti l\'interazione con i controlli smart con dispositivo bloccato. Ciò <b>non</b> consente di aggiungere o modificare i controlli con dispositivo bloccato</string>
     <string name="color_picker_unavailable">Selettore colore sfondo non disponibile per lo sfondo selezionato</string>
     <string name="settings_quick_access_wallet_loading">Caricamento delle Carte Fedeltà…</string>
-    <string name="settings_quick_access_wallet_rearrange_error_no_cards">Nessuna Carta Fedeltà trovata</string>
-    <string name="settings_quick_access_wallet_rearrange_error_generic">Errore durante il caricamento delle Carte Fedeltà</string>
+    <string name="settings_quick_access_wallet_manage_error_no_cards">Nessuna Carta Fedeltà trovata</string>
+    <string name="settings_quick_access_wallet_manage_error_generic">Errore durante il caricamento delle Carte Fedeltà</string>
     <string name="settings_developer_options_content_creator_mode">Modalità Creatore di contenuti</string>
     <string name="settings_developer_options_content_creator_mode_desc">Abilita questa opzione per offuscare sempre i numeri delle tue carte di pagamento e mostrare codici fittizi per le carte fedeltà <b>nell\'anteprima</b> (attivalo separatamente se lo desideri sempre attivo). Ciò è utile per acquisire schermate o video senza accidentalmente esporre le informazioni della tua carta.
 <b>Attenzione: non tentare di utilizzare una Carta Fedeltà con questa modalità abilitata, potrebbe causare errori sui sistemi dei negozi.</b></string>

@@ -115,6 +115,7 @@
     <string name="chip_twitter">Kövess a Twitteren</string>
     <string name="chip_github">GitHub</string>
     <string name="chip_xda">XDA</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
     <string name="menu_open_source_libraries">Nyílt forráskódú könyvtárak</string>
     <string name="menu_rerun_setup">Beállítás újrafuttatása</string>
     <string name="bottom_sheet_update_available_title">Frissítés elérhető</string>

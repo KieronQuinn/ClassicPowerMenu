@@ -119,7 +119,7 @@
     <string name="settings_about_faq">Frequently Asked Questions</string>
     <string name="settings_about_faq_file">faq.md</string>
     <string name="settings_about">Classic Power Menu v%1s</string>
-    <string name="settings_about_desc">Created by Kieron Quinn / Quinny899 @ XDA\nAdditional images by Rohith R Krishnan and Austin Andrews\n%1s</string>
+    <string name="settings_about_desc">Created by Kieron Quinn / Quinny899 @ XDA\nAdditional images by Rohith R Krishnan and Austin Andrews\nLoyalty Card integration &amp; payment method switching by Philip Magyar\n%1s</string>
     <string name="settings_about_translators">Translators:\nJapanese: C0unt-zero\nItalian: Vladi69\nChinese: wushidi and Ketal\nPolish: Chefski</string>
 
     <string name="chip_donate">Donate</string>

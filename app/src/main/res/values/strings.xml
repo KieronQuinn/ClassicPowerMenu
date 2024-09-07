@@ -109,7 +109,7 @@
     <string name="settings_device_controls_access_while_locked_desc">Allow interaction with Device Controls while locked. This does <b>not</b> allow adding or editing controls while locked</string>
     <string name="color_picker_unavailable">Wallpaper Color Picker unavailable for the currently selected wallpaper</string>
     <string name="settings_quick_access_wallet_loading">Loading Loyalty Cards…</string>
-    <string name="settings_quick_access_wallet_manage_error_no_cards">No Loyalty Cards found</string>
+    <string name="settings_quick_access_wallet_manage_error_no_cards">No Loyalty Cards loaded. \n Press the sync button to load Loyalty Cards from Google Wallet!</string>
     <string name="settings_quick_access_wallet_manage_error_generic">Error loading Loyalty Cards</string>
     <string name="settings_developer_options_content_creator_mode">Content Creator Mode</string>
     <string name="settings_developer_options_content_creator_mode_desc">Enable this to always blur your Payment Card numbers, and show dummy codes for Loyalty Cards <b>in the preview</b> (enable that separately if you want it always on). This is useful for taking screenshots or videos without accidentally exposing your card info.\n<b>Warning: Don\'t try to use a Loyalty Card with this mode enabled, it may cause errors on stores\' systems.</b></string>

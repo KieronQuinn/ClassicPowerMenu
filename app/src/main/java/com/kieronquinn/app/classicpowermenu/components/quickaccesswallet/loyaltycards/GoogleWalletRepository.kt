@@ -1,6 +1,7 @@
 package com.kieronquinn.app.classicpowermenu.components.quickaccesswallet.loyaltycards
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.StrictMode
 import android.util.Base64
@@ -207,10 +208,18 @@ class GoogleWalletRepositoryImpl(
         }
     }
 
+    private suspend fun getCurrentValuables(): List<Valuable> {
+        return valuablesDatabaseRepository.getWalletValuables().first().map {
+            Valuable.newBuilder()
+                .setId(it.id)
+                .setHash(it.hash)
+                .build()
+        }
+    }
 
     private suspend fun loadValuables(token: String): SyncValuablesResult {
         val valuables = service.run {
-            syncValuables(token, emptyList())
+            syncValuables(token, getCurrentValuables())
         }
         return when(valuables) {
             is SyncValuablesResponse.Success -> {
@@ -230,14 +239,17 @@ class GoogleWalletRepositoryImpl(
             // For now we only care about loyalty cards
             if(it.hash != 0L && it.valuable.loyaltyCard != null) {
 
-                val url = URL(it.valuable.loyaltyCard.groupingInfo.groupingImage.uri)
-                val image = BitmapFactory.decodeStream(url.openConnection().getInputStream())
+                var image: Bitmap? = null
+                if (it.valuable.loyaltyCard.groupingInfo.groupingImage.uri.isNotEmpty()) {
+                    val url = URL(it.valuable.loyaltyCard.groupingInfo.groupingImage.uri)
+                    image = BitmapFactory.decodeStream(url.openConnection().getInputStream())
+                }
 
                 val valuable = WalletValuable(
                     it.id,
                     it.hash,
                     EncryptedValue(it.valuable.toByteArray()),
-                    image.compress()?.let { compressed -> EncryptedValue(compressed) }
+                    if (image != null) image.compress()?.let { compressed -> EncryptedValue(compressed) } else null
                 )
                 valuablesDatabaseRepository.addWalletValuable(valuable)
             }else{

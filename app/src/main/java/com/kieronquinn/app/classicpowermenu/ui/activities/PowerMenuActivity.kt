@@ -1,5 +1,7 @@
 package com.kieronquinn.app.classicpowermenu.ui.activities
 
+import android.app.KeyguardManager
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.transition.Fade
@@ -38,6 +40,8 @@ class PowerMenuActivity : MonetCompatActivity(), PowerMenuStarter.PowerMenuStart
         window.enterTransition = Fade()
         window.reenterTransition = Fade()
         window.setupWindowFlags()
+        setShowWhenLocked(true)
+        setTurnScreenOn(true)
         super.onCreate(savedInstanceState)
         requestedOrientation = viewModel.getRequestedOrientation()
         hideStatusBar()
@@ -99,10 +103,10 @@ class PowerMenuActivity : MonetCompatActivity(), PowerMenuStarter.PowerMenuStart
     }
 
     private fun Window.setupWindowFlags(){
-        addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED)
-        addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON)
-        addFlags(WindowManager.LayoutParams.FLAG_ALLOW_LOCK_WHILE_SCREEN_ON)
+        //addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED)
+        //addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        //addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON)
+        //addFlags(WindowManager.LayoutParams.FLAG_ALLOW_LOCK_WHILE_SCREEN_ON)
     }
 
     private fun Window.setupLayout(){

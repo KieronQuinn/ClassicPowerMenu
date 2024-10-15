@@ -46,7 +46,8 @@ class WalletCardBlurProviderImpl(context: Context, private val settings: Setting
         //Don't blur if not locked
         if(!keyguardManager.isDeviceLocked && !settings.developerContentCreatorMode) return cardDrawable
         if(!settings.quickAccessWalletHideCardNumberWhenLocked && !settings.developerContentCreatorMode) return cardDrawable
-        val cardBitmap = cardDrawable.bitmap.copy(cardDrawable.bitmap.config, true)
+        val cardBitmap = cardDrawable.bitmap.config?.let { cardDrawable.bitmap.copy(it, true) }
+            ?: return cardDrawable
         //Calculate the position of the last 4 digits of the card number
         val cardYTop = (CARD_Y_TOP * cardBitmap.height).roundToInt()
         val cardYBottom = (CARD_Y_BOTTOM * cardBitmap.height).roundToInt()
@@ -67,7 +68,7 @@ class WalletCardBlurProviderImpl(context: Context, private val settings: Setting
     }
 
     private fun blurBitmap(source: Bitmap, radius: Float): Bitmap {
-        val bitmap = source.copy(source.config, true)
+        val bitmap = source.config?.let { source.copy(it, true) } ?: return source
         val input = Allocation.createFromBitmap(
             renderScript,
             source,

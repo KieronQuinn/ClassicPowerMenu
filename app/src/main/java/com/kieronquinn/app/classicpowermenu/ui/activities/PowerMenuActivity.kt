@@ -39,7 +39,6 @@ class PowerMenuActivity : MonetCompatActivity(), PowerMenuStarter.PowerMenuStart
         window.returnTransition = Fade()
         window.enterTransition = Fade()
         window.reenterTransition = Fade()
-        window.setupWindowFlags()
         setShowWhenLocked(true)
         setTurnScreenOn(true)
         super.onCreate(savedInstanceState)
@@ -100,13 +99,6 @@ class PowerMenuActivity : MonetCompatActivity(), PowerMenuStarter.PowerMenuStart
 
     private fun closePowerMenu(){
         finishAfterTransition()
-    }
-
-    private fun Window.setupWindowFlags(){
-        //addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED)
-        //addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        //addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON)
-        //addFlags(WindowManager.LayoutParams.FLAG_ALLOW_LOCK_WHILE_SCREEN_ON)
     }
 
     private fun Window.setupLayout(){

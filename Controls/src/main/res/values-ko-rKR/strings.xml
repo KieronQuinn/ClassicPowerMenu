@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Device Controls strings -->
+    <!-- Device Controls empty state, title [CHAR LIMIT=30] -->
+    <string name="quick_controls_title">Device controls</string>
+    <!-- Device Controls empty state, subtitle [CHAR LIMIT=100] -->
+    <string name="quick_controls_subtitle">Add controls for your connected devices</string>
+    <!-- Device Controls setup, title [CHAR LIMIT=50] -->
+    <string name="quick_controls_setup_title">Set up device controls</string>
+    <!-- Device Controls setup, subtitle [CHAR LIMIT=100] -->
+    <string name="quick_controls_setup_subtitle">Hold the Power button to access your controls</string>
+    <!-- Controls management providers screen title [CHAR LIMIT=60]-->
+    <string name="controls_providers_title">Choose app to add controls</string>
+    <!-- Number of favorites for controls management screen [CHAR LIMIT=NONE]-->
+    <plurals name="controls_number_of_favorites">
+        <item quantity="other"><xliff:g id="number" example="3">%s</xliff:g> controls added.</item>
+    </plurals>
+    <!-- Removed control in management screen [CHAR LIMIT=20] -->
+    <string name="controls_removed">Removed</string>
+    <!-- a11y state description for a control that is currently favorited [CHAR LIMIT=NONE] -->
+    <string name="accessibility_control_favorite">Favorited</string>
+    <!-- a11y state description for a control that is currently favorited with its position [CHAR LIMIT=NONE] -->
+    <string name="accessibility_control_favorite_position">Favorited, position <xliff:g id="number" example="1">%d</xliff:g></string>
+    <!-- a11y state description for a control that is currently not favorited [CHAR LIMIT=NONE] -->
+    <string name="accessibility_control_not_favorite">Unfavorited</string>
+    <!-- a11y action to favorite a control. It will read as "Double-tap to favorite" in screen readers [CHAR LIMIT=NONE] -->
+    <string name="accessibility_control_change_favorite">favorite</string>
+    <!-- a11y action to unfavorite a control. It will read as "Double-tap to unfavorite" in screen readers [CHAR LIMIT=NONE] -->
+    <string name="accessibility_control_change_unfavorite">unfavorite</string>
+    <!-- a11y action to move a control to the position specified by the parameter [CHAR LIMIT=NONE] -->
+    <string name="accessibility_control_move">Move to position <xliff:g id="number" example="1">%d</xliff:g></string>
+    <!-- Controls management controls screen default title [CHAR LIMIT=30] -->
+    <string name="controls_favorite_default_title">Controls</string>
+    <!-- Controls management controls screen subtitle [CHAR LIMIT=NONE] -->
+    <string name="controls_favorite_subtitle">Choose controls to access from the power menu</string>
+    <!-- Controls management editing screen, user direction for rearranging controls [CHAR LIMIT=NONE] -->
+    <string name="controls_favorite_rearrange">Hold &amp; drag to rearrange controls</string>
+    <!-- Controls management editing screen, text to indicate that all the favorites have been removed [CHAR LIMIT=NONE] -->
+    <string name="controls_favorite_removed">All controls removed</string>
+    <!-- Controls management favorites screen, See other apps with changes made [CHAR LIMIT=NONE] -->
+    <string name="controls_favorite_toast_no_changes">Changes not saved</string>
+    <!-- Controls management favorites screen. See other apps button [CHAR LIMIT=30] -->
+    <string name="controls_favorite_see_other_apps">See other apps</string>
+    <!-- Controls management controls screen error on load message [CHAR LIMIT=NONE] -->
+    <string name="controls_favorite_load_error">Controls could not be loaded. Check the <xliff:g id="app" example="System UI">%s</xliff:g> app to make sure that the app settings haven\u2019t changed.</string>
+    <!-- Controls management controls screen no controls found on load message [CHAR LIMIT=NONE] -->
+    <string name="controls_favorite_load_none">Compatible controls unavailable</string>
+    <!-- Controls management controls screen header for Other zone [CHAR LIMIT=60] -->
+    <string name="controls_favorite_other_zone_header">Other</string>
+    <!-- Controls dialog title [CHAR LIMIT=40] -->
+    <string name="controls_dialog_title">Add to device controls</string>
+    <!-- Controls dialog add to favorites [CHAR LIMIT=40] -->
+    <string name="controls_dialog_ok">Add</string>
+    <!-- Controls dialog message. Indicates app that suggested this control [CHAR LIMIT=NONE] -->
+    <string name="controls_dialog_message">Suggested by <xliff:g id="app" example="System UI">%s</xliff:g></string>
+    <!-- Controls dialog confirmation [CHAR LIMIT=30] -->
+    <string name="controls_dialog_confirmation">Controls updated</string>
+    <!-- Controls PIN entry dialog, switch to alphanumeric keyboard [CHAR LIMIT=100] -->
+    <string name="controls_pin_use_alphanumeric">PIN contains letters or symbols</string>
+    <!-- Controls PIN entry dialog, title [CHAR LIMIT=30] -->
+    <string name="controls_pin_verify">Verify <xliff:g id="device" example="Backdoor lock">%s</xliff:g></string>
+    <!-- Controls PIN entry dialog, title when 1st attempt failed [CHAR LIMIT=30] -->
+    <string name="controls_pin_wrong">Wrong PIN</string>
+    <!-- Controls PIN entry dialog, waiting to verify [CHAR LIMIT=30] -->
+    <string name="controls_pin_verifying">Verifying\u2026</string>
+    <!-- Controls PIN entry dialog, text hint [CHAR LIMIT=30] -->
+    <string name="controls_pin_instructions">Enter PIN</string>
+    <!-- Controls PIN entry dialog, text hint, retry [CHAR LIMIT=30] -->
+    <string name="controls_pin_instructions_retry">Try another PIN</string>
+    <!-- Controls confirmation dialog, waiting to confirm [CHAR LIMIT=30] -->
+    <string name="controls_confirmation_confirming">Confirming\u2026</string>
+    <!-- Controls confirmation dialog, user prompt [CHAR LIMIT=NONE] -->
+    <string name="controls_confirmation_message">Confirm change for <xliff:g id="device" example="Backdoor lock">%s</xliff:g></string>
+    <!-- Tooltip to show in management screen when there are multiple structures [CHAR_LIMIT=50] -->
+    <string name="controls_structure_tooltip">Swipe to see more</string>
+    <!-- Message to tell the user to wait while systemui attempts to load a set of
+         recommended controls [CHAR_LIMIT=60] -->
+    <string name="controls_seeding_in_progress">Loading recommendations</string>
+    <!-- Title for media controls [CHAR_LIMIT=50] -->
+    <string name="controls_media_title">Media</string>
+    <!-- Explanation for closing controls associated with a specific media session [CHAR_LIMIT=NONE] -->
+    <string name="controls_media_close_session">Hide the current session.</string>
+    <!-- Explanation that controls associated with a specific media session are active [CHAR_LIMIT=NONE] -->
+    <string name="controls_media_active_session">Current session cannot be hidden.</string>
+    <!-- Label for a button that will hide media controls [CHAR_LIMIT=30] -->
+    <string name="controls_media_dismiss_button">Dismiss</string>
+    <!-- Label for button to resume media playback [CHAR_LIMIT=NONE] -->
+    <string name="controls_media_resume">Resume</string>
+    <!-- Label for button to go to media control settings screen [CHAR_LIMIT=30] -->
+    <string name="controls_media_settings_button">Settings</string>
+    <!-- Error message indicating that a control timed out while waiting for an update [CHAR_LIMIT=30] -->
+    <string name="controls_error_timeout">Inactive, check app</string>
+    <!-- Error message indicating that an unspecified error occurred while getting the status, and
+         a retry will be attempted [CHAR LIMIT=30] -->
+    <string name="controls_error_retryable">Error, retrying\u2026</string>
+    <!-- Error message indicating that the control is no longer available in the application [CHAR LIMIT=30] -->
+    <string name="controls_error_removed">Not found</string>
+    <!-- Title for dialog indicating that the control is no longer available in the application [CHAR LIMIT=30] -->
+    <string name="controls_error_removed_title">Control is unavailable</string>
+    <!-- Message body for dialog indicating that the control is no longer available in the application [CHAR LIMIT=NONE] -->
+    <string name="controls_error_removed_message">Couldn\u2019t access <xliff:g id="device" example="Backdoor lock">%1$s</xliff:g>. Check the <xliff:g id="application" example="Google Home">%2$s</xliff:g> app to make sure the control is still available and that the app settings haven\u2019t changed.</string>
+    <!-- Text for button to open the corresponding application [CHAR_LIMIT=20] -->
+    <string name="controls_open_app">Open app</string>
+    <!-- Error message indicating that an unspecified error occurred while getting the status [CHAR LIMIT=30] -->
+    <string name="controls_error_generic">Can\u2019t load status</string>
+    <!-- Error message indicating that a control action failed [CHAR_LIMIT=30] -->
+    <string name="controls_error_failed">Error, try again</string>
+    <!-- Stateless control message informing the user that a routine has started [CHAR_LIMIT=30] -->
+    <string name="controls_in_progress">In progress</string>
+    <!-- Tooltip informing user where the recently added controls are [CHAR_LIMIT=100] -->
+    <string name="controls_added_tooltip">Hold Power button to see new controls</string>
+    <!-- Controls menu, add [CHAR_LIMIT=30] -->
+    <string name="controls_menu_add">Add controls</string>
+    <!-- Controls menu, edit [CHAR_LIMIT=30] -->
+    <string name="controls_menu_edit">Edit controls</string>
+    <string name="save">Save</string>
+    <string name="loading">Loading…</string>
+    <!-- accessibility label for paging indicator in quick settings [CHAR LIMITi=NONE] -->
+    <string name="accessibility_quick_settings_page">Page <xliff:g name="current_page" example="1">%1$d</xliff:g> of <xliff:g name="num_pages" example="2">%2$d</xliff:g></string>
+    <string name="accessibility_menu">Menu</string>
+    <string name="accessibility_desc_close">Close</string>
+</resources>

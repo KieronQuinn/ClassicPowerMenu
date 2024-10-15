@@ -43,8 +43,9 @@
             android:theme="@style/Theme.ClassicPowerMenu.Fullscreen"
             android:noHistory="true"
             android:exported="true"
-            android:showOnLockScreen="true"
             android:launchMode="singleInstance"
+            android:showOnLockScreen="true"
+            android:showWhenLocked="true"
             android:excludeFromRecents="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>

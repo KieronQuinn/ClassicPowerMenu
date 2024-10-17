@@ -51,6 +51,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Predicate;
 
 import kotlin.Unit;
 import kotlin.reflect.KFunction;
@@ -198,6 +199,13 @@ public class WalletPanelViewController implements
         }
         List<WalletCard> walletCards = response.getWalletCards();
 
+        walletCards.removeIf(new Predicate<WalletCard>() {
+            @Override
+            public boolean test(WalletCard walletCard) {
+                return walletCard.getCardId().length() <= 1;
+            }
+        });
+
         ArrayList<WalletCardViewInfo> data = new ArrayList<>(walletCards.size());
         for (WalletCard card : walletCards) {
             data.add(new QAWalletCardViewInfo(card));
@@ -210,7 +218,7 @@ public class WalletPanelViewController implements
         }
 
         mWalletLoyaltyCardCallback.getMethod().invoke(data, () -> {
-            if(data.size() == 0) return;
+            if(data.isEmpty()) return;
             //Make sure we're still attached
             if(mWalletView.isAttachedToWindow()) {
                 setupWalletView(data, response);

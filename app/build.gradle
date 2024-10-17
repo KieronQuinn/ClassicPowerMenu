@@ -8,7 +8,7 @@ plugins {
     id 'com.google.devtools.ksp'
 }
 
-def version = '1.9.1'
+def version = '1.9.2'
 
 android {
     compileSdk 35
@@ -17,7 +17,7 @@ android {
         applicationId "com.kieronquinn.app.classicpowermenu"
         minSdk 30
         targetSdk 35
-        versionCode 191
+        versionCode 192
         versionName version
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -81,7 +81,7 @@ dependencies {
     //AndroidX
     def lifecycle_version = "2.8.6"
     implementation 'androidx.core:core-ktx:1.13.1'
-    implementation "androidx.activity:activity-ktx:1.9.2"
+    implementation "androidx.activity:activity-ktx:1.9.3"
     implementation "androidx.fragment:fragment-ktx:1.8.4"
     implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"

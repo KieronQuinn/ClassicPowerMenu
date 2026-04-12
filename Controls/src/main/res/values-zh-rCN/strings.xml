@@ -13,7 +13,7 @@
     <string name="controls_providers_title">选择要添加控件的应用</string>
     <!-- Number of favorites for controls management screen [CHAR LIMIT=NONE]-->
     <plurals name="controls_number_of_favorites">
-        <item quantity="other"><xliff:g id="number" example="3">%s</xliff:g> controls added.</item>
+        <item quantity="other"><xliff:g id="number" example="3">%s</xliff:g> 控件已添加。</item>
     </plurals>
     <!-- Removed control in management screen [CHAR LIMIT=20] -->
     <string name="controls_removed">移除</string>

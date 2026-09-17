@@ -221,21 +221,21 @@ public class WalletPanelViewController implements
             if(data.isEmpty()) return;
             //Make sure we're still attached
             if(mWalletView.isAttachedToWindow()) {
-                setupWalletView(data, response);
+                setupWalletView(data, response.getSelectedIndex());
             }
         });
     }
 
-    private void setupWalletView(List<WalletCardViewInfo> data, GetWalletCardsResponse response){
+    private void setupWalletView(List<WalletCardViewInfo> data, int selectedIndex){
         // Get on main thread for UI updates
         mWalletView.post(() -> {
-            if (mIsDismissed) {
+            if (mIsDismissed || !mWalletView.isAttachedToWindow()) {
                 return;
             }
             if (data.isEmpty()) {
                 showEmptyStateView();
             } else {
-                mWalletView.showCardCarousel(data, response.getSelectedIndex(), getOverflowItems());
+                mWalletView.showCardCarousel(data, selectedIndex, getOverflowItems());
             }
             // The empty state view will not be shown preemptively next time if cards were returned
             mPrefs.edit().putBoolean(PREFS_HAS_CARDS, !data.isEmpty()).apply();
@@ -249,11 +249,29 @@ public class WalletPanelViewController implements
      */
     @Override
     public void onWalletCardRetrievalError(GetWalletCardsError error) {
+        if (mIsDismissed) {
+            return;
+        }
         mWalletView.post(() -> {
             if (mIsDismissed) {
                 return;
             }
-            mWalletView.showErrorMessage(error.getMessage());
+            mDefaultCardId = null;
+            mSelectedCardId = null;
+            mHandler.removeCallbacks(mSelectionRunnable);
+            ArrayList<WalletCardViewInfo> data = new ArrayList<>();
+            mWalletLoyaltyCardCallback.getMethod().invoke(data, () -> {
+                mWalletView.post(() -> {
+                    if (mIsDismissed || !mWalletView.isAttachedToWindow()) {
+                        return;
+                    }
+                    if (data.isEmpty()) {
+                        mWalletView.showErrorMessage(error.getMessage());
+                    } else {
+                        setupWalletView(data, 0);
+                    }
+                });
+            });
         });
     }
 

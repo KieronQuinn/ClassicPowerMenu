@@ -1,5 +1,6 @@
 package com.kieronquinn.app.classicpowermenu.components.xposed
 
+import android.app.Dialog
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -8,6 +9,7 @@ import android.content.pm.ApplicationInfo
 import android.os.Build
 import android.os.IBinder
 import android.util.Log
+import android.view.WindowManager
 import com.kieronquinn.app.classicpowermenu.BuildConfig
 import com.kieronquinn.app.classicpowermenu.IGlobalActions
 import com.kieronquinn.app.classicpowermenu.service.globalactions.GlobalActionsService
@@ -19,6 +21,7 @@ class Xposed: IXposedHookLoadPackage, ServiceConnection {
 
     companion object {
         private const val TAG = "CPMXposed"
+        private const val EXTRA_OPLUS_REPLACED = "oplus_replaced"
     }
 
     private val serviceIntent by lazy {
@@ -33,6 +36,8 @@ class Xposed: IXposedHookLoadPackage, ServiceConnection {
     private var isHooked = false
     private var miuiVersion = -1
     private var oneuiVersion = -1
+    private var oplusVersion = -1
+    private var isReplacingOplusDialog = false
 
     override fun handleLoadPackage(lpparam: XC_LoadPackage.LoadPackageParam) {
         miuiVersion = SystemProperties_getString("ro.miui.ui.version.name", "V0")
@@ -40,6 +45,9 @@ class Xposed: IXposedHookLoadPackage, ServiceConnection {
         oneuiVersion = try {
             Build.VERSION::class.java.getDeclaredField("SEM_PLATFORM_INT").getInt(null)
         } catch(e: Exception) {-1}
+
+        oplusVersion = SystemProperties_getString("ro.build.version.oplusrom", "")
+            .removePrefix("V").substringBefore('.').toIntOrNull() ?: -1
 
         if(lpparam.packageName == "com.android.systemui") hookSystemUI(lpparam)
         if(lpparam.packageName == BuildConfig.APPLICATION_ID) hookSelf(lpparam)
@@ -62,8 +70,120 @@ class Xposed: IXposedHookLoadPackage, ServiceConnection {
             miuiVersion >= 816 -> hookHyperOSSystemUI(lpparam)
             miuiVersion >= 125 -> hookMiuiSystemUI(lpparam)
             oneuiVersion >= 90000 -> hookOneUISystemUI(lpparam)
+            oplusVersion > 0 -> {
+                if (isOplusSystemUICompatible(lpparam.classLoader)) {
+                    hookOplusSystemUI(lpparam)
+                } else {
+                    Log.w(TAG, "Unsupported Oplus global actions implementation")
+                }
+            }
             else -> hookAospSystemUI(lpparam)
         }
+    }
+
+    private fun isOplusSystemUICompatible(classLoader: ClassLoader): Boolean {
+        return try {
+            XposedHelpers.findClass("com.android.systemui.shutdown.GlobalActionsDialogEx", classLoader)
+            val globalActionsClass = XposedHelpers.findClass(
+                "com.android.systemui.globalactions.GlobalActionsImpl", classLoader
+            )
+            val managerClass = XposedHelpers.findClass(
+                "com.android.systemui.plugins.GlobalActions\$GlobalActionsManager", classLoader
+            )
+            val contextField = XposedHelpers.findField(globalActionsClass, "mContext")
+            val disabledField = XposedHelpers.findField(globalActionsClass, "mDisabled")
+            val dialogField = XposedHelpers.findField(globalActionsClass, "globalActionsDialog")
+            val showMethod = globalActionsClass.getDeclaredMethod("showGlobalActions", managerClass)
+            val disableMethod = globalActionsClass.getDeclaredMethod("disable",
+                Int::class.java, Int::class.java, Int::class.java, Boolean::class.java)
+            val shownMethod = managerClass.getMethod("onGlobalActionsShown")
+            Context::class.java.isAssignableFrom(contextField.type) &&
+                disabledField.type == Boolean::class.javaPrimitiveType &&
+                dialogField.type.name == "com.android.systemui.shutdown.GlobalActionsDialogEx" &&
+                showMethod.returnType == Void.TYPE && disableMethod.returnType == Void.TYPE &&
+                shownMethod.returnType == Void.TYPE && globalActionsClass.declaredConstructors.isNotEmpty()
+        } catch (e: Exception) {
+            false
+        } catch (e: XposedHelpers.ClassNotFoundError) {
+            false
+        } catch (e: NoSuchFieldError) {
+            false
+        }
+    }
+
+    private fun hookOplusSystemUI(lpparam: XC_LoadPackage.LoadPackageParam) {
+        val globalActionsClass = XposedHelpers.findClass(
+            "com.android.systemui.globalactions.GlobalActionsImpl", lpparam.classLoader
+        )
+        val managerClass = XposedHelpers.findClass(
+            "com.android.systemui.plugins.GlobalActions\$GlobalActionsManager", lpparam.classLoader
+        )
+        val contextField = XposedHelpers.findField(globalActionsClass, "mContext")
+        val disabledField = XposedHelpers.findField(globalActionsClass, "mDisabled")
+        val dialogField = XposedHelpers.findField(globalActionsClass, "globalActionsDialog")
+
+        XposedBridge.hookMethod(Dialog::class.java.getDeclaredMethod("show"), object: XC_MethodHook() {
+            override fun beforeHookedMethod(param: MethodHookParam) {
+                if (!isReplacingOplusDialog || param.thisObject.javaClass.name !=
+                    "com.oplus.systemui.shutdown.OplusGlobalActionsDialog\$ActionsDialog") return
+                (param.thisObject as Dialog).window?.apply {
+                    decorView.alpha = 0f
+                    setWindowAnimations(0)
+                    clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
+                    attributes = attributes.apply {
+                        alpha = 0f
+                        dimAmount = 0f
+                    }
+                }
+            }
+        })
+
+        XposedBridge.hookAllConstructors(globalActionsClass, object: XC_MethodHook() {
+            override fun afterHookedMethod(param: MethodHookParam) {
+                tryBindService(contextField.get(param.thisObject) as Context)
+            }
+        })
+        XposedHelpers.findAndHookMethod(globalActionsClass, "showGlobalActions", managerClass, object: XC_MethodHook() {
+            override fun beforeHookedMethod(param: MethodHookParam) {
+                if (disabledField.getBoolean(param.thisObject)) return
+                val context = contextField.get(param.thisObject) as Context
+                val currentService = service
+                if (currentService == null) {
+                    tryBindService(context)
+                    return
+                }
+                val replaced = showGlobalActions(currentService)
+                param.setObjectExtra(EXTRA_OPLUS_REPLACED, replaced)
+                isReplacingOplusDialog = replaced
+            }
+
+            override fun afterHookedMethod(param: MethodHookParam) {
+                try {
+                    if (param.getObjectExtra(EXTRA_OPLUS_REPLACED) == true) {
+                        dialogField.get(param.thisObject)?.let {
+                            XposedHelpers.callMethod(it, "getActionsDialog")?.let { dialog ->
+                                XposedHelpers.callMethod(dialog, "dismiss")
+                            }
+                        }
+                        XposedHelpers.callMethod(param.args[0], "onGlobalActionsShown")
+                    }
+                } finally {
+                    isReplacingOplusDialog = false
+                }
+            }
+        })
+        XposedHelpers.findAndHookMethod(globalActionsClass, "disable",
+            Int::class.java, Int::class.java, Int::class.java, Boolean::class.java,
+            object: XC_MethodHook() {
+                override fun afterHookedMethod(param: MethodHookParam) {
+                    val context = contextField.get(param.thisObject) as Context
+                    if (param.args[0] == XposedHelpers.callMethod(context, "getDisplayId") && disabledField.getBoolean(param.thisObject)) {
+                        handleDismiss()
+                    }
+                }
+            }
+        )
+        Log.i(TAG, "Oplus global actions hook installed")
     }
 
     private fun hookHyperOSSystemUI(lpparam: XC_LoadPackage.LoadPackageParam) {

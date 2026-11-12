@@ -16,6 +16,7 @@ import com.kieronquinn.app.classicpowermenu.service.globalactions.GlobalActionsS
 import com.kieronquinn.app.classicpowermenu.utils.extensions.SystemProperties_getString
 import de.robv.android.xposed.*
 import de.robv.android.xposed.callbacks.XC_LoadPackage
+import java.lang.reflect.Field
 
 class Xposed: IXposedHookLoadPackage, ServiceConnection {
 
@@ -143,7 +144,37 @@ class Xposed: IXposedHookLoadPackage, ServiceConnection {
                 tryBindService(contextField.get(param.thisObject) as Context)
             }
         })
-        XposedHelpers.findAndHookMethod(globalActionsClass, "showGlobalActions", managerClass, object: XC_MethodHook() {
+        val showGlobalActionsHook = createOplusShowHook(contextField, disabledField, dialogField)
+        XposedHelpers.findAndHookMethod(globalActionsClass, "showGlobalActions", managerClass, showGlobalActionsHook)
+        //ColorOS 17 toggles the menu through showOrHideGlobalActions, showGlobalActions is left untouched
+        try {
+            XposedBridge.hookMethod(
+                globalActionsClass.getDeclaredMethod("showOrHideGlobalActions", managerClass),
+                createOplusShowHook(contextField, disabledField, dialogField)
+            )
+        } catch (e: NoSuchMethodException) {
+            Log.d(TAG, "showOrHideGlobalActions not found", e)
+        }
+        XposedHelpers.findAndHookMethod(globalActionsClass, "disable",
+            Int::class.java, Int::class.java, Int::class.java, Boolean::class.java,
+            object: XC_MethodHook() {
+                override fun afterHookedMethod(param: MethodHookParam) {
+                    val context = contextField.get(param.thisObject) as Context
+                    if (param.args[0] == XposedHelpers.callMethod(context, "getDisplayId") && disabledField.getBoolean(param.thisObject)) {
+                        handleDismiss()
+                    }
+                }
+            }
+        )
+        Log.i(TAG, "Oplus global actions hook installed")
+    }
+
+    private fun createOplusShowHook(
+        contextField: Field,
+        disabledField: Field,
+        dialogField: Field
+    ): XC_MethodHook {
+        return object: XC_MethodHook() {
             override fun beforeHookedMethod(param: MethodHookParam) {
                 if (disabledField.getBoolean(param.thisObject)) return
                 val context = contextField.get(param.thisObject) as Context
@@ -171,19 +202,7 @@ class Xposed: IXposedHookLoadPackage, ServiceConnection {
                     isReplacingOplusDialog = false
                 }
             }
-        })
-        XposedHelpers.findAndHookMethod(globalActionsClass, "disable",
-            Int::class.java, Int::class.java, Int::class.java, Boolean::class.java,
-            object: XC_MethodHook() {
-                override fun afterHookedMethod(param: MethodHookParam) {
-                    val context = contextField.get(param.thisObject) as Context
-                    if (param.args[0] == XposedHelpers.callMethod(context, "getDisplayId") && disabledField.getBoolean(param.thisObject)) {
-                        handleDismiss()
-                    }
-                }
-            }
-        )
-        Log.i(TAG, "Oplus global actions hook installed")
+        }
     }
 
     private fun hookHyperOSSystemUI(lpparam: XC_LoadPackage.LoadPackageParam) {
